@@ -1,0 +1,86 @@
+name: variant
+updated: '2018-09-01'
+description: |
+  The document describes attributes of the "variant" object, which e.g. can be instantiated as database documents in a MongoDB collection.
+attributes:
+  - name: _id
+    description: the database-internal object id
+    example: ObjectId("558e5c56ad9a82d958392bd6")
+
+  - name: digest
+    description: concatenated unique specific elements of the variant
+    type: string
+    example: '4:12282-46465:DEL'
+
+  - name: callset_id
+    description: The identifier ("callset.id") of the callset this variant is part of.
+    type: string
+    example: 'PGX_AM_CS_GSM1690424'
+
+  - name: biosample_id
+    description: The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
+    example: 'pgx-bs-987647'
+
+  - name: reference_name
+    description: 'Reference name (chromosome). Accepting values 1-22, X, Y.'
+    type: string
+    example: "8"
+
+  - name: start
+    description:
+    type: array of 1 or 2 (for imprecise end position of structural variant) integers
+    format: int64
+    example: [20867740]
+
+  - name: mate_name
+    description: 'Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.'
+    type: string
+    example: "14"
+
+  - name: end
+    description:
+    type: array of 0 (for presise sequence variants), 1 or 2 (for imprecise end position of structural variant) integers
+    format: int64
+    example: [21977798,21978106]
+    queries:
+      - query: 'db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )'
+        description: the query will return all variants with any overlap of the CDKN2A CDR
+
+  - name: reference_bases
+    description: list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants
+    type: string
+    pattern: '^([ACGT]+|N)$'
+    example: 'G'
+
+  - name: alternate_bases
+    description:
+    type: string
+    pattern: '^([ACGT]+|N)$'
+    example: 'AC'
+
+  - name: genotype
+    description:
+    type: list of strings, which represent the (phased) alleles in which the variant was being observed
+    example:
+      - '1'
+      - '.'
+
+  - name: variant_type
+    description: the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
+    example: 'DEL'
+
+  - name: info
+    description: additional variant information, as defined in the example and accompanying documentation
+    type: list of common.info_class objects
+    example:
+    - name: cnv_value
+      type: float
+      value: -0.294
+    - name: cnv_length
+      type: int64
+      value: 1205290
+
+  - name: updated
+    description: time of the last edit of this record, in ISO8601
+    type: ISO8601 string
+    example: '2017-10-25T07:06:03Z'

@@ -1,0 +1,55 @@
+name: individual
+updated: '2018-09-01'
+attributes:
+  - name: _id
+    description: the database-internal object id
+    example: ObjectId("558e5c56ad9a82d958392bd6")
+
+  - name: id
+    description: The local-unique identifier of this individual (referenced as "individual_id").
+    type: string
+    example: 'AM_BS__NCBISKYCGH-1993'
+
+  - name: description
+    description: A free text description of the individual.
+    type: string
+    example: 'patient with lung cancer, male smoker'
+
+  - name: biocharacteristics
+    description: list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
+    type: list
+    example:
+      - description: "girl"
+        class :
+          id: "PATO:0020000"
+          label : "female genetic sex"
+      - description: "Jean-Luc Picard"
+        class :
+          id : "NCBITaxon:9606"
+          label : "Homo sapiens"
+      - description: "Patient with Down syndrome"
+        class :
+          id : "HP:0003745"
+          label : "Genetic anticipation"
+    queries:
+      - query: 'db.individual.find( { "biocharacteristics.class.id" : "NCBITaxon:9606" } )'
+        description: the query will return all individuals who have been properly labeled as human
+      - query: 'db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /HP\:/i } } )'
+        description: this call to the distinct funcion will return *all* HPO annotated classes
+
+  - name: geo_provenance
+    description: |
+      This geo_class attribute ideally describes the geographic location of where this individual originates from.
+      This value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.
+    type: geo_class object
+    example:
+      - label: 'Str Marasesti 5, 300077 Timisoara, Romania'
+        city: 'Timisoara'
+        country: 'Romania'
+        latitude: 45.75
+        longitude: 21.23
+
+  - name: updated
+    description: time of the last edit of this record, in ISO8601
+    type: ISO8601 string
+    example: '2017-10-25T07:06:03Z'

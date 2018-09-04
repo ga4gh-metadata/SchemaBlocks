@@ -1,0 +1,101 @@
+name: biosample
+updated: '2018-09-01'
+attributes:
+  - name: _id
+    description: the database-internal object id
+    example: ObjectId("558e5c56ad9a82d958392bd6")
+
+  - name: id
+    description: The local-unique identifier of this biosample (referenced as "biosample_id").
+    type: string
+    example: 'AM_BS__NCBISKYCGH-1993'
+
+  - name: individual_id
+    description: The identifier of this biosample in the "individuals" collection
+    type: string
+    example: 'ind-cnhl-1293347-004'
+
+  - name: description
+    description: A free text description of the biosample.
+    type: string
+    example: 'Burkitt lymphoma, cell line Namalwa'
+
+  - name: age_at_collection
+    description: the age of the individual at time of biosample collection, as ISO8601 string
+    example: 'P56Y'
+
+  - name: age_at_collection_class
+    description: the age of the individual at time of biosample collection, as ontology object
+    type: common.ontology_class
+    example:
+      id : "HP:0003621",
+      label : "Juvenile onset"
+
+  - name: biocharacteristics
+    description: list of biocharacteristic_class objects with properly prefixed term ids, describing features of the biosample
+    type: list
+    example:
+      - description: "Pancreatic Adenocarcinoma"
+        class :
+          id : "pgx:icdot:c25.9"
+          label : "Pancreas, NOS"
+      - description : "Pancreatic Adenocarcinoma"
+        class:
+          id : "pgx:icdom:81403"
+          label : "Adenocarcinoma, NOS"
+      - description : "Pancreatic Adenocarcinoma"
+        class :
+          id : "ncit:c8294"
+          label : "Pancreatic Adenocarcinoma"
+    queries:
+      - query: 'db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )'
+        description: the query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their biocharacteristics object list
+      - query: 'db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )'
+        description: this call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/)
+
+  - name: external_ids
+    description: list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
+    type: list of reference_class objects
+    example:
+      - id : "cellosaurus:CVCL_0312"
+        relation : "provenance"
+      - id : "pubmed:17440070"
+        relation : "report"
+      - id : "geo:GPL4894"
+        relation : "technology"
+      - id : "geo:GSM185088"
+        relation : "denotes"
+    queries:
+      - query: 'db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )'
+        description: the query will return all biosamples reported in this publication
+
+  - name: geo_provenance
+    description: |
+      This geo_class attribute ideally describes the geographic location of where the sample was extracted.
+      Frequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.
+    type: geo_class object
+    example:
+      - label: 'Str Marasesti 5, 300077 Timisoara, Romania'
+        city: 'Timisoara'
+        country: 'Romania'
+        latitude: 45.75
+        longitude: 21.23
+
+  - name: info
+    description: |
+      This is a list for objects without further specification in the schema.
+    type: list of common.info_class objects
+    queries:
+      query: 'db.biosamples.find( {'info' : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )'
+    example:
+      - name: followup_time
+        type: ISO8601 string
+        value: 'P14M'
+      - name: death
+        type: boolean
+        value: true
+
+  - name: updated
+    description: time of the last edit of this record, in ISO8601
+    type: ISO8601 string
+    example: '2017-10-25T07:06:03Z'

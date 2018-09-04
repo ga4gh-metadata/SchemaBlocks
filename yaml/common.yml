@@ -1,0 +1,83 @@
+description: This file is used for the definition of some prototype objects which are re-used in other schema documents.
+
+ontology_class:
+  attributes:
+    - name: id
+      description: properly prefixed CURIE of the ontology term
+      type: string
+      example: 'ncit:C8294'
+
+    - name: label
+      description: the text label associated with the term
+      type: string
+      example: 'Pancreatic Adenocarcinoma'
+
+biocharacteristic_class:
+  attributes:
+    - name: description
+      description: a free-text description of this biocharacteristic
+      type: string
+      example: 'Invasive ductal breast carcinoma, metastasized'
+    - name: class
+      description: an ontology_class object
+      type: ontology_class
+      example:
+        id : "ncit:c8294"
+        label : "Pancreatic Adenocarcinoma"
+    - name: negated
+      description: flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated
+      type: boolean
+      example: "true"
+
+reference_class:
+  attributes:
+    - name: id
+      description: properly prefixed CURIE of the external reference
+      type: string
+      example: 'pubmed:17440070'
+    - name: relation
+      description: the relation of the external reference to the object it was pointed from
+      type: string
+      example: 'denotes'
+
+info_class:
+  attributes:
+    - name: name
+      description: the attribute / key
+      type: string
+      example: 'cnv_length'
+    - name: type
+      description: type of the value; optional
+      type: string
+      example: 'int64'
+    - name: value
+      description: the value in a format correstponding to type
+      example: 1503320
+
+geo_class:
+  attributes:
+    - name: label
+      description: |
+        A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to
+          - capture standard data entry parameters
+          - provide a sanity check for latitude,longitude values
+      type: string
+      example: 'Str Marasesti 5, 300077 Timisoara, Romania'
+    - name: city
+      type: string
+      example: 'Timisoara'
+    - name: country
+      type: string
+      example: 'Romania'
+    - name: latitude
+      description: signed decimal degrees (North, relative to Equator)
+      type: double
+      example: 47.37
+    - name: longitude
+      description: signed decimal degrees (East, relative to IERS Reference Meridian)
+      type: double
+      example: 8.54
+    - name: altitude
+      description: height in meters above the WGS 84 reference ellipsoid; otional
+      type: double
+      example: 8848
