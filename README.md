@@ -1,2 +1,5 @@
-# schemas
-data schemas for the Progenetix databases
+## schemas
+
+This repository contains the data schemas for the Progenetix databases (i.e. the backends behind [progenetix.org](http://progenetix.org). [progenetix.org](http://progenetix.org)) and the [Beacon+](http://beacon.progenetix.org.org) project.
+
+The primaruy documents are in the [yaml](./yaml/) directory, with JSON versions and examples extracted from them.

@@ -1,5 +1,7 @@
 name: callset
 updated: '2018-09-04'
+description: |
+  The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. 
 attributes:
   - name: _id
     description: the database-internal object id
