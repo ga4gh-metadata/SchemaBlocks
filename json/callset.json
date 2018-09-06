@@ -1,0 +1,49 @@
+{
+   "name" : "callset",
+   "updated" : "2018-09-04",
+   "attributes" : [
+      {
+         "name" : "_id",
+         "description" : "the database-internal object id",
+         "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")"
+      },
+      {
+         "example" : "GSM264198",
+         "name" : "id",
+         "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
+         "type" : "string"
+      },
+      {
+         "name" : "biosample_id",
+         "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",
+         "example" : "pgx-bs-987647"
+      },
+      {
+         "description" : "A free text description of the callset.",
+         "type" : "string",
+         "name" : "description",
+         "example" : "SNP6 array of cancer sample BRCA-0893"
+      },
+      {
+         "example" : [
+            {
+               "longitude" : "21.23",
+               "latitude" : "45.75",
+               "country" : "Romania",
+               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "city" : "Timisoara"
+            }
+         ],
+         "name" : "geo_provenance",
+         "type" : "geo_class object",
+         "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n"
+      },
+      {
+         "type" : "ISO8601 string",
+         "description" : "time of the last edit of this record, in ISO8601",
+         "name" : "updated",
+         "example" : "2017-10-25T07:06:03Z"
+      }
+   ]
+}
+
