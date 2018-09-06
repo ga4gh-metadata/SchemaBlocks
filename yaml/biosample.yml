@@ -11,7 +11,8 @@ attributes:
     example: 'AM_BS__NCBISKYCGH-1993'
 
   - name: individual_id
-    description: The identifier of this biosample in the "individuals" collection
+    description: |
+      In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
     type: string
     example: 'ind-cnhl-1293347-004'
 
@@ -28,11 +29,13 @@ attributes:
     description: the age of the individual at time of biosample collection, as ontology object
     type: common.ontology_class
     example:
-      id : "HP:0003621",
+      id : "HP:0003621"
       label : "Juvenile onset"
 
   - name: biocharacteristics
-    description: list of biocharacteristic_class objects with properly prefixed term ids, describing features of the biosample
+    description: |
+      "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
+      Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
     type: list
     example:
       - description: "Pancreatic Adenocarcinoma"
@@ -49,9 +52,11 @@ attributes:
           label : "Pancreatic Adenocarcinoma"
     queries:
       - query: 'db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )'
-        description: the query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their biocharacteristics object list
+        description: |
+          The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
       - query: 'db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )'
-        description: this call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/)
+        description: |
+          This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
 
   - name: external_ids
     description: list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
@@ -80,13 +85,14 @@ attributes:
         country: 'Romania'
         latitude: 45.75
         longitude: 21.23
+        altitude: 94
 
   - name: info
     description: |
       This is a list for objects without further specification in the schema.
     type: list of common.info_class objects
     queries:
-      query: 'db.biosamples.find( {'info' : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )'
+      query: 'db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )'
     example:
       - name: followup_time
         type: ISO8601 string
