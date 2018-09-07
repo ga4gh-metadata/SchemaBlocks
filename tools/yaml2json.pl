@@ -54,20 +54,8 @@ END
   my %attr      =   map{ $_->{name} => $_ } @{ $data->{attributes} };
 
   foreach my $name (sort keys %attr) {
-    if ($attr{$name}->{example} =~ /^\d+?(?:\.\d+?)?$/i) {
-      $example->{$name} =   1 * $attr{$name}->{example} }
-    else {
-      $example->{$name} =   $attr{$name}->{example} }
 
-    my $md_example  =   Dumper($attr{$name}->{example});
-    $md_example	=~  s/\$VAR1 \= //;
-    $md_example	=~  s/\n {8}/\n/g;
-    $md_example	=~  s/\;//g;
-    if (ref( $attr{$name}->{example}) eq "ARRAY" || ref( $attr{$name}->{example}) eq "HASH") {
-      $md_example	=		'```'."\n".$md_example."\n".'```';
-    } else {
-      $md_example	  =~  s/\'//g;
-      $md_example	  =		'`'.$md_example.'`' }
+    my $md_example  =   _reformat_example($attr{$name}->{example});
 
     $markdown   .=  <<END;
 
@@ -77,7 +65,9 @@ $attr{$name}->{description}
 
 #### Example
 
-\'$_->{name}\' : $md_example
+```
+"$name" : $md_example
+```
 END
 
     if ($attr{$name}->{queries}) {
@@ -107,13 +97,8 @@ $data->{classes}->{$class_name}->{description}
 END
 
     foreach (@{ $data->{classes}->{$class_name}->{attributes} }) {
- #print $_->{type}.' - '.$_->{example}."\n";
-    if ($_->{type} =~ /bool/i) {
-      $example->{$class_name}->{$_->{name}} =   !! $_->{example} }
-    elsif ($_->{example} =~ /^\d+?(?:\.\d+?)?$/i) {
-      $example->{$class_name}->{$_->{name}} =   1 * $_->{example} }
-    else {
-      $example->{$class_name}->{$_->{name}} =   $_->{example} }
+
+    my $md_example  =   _reformat_example($_->{example});
 
     $markdown   .= <<END;
 ### $_->{name}
@@ -127,7 +112,7 @@ $_->{type}
 #### Example
 
 ```
-\'$_->{name}\' : $_->{example}
+"$_->{name}" : $md_example
 ```
 
 END
@@ -142,4 +127,22 @@ END
   print FILE  $markdown."\n";
   close FILE;
 
+}
+
+sub _reformat_example {
+  
+  my $example   =   shift;
+  my $md_example    =   Dumper($example);
+  $md_example	=~  s/\$VAR1 \= //;
+  $md_example	=~  s/\n {8}/\n/g;
+  $md_example	=~  s/\;//g;
+  $md_example	=~  s/\n$//;
+  if (ref( $example) eq "ARRAY" || ref( $example) eq "HASH") {
+    $md_example	=		$md_example;
+  } else {
+    $md_example	  =~  s/\'//g;
+    $md_example	  =		'"'.$md_example.'"' }
+
+  return $md_example;
+  
 }

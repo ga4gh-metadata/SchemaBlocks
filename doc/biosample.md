@@ -9,8 +9,9 @@ the database-internal object id
 
 #### Example
 
-'' : `ObjectId("558e5c56ad9a82d958392bd6")
-`
+```
+"_id" : "ObjectId("558e5c56ad9a82d958392bd6")"
+```
 
 ## age_at_collection
 
@@ -18,8 +19,9 @@ the age of the individual at time of biosample collection, as ISO8601 string
 
 #### Example
 
-'' : `P56Y
-`
+```
+"age_at_collection" : "P56Y"
+```
 
 ## age_at_collection_class
 
@@ -27,12 +29,11 @@ the age of the individual at time of biosample collection, as ontology object
 
 #### Example
 
-'' : ```
-{
+```
+"age_at_collection_class" : {
   'id' => 'HP:0003621',
   'label' => 'Juvenile onset'
 }
-
 ```
 
 ## biocharacteristics
@@ -43,21 +44,21 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 
 #### Example
 
-'' : ```
-[
+```
+"biocharacteristics" : [
+  {
+    'class' => {
+                 'label' => 'Pancreas, NOS',
+                 'id' => 'pgx:icdot:c25.9'
+               },
+    'description' => 'Pancreatic Adenocarcinoma'
+  },
   {
     'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
-                 'id' => 'pgx:icdot:c25.9',
-                 'label' => 'Pancreas, NOS'
+                 'id' => 'pgx:icdom:81403',
+                 'label' => 'Adenocarcinoma, NOS'
                }
-  },
-  {
-    'class' => {
-                 'label' => 'Adenocarcinoma, NOS',
-                 'id' => 'pgx:icdom:81403'
-               },
-    'description' => 'Pancreatic Adenocarcinoma'
   },
   {
     'class' => {
@@ -67,7 +68,6 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
     'description' => 'Pancreatic Adenocarcinoma'
   }
 ]
-
 ```
 
 #### Queries:
@@ -89,8 +89,9 @@ A free text description of the biosample.
 
 #### Example
 
-'' : `Burkitt lymphoma, cell line Namalwa
-`
+```
+"description" : "Burkitt lymphoma, cell line Namalwa"
+```
 
 ## external_ids
 
@@ -98,26 +99,25 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 
 #### Example
 
-'' : ```
-[
+```
+"external_ids" : [
   {
-    'relation' => 'provenance',
-    'id' => 'cellosaurus:CVCL_0312'
+    'id' => 'cellosaurus:CVCL_0312',
+    'relation' => 'provenance'
   },
   {
-    'relation' => 'report',
-    'id' => 'pubmed:17440070'
+    'id' => 'pubmed:17440070',
+    'relation' => 'report'
   },
   {
-    'id' => 'geo:GPL4894',
-    'relation' => 'technology'
+    'relation' => 'technology',
+    'id' => 'geo:GPL4894'
   },
   {
-    'relation' => 'denotes',
-    'id' => 'geo:GSM185088'
+    'id' => 'geo:GSM185088',
+    'relation' => 'denotes'
   }
 ]
-
 ```
 
 #### Queries:
@@ -134,16 +134,15 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 #### Example
 
-'' : ```
-{
-  'altitude' => 94,
-  'latitude' => '45.75',
-  'longitude' => '21.23',
+```
+"geo_provenance" : {
   'city' => 'Timisoara',
   'country' => 'Romania',
-  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'latitude' => '45.75',
+  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'altitude' => 94,
+  'longitude' => '21.23'
 }
-
 ```
 
 ## id
@@ -152,8 +151,9 @@ The local-unique identifier of this biosample (referenced as "biosample_id").
 
 #### Example
 
-'' : `AM_BS__NCBISKYCGH-1993
-`
+```
+"id" : "AM_BS__NCBISKYCGH-1993"
+```
 
 ## individual_id
 
@@ -162,8 +162,9 @@ In a complete data model "individual_id" represents the identifier of this biosa
 
 #### Example
 
-'' : `ind-cnhl-1293347-004
-`
+```
+"individual_id" : "ind-cnhl-1293347-004"
+```
 
 ## info
 
@@ -172,20 +173,19 @@ This is a list for objects without further specification in the schema.
 
 #### Example
 
-'' : ```
-[
+```
+"info" : [
   {
-    'name' => 'followup_time',
+    'value' => 'P14M',
     'type' => 'ISO8601 string',
-    'value' => 'P14M'
+    'name' => 'followup_time'
   },
   {
+    'name' => 'death',
     'value' => 1,
-    'type' => 'boolean',
-    'name' => 'death'
+    'type' => 'boolean'
   }
 ]
-
 ```
 
 #### Queries:
@@ -201,6 +201,7 @@ time of the last edit of this record, in ISO8601
 
 #### Example
 
-'' : `2017-10-25T07:06:03Z
-`
+```
+"updated" : "2017-10-25T07:06:03Z"
+```
 

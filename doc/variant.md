@@ -9,8 +9,9 @@ the database-internal object id
 
 #### Example
 
-'' : `ObjectId("558e5c56ad9a82d958392bd6")
-`
+```
+"_id" : "ObjectId("558e5c56ad9a82d958392bd6")"
+```
 
 ## alternate_bases
 
@@ -18,8 +19,9 @@ the database-internal object id
 
 #### Example
 
-'' : `AC
-`
+```
+"alternate_bases" : "AC"
+```
 
 ## biosample_id
 
@@ -27,8 +29,9 @@ The identifier ("biosample.id") of the biosample this variant was reported from.
 
 #### Example
 
-'' : `pgx-bs-987647
-`
+```
+"biosample_id" : "pgx-bs-987647"
+```
 
 ## callset_id
 
@@ -36,8 +39,9 @@ The identifier ("callset.id") of the callset this variant is part of.
 
 #### Example
 
-'' : `PGX_AM_CS_GSM1690424
-`
+```
+"callset_id" : "PGX_AM_CS_GSM1690424"
+```
 
 ## digest
 
@@ -45,8 +49,9 @@ concatenated unique specific elements of the variant
 
 #### Example
 
-'' : `4:12282-46465:DEL
-`
+```
+"digest" : "4:12282-46465:DEL"
+```
 
 ## end
 
@@ -54,12 +59,11 @@ concatenated unique specific elements of the variant
 
 #### Example
 
-'' : ```
-[
+```
+"end" : [
   21977798,
   21978106
 ]
-
 ```
 
 #### Queries:
@@ -74,12 +78,11 @@ db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : {
 
 #### Example
 
-'' : ```
-[
+```
+"genotype" : [
   '1',
   '.'
 ]
-
 ```
 
 ## info
@@ -88,8 +91,8 @@ additional variant information, as defined in the example and accompanying docum
 
 #### Example
 
-'' : ```
-[
+```
+"info" : [
   {
     'name' => 'cnv_value',
     'value' => '-0.294',
@@ -101,7 +104,6 @@ additional variant information, as defined in the example and accompanying docum
     'name' => 'cnv_length'
   }
 ]
-
 ```
 
 ## mate_name
@@ -110,8 +112,9 @@ Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting 
 
 #### Example
 
-'' : `14
-`
+```
+"mate_name" : "14"
+```
 
 ## reference_bases
 
@@ -119,8 +122,9 @@ list of bases at start position in the reference genome, which have been replace
 
 #### Example
 
-'' : `G
-`
+```
+"reference_bases" : "G"
+```
 
 ## reference_name
 
@@ -128,8 +132,9 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 
 #### Example
 
-'' : `8
-`
+```
+"reference_name" : "8"
+```
 
 ## start
 
@@ -137,11 +142,10 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 
 #### Example
 
-'' : ```
-[
+```
+"start" : [
   20867740
 ]
-
 ```
 
 ## updated
@@ -150,8 +154,9 @@ time of the last edit of this record, in ISO8601
 
 #### Example
 
-'' : `2017-10-25T07:06:03Z
-`
+```
+"updated" : "2017-10-25T07:06:03Z"
+```
 
 ## variant_type
 
@@ -159,6 +164,7 @@ the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
 
 #### Example
 
-'' : `DEL
-`
+```
+"variant_type" : "DEL"
+```
 

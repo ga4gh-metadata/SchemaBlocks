@@ -8,8 +8,9 @@ the database-internal object id
 
 #### Example
 
-'' : `ObjectId("558e5c56ad9a82d958392bd6")
-`
+```
+"_id" : "ObjectId("558e5c56ad9a82d958392bd6")"
+```
 
 ## biocharacteristics
 
@@ -17,31 +18,30 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 
 #### Example
 
-'' : ```
-[
+```
+"biocharacteristics" : [
   {
     'description' => 'girl',
     'class' => {
-                 'id' => 'PATO:0020000',
-                 'label' => 'female genetic sex'
+                 'label' => 'female genetic sex',
+                 'id' => 'PATO:0020000'
                }
   },
   {
-    'description' => 'Jean-Luc Picard',
     'class' => {
                  'id' => 'NCBITaxon:9606',
                  'label' => 'Homo sapiens'
-               }
+               },
+    'description' => 'Jean-Luc Picard'
   },
   {
-    'description' => 'Patient with Down syndrome',
     'class' => {
                  'label' => 'Genetic anticipation',
                  'id' => 'HP:0003745'
-               }
+               },
+    'description' => 'Patient with Down syndrome'
   }
 ]
-
 ```
 
 #### Queries:
@@ -61,8 +61,9 @@ A free text description of the individual.
 
 #### Example
 
-'' : `patient with lung cancer, male smoker
-`
+```
+"description" : "patient with lung cancer, male smoker"
+```
 
 ## geo_provenance
 
@@ -72,17 +73,16 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 #### Example
 
-'' : ```
-[
+```
+"geo_provenance" : [
   {
-    'latitude' => '45.75',
+    'longitude' => '21.23',
     'city' => 'Timisoara',
     'country' => 'Romania',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-    'longitude' => '21.23'
+    'latitude' => '45.75',
+    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania'
   }
 ]
-
 ```
 
 ## id
@@ -91,8 +91,9 @@ The local-unique identifier of this individual (referenced as "individual_id").
 
 #### Example
 
-'' : `AM_BS__NCBISKYCGH-1993
-`
+```
+"id" : "AM_BS__NCBISKYCGH-1993"
+```
 
 ## updated
 
@@ -100,6 +101,7 @@ time of the last edit of this record, in ISO8601
 
 #### Example
 
-'' : `2017-10-25T07:06:03Z
-`
+```
+"updated" : "2017-10-25T07:06:03Z"
+```
 

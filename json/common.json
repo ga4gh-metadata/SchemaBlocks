@@ -1,72 +1,21 @@
 {
+   "name" : "common",
+   "description" : "This file is used for the definition of some prototype objects which are re-used in other schema documents.\n",
+   "updated" : "2018-09-04",
    "classes" : {
-      "geo_class" : {
-         "attributes" : [
-            {
-               "type" : "string",
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
-               "name" : "label",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania"
-            },
-            {
-               "example" : "Timisoara",
-               "type" : "string",
-               "name" : "city"
-            },
-            {
-               "type" : "string",
-               "name" : "country",
-               "example" : "Romania"
-            },
-            {
-               "description" : "signed decimal degrees (North, relative to Equator)",
-               "name" : "latitude",
-               "type" : "double",
-               "example" : "47.37"
-            },
-            {
-               "example" : "8.54",
-               "type" : "double",
-               "name" : "longitude",
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)"
-            },
-            {
-               "name" : "altitude",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
-               "type" : "double",
-               "example" : "8848"
-            }
-         ]
-      },
-      "ontology_class" : {
-         "attributes" : [
-            {
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term",
-               "name" : "id",
-               "type" : "string"
-            },
-            {
-               "example" : "Pancreatic Adenocarcinoma",
-               "description" : "the text label associated with the term",
-               "name" : "label",
-               "type" : "string"
-            }
-         ]
-      },
       "reference_class" : {
          "attributes" : [
             {
-               "type" : "string",
-               "description" : "properly prefixed CURIE of the external reference",
+               "example" : "pubmed:17440070",
                "name" : "id",
-               "example" : "pubmed:17440070"
+               "description" : "properly prefixed CURIE of the external reference",
+               "type" : "string"
             },
             {
+               "type" : "string",
                "example" : "denotes",
-               "name" : "relation",
                "description" : "the relation of the external reference to the object it was pointed from",
-               "type" : "string"
+               "name" : "relation"
             }
          ]
       },
@@ -74,51 +23,102 @@
          "attributes" : [
             {
                "type" : "string",
-               "description" : "a free-text description of this biocharacteristic",
+               "example" : "Invasive ductal breast carcinoma, metastasized",
                "name" : "description",
-               "example" : "Invasive ductal breast carcinoma, metastasized"
+               "description" : "a free-text description of this biocharacteristic"
             },
             {
-               "type" : "ontology_class",
-               "name" : "class",
                "description" : "an ontology_class object",
+               "name" : "class",
                "example" : {
                   "label" : "Pancreatic Adenocarcinoma",
                   "id" : "ncit:c8294"
-               }
+               },
+               "type" : "ontology_class"
             },
             {
-               "example" : "true",
-               "name" : "negated",
+               "type" : "boolean",
                "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
-               "type" : "boolean"
+               "name" : "negated",
+               "example" : "true"
+            }
+         ]
+      },
+      "ontology_class" : {
+         "attributes" : [
+            {
+               "description" : "properly prefixed CURIE of the ontology term",
+               "name" : "id",
+               "example" : "ncit:C8294",
+               "type" : "string"
+            },
+            {
+               "type" : "string",
+               "name" : "label",
+               "description" : "the text label associated with the term",
+               "example" : "Pancreatic Adenocarcinoma"
             }
          ]
       },
       "info_class" : {
          "attributes" : [
             {
-               "name" : "name",
+               "type" : "string",
+               "example" : "cnv_length",
                "description" : "the attribute / key",
-               "type" : "string",
-               "example" : "cnv_length"
+               "name" : "name"
             },
             {
-               "example" : "int64",
                "type" : "string",
+               "name" : "type",
                "description" : "type of the value; optional",
-               "name" : "type"
+               "example" : "int64"
             },
             {
+               "example" : "1503320",
                "name" : "value",
-               "description" : "the value in a format correstponding to type",
-               "example" : "1503320"
+               "description" : "the value in a format correstponding to type"
+            }
+         ]
+      },
+      "geo_class" : {
+         "attributes" : [
+            {
+               "type" : "string",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "name" : "label",
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
+            },
+            {
+               "example" : "Timisoara",
+               "name" : "city",
+               "type" : "string"
+            },
+            {
+               "type" : "string",
+               "example" : "Romania",
+               "name" : "country"
+            },
+            {
+               "name" : "latitude",
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "example" : "47.37",
+               "type" : "double"
+            },
+            {
+               "type" : "double",
+               "example" : "8.54",
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "name" : "longitude"
+            },
+            {
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "name" : "altitude",
+               "example" : "8848",
+               "type" : "double"
             }
          ]
       }
-   },
-   "description" : "This file is used for the definition of some prototype objects which are re-used in other schema documents.\n",
-   "name" : "common",
-   "updated" : "2018-09-04"
+   }
 }
 
