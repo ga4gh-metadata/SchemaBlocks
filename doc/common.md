@@ -1,3 +1,7 @@
+# common  
+
+This file is used for the definition of some prototype objects which are re-used in other schema documents.
+
 
 ## biocharacteristic_class
 
@@ -16,7 +20,7 @@ string
 ```
 Invasive ductal breast carcinoma, metastasized
 ```
-   
+
 ### class
 
 an ontology_class object
@@ -28,9 +32,9 @@ ontology_class
 #### Example
 
 ```
-HASH(0x7fa9a294c5e0)
+HASH(0x7fa6249a8028)
 ```
-   
+
 ### negated
 
 flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated
@@ -44,7 +48,7 @@ boolean
 ```
 true
 ```
-   
+
 
 ## geo_class
 
@@ -66,7 +70,7 @@ string
 ```
 Str Marasesti 5, 300077 Timisoara, Romania
 ```
-   
+
 ### city
 
 
@@ -80,7 +84,7 @@ string
 ```
 Timisoara
 ```
-   
+
 ### country
 
 
@@ -94,7 +98,7 @@ string
 ```
 Romania
 ```
-   
+
 ### latitude
 
 signed decimal degrees (North, relative to Equator)
@@ -108,7 +112,7 @@ double
 ```
 47.37
 ```
-   
+
 ### longitude
 
 signed decimal degrees (East, relative to IERS Reference Meridian)
@@ -122,7 +126,7 @@ double
 ```
 8.54
 ```
-   
+
 ### altitude
 
 height in meters above the WGS 84 reference ellipsoid; otional
@@ -136,7 +140,7 @@ double
 ```
 8848
 ```
-   
+
 
 ## info_class
 
@@ -155,7 +159,7 @@ string
 ```
 cnv_length
 ```
-   
+
 ### type
 
 type of the value; optional
@@ -169,7 +173,7 @@ string
 ```
 int64
 ```
-   
+
 ### value
 
 the value in a format correstponding to type
@@ -183,7 +187,7 @@ the value in a format correstponding to type
 ```
 1503320
 ```
-   
+
 
 ## ontology_class
 
@@ -202,7 +206,7 @@ string
 ```
 ncit:C8294
 ```
-   
+
 ### label
 
 the text label associated with the term
@@ -216,7 +220,7 @@ string
 ```
 Pancreatic Adenocarcinoma
 ```
-   
+
 
 ## reference_class
 
@@ -235,7 +239,7 @@ string
 ```
 pubmed:17440070
 ```
-   
+
 ### relation
 
 the relation of the external reference to the object it was pointed from
@@ -249,5 +253,5 @@ string
 ```
 denotes
 ```
-   
+
 

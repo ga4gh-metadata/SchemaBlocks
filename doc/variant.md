@@ -1,3 +1,7 @@
+# variant  
+
+The document describes attributes of the "variant" object, which e.g. can be instantiated as database documents in a MongoDB collection.
+
 
 ## _id
 
@@ -87,14 +91,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 [
   {
-    'name' => 'cnv_value',
     'type' => 'float',
-    'value' => '-0.294'
+    'value' => '-0.294',
+    'name' => 'cnv_value'
   },
   {
     'type' => 'int64',
-    'name' => 'cnv_length',
-    'value' => 1205290
+    'value' => 1205290,
+    'name' => 'cnv_length'
   }
 ]
 

@@ -11,11 +11,13 @@ use JSON;
 use YAML::XS qw(LoadFile DumpFile);
 use Data::Dumper;
 
+binmode STDOUT, ":utf8";
+
 my $here_path   =   File::Basename::dirname( eval { ( caller() )[1] } );
 my $config      =   LoadFile($here_path.'/config.yaml') or die "¡No config.yaml file in this path!";
 
 foreach (qw(yaml json md)) {
-  $config->{$_.'_path'} =   join('/', $here_path, $config->{$_.'_path_rel'});  
+  $config->{$_.'_path'} =   join('/', $here_path, $config->{$_.'_path_rel'});
   mkdir $config->{$_.'_path'};
 }
 
@@ -27,31 +29,35 @@ foreach (@yaml_files) {
 
   my $file_name =   $_;
   $file_name    =~   s/\.ya?ml$//i;
-  
+
   foreach (qw(yaml json md)) {
-    $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);  
+    $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);
   }
- 
+
   my $data      =   LoadFile($config->{yaml_file});
-  
+
   print "Reading YAML file \"$config->{yaml_file}\"\n";
-  
+
   open  (FILE, ">", $config->{json_file}) || warn 'output file '.$config->{json_file}.' could not be created.';
   print FILE  JSON::XS->new->pretty( 1 )->encode( $data )."\n";
   close FILE;
-  
+
   my $example   =   {};
   my $example_file  =   $config->{json_file};
   $example_file =~   s/\.json$/_example.json/i;
-  my $markdown;
-  
+  my $markdown  =   <<END;
+# $file_name  
+
+$data->{description}
+END
+
   my %attr      =   map{ $_->{name} => $_ } @{ $data->{attributes} };
-  
+
   foreach my $name (sort keys %attr) {
     if ($attr{$name}->{example} =~ /^\d+?(?:\.\d+?)?$/i) {
       $example->{$name} =   1 * $attr{$name}->{example} }
     else {
-      $example->{$name} =   $attr{$name}->{example} } 
+      $example->{$name} =   $attr{$name}->{example} }
 
     my $md_example  =   Dumper($attr{$name}->{example});
     $md_example	=~  s/\$VAR1 \= //;
@@ -63,7 +69,7 @@ foreach (@yaml_files) {
       $md_example	  =~  s/\'//g;
       $md_example	  =		'`'.$md_example.'`' }
 
-    $markdown   .=  <<END;  
+    $markdown   .=  <<END;
 
 ## $name
 
@@ -76,9 +82,9 @@ END
 
     if ($attr{$name}->{queries}) {
         $markdown   .=  '
-#### Queries:';    
+#### Queries:';
       foreach my $query (@{$attr{$name}->{queries}}) {
-        $markdown .=  <<END;  
+        $markdown .=  <<END;
 
 $query->{description}
 ```
@@ -89,10 +95,10 @@ END
     }}
 
   }
-  
+
   foreach my $class_name (sort keys %{ $data->{classes} }) {
 
-    $markdown   .=  <<END;  
+    $markdown   .=  <<END;
 
 ## $class_name
 
@@ -107,9 +113,9 @@ END
     elsif ($_->{example} =~ /^\d+?(?:\.\d+?)?$/i) {
       $example->{$class_name}->{$_->{name}} =   1 * $_->{example} }
     else {
-      $example->{$class_name}->{$_->{name}} =   $_->{example} } 
-  
-    $markdown   .= <<END;  
+      $example->{$class_name}->{$_->{name}} =   $_->{example} }
+
+    $markdown   .= <<END;
 ### $_->{name}
 
 $_->{description}
@@ -123,11 +129,11 @@ $_->{type}
 ```
 $_->{example}
 ```
-   
+
 END
 
   }}
-  
+
   open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
   print FILE  JSON::XS->new->pretty( 1 )->encode( $example )."\n";
   close FILE;
@@ -135,6 +141,5 @@ END
   open  (FILE, ">", $config->{md_file}) || warn 'output file '. $config->{md_file}.' could not be created.';
   print FILE  $markdown."\n";
   close FILE;
-  
-}
 
+}

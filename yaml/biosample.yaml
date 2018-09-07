@@ -1,5 +1,6 @@
 name: biosample
-updated: '2018-09-01'
+description: In this schema, a "biosample" as source of the material of a molecular analysis (e.g. genomic array, sequencing) represents the main “biological item” against which molecular variants are referenced.
+updated: '2018-09-07'
 attributes:
   - name: _id
     description: the database-internal object id

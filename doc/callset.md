@@ -1,3 +1,7 @@
+# callset  
+
+The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. 
+
 
 ## _id
 
@@ -36,11 +40,11 @@ This geo_class attribute ideally describes the geographic location of where this
 ```
 [
   {
-    'longitude' => '21.23',
-    'country' => 'Romania',
     'city' => 'Timisoara',
+    'latitude' => '45.75',
     'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-    'latitude' => '45.75'
+    'longitude' => '21.23',
+    'country' => 'Romania'
   }
 ]
 

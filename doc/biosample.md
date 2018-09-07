@@ -1,3 +1,6 @@
+# biosample  
+
+In this schema, a "biosample" as source of the material of a molecular analysis (e.g. genomic array, sequencing) represents the main “biological item” against which molecular variants are referenced.
 
 ## _id
 
@@ -44,8 +47,8 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   {
     'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
-                 'id' => 'pgx:icdot:c25.9',
-                 'label' => 'Pancreas, NOS'
+                 'label' => 'Pancreas, NOS',
+                 'id' => 'pgx:icdot:c25.9'
                }
   },
   {
@@ -56,11 +59,11 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
     'description' => 'Pancreatic Adenocarcinoma'
   },
   {
-    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
                  'id' => 'ncit:c8294',
                  'label' => 'Pancreatic Adenocarcinoma'
-               }
+               },
+    'description' => 'Pancreatic Adenocarcinoma'
   }
 ]
 
@@ -101,16 +104,16 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'id' => 'cellosaurus:CVCL_0312'
   },
   {
-    'relation' => 'report',
-    'id' => 'pubmed:17440070'
+    'id' => 'pubmed:17440070',
+    'relation' => 'report'
   },
   {
     'relation' => 'technology',
     'id' => 'geo:GPL4894'
   },
   {
-    'relation' => 'denotes',
-    'id' => 'geo:GSM185088'
+    'id' => 'geo:GSM185088',
+    'relation' => 'denotes'
   }
 ]
 
@@ -132,11 +135,11 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 {
-  'country' => 'Romania',
+  'latitude' => '45.75',
   'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
   'city' => 'Timisoara',
-  'latitude' => '45.75',
   'altitude' => 94,
+  'country' => 'Romania',
   'longitude' => '21.23'
 }
 
@@ -171,14 +174,14 @@ This is a list for objects without further specification in the schema.
 ```
 [
   {
-    'value' => 'P14M',
     'name' => 'followup_time',
-    'type' => 'ISO8601 string'
+    'type' => 'ISO8601 string',
+    'value' => 'P14M'
   },
   {
+    'value' => 1,
     'type' => 'boolean',
-    'name' => 'death',
-    'value' => 1
+    'name' => 'death'
   }
 ]
 

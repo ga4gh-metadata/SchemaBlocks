@@ -1,3 +1,6 @@
+# individual  
+
+
 
 ## _id
 
@@ -17,25 +20,25 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 [
   {
+    'description' => 'girl',
     'class' => {
-                 'label' => 'female genetic sex',
-                 'id' => 'PATO:0020000'
-               },
-    'description' => 'girl'
+                 'id' => 'PATO:0020000',
+                 'label' => 'female genetic sex'
+               }
   },
   {
+    'description' => 'Jean-Luc Picard',
     'class' => {
-                 'label' => 'Homo sapiens',
-                 'id' => 'NCBITaxon:9606'
-               },
-    'description' => 'Jean-Luc Picard'
+                 'id' => 'NCBITaxon:9606',
+                 'label' => 'Homo sapiens'
+               }
   },
   {
+    'description' => 'Patient with Down syndrome',
     'class' => {
                  'label' => 'Genetic anticipation',
                  'id' => 'HP:0003745'
-               },
-    'description' => 'Patient with Down syndrome'
+               }
   }
 ]
 
@@ -73,10 +76,10 @@ This value may reflect either the place of burth or residence, but frequently ma
 [
   {
     'latitude' => '45.75',
-    'country' => 'Romania',
     'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
     'city' => 'Timisoara',
-    'longitude' => '21.23'
+    'longitude' => '21.23',
+    'country' => 'Romania'
   }
 ]
 
