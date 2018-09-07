@@ -58,7 +58,7 @@ foreach (@yaml_files) {
   $md_example	  =~  s/\n {8}/\n/g;
   $md_example	  =~  s/\;//g;
   if (ref( $attr{$name}->{example}) eq "ARRAY" || ref( $attr{$name}->{example}) eq "HASH") {
-		$md_example	=		"\n".'```'."\n".$md_example."\n".'```';
+		$md_example	=		'```'."\n".$md_example."\n".'```';
 	} else {
     $md_example	  =~  s/\'//g;
 		$md_example	=		'`'.$md_example.'`' }
@@ -69,8 +69,21 @@ foreach (@yaml_files) {
 
 $attr{$name}->{description}
 
-* example: $md_example
+#### Example
+
+$md_example
 END
+
+    if ($attr{$name}->{queries}) {
+        $markdown   .=  '
+#### Queries:';    
+      foreach my $query (@{$attr{$name}->{queries}}) {
+        $markdown .=  <<END;  
+$query->{description}
+`$query->{query}`
+END
+
+    }}
 
   }
   

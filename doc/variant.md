@@ -3,42 +3,53 @@
 
 the database-internal object id
 
-* example: `ObjectId("558e5c56ad9a82d958392bd6")
+#### Example
+
+`ObjectId("558e5c56ad9a82d958392bd6")
 `
 
 ### alternate_bases
 
 
 
-* example: `AC
+#### Example
+
+`AC
 `
 
 ### biosample_id
 
 The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
 
-* example: `pgx-bs-987647
+#### Example
+
+`pgx-bs-987647
 `
 
 ### callset_id
 
 The identifier ("callset.id") of the callset this variant is part of.
 
-* example: `PGX_AM_CS_GSM1690424
+#### Example
+
+`PGX_AM_CS_GSM1690424
 `
 
 ### digest
 
 concatenated unique specific elements of the variant
 
-* example: `4:12282-46465:DEL
+#### Example
+
+`4:12282-46465:DEL
 `
 
 ### end
 
 
 
-* example: 
+#### Example
+
 ```
 [
   21977798,
@@ -47,11 +58,15 @@ concatenated unique specific elements of the variant
 
 ```
 
+#### Queries:the query will return all variants with any overlap of the CDKN2A CDR
+`db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )`
+
 ### genotype
 
 
 
-* example: 
+#### Example
+
 ```
 [
   '1',
@@ -64,18 +79,19 @@ concatenated unique specific elements of the variant
 
 additional variant information, as defined in the example and accompanying documentation
 
-* example: 
+#### Example
+
 ```
 [
   {
-    'value' => '-0.294',
     'name' => 'cnv_value',
+    'value' => '-0.294',
     'type' => 'float'
   },
   {
-    'value' => 1205290,
+    'type' => 'int64',
     'name' => 'cnv_length',
-    'type' => 'int64'
+    'value' => 1205290
   }
 ]
 
@@ -85,28 +101,35 @@ additional variant information, as defined in the example and accompanying docum
 
 Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.
 
-* example: `14
+#### Example
+
+`14
 `
 
 ### reference_bases
 
 list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants
 
-* example: `G
+#### Example
+
+`G
 `
 
 ### reference_name
 
 Reference name (chromosome). Accepting values 1-22, X, Y.
 
-* example: `8
+#### Example
+
+`8
 `
 
 ### start
 
 
 
-* example: 
+#### Example
+
 ```
 [
   20867740
@@ -118,13 +141,17 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 
 time of the last edit of this record, in ISO8601
 
-* example: `2017-10-25T07:06:03Z
+#### Example
+
+`2017-10-25T07:06:03Z
 `
 
 ### variant_type
 
 the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
 
-* example: `DEL
+#### Example
+
+`DEL
 `
 

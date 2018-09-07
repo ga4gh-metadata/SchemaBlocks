@@ -3,29 +3,32 @@
 
 the database-internal object id
 
-* example: `ObjectId("558e5c56ad9a82d958392bd6")
+#### Example
+
+`ObjectId("558e5c56ad9a82d958392bd6")
 `
 
 ### biocharacteristics
 
 list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
 
-* example: 
+#### Example
+
 ```
 [
   {
-    'description' => 'girl',
     'class' => {
-                 'label' => 'female genetic sex',
-                 'id' => 'PATO:0020000'
-               }
+                 'id' => 'PATO:0020000',
+                 'label' => 'female genetic sex'
+               },
+    'description' => 'girl'
   },
   {
+    'description' => 'Jean-Luc Picard',
     'class' => {
                  'id' => 'NCBITaxon:9606',
                  'label' => 'Homo sapiens'
-               },
-    'description' => 'Jean-Luc Picard'
+               }
   },
   {
     'class' => {
@@ -38,11 +41,18 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 
 ```
 
+#### Queries:the query will return all individuals who have been properly labeled as human
+`db.individual.find( { "biocharacteristics.class.id" : "NCBITaxon:9606" } )`
+this call to the distinct funcion will return *all* HPO annotated classes
+`db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /HP\:/i } } )`
+
 ### description
 
 A free text description of the individual.
 
-* example: `patient with lung cancer, male smoker
+#### Example
+
+`patient with lung cancer, male smoker
 `
 
 ### geo_provenance
@@ -51,15 +61,16 @@ This geo_class attribute ideally describes the geographic location of where this
 This value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.
 
 
-* example: 
+#### Example
+
 ```
 [
   {
-    'longitude' => '21.23',
     'latitude' => '45.75',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
     'city' => 'Timisoara',
-    'country' => 'Romania'
+    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'country' => 'Romania',
+    'longitude' => '21.23'
   }
 ]
 
@@ -69,13 +80,17 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 The local-unique identifier of this individual (referenced as "individual_id").
 
-* example: `AM_BS__NCBISKYCGH-1993
+#### Example
+
+`AM_BS__NCBISKYCGH-1993
 `
 
 ### updated
 
 time of the last edit of this record, in ISO8601
 
-* example: `2017-10-25T07:06:03Z
+#### Example
+
+`2017-10-25T07:06:03Z
 `
 

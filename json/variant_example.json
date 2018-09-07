@@ -1,36 +1,36 @@
 {
-   "reference_name" : 8,
-   "start" : [
-      "20867740"
+   "info" : [
+      {
+         "name" : "cnv_value",
+         "value" : "-0.294",
+         "type" : "float"
+      },
+      {
+         "type" : "int64",
+         "name" : "cnv_length",
+         "value" : "1205290"
+      }
    ],
+   "digest" : "4:12282-46465:DEL",
    "reference_bases" : "G",
+   "mate_name" : 14,
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
    "end" : [
       "21977798",
       "21978106"
    ],
    "biosample_id" : "pgx-bs-987647",
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-   "variant_type" : "DEL",
-   "info" : [
-      {
-         "value" : "-0.294",
-         "name" : "cnv_value",
-         "type" : "float"
-      },
-      {
-         "value" : "1205290",
-         "name" : "cnv_length",
-         "type" : "int64"
-      }
-   ],
-   "alternate_bases" : "AC",
-   "mate_name" : 14,
-   "updated" : "2017-10-25T07:06:03Z",
    "genotype" : [
       "1",
       "."
    ],
+   "start" : [
+      "20867740"
+   ],
    "callset_id" : "PGX_AM_CS_GSM1690424",
-   "digest" : "4:12282-46465:DEL"
+   "variant_type" : "DEL",
+   "updated" : "2017-10-25T07:06:03Z",
+   "alternate_bases" : "AC",
+   "reference_name" : 8
 }
 

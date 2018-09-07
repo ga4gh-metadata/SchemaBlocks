@@ -80,19 +80,21 @@ attributes:
       Frequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.
     type: geo_class object
     example:
-      - label: 'Str Marasesti 5, 300077 Timisoara, Romania'
-        city: 'Timisoara'
-        country: 'Romania'
-        latitude: 45.75
-        longitude: 21.23
-        altitude: 94
+      label: 'Str Marasesti 5, 300077 Timisoara, Romania'
+      city: 'Timisoara'
+      country: 'Romania'
+      latitude: 45.75
+      longitude: 21.23
+      altitude: 94
 
   - name: info
     description: |
       This is a list for objects without further specification in the schema.
     type: list of common.info_class objects
     queries:
-      query: 'db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )'
+      - description: |
+          This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.
+        query: 'db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )'
     example:
       - name: followup_time
         type: ISO8601 string

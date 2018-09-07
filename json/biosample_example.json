@@ -1,22 +1,50 @@
 {
-   "age_at_collection" : "P56Y",
-   "description" : "Burkitt lymphoma, cell line Namalwa",
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-   "geo_provenance" : [
+   "age_at_collection_class" : {
+      "id" : "HP:0003621",
+      "label" : "Juvenile onset"
+   },
+   "geo_provenance" : {
+      "latitude" : "45.75",
+      "altitude" : "94",
+      "city" : "Timisoara",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "country" : "Romania",
+      "longitude" : "21.23"
+   },
+   "external_ids" : [
       {
-         "latitude" : "45.75",
-         "altitude" : "94",
-         "longitude" : "21.23",
-         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-         "city" : "Timisoara",
-         "country" : "Romania"
+         "id" : "cellosaurus:CVCL_0312",
+         "relation" : "provenance"
+      },
+      {
+         "id" : "pubmed:17440070",
+         "relation" : "report"
+      },
+      {
+         "relation" : "technology",
+         "id" : "geo:GPL4894"
+      },
+      {
+         "id" : "geo:GSM185088",
+         "relation" : "denotes"
       }
    ],
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "age_at_collection_class" : {
-      "label" : "Juvenile onset",
-      "id" : "HP:0003621"
-   },
+   "info" : [
+      {
+         "type" : "ISO8601 string",
+         "value" : "P14M",
+         "name" : "followup_time"
+      },
+      {
+         "type" : "boolean",
+         "name" : "death",
+         "value" : "1"
+      }
+   ],
+   "description" : "Burkitt lymphoma, cell line Namalwa",
+   "age_at_collection" : "P56Y",
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
+   "individual_id" : "ind-cnhl-1293347-004",
    "biocharacteristics" : [
       {
          "description" : "Pancreatic Adenocarcinoma",
@@ -33,44 +61,14 @@
          }
       },
       {
+         "description" : "Pancreatic Adenocarcinoma",
          "class" : {
             "label" : "Pancreatic Adenocarcinoma",
             "id" : "ncit:c8294"
-         },
-         "description" : "Pancreatic Adenocarcinoma"
+         }
       }
    ],
-   "info" : [
-      {
-         "value" : "P14M",
-         "name" : "followup_time",
-         "type" : "ISO8601 string"
-      },
-      {
-         "name" : "death",
-         "value" : "1",
-         "type" : "boolean"
-      }
-   ],
-   "individual_id" : "ind-cnhl-1293347-004",
-   "external_ids" : [
-      {
-         "relation" : "provenance",
-         "id" : "cellosaurus:CVCL_0312"
-      },
-      {
-         "relation" : "report",
-         "id" : "pubmed:17440070"
-      },
-      {
-         "id" : "geo:GPL4894",
-         "relation" : "technology"
-      },
-      {
-         "relation" : "denotes",
-         "id" : "geo:GSM185088"
-      }
-   ],
-   "updated" : "2017-10-25T07:06:03Z"
+   "updated" : "2017-10-25T07:06:03Z",
+   "id" : "AM_BS__NCBISKYCGH-1993"
 }
 

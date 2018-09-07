@@ -3,25 +3,30 @@
 
 the database-internal object id
 
-* example: `ObjectId("558e5c56ad9a82d958392bd6")
+#### Example
+
+`ObjectId("558e5c56ad9a82d958392bd6")
 `
 
 ### age_at_collection
 
 the age of the individual at time of biosample collection, as ISO8601 string
 
-* example: `P56Y
+#### Example
+
+`P56Y
 `
 
 ### age_at_collection_class
 
 the age of the individual at time of biosample collection, as ontology object
 
-* example: 
+#### Example
+
 ```
 {
-  'label' => 'Juvenile onset',
-  'id' => 'HP:0003621'
+  'id' => 'HP:0003621',
+  'label' => 'Juvenile onset'
 }
 
 ```
@@ -32,7 +37,8 @@ the age of the individual at time of biosample collection, as ontology object
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
 
 
-* example: 
+#### Example
+
 ```
 [
   {
@@ -50,49 +56,62 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
                }
   },
   {
+    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
                  'label' => 'Pancreatic Adenocarcinoma',
                  'id' => 'ncit:c8294'
-               },
-    'description' => 'Pancreatic Adenocarcinoma'
+               }
   }
 ]
 
 ```
 
+#### Queries:The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
+
+`db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )`
+This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
+
+`db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )`
+
 ### description
 
 A free text description of the biosample.
 
-* example: `Burkitt lymphoma, cell line Namalwa
+#### Example
+
+`Burkitt lymphoma, cell line Namalwa
 `
 
 ### external_ids
 
 list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
 
-* example: 
+#### Example
+
 ```
 [
   {
-    'relation' => 'provenance',
-    'id' => 'cellosaurus:CVCL_0312'
+    'id' => 'cellosaurus:CVCL_0312',
+    'relation' => 'provenance'
   },
   {
-    'relation' => 'report',
-    'id' => 'pubmed:17440070'
+    'id' => 'pubmed:17440070',
+    'relation' => 'report'
   },
   {
-    'id' => 'geo:GPL4894',
-    'relation' => 'technology'
+    'relation' => 'technology',
+    'id' => 'geo:GPL4894'
   },
   {
-    'relation' => 'denotes',
-    'id' => 'geo:GSM185088'
+    'id' => 'geo:GSM185088',
+    'relation' => 'denotes'
   }
 ]
 
 ```
+
+#### Queries:the query will return all biosamples reported in this publication
+`db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )`
 
 ### geo_provenance
 
@@ -100,18 +119,17 @@ This geo_class attribute ideally describes the geographic location of where the 
 Frequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.
 
 
-* example: 
+#### Example
+
 ```
-[
-  {
-    'latitude' => '45.75',
-    'altitude' => 94,
-    'longitude' => '21.23',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-    'city' => 'Timisoara',
-    'country' => 'Romania'
-  }
-]
+{
+  'latitude' => '45.75',
+  'altitude' => 94,
+  'city' => 'Timisoara',
+  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'country' => 'Romania',
+  'longitude' => '21.23'
+}
 
 ```
 
@@ -119,7 +137,9 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 The local-unique identifier of this biosample (referenced as "biosample_id").
 
-* example: `AM_BS__NCBISKYCGH-1993
+#### Example
+
+`AM_BS__NCBISKYCGH-1993
 `
 
 ### individual_id
@@ -127,7 +147,9 @@ The local-unique identifier of this biosample (referenced as "biosample_id").
 In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
 
 
-* example: `ind-cnhl-1293347-004
+#### Example
+
+`ind-cnhl-1293347-004
 `
 
 ### info
@@ -135,27 +157,34 @@ In a complete data model "individual_id" represents the identifier of this biosa
 This is a list for objects without further specification in the schema.
 
 
-* example: 
+#### Example
+
 ```
 [
   {
+    'type' => 'ISO8601 string',
     'value' => 'P14M',
-    'name' => 'followup_time',
-    'type' => 'ISO8601 string'
+    'name' => 'followup_time'
   },
   {
+    'type' => 'boolean',
     'name' => 'death',
-    'value' => 1,
-    'type' => 'boolean'
+    'value' => 1
   }
 ]
 
 ```
 
+#### Queries:This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.
+
+`db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )`
+
 ### updated
 
 time of the last edit of this record, in ISO8601
 
-* example: `2017-10-25T07:06:03Z
+#### Example
+
+`2017-10-25T07:06:03Z
 `
 
