@@ -1,32 +1,32 @@
 {
-   "info_class" : {
-      "value" : 1503320,
-      "name" : "cnv_length",
-      "type" : "int64"
-   },
    "biocharacteristic_class" : {
-      "negated" : "1",
-      "description" : "Invasive ductal breast carcinoma, metastasized",
       "class" : {
-         "label" : "Pancreatic Adenocarcinoma",
-         "id" : "ncit:c8294"
-      }
+         "id" : "ncit:c8294",
+         "label" : "Pancreatic Adenocarcinoma"
+      },
+      "negated" : "1",
+      "description" : "Invasive ductal breast carcinoma, metastasized"
    },
    "reference_class" : {
-      "relation" : "denotes",
-      "id" : "pubmed:17440070"
+      "id" : "pubmed:17440070",
+      "relation" : "denotes"
    },
    "ontology_class" : {
       "id" : "ncit:C8294",
       "label" : "Pancreatic Adenocarcinoma"
    },
    "geo_class" : {
-      "city" : "Timisoara",
-      "altitude" : 8848,
-      "latitude" : 47.37,
-      "country" : "Romania",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
       "longitude" : 8.54,
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+      "altitude" : 8848,
+      "city" : "Timisoara",
+      "country" : "Romania",
+      "latitude" : 47.37
+   },
+   "info_class" : {
+      "type" : "int64",
+      "value" : 1503320,
+      "name" : "cnv_length"
    }
 }
 

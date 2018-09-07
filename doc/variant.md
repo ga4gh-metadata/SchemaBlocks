@@ -58,8 +58,11 @@ concatenated unique specific elements of the variant
 
 ```
 
-#### Queries:the query will return all variants with any overlap of the CDKN2A CDR
-`db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )`
+#### Queries:
+the query will return all variants with any overlap of the CDKN2A CDR
+```
+db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )
+```
 
 ### genotype
 
@@ -84,14 +87,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 [
   {
-    'name' => 'cnv_value',
     'value' => '-0.294',
+    'name' => 'cnv_value',
     'type' => 'float'
   },
   {
     'type' => 'int64',
-    'name' => 'cnv_length',
-    'value' => 1205290
+    'value' => 1205290,
+    'name' => 'cnv_length'
   }
 ]
 

@@ -79,8 +79,11 @@ END
 #### Queries:';    
       foreach my $query (@{$attr{$name}->{queries}}) {
         $markdown .=  <<END;  
+
 $query->{description}
-`$query->{query}`
+```
+$query->{query}
+```
 END
 
     }}

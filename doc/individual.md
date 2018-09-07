@@ -18,8 +18,8 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 [
   {
     'class' => {
-                 'id' => 'PATO:0020000',
-                 'label' => 'female genetic sex'
+                 'label' => 'female genetic sex',
+                 'id' => 'PATO:0020000'
                },
     'description' => 'girl'
   },
@@ -31,20 +31,26 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
                }
   },
   {
+    'description' => 'Patient with Down syndrome',
     'class' => {
                  'label' => 'Genetic anticipation',
                  'id' => 'HP:0003745'
-               },
-    'description' => 'Patient with Down syndrome'
+               }
   }
 ]
 
 ```
 
-#### Queries:the query will return all individuals who have been properly labeled as human
-`db.individual.find( { "biocharacteristics.class.id" : "NCBITaxon:9606" } )`
+#### Queries:
+the query will return all individuals who have been properly labeled as human
+```
+db.individual.find( { "biocharacteristics.class.id" : "NCBITaxon:9606" } )
+```
+
 this call to the distinct funcion will return *all* HPO annotated classes
-`db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /HP\:/i } } )`
+```
+db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /HP\:/i } } )
+```
 
 ### description
 
@@ -66,11 +72,11 @@ This value may reflect either the place of burth or residence, but frequently ma
 ```
 [
   {
-    'latitude' => '45.75',
-    'city' => 'Timisoara',
     'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-    'country' => 'Romania',
-    'longitude' => '21.23'
+    'longitude' => '21.23',
+    'city' => 'Timisoara',
+    'latitude' => '45.75',
+    'country' => 'Romania'
   }
 ]
 

@@ -36,10 +36,10 @@ This geo_class attribute ideally describes the geographic location of where this
 ```
 [
   {
-    'latitude' => '45.75',
-    'city' => 'Timisoara',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
     'country' => 'Romania',
+    'latitude' => '45.75',
+    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'city' => 'Timisoara',
     'longitude' => '21.23'
   }
 ]

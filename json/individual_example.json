@@ -1,9 +1,22 @@
 {
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "description" : "patient with lung cancer, male smoker",
+   "updated" : "2017-10-25T07:06:03Z",
+   "geo_provenance" : [
+      {
+         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+         "longitude" : "21.23",
+         "city" : "Timisoara",
+         "latitude" : "45.75",
+         "country" : "Romania"
+      }
+   ],
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
    "biocharacteristics" : [
       {
          "class" : {
-            "id" : "PATO:0020000",
-            "label" : "female genetic sex"
+            "label" : "female genetic sex",
+            "id" : "PATO:0020000"
          },
          "description" : "girl"
       },
@@ -15,25 +28,12 @@
          }
       },
       {
+         "description" : "Patient with Down syndrome",
          "class" : {
             "label" : "Genetic anticipation",
             "id" : "HP:0003745"
-         },
-         "description" : "Patient with Down syndrome"
+         }
       }
-   ],
-   "geo_provenance" : [
-      {
-         "latitude" : "45.75",
-         "city" : "Timisoara",
-         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-         "country" : "Romania",
-         "longitude" : "21.23"
-      }
-   ],
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "description" : "patient with lung cancer, male smoker",
-   "updated" : "2017-10-25T07:06:03Z",
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")"
+   ]
 }
 

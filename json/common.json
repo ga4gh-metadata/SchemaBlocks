@@ -1,43 +1,64 @@
 {
    "classes" : {
+      "info_class" : {
+         "attributes" : [
+            {
+               "example" : "cnv_length",
+               "description" : "the attribute / key",
+               "type" : "string",
+               "name" : "name"
+            },
+            {
+               "example" : "int64",
+               "description" : "type of the value; optional",
+               "type" : "string",
+               "name" : "type"
+            },
+            {
+               "example" : "1503320",
+               "description" : "the value in a format correstponding to type",
+               "name" : "value"
+            }
+         ]
+      },
       "reference_class" : {
          "attributes" : [
             {
-               "description" : "properly prefixed CURIE of the external reference",
                "name" : "id",
-               "example" : "pubmed:17440070",
-               "type" : "string"
+               "type" : "string",
+               "description" : "properly prefixed CURIE of the external reference",
+               "example" : "pubmed:17440070"
             },
             {
-               "description" : "the relation of the external reference to the object it was pointed from",
+               "type" : "string",
                "name" : "relation",
                "example" : "denotes",
-               "type" : "string"
+               "description" : "the relation of the external reference to the object it was pointed from"
             }
          ]
       },
       "biocharacteristic_class" : {
          "attributes" : [
             {
-               "type" : "string",
                "name" : "description",
+               "type" : "string",
                "description" : "a free-text description of this biocharacteristic",
                "example" : "Invasive ductal breast carcinoma, metastasized"
             },
             {
                "type" : "ontology_class",
+               "name" : "class",
                "example" : {
-                  "label" : "Pancreatic Adenocarcinoma",
-                  "id" : "ncit:c8294"
+                  "id" : "ncit:c8294",
+                  "label" : "Pancreatic Adenocarcinoma"
                },
-               "description" : "an ontology_class object",
-               "name" : "class"
+               "description" : "an ontology_class object"
             },
             {
-               "type" : "boolean",
-               "name" : "negated",
+               "example" : "true",
                "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
-               "example" : "true"
+               "type" : "boolean",
+               "name" : "negated"
             }
          ]
       },
@@ -45,74 +66,53 @@
          "attributes" : [
             {
                "example" : "ncit:C8294",
-               "name" : "id",
                "description" : "properly prefixed CURIE of the ontology term",
-               "type" : "string"
+               "type" : "string",
+               "name" : "id"
             },
             {
-               "type" : "string",
                "description" : "the text label associated with the term",
+               "example" : "Pancreatic Adenocarcinoma",
                "name" : "label",
-               "example" : "Pancreatic Adenocarcinoma"
+               "type" : "string"
             }
          ]
       },
       "geo_class" : {
          "attributes" : [
             {
-               "type" : "string",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
                "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
-               "name" : "label"
-            },
-            {
-               "example" : "Timisoara",
-               "name" : "city",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "name" : "label",
                "type" : "string"
             },
             {
+               "example" : "Timisoara",
                "type" : "string",
+               "name" : "city"
+            },
+            {
                "example" : "Romania",
+               "type" : "string",
                "name" : "country"
             },
             {
-               "type" : "double",
+               "example" : "47.37",
                "description" : "signed decimal degrees (North, relative to Equator)",
-               "name" : "latitude",
-               "example" : "47.37"
+               "type" : "double",
+               "name" : "latitude"
             },
             {
-               "type" : "double",
-               "example" : "8.54",
                "name" : "longitude",
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)"
+               "type" : "double",
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "example" : "8.54"
             },
             {
                "type" : "double",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
                "name" : "altitude",
-               "example" : "8848"
-            }
-         ]
-      },
-      "info_class" : {
-         "attributes" : [
-            {
-               "type" : "string",
-               "name" : "name",
-               "description" : "the attribute / key",
-               "example" : "cnv_length"
-            },
-            {
-               "type" : "string",
-               "description" : "type of the value; optional",
-               "name" : "type",
-               "example" : "int64"
-            },
-            {
-               "description" : "the value in a format correstponding to type",
-               "name" : "value",
-               "example" : "1503320"
+               "example" : "8848",
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional"
             }
          ]
       }

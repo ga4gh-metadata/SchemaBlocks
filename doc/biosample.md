@@ -25,8 +25,8 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 {
-  'id' => 'HP:0003621',
-  'label' => 'Juvenile onset'
+  'label' => 'Juvenile onset',
+  'id' => 'HP:0003621'
 }
 
 ```
@@ -42,36 +42,42 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 [
   {
-    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
                  'label' => 'Pancreas, NOS',
                  'id' => 'pgx:icdot:c25.9'
-               }
+               },
+    'description' => 'Pancreatic Adenocarcinoma'
   },
   {
-    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
                  'label' => 'Adenocarcinoma, NOS',
                  'id' => 'pgx:icdom:81403'
-               }
+               },
+    'description' => 'Pancreatic Adenocarcinoma'
   },
   {
-    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
-                 'label' => 'Pancreatic Adenocarcinoma',
-                 'id' => 'ncit:c8294'
-               }
+                 'id' => 'ncit:c8294',
+                 'label' => 'Pancreatic Adenocarcinoma'
+               },
+    'description' => 'Pancreatic Adenocarcinoma'
   }
 ]
 
 ```
 
-#### Queries:The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
+#### Queries:
+The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
 
-`db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )`
+```
+db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )
+```
+
 This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
 
-`db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )`
+```
+db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )
+```
 
 ### description
 
@@ -91,8 +97,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 [
   {
-    'id' => 'cellosaurus:CVCL_0312',
-    'relation' => 'provenance'
+    'relation' => 'provenance',
+    'id' => 'cellosaurus:CVCL_0312'
   },
   {
     'id' => 'pubmed:17440070',
@@ -110,8 +116,11 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 
 ```
 
-#### Queries:the query will return all biosamples reported in this publication
-`db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )`
+#### Queries:
+the query will return all biosamples reported in this publication
+```
+db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )
+```
 
 ### geo_provenance
 
@@ -123,12 +132,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 {
-  'latitude' => '45.75',
-  'altitude' => 94,
-  'city' => 'Timisoara',
-  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
   'country' => 'Romania',
-  'longitude' => '21.23'
+  'latitude' => '45.75',
+  'city' => 'Timisoara',
+  'altitude' => 94,
+  'longitude' => '21.23',
+  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 
 ```
@@ -162,22 +171,25 @@ This is a list for objects without further specification in the schema.
 ```
 [
   {
-    'type' => 'ISO8601 string',
     'value' => 'P14M',
-    'name' => 'followup_time'
+    'name' => 'followup_time',
+    'type' => 'ISO8601 string'
   },
   {
-    'type' => 'boolean',
+    'value' => 1,
     'name' => 'death',
-    'value' => 1
+    'type' => 'boolean'
   }
 ]
 
 ```
 
-#### Queries:This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.
+#### Queries:
+This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.
 
-`db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )`
+```
+db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )
+```
 
 ### updated
 
