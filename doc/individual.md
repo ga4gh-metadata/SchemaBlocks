@@ -3,7 +3,8 @@
 
 the database-internal object id
 
-* example: `ObjectId("558e5c56ad9a82d958392bd6")`
+* example: `ObjectId("558e5c56ad9a82d958392bd6")
+`
 
 ### biocharacteristics
 
@@ -13,18 +14,18 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 [
   {
+    'description' => 'girl',
     'class' => {
                  'label' => 'female genetic sex',
                  'id' => 'PATO:0020000'
-               },
-    'description' => 'girl'
+               }
   },
   {
-    'description' => 'Jean-Luc Picard',
     'class' => {
                  'id' => 'NCBITaxon:9606',
                  'label' => 'Homo sapiens'
-               }
+               },
+    'description' => 'Jean-Luc Picard'
   },
   {
     'class' => {
@@ -41,7 +42,8 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 
 A free text description of the individual.
 
-* example: `patient with lung cancer, male smoker`
+* example: `patient with lung cancer, male smoker
+`
 
 ### geo_provenance
 
@@ -53,11 +55,11 @@ This value may reflect either the place of burth or residence, but frequently ma
 ```
 [
   {
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'longitude' => '21.23',
     'latitude' => '45.75',
+    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
     'city' => 'Timisoara',
-    'country' => 'Romania',
-    'longitude' => '21.23'
+    'country' => 'Romania'
   }
 ]
 
@@ -67,11 +69,13 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 The local-unique identifier of this individual (referenced as "individual_id").
 
-* example: `AM_BS__NCBISKYCGH-1993`
+* example: `AM_BS__NCBISKYCGH-1993
+`
 
 ### updated
 
 time of the last edit of this record, in ISO8601
 
-* example: `2017-10-25T07:06:03Z`
+* example: `2017-10-25T07:06:03Z
+`
 

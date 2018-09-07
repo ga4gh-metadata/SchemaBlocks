@@ -1,33 +1,58 @@
 {
+   "age_at_collection" : "P56Y",
+   "description" : "Burkitt lymphoma, cell line Namalwa",
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
    "geo_provenance" : [
       {
+         "latitude" : "45.75",
+         "altitude" : "94",
+         "longitude" : "21.23",
          "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
          "city" : "Timisoara",
-         "latitude" : "45.75",
-         "country" : "Romania",
-         "altitude" : "94",
-         "longitude" : "21.23"
+         "country" : "Romania"
       }
    ],
-   "age_at_collection" : "P56Y",
+   "id" : "AM_BS__NCBISKYCGH-1993",
    "age_at_collection_class" : {
       "label" : "Juvenile onset",
       "id" : "HP:0003621"
    },
+   "biocharacteristics" : [
+      {
+         "description" : "Pancreatic Adenocarcinoma",
+         "class" : {
+            "label" : "Pancreas, NOS",
+            "id" : "pgx:icdot:c25.9"
+         }
+      },
+      {
+         "description" : "Pancreatic Adenocarcinoma",
+         "class" : {
+            "label" : "Adenocarcinoma, NOS",
+            "id" : "pgx:icdom:81403"
+         }
+      },
+      {
+         "class" : {
+            "label" : "Pancreatic Adenocarcinoma",
+            "id" : "ncit:c8294"
+         },
+         "description" : "Pancreatic Adenocarcinoma"
+      }
+   ],
    "info" : [
       {
-         "name" : "followup_time",
          "value" : "P14M",
+         "name" : "followup_time",
          "type" : "ISO8601 string"
       },
       {
-         "value" : "1",
          "name" : "death",
+         "value" : "1",
          "type" : "boolean"
       }
    ],
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-   "id" : "AM_BS__NCBISKYCGH-1993",
+   "individual_id" : "ind-cnhl-1293347-004",
    "external_ids" : [
       {
          "relation" : "provenance",
@@ -42,35 +67,10 @@
          "relation" : "technology"
       },
       {
-         "id" : "geo:GSM185088",
-         "relation" : "denotes"
+         "relation" : "denotes",
+         "id" : "geo:GSM185088"
       }
    ],
-   "updated" : "2017-10-25T07:06:03Z",
-   "individual_id" : "ind-cnhl-1293347-004",
-   "biocharacteristics" : [
-      {
-         "description" : "Pancreatic Adenocarcinoma",
-         "class" : {
-            "id" : "pgx:icdot:c25.9",
-            "label" : "Pancreas, NOS"
-         }
-      },
-      {
-         "description" : "Pancreatic Adenocarcinoma",
-         "class" : {
-            "id" : "pgx:icdom:81403",
-            "label" : "Adenocarcinoma, NOS"
-         }
-      },
-      {
-         "class" : {
-            "label" : "Pancreatic Adenocarcinoma",
-            "id" : "ncit:c8294"
-         },
-         "description" : "Pancreatic Adenocarcinoma"
-      }
-   ],
-   "description" : "Burkitt lymphoma, cell line Namalwa"
+   "updated" : "2017-10-25T07:06:03Z"
 }
 

@@ -3,31 +3,36 @@
 
 the database-internal object id
 
-* example: `ObjectId("558e5c56ad9a82d958392bd6")`
+* example: `ObjectId("558e5c56ad9a82d958392bd6")
+`
 
 ### alternate_bases
 
 
 
-* example: `AC`
+* example: `AC
+`
 
 ### biosample_id
 
 The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
 
-* example: `pgx-bs-987647`
+* example: `pgx-bs-987647
+`
 
 ### callset_id
 
 The identifier ("callset.id") of the callset this variant is part of.
 
-* example: `PGX_AM_CS_GSM1690424`
+* example: `PGX_AM_CS_GSM1690424
+`
 
 ### digest
 
 concatenated unique specific elements of the variant
 
-* example: `4:12282-46465:DEL`
+* example: `4:12282-46465:DEL
+`
 
 ### end
 
@@ -64,13 +69,13 @@ additional variant information, as defined in the example and accompanying docum
 [
   {
     'value' => '-0.294',
-    'type' => 'float',
-    'name' => 'cnv_value'
+    'name' => 'cnv_value',
+    'type' => 'float'
   },
   {
-    'type' => 'int64',
     'value' => 1205290,
-    'name' => 'cnv_length'
+    'name' => 'cnv_length',
+    'type' => 'int64'
   }
 ]
 
@@ -80,19 +85,22 @@ additional variant information, as defined in the example and accompanying docum
 
 Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.
 
-* example: `14`
+* example: `14
+`
 
 ### reference_bases
 
 list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants
 
-* example: `G`
+* example: `G
+`
 
 ### reference_name
 
 Reference name (chromosome). Accepting values 1-22, X, Y.
 
-* example: `8`
+* example: `8
+`
 
 ### start
 
@@ -110,11 +118,13 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 
 time of the last edit of this record, in ISO8601
 
-* example: `2017-10-25T07:06:03Z`
+* example: `2017-10-25T07:06:03Z
+`
 
 ### variant_type
 
 the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
 
-* example: `DEL`
+* example: `DEL
+`
 

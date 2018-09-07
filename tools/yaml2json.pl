@@ -53,14 +53,15 @@ foreach (@yaml_files) {
     else {
       $example->{$name} =   $attr{$name}->{example} } 
 
-  my $md_example;
-  if (ref( $attr{$name}->{example}) eq "ARRAY") {
-		$md_example	=		"\n".'```'."\n".Dumper($attr{$name}->{example})."\n".'```';
-		$md_example	=~  s/\$VAR1 \= //;
-		$md_example	=~  s/\n {8}/\n/g;
-		$md_example	=~  s/\;//g;
+  my $md_example    =   Dumper($attr{$name}->{example});
+  $md_example	  =~  s/\$VAR1 \= //;
+  $md_example	  =~  s/\n {8}/\n/g;
+  $md_example	  =~  s/\;//g;
+  if (ref( $attr{$name}->{example}) eq "ARRAY" || ref( $attr{$name}->{example}) eq "HASH") {
+		$md_example	=		"\n".'```'."\n".$md_example."\n".'```';
 	} else {
-		$md_example	=		'`'.$attr{$name}->{example}.'`' }
+    $md_example	  =~  s/\'//g;
+		$md_example	=		'`'.$md_example.'`' }
 
   $markdown     .=  <<END;  
 
