@@ -7,7 +7,7 @@ The primary documents are in the [yaml](./yaml/) directory, with JSON versions a
 * [common](./doc/common.md)
     object classes, which are used in the schemas themselves
 * [variant](./doc/variant.md)
-    The `variant` object includes attributes and examples for both structural (DUP, DEL, BRK) and prcise genome variants.
+    The `variant` object includes attributes and examples for both structural (DUP, DEL, BRK) and precise genome variants.
 * [callset](./doc/callset.md)
     The `callset` object is for technoical data and series information (e.g. used platform and analysis metods). It is not strictly needed for querying combined variant + biosample aspects, since in the current implementation the `variant` object contains a reference to the `biosample` it was derived from.
 * [biosample](./doc/biosample.md)
