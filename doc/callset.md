@@ -9,7 +9,7 @@ the database-internal object id
 
 #### Example
 
-`ObjectId("558e5c56ad9a82d958392bd6")
+'' : `ObjectId("558e5c56ad9a82d958392bd6")
 `
 
 ## biosample_id
@@ -18,7 +18,7 @@ The identifier ("biosample.id") of the biosample this variant was reported from.
 
 #### Example
 
-`pgx-bs-987647
+'' : `pgx-bs-987647
 `
 
 ## description
@@ -27,7 +27,7 @@ A free text description of the callset.
 
 #### Example
 
-`SNP6 array of cancer sample BRCA-0893
+'' : `SNP6 array of cancer sample BRCA-0893
 `
 
 ## geo_provenance
@@ -37,14 +37,14 @@ This geo_class attribute ideally describes the geographic location of where this
 
 #### Example
 
-```
+'' : ```
 [
   {
-    'city' => 'Timisoara',
-    'latitude' => '45.75',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
     'longitude' => '21.23',
-    'country' => 'Romania'
+    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'country' => 'Romania',
+    'city' => 'Timisoara',
+    'latitude' => '45.75'
   }
 ]
 
@@ -56,7 +56,7 @@ The local-unique identifier of this callset (referenced as "callset_id").
 
 #### Example
 
-`GSM264198
+'' : `GSM264198
 `
 
 ## updated
@@ -65,6 +65,6 @@ time of the last edit of this record, in ISO8601
 
 #### Example
 
-`2017-10-25T07:06:03Z
+'' : `2017-10-25T07:06:03Z
 `
 

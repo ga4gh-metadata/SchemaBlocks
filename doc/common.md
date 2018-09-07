@@ -18,7 +18,7 @@ string
 #### Example
 
 ```
-Invasive ductal breast carcinoma, metastasized
+'description' : Invasive ductal breast carcinoma, metastasized
 ```
 
 ### class
@@ -32,7 +32,7 @@ ontology_class
 #### Example
 
 ```
-HASH(0x7fa6249a8028)
+'class' : HASH(0x7fc1d0a3dd18)
 ```
 
 ### negated
@@ -46,7 +46,7 @@ boolean
 #### Example
 
 ```
-true
+'negated' : true
 ```
 
 
@@ -68,7 +68,7 @@ string
 #### Example
 
 ```
-Str Marasesti 5, 300077 Timisoara, Romania
+'label' : Str Marasesti 5, 300077 Timisoara, Romania
 ```
 
 ### city
@@ -82,7 +82,7 @@ string
 #### Example
 
 ```
-Timisoara
+'city' : Timisoara
 ```
 
 ### country
@@ -96,7 +96,7 @@ string
 #### Example
 
 ```
-Romania
+'country' : Romania
 ```
 
 ### latitude
@@ -110,7 +110,7 @@ double
 #### Example
 
 ```
-47.37
+'latitude' : 47.37
 ```
 
 ### longitude
@@ -124,7 +124,7 @@ double
 #### Example
 
 ```
-8.54
+'longitude' : 8.54
 ```
 
 ### altitude
@@ -138,7 +138,7 @@ double
 #### Example
 
 ```
-8848
+'altitude' : 8848
 ```
 
 
@@ -157,7 +157,7 @@ string
 #### Example
 
 ```
-cnv_length
+'name' : cnv_length
 ```
 
 ### type
@@ -171,7 +171,7 @@ string
 #### Example
 
 ```
-int64
+'type' : int64
 ```
 
 ### value
@@ -185,7 +185,7 @@ the value in a format correstponding to type
 #### Example
 
 ```
-1503320
+'value' : 1503320
 ```
 
 
@@ -204,7 +204,7 @@ string
 #### Example
 
 ```
-ncit:C8294
+'id' : ncit:C8294
 ```
 
 ### label
@@ -218,7 +218,7 @@ string
 #### Example
 
 ```
-Pancreatic Adenocarcinoma
+'label' : Pancreatic Adenocarcinoma
 ```
 
 
@@ -237,7 +237,7 @@ string
 #### Example
 
 ```
-pubmed:17440070
+'id' : pubmed:17440070
 ```
 
 ### relation
@@ -251,7 +251,7 @@ string
 #### Example
 
 ```
-denotes
+'relation' : denotes
 ```
 
 

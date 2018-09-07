@@ -1,6 +1,7 @@
 # biosample  
 
-In this schema, a "biosample" as source of the material of a molecular analysis (e.g. genomic array, sequencing) represents the main “biological item” against which molecular variants are referenced.
+In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
+
 
 ## _id
 
@@ -8,7 +9,7 @@ the database-internal object id
 
 #### Example
 
-`ObjectId("558e5c56ad9a82d958392bd6")
+'' : `ObjectId("558e5c56ad9a82d958392bd6")
 `
 
 ## age_at_collection
@@ -17,7 +18,7 @@ the age of the individual at time of biosample collection, as ISO8601 string
 
 #### Example
 
-`P56Y
+'' : `P56Y
 `
 
 ## age_at_collection_class
@@ -26,7 +27,7 @@ the age of the individual at time of biosample collection, as ontology object
 
 #### Example
 
-```
+'' : ```
 {
   'id' => 'HP:0003621',
   'label' => 'Juvenile onset'
@@ -42,26 +43,26 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 
 #### Example
 
-```
+'' : ```
 [
   {
     'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
-                 'label' => 'Pancreas, NOS',
-                 'id' => 'pgx:icdot:c25.9'
+                 'id' => 'pgx:icdot:c25.9',
+                 'label' => 'Pancreas, NOS'
                }
   },
   {
     'class' => {
-                 'id' => 'pgx:icdom:81403',
-                 'label' => 'Adenocarcinoma, NOS'
+                 'label' => 'Adenocarcinoma, NOS',
+                 'id' => 'pgx:icdom:81403'
                },
     'description' => 'Pancreatic Adenocarcinoma'
   },
   {
     'class' => {
-                 'id' => 'ncit:c8294',
-                 'label' => 'Pancreatic Adenocarcinoma'
+                 'label' => 'Pancreatic Adenocarcinoma',
+                 'id' => 'ncit:c8294'
                },
     'description' => 'Pancreatic Adenocarcinoma'
   }
@@ -88,7 +89,7 @@ A free text description of the biosample.
 
 #### Example
 
-`Burkitt lymphoma, cell line Namalwa
+'' : `Burkitt lymphoma, cell line Namalwa
 `
 
 ## external_ids
@@ -97,23 +98,23 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 
 #### Example
 
-```
+'' : ```
 [
   {
     'relation' => 'provenance',
     'id' => 'cellosaurus:CVCL_0312'
   },
   {
-    'id' => 'pubmed:17440070',
-    'relation' => 'report'
+    'relation' => 'report',
+    'id' => 'pubmed:17440070'
   },
   {
-    'relation' => 'technology',
-    'id' => 'geo:GPL4894'
+    'id' => 'geo:GPL4894',
+    'relation' => 'technology'
   },
   {
-    'id' => 'geo:GSM185088',
-    'relation' => 'denotes'
+    'relation' => 'denotes',
+    'id' => 'geo:GSM185088'
   }
 ]
 
@@ -133,14 +134,14 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 #### Example
 
-```
+'' : ```
 {
-  'latitude' => '45.75',
-  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'city' => 'Timisoara',
   'altitude' => 94,
+  'latitude' => '45.75',
+  'longitude' => '21.23',
+  'city' => 'Timisoara',
   'country' => 'Romania',
-  'longitude' => '21.23'
+  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 
 ```
@@ -151,7 +152,7 @@ The local-unique identifier of this biosample (referenced as "biosample_id").
 
 #### Example
 
-`AM_BS__NCBISKYCGH-1993
+'' : `AM_BS__NCBISKYCGH-1993
 `
 
 ## individual_id
@@ -161,7 +162,7 @@ In a complete data model "individual_id" represents the identifier of this biosa
 
 #### Example
 
-`ind-cnhl-1293347-004
+'' : `ind-cnhl-1293347-004
 `
 
 ## info
@@ -171,7 +172,7 @@ This is a list for objects without further specification in the schema.
 
 #### Example
 
-```
+'' : ```
 [
   {
     'name' => 'followup_time',
@@ -200,6 +201,6 @@ time of the last edit of this record, in ISO8601
 
 #### Example
 
-`2017-10-25T07:06:03Z
+'' : `2017-10-25T07:06:03Z
 `
 

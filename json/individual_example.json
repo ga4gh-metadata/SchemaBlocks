@@ -2,13 +2,14 @@
    "geo_provenance" : [
       {
          "latitude" : "45.75",
-         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
          "city" : "Timisoara",
-         "longitude" : "21.23",
-         "country" : "Romania"
+         "country" : "Romania",
+         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+         "longitude" : "21.23"
       }
    ],
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
+   "updated" : "2017-10-25T07:06:03Z",
+   "id" : "AM_BS__NCBISKYCGH-1993",
    "biocharacteristics" : [
       {
          "description" : "girl",
@@ -32,8 +33,7 @@
          }
       }
    ],
-   "updated" : "2017-10-25T07:06:03Z",
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "description" : "patient with lung cancer, male smoker"
+   "description" : "patient with lung cancer, male smoker",
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")"
 }
 

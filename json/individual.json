@@ -12,23 +12,25 @@
          "example" : "AM_BS__NCBISKYCGH-1993"
       },
       {
-         "name" : "description",
          "description" : "A free text description of the individual.",
+         "name" : "description",
          "type" : "string",
          "example" : "patient with lung cancer, male smoker"
       },
       {
+         "name" : "biocharacteristics",
+         "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases",
+         "type" : "list",
          "queries" : [
             {
                "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )",
                "description" : "the query will return all individuals who have been properly labeled as human"
             },
             {
-               "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )",
-               "description" : "this call to the distinct funcion will return *all* HPO annotated classes"
+               "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
+               "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
             }
          ],
-         "type" : "list",
          "example" : [
             {
                "description" : "girl",
@@ -51,29 +53,27 @@
                   "id" : "HP:0003745"
                }
             }
-         ],
-         "name" : "biocharacteristics",
-         "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases"
+         ]
       },
       {
+         "name" : "geo_provenance",
+         "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
+         "type" : "geo_class object",
          "example" : [
             {
                "latitude" : "45.75",
-               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
                "city" : "Timisoara",
-               "longitude" : "21.23",
-               "country" : "Romania"
+               "country" : "Romania",
+               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "longitude" : "21.23"
             }
-         ],
-         "type" : "geo_class object",
-         "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
-         "name" : "geo_provenance"
+         ]
       },
       {
-         "description" : "time of the last edit of this record, in ISO8601",
-         "name" : "updated",
+         "example" : "2017-10-25T07:06:03Z",
          "type" : "ISO8601 string",
-         "example" : "2017-10-25T07:06:03Z"
+         "description" : "time of the last edit of this record, in ISO8601",
+         "name" : "updated"
       }
    ],
    "updated" : "2018-09-01",

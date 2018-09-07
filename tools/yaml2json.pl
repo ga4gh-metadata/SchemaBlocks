@@ -77,7 +77,7 @@ $attr{$name}->{description}
 
 #### Example
 
-$md_example
+\'$_->{name}\' : $md_example
 END
 
     if ($attr{$name}->{queries}) {
@@ -127,7 +127,7 @@ $_->{type}
 #### Example
 
 ```
-$_->{example}
+\'$_->{name}\' : $_->{example}
 ```
 
 END

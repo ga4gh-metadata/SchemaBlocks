@@ -8,7 +8,7 @@ the database-internal object id
 
 #### Example
 
-`ObjectId("558e5c56ad9a82d958392bd6")
+'' : `ObjectId("558e5c56ad9a82d958392bd6")
 `
 
 ## biocharacteristics
@@ -17,7 +17,7 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 
 #### Example
 
-```
+'' : ```
 [
   {
     'description' => 'girl',
@@ -61,7 +61,7 @@ A free text description of the individual.
 
 #### Example
 
-`patient with lung cancer, male smoker
+'' : `patient with lung cancer, male smoker
 `
 
 ## geo_provenance
@@ -72,14 +72,14 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 #### Example
 
-```
+'' : ```
 [
   {
     'latitude' => '45.75',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
     'city' => 'Timisoara',
-    'longitude' => '21.23',
-    'country' => 'Romania'
+    'country' => 'Romania',
+    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'longitude' => '21.23'
   }
 ]
 
@@ -91,7 +91,7 @@ The local-unique identifier of this individual (referenced as "individual_id").
 
 #### Example
 
-`AM_BS__NCBISKYCGH-1993
+'' : `AM_BS__NCBISKYCGH-1993
 `
 
 ## updated
@@ -100,6 +100,6 @@ time of the last edit of this record, in ISO8601
 
 #### Example
 
-`2017-10-25T07:06:03Z
+'' : `2017-10-25T07:06:03Z
 `
 
