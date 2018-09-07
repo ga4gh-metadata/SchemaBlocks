@@ -53,19 +53,19 @@ foreach (@yaml_files) {
     else {
       $example->{$name} =   $attr{$name}->{example} } 
 
-  my $md_example    =   Dumper($attr{$name}->{example});
-  $md_example	  =~  s/\$VAR1 \= //;
-  $md_example	  =~  s/\n {8}/\n/g;
-  $md_example	  =~  s/\;//g;
-  if (ref( $attr{$name}->{example}) eq "ARRAY" || ref( $attr{$name}->{example}) eq "HASH") {
-		$md_example	=		'```'."\n".$md_example."\n".'```';
-	} else {
-    $md_example	  =~  s/\'//g;
-		$md_example	=		'`'.$md_example.'`' }
+    my $md_example  =   Dumper($attr{$name}->{example});
+    $md_example	=~  s/\$VAR1 \= //;
+    $md_example	=~  s/\n {8}/\n/g;
+    $md_example	=~  s/\;//g;
+    if (ref( $attr{$name}->{example}) eq "ARRAY" || ref( $attr{$name}->{example}) eq "HASH") {
+      $md_example	=		'```'."\n".$md_example."\n".'```';
+    } else {
+      $md_example	  =~  s/\'//g;
+      $md_example	  =		'`'.$md_example.'`' }
 
-  $markdown     .=  <<END;  
+    $markdown   .=  <<END;  
 
-### $name
+## $name
 
 $attr{$name}->{description}
 
@@ -91,6 +91,15 @@ END
   }
   
   foreach my $class_name (sort keys %{ $data->{classes} }) {
+
+    $markdown   .=  <<END;  
+
+## $class_name
+
+$data->{classes}->{$class_name}->{description}
+
+END
+
     foreach (@{ $data->{classes}->{$class_name}->{attributes} }) {
  #print $_->{type}.' - '.$_->{example}."\n";
     if ($_->{type} =~ /bool/i) {
@@ -99,7 +108,24 @@ END
       $example->{$class_name}->{$_->{name}} =   1 * $_->{example} }
     else {
       $example->{$class_name}->{$_->{name}} =   $_->{example} } 
-     
+  
+    $markdown   .= <<END;  
+### $_->{name}
+
+$_->{description}
+
+#### Type
+
+$_->{type}
+
+#### Example
+
+```
+$_->{example}
+```
+   
+END
+
   }}
   
   open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';

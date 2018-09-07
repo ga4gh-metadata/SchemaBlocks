@@ -1,5 +1,5 @@
 
-### _id
+## _id
 
 the database-internal object id
 
@@ -8,7 +8,7 @@ the database-internal object id
 `ObjectId("558e5c56ad9a82d958392bd6")
 `
 
-### alternate_bases
+## alternate_bases
 
 
 
@@ -17,7 +17,7 @@ the database-internal object id
 `AC
 `
 
-### biosample_id
+## biosample_id
 
 The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
 
@@ -26,7 +26,7 @@ The identifier ("biosample.id") of the biosample this variant was reported from.
 `pgx-bs-987647
 `
 
-### callset_id
+## callset_id
 
 The identifier ("callset.id") of the callset this variant is part of.
 
@@ -35,7 +35,7 @@ The identifier ("callset.id") of the callset this variant is part of.
 `PGX_AM_CS_GSM1690424
 `
 
-### digest
+## digest
 
 concatenated unique specific elements of the variant
 
@@ -44,7 +44,7 @@ concatenated unique specific elements of the variant
 `4:12282-46465:DEL
 `
 
-### end
+## end
 
 
 
@@ -64,7 +64,7 @@ the query will return all variants with any overlap of the CDKN2A CDR
 db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )
 ```
 
-### genotype
+## genotype
 
 
 
@@ -78,7 +78,7 @@ db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : {
 
 ```
 
-### info
+## info
 
 additional variant information, as defined in the example and accompanying documentation
 
@@ -87,20 +87,20 @@ additional variant information, as defined in the example and accompanying docum
 ```
 [
   {
-    'value' => '-0.294',
     'name' => 'cnv_value',
-    'type' => 'float'
+    'type' => 'float',
+    'value' => '-0.294'
   },
   {
     'type' => 'int64',
-    'value' => 1205290,
-    'name' => 'cnv_length'
+    'name' => 'cnv_length',
+    'value' => 1205290
   }
 ]
 
 ```
 
-### mate_name
+## mate_name
 
 Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.
 
@@ -109,7 +109,7 @@ Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting 
 `14
 `
 
-### reference_bases
+## reference_bases
 
 list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants
 
@@ -118,7 +118,7 @@ list of bases at start position in the reference genome, which have been replace
 `G
 `
 
-### reference_name
+## reference_name
 
 Reference name (chromosome). Accepting values 1-22, X, Y.
 
@@ -127,7 +127,7 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 `8
 `
 
-### start
+## start
 
 
 
@@ -140,7 +140,7 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 
 ```
 
-### updated
+## updated
 
 time of the last edit of this record, in ISO8601
 
@@ -149,7 +149,7 @@ time of the last edit of this record, in ISO8601
 `2017-10-25T07:06:03Z
 `
 
-### variant_type
+## variant_type
 
 the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
 

@@ -1,5 +1,5 @@
 
-### _id
+## _id
 
 the database-internal object id
 
@@ -8,7 +8,7 @@ the database-internal object id
 `ObjectId("558e5c56ad9a82d958392bd6")
 `
 
-### age_at_collection
+## age_at_collection
 
 the age of the individual at time of biosample collection, as ISO8601 string
 
@@ -17,7 +17,7 @@ the age of the individual at time of biosample collection, as ISO8601 string
 `P56Y
 `
 
-### age_at_collection_class
+## age_at_collection_class
 
 the age of the individual at time of biosample collection, as ontology object
 
@@ -25,13 +25,13 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 {
-  'label' => 'Juvenile onset',
-  'id' => 'HP:0003621'
+  'id' => 'HP:0003621',
+  'label' => 'Juvenile onset'
 }
 
 ```
 
-### biocharacteristics
+## biocharacteristics
 
 "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
@@ -42,25 +42,25 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 [
   {
+    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
-                 'label' => 'Pancreas, NOS',
-                 'id' => 'pgx:icdot:c25.9'
+                 'id' => 'pgx:icdot:c25.9',
+                 'label' => 'Pancreas, NOS'
+               }
+  },
+  {
+    'class' => {
+                 'id' => 'pgx:icdom:81403',
+                 'label' => 'Adenocarcinoma, NOS'
                },
     'description' => 'Pancreatic Adenocarcinoma'
   },
   {
-    'class' => {
-                 'label' => 'Adenocarcinoma, NOS',
-                 'id' => 'pgx:icdom:81403'
-               },
-    'description' => 'Pancreatic Adenocarcinoma'
-  },
-  {
+    'description' => 'Pancreatic Adenocarcinoma',
     'class' => {
                  'id' => 'ncit:c8294',
                  'label' => 'Pancreatic Adenocarcinoma'
-               },
-    'description' => 'Pancreatic Adenocarcinoma'
+               }
   }
 ]
 
@@ -79,7 +79,7 @@ This call to the distinct funcion will return *all* bioterms ids for samples hav
 db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )
 ```
 
-### description
+## description
 
 A free text description of the biosample.
 
@@ -88,7 +88,7 @@ A free text description of the biosample.
 `Burkitt lymphoma, cell line Namalwa
 `
 
-### external_ids
+## external_ids
 
 list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
 
@@ -101,16 +101,16 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'id' => 'cellosaurus:CVCL_0312'
   },
   {
-    'id' => 'pubmed:17440070',
-    'relation' => 'report'
+    'relation' => 'report',
+    'id' => 'pubmed:17440070'
   },
   {
     'relation' => 'technology',
     'id' => 'geo:GPL4894'
   },
   {
-    'id' => 'geo:GSM185088',
-    'relation' => 'denotes'
+    'relation' => 'denotes',
+    'id' => 'geo:GSM185088'
   }
 ]
 
@@ -122,7 +122,7 @@ the query will return all biosamples reported in this publication
 db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )
 ```
 
-### geo_provenance
+## geo_provenance
 
 This geo_class attribute ideally describes the geographic location of where the sample was extracted.
 Frequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.
@@ -133,16 +133,16 @@ Frequently this value may reflect either the place of the laboratory where the a
 ```
 {
   'country' => 'Romania',
-  'latitude' => '45.75',
+  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
   'city' => 'Timisoara',
+  'latitude' => '45.75',
   'altitude' => 94,
-  'longitude' => '21.23',
-  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'longitude' => '21.23'
 }
 
 ```
 
-### id
+## id
 
 The local-unique identifier of this biosample (referenced as "biosample_id").
 
@@ -151,7 +151,7 @@ The local-unique identifier of this biosample (referenced as "biosample_id").
 `AM_BS__NCBISKYCGH-1993
 `
 
-### individual_id
+## individual_id
 
 In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
 
@@ -161,7 +161,7 @@ In a complete data model "individual_id" represents the identifier of this biosa
 `ind-cnhl-1293347-004
 `
 
-### info
+## info
 
 This is a list for objects without further specification in the schema.
 
@@ -176,9 +176,9 @@ This is a list for objects without further specification in the schema.
     'type' => 'ISO8601 string'
   },
   {
-    'value' => 1,
+    'type' => 'boolean',
     'name' => 'death',
-    'type' => 'boolean'
+    'value' => 1
   }
 ]
 
@@ -191,7 +191,7 @@ This query retrieves biosamples with an ISO8601 period value for "followup_time"
 db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )
 ```
 
-### updated
+## updated
 
 time of the last edit of this record, in ISO8601
 

@@ -1,49 +1,49 @@
 {
-   "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. \n",
    "updated" : "2018-09-04",
+   "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. \n",
    "name" : "callset",
    "attributes" : [
       {
+         "description" : "the database-internal object id",
          "name" : "_id",
-         "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-         "description" : "the database-internal object id"
+         "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")"
       },
       {
          "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
-         "example" : "GSM264198",
          "name" : "id",
-         "type" : "string"
+         "type" : "string",
+         "example" : "GSM264198"
       },
       {
-         "name" : "biosample_id",
          "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",
+         "name" : "biosample_id",
          "example" : "pgx-bs-987647"
       },
       {
          "example" : "SNP6 array of cancer sample BRCA-0893",
+         "name" : "description",
          "description" : "A free text description of the callset.",
-         "type" : "string",
-         "name" : "description"
+         "type" : "string"
       },
       {
-         "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
          "example" : [
             {
+               "longitude" : "21.23",
                "country" : "Romania",
-               "latitude" : "45.75",
-               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
                "city" : "Timisoara",
-               "longitude" : "21.23"
+               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "latitude" : "45.75"
             }
          ],
          "name" : "geo_provenance",
+         "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
          "type" : "geo_class object"
       },
       {
          "type" : "ISO8601 string",
          "name" : "updated",
-         "example" : "2017-10-25T07:06:03Z",
-         "description" : "time of the last edit of this record, in ISO8601"
+         "description" : "time of the last edit of this record, in ISO8601",
+         "example" : "2017-10-25T07:06:03Z"
       }
    ]
 }

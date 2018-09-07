@@ -1,80 +1,48 @@
 {
    "classes" : {
+      "biocharacteristic_class" : {
+         "attributes" : [
+            {
+               "example" : "Invasive ductal breast carcinoma, metastasized",
+               "description" : "a free-text description of this biocharacteristic",
+               "name" : "description",
+               "type" : "string"
+            },
+            {
+               "example" : {
+                  "id" : "ncit:c8294",
+                  "label" : "Pancreatic Adenocarcinoma"
+               },
+               "type" : "ontology_class",
+               "name" : "class",
+               "description" : "an ontology_class object"
+            },
+            {
+               "example" : "true",
+               "type" : "boolean",
+               "name" : "negated",
+               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated"
+            }
+         ]
+      },
       "info_class" : {
          "attributes" : [
             {
                "example" : "cnv_length",
                "description" : "the attribute / key",
-               "type" : "string",
-               "name" : "name"
+               "name" : "name",
+               "type" : "string"
             },
             {
                "example" : "int64",
                "description" : "type of the value; optional",
-               "type" : "string",
-               "name" : "type"
-            },
-            {
-               "example" : "1503320",
-               "description" : "the value in a format correstponding to type",
-               "name" : "value"
-            }
-         ]
-      },
-      "reference_class" : {
-         "attributes" : [
-            {
-               "name" : "id",
-               "type" : "string",
-               "description" : "properly prefixed CURIE of the external reference",
-               "example" : "pubmed:17440070"
-            },
-            {
-               "type" : "string",
-               "name" : "relation",
-               "example" : "denotes",
-               "description" : "the relation of the external reference to the object it was pointed from"
-            }
-         ]
-      },
-      "biocharacteristic_class" : {
-         "attributes" : [
-            {
-               "name" : "description",
-               "type" : "string",
-               "description" : "a free-text description of this biocharacteristic",
-               "example" : "Invasive ductal breast carcinoma, metastasized"
-            },
-            {
-               "type" : "ontology_class",
-               "name" : "class",
-               "example" : {
-                  "id" : "ncit:c8294",
-                  "label" : "Pancreatic Adenocarcinoma"
-               },
-               "description" : "an ontology_class object"
-            },
-            {
-               "example" : "true",
-               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
-               "type" : "boolean",
-               "name" : "negated"
-            }
-         ]
-      },
-      "ontology_class" : {
-         "attributes" : [
-            {
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term",
-               "type" : "string",
-               "name" : "id"
-            },
-            {
-               "description" : "the text label associated with the term",
-               "example" : "Pancreatic Adenocarcinoma",
-               "name" : "label",
+               "name" : "type",
                "type" : "string"
+            },
+            {
+               "name" : "value",
+               "description" : "the value in a format correstponding to type",
+               "example" : "1503320"
             }
          ]
       },
@@ -82,9 +50,9 @@
          "attributes" : [
             {
                "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
                "name" : "label",
-               "type" : "string"
+               "type" : "string",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania"
             },
             {
                "example" : "Timisoara",
@@ -92,33 +60,65 @@
                "name" : "city"
             },
             {
-               "example" : "Romania",
                "type" : "string",
-               "name" : "country"
+               "name" : "country",
+               "example" : "Romania"
             },
             {
                "example" : "47.37",
-               "description" : "signed decimal degrees (North, relative to Equator)",
                "type" : "double",
-               "name" : "latitude"
+               "name" : "latitude",
+               "description" : "signed decimal degrees (North, relative to Equator)"
             },
             {
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
                "name" : "longitude",
                "type" : "double",
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
                "example" : "8.54"
             },
             {
-               "type" : "double",
-               "name" : "altitude",
                "example" : "8848",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional"
+               "type" : "double",
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "name" : "altitude"
+            }
+         ]
+      },
+      "ontology_class" : {
+         "attributes" : [
+            {
+               "example" : "ncit:C8294",
+               "type" : "string",
+               "description" : "properly prefixed CURIE of the ontology term",
+               "name" : "id"
+            },
+            {
+               "example" : "Pancreatic Adenocarcinoma",
+               "type" : "string",
+               "description" : "the text label associated with the term",
+               "name" : "label"
+            }
+         ]
+      },
+      "reference_class" : {
+         "attributes" : [
+            {
+               "type" : "string",
+               "name" : "id",
+               "description" : "properly prefixed CURIE of the external reference",
+               "example" : "pubmed:17440070"
+            },
+            {
+               "type" : "string",
+               "description" : "the relation of the external reference to the object it was pointed from",
+               "name" : "relation",
+               "example" : "denotes"
             }
          ]
       }
    },
    "name" : "common",
-   "updated" : "2018-09-04",
-   "description" : "This file is used for the definition of some prototype objects which are re-used in other schema documents.\n"
+   "description" : "This file is used for the definition of some prototype objects which are re-used in other schema documents.\n",
+   "updated" : "2018-09-04"
 }
 
