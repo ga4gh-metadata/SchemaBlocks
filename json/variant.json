@@ -1,9 +1,10 @@
 {
+   "description" : "The document describes attributes of the \"variant\" object, which e.g. can be instantiated as database documents in a MongoDB collection.\n",
    "attributes" : [
       {
          "name" : "_id",
-         "description" : "the database-internal object id",
-         "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")"
+         "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
+         "description" : "the database-internal object id"
       },
       {
          "name" : "digest",
@@ -12,36 +13,36 @@
          "description" : "concatenated unique specific elements of the variant"
       },
       {
-         "type" : "string",
-         "name" : "callset_id",
+         "description" : "The identifier (\"callset.id\") of the callset this variant is part of.",
          "example" : "PGX_AM_CS_GSM1690424",
-         "description" : "The identifier (\"callset.id\") of the callset this variant is part of."
+         "name" : "callset_id",
+         "type" : "string"
       },
       {
-         "name" : "biosample_id",
          "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",
-         "example" : "pgx-bs-987647"
+         "example" : "pgx-bs-987647",
+         "name" : "biosample_id"
       },
       {
-         "name" : "reference_name",
-         "type" : "string",
          "description" : "Reference name (chromosome). Accepting values 1-22, X, Y.",
-         "example" : "8"
+         "example" : "8",
+         "name" : "reference_name",
+         "type" : "string"
       },
       {
-         "type" : "array of 1 or 2 (for imprecise end position of structural variant) integers",
          "name" : "start",
+         "type" : "array of 1 or 2 (for imprecise end position of structural variant) integers",
+         "description" : null,
+         "format" : "int64",
          "example" : [
             "20867740"
-         ],
-         "format" : "int64",
-         "description" : null
+         ]
       },
       {
          "description" : "Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.",
          "example" : "14",
-         "type" : "string",
-         "name" : "mate_name"
+         "name" : "mate_name",
+         "type" : "string"
       },
       {
          "name" : "end",
@@ -52,35 +53,35 @@
             }
          ],
          "type" : "array of 0 (for presise sequence variants), 1 or 2 (for imprecise end position of structural variant) integers",
-         "description" : null,
+         "format" : "int64",
          "example" : [
             "21977798",
             "21978106"
          ],
-         "format" : "int64"
+         "description" : null
       },
       {
-         "type" : "string",
-         "pattern" : "^([ACGT]+|N)$",
-         "name" : "reference_bases",
          "description" : "list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants",
-         "example" : "G"
-      },
-      {
-         "example" : "AC",
-         "description" : null,
-         "name" : "alternate_bases",
          "pattern" : "^([ACGT]+|N)$",
-         "type" : "string"
+         "example" : "G",
+         "type" : "string",
+         "name" : "reference_bases"
       },
       {
+         "name" : "alternate_bases",
+         "type" : "string",
+         "example" : "AC",
+         "pattern" : "^([ACGT]+|N)$",
+         "description" : null
+      },
+      {
+         "name" : "genotype",
+         "type" : "list of strings, which represent the (phased) alleles in which the variant was being observed",
          "example" : [
             "1",
             "."
          ],
-         "description" : null,
-         "name" : "genotype",
-         "type" : "list of strings, which represent the (phased) alleles in which the variant was being observed"
+         "description" : null
       },
       {
          "description" : "the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)",
@@ -88,31 +89,30 @@
          "name" : "variant_type"
       },
       {
+         "description" : "additional variant information, as defined in the example and accompanying documentation",
          "example" : [
             {
-               "type" : "float",
                "name" : "cnv_value",
+               "type" : "float",
                "value" : "-0.294"
             },
             {
+               "type" : "int64",
                "name" : "cnv_length",
-               "value" : "1205290",
-               "type" : "int64"
+               "value" : "1205290"
             }
          ],
-         "description" : "additional variant information, as defined in the example and accompanying documentation",
-         "type" : "list of common.info_class objects",
-         "name" : "info"
+         "name" : "info",
+         "type" : "list of common.info_class objects"
       },
       {
          "type" : "ISO8601 string",
          "name" : "updated",
-         "example" : "2017-10-25T07:06:03Z",
-         "description" : "time of the last edit of this record, in ISO8601"
+         "description" : "time of the last edit of this record, in ISO8601",
+         "example" : "2017-10-25T07:06:03Z"
       }
    ],
-   "name" : "variant",
    "updated" : "2018-09-01",
-   "description" : "The document describes attributes of the \"variant\" object, which e.g. can be instantiated as database documents in a MongoDB collection.\n"
+   "name" : "variant"
 }
 

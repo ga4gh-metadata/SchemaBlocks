@@ -1,17 +1,17 @@
 {
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-   "biosample_id" : "pgx-bs-987647",
-   "description" : "SNP6 array of cancer sample BRCA-0893",
    "geo_provenance" : [
       {
-         "city" : "Timisoara",
-         "latitude" : "45.75",
+         "longitude" : "21.23",
          "country" : "Romania",
          "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-         "longitude" : "21.23"
+         "latitude" : "45.75",
+         "city" : "Timisoara"
       }
    ],
    "updated" : "2017-10-25T07:06:03Z",
-   "id" : "GSM264198"
+   "id" : "GSM264198",
+   "description" : "SNP6 array of cancer sample BRCA-0893",
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
+   "biosample_id" : "pgx-bs-987647"
 }
 

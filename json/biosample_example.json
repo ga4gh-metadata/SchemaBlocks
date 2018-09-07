@@ -1,61 +1,11 @@
 {
-   "description" : "Burkitt lymphoma, cell line Namalwa",
-   "updated" : "2017-10-25T07:06:03Z",
-   "geo_provenance" : [
-      {
-         "latitude" : "45.75",
-         "city" : "Timisoara",
-         "longitude" : "21.23",
-         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-         "altitude" : "94",
-         "country" : "Romania"
-      }
-   ],
-   "info" : [
-      {
-         "type" : "ISO8601 string",
-         "name" : "followup_time",
-         "value" : "P14M"
-      },
-      {
-         "type" : "boolean",
-         "name" : "death",
-         "value" : "1"
-      }
-   ],
-   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-   "age_at_collection" : "P56Y",
-   "individual_id" : "ind-cnhl-1293347-004",
-   "age_at_collection_class" : {
-      "id" : "HP:0003621",
-      "label" : "Juvenile onset"
-   },
-   "external_ids" : [
-      {
-         "id" : "cellosaurus:CVCL_0312",
-         "relation" : "provenance"
-      },
-      {
-         "id" : "pubmed:17440070",
-         "relation" : "report"
-      },
-      {
-         "id" : "geo:GPL4894",
-         "relation" : "technology"
-      },
-      {
-         "id" : "geo:GSM185088",
-         "relation" : "denotes"
-      }
-   ],
-   "id" : "AM_BS__NCBISKYCGH-1993",
    "biocharacteristics" : [
       {
+         "description" : "Pancreatic Adenocarcinoma",
          "class" : {
-            "label" : "Pancreas, NOS",
-            "id" : "pgx:icdot:c25.9"
-         },
-         "description" : "Pancreatic Adenocarcinoma"
+            "id" : "pgx:icdot:c25.9",
+            "label" : "Pancreas, NOS"
+         }
       },
       {
          "class" : {
@@ -70,6 +20,56 @@
             "label" : "Pancreatic Adenocarcinoma"
          },
          "description" : "Pancreatic Adenocarcinoma"
+      }
+   ],
+   "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
+   "description" : "Burkitt lymphoma, cell line Namalwa",
+   "age_at_collection" : "P56Y",
+   "updated" : "2017-10-25T07:06:03Z",
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "external_ids" : [
+      {
+         "id" : "cellosaurus:CVCL_0312",
+         "relation" : "provenance"
+      },
+      {
+         "relation" : "report",
+         "id" : "pubmed:17440070"
+      },
+      {
+         "id" : "geo:GPL4894",
+         "relation" : "technology"
+      },
+      {
+         "relation" : "denotes",
+         "id" : "geo:GSM185088"
+      }
+   ],
+   "individual_id" : "ind-cnhl-1293347-004",
+   "age_at_collection_class" : {
+      "id" : "HP:0003621",
+      "label" : "Juvenile onset"
+   },
+   "info" : [
+      {
+         "value" : "P14M",
+         "type" : "ISO8601 string",
+         "name" : "followup_time"
+      },
+      {
+         "name" : "death",
+         "type" : "boolean",
+         "value" : "1"
+      }
+   ],
+   "geo_provenance" : [
+      {
+         "city" : "Timisoara",
+         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+         "longitude" : "21.23",
+         "country" : "Romania",
+         "latitude" : "45.75",
+         "altitude" : "94"
       }
    ]
 }
