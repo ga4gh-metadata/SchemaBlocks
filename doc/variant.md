@@ -1,51 +1,9 @@
 
-### reference_name
+### _id
 
-Reference name (chromosome). Accepting values 1-22, X, Y.
+the database-internal object id
 
-* example: `8`
-
-### digest
-
-concatenated unique specific elements of the variant
-
-* example: `4:12282-46465:DEL`
-
-### info
-
-additional variant information, as defined in the example and accompanying documentation
-
-* example: `ARRAY(0x7fb84f958948)`
-
-### mate_name
-
-Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.
-
-* example: `14`
-
-### callset_id
-
-The identifier ("callset.id") of the callset this variant is part of.
-
-* example: `PGX_AM_CS_GSM1690424`
-
-### end
-
-
-
-* example: `ARRAY(0x7fb84f939eb0)`
-
-### reference_bases
-
-list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants
-
-* example: `G`
-
-### start
-
-
-
-* example: `ARRAY(0x7fb84f93a198)`
+* example: `ObjectId("558e5c56ad9a82d958392bd6")`
 
 ### alternate_bases
 
@@ -59,23 +17,100 @@ The identifier ("biosample.id") of the biosample this variant was reported from.
 
 * example: `pgx-bs-987647`
 
-### updated
+### callset_id
 
-time of the last edit of this record, in ISO8601
+The identifier ("callset.id") of the callset this variant is part of.
 
-* example: `2017-10-25T07:06:03Z`
+* example: `PGX_AM_CS_GSM1690424`
 
-### _id
+### digest
 
-the database-internal object id
+concatenated unique specific elements of the variant
 
-* example: `ObjectId("558e5c56ad9a82d958392bd6")`
+* example: `4:12282-46465:DEL`
+
+### end
+
+
+
+* example: 
+```
+[
+  21977798,
+  21978106
+]
+
+```
 
 ### genotype
 
 
 
-* example: `ARRAY(0x7fb84f939b38)`
+* example: 
+```
+[
+  '1',
+  '.'
+]
+
+```
+
+### info
+
+additional variant information, as defined in the example and accompanying documentation
+
+* example: 
+```
+[
+  {
+    'value' => '-0.294',
+    'type' => 'float',
+    'name' => 'cnv_value'
+  },
+  {
+    'type' => 'int64',
+    'value' => 1205290,
+    'name' => 'cnv_length'
+  }
+]
+
+```
+
+### mate_name
+
+Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.
+
+* example: `14`
+
+### reference_bases
+
+list of bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants
+
+* example: `G`
+
+### reference_name
+
+Reference name (chromosome). Accepting values 1-22, X, Y.
+
+* example: `8`
+
+### start
+
+
+
+* example: 
+```
+[
+  20867740
+]
+
+```
+
+### updated
+
+time of the last edit of this record, in ISO8601
+
+* example: `2017-10-25T07:06:03Z`
 
 ### variant_type
 

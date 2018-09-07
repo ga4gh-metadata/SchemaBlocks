@@ -1,82 +1,82 @@
 {
    "name" : "individual",
-   "updated" : "2018-09-01",
    "attributes" : [
       {
          "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-         "description" : "the database-internal object id",
-         "name" : "_id"
+         "name" : "_id",
+         "description" : "the database-internal object id"
       },
       {
          "example" : "AM_BS__NCBISKYCGH-1993",
          "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
-         "type" : "string",
-         "name" : "id"
+         "name" : "id",
+         "type" : "string"
       },
       {
+         "example" : "patient with lung cancer, male smoker",
          "name" : "description",
          "type" : "string",
-         "example" : "patient with lung cancer, male smoker",
          "description" : "A free text description of the individual."
       },
       {
          "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases",
-         "example" : [
-            {
-               "class" : {
-                  "id" : "PATO:0020000",
-                  "label" : "female genetic sex"
-               },
-               "description" : "girl"
-            },
-            {
-               "class" : {
-                  "label" : "Homo sapiens",
-                  "id" : "NCBITaxon:9606"
-               },
-               "description" : "Jean-Luc Picard"
-            },
-            {
-               "class" : {
-                  "id" : "HP:0003745",
-                  "label" : "Genetic anticipation"
-               },
-               "description" : "Patient with Down syndrome"
-            }
-         ],
+         "name" : "biocharacteristics",
+         "type" : "list",
          "queries" : [
             {
                "description" : "the query will return all individuals who have been properly labeled as human",
                "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )"
             },
             {
-               "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )",
-               "description" : "this call to the distinct funcion will return *all* HPO annotated classes"
+               "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
+               "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
             }
          ],
-         "name" : "biocharacteristics",
-         "type" : "list"
-      },
-      {
          "example" : [
             {
-               "city" : "Timisoara",
-               "country" : "Romania",
-               "longitude" : "21.23",
-               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "latitude" : "45.75"
+               "class" : {
+                  "label" : "female genetic sex",
+                  "id" : "PATO:0020000"
+               },
+               "description" : "girl"
+            },
+            {
+               "description" : "Jean-Luc Picard",
+               "class" : {
+                  "id" : "NCBITaxon:9606",
+                  "label" : "Homo sapiens"
+               }
+            },
+            {
+               "class" : {
+                  "label" : "Genetic anticipation",
+                  "id" : "HP:0003745"
+               },
+               "description" : "Patient with Down syndrome"
             }
-         ],
-         "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
-         "type" : "geo_class object",
-         "name" : "geo_provenance"
+         ]
       },
       {
-         "type" : "ISO8601 string",
-         "name" : "updated",
+         "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
+         "name" : "geo_provenance",
+         "type" : "geo_class object",
+         "example" : [
+            {
+               "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "latitude" : "45.75",
+               "city" : "Timisoara",
+               "country" : "Romania",
+               "longitude" : "21.23"
+            }
+         ]
+      },
+      {
          "example" : "2017-10-25T07:06:03Z",
-         "description" : "time of the last edit of this record, in ISO8601"
+         "description" : "time of the last edit of this record, in ISO8601",
+         "name" : "updated",
+         "type" : "ISO8601 string"
       }
-   ]
+   ],
+   "updated" : "2018-09-01"
 }
 

@@ -1,39 +1,39 @@
 {
-   "description" : "patient with lung cancer, male smoker",
    "_id" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "geo_provenance" : [
+      {
+         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+         "latitude" : "45.75",
+         "city" : "Timisoara",
+         "country" : "Romania",
+         "longitude" : "21.23"
+      }
+   ],
    "biocharacteristics" : [
       {
          "class" : {
-            "id" : "PATO:0020000",
-            "label" : "female genetic sex"
+            "label" : "female genetic sex",
+            "id" : "PATO:0020000"
          },
          "description" : "girl"
       },
       {
+         "description" : "Jean-Luc Picard",
          "class" : {
-            "label" : "Homo sapiens",
-            "id" : "NCBITaxon:9606"
-         },
-         "description" : "Jean-Luc Picard"
+            "id" : "NCBITaxon:9606",
+            "label" : "Homo sapiens"
+         }
       },
       {
          "class" : {
-            "id" : "HP:0003745",
-            "label" : "Genetic anticipation"
+            "label" : "Genetic anticipation",
+            "id" : "HP:0003745"
          },
          "description" : "Patient with Down syndrome"
       }
    ],
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "geo_provenance" : [
-      {
-         "city" : "Timisoara",
-         "country" : "Romania",
-         "longitude" : "21.23",
-         "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-         "latitude" : "45.75"
-      }
-   ],
-   "updated" : "2017-10-25T07:06:03Z"
+   "updated" : "2017-10-25T07:06:03Z",
+   "description" : "patient with lung cancer, male smoker"
 }
 

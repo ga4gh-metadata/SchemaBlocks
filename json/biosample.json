@@ -1,44 +1,54 @@
 {
+   "updated" : "2018-09-01",
    "attributes" : [
       {
          "example" : "ObjectId(\"558e5c56ad9a82d958392bd6\")",
-         "description" : "the database-internal object id",
-         "name" : "_id"
+         "name" : "_id",
+         "description" : "the database-internal object id"
       },
       {
          "description" : "The local-unique identifier of this biosample (referenced as \"biosample_id\").",
-         "example" : "AM_BS__NCBISKYCGH-1993",
+         "name" : "id",
          "type" : "string",
-         "name" : "id"
+         "example" : "AM_BS__NCBISKYCGH-1993"
       },
       {
-         "example" : "ind-cnhl-1293347-004",
+         "name" : "individual_id",
+         "type" : "string",
          "description" : "In a complete data model \"individual_id\" represents the identifier of this biosample in the \"individuals\" collection.\n",
-         "type" : "string",
-         "name" : "individual_id"
+         "example" : "ind-cnhl-1293347-004"
       },
       {
-         "type" : "string",
          "name" : "description",
-         "example" : "Burkitt lymphoma, cell line Namalwa",
-         "description" : "A free text description of the biosample."
+         "type" : "string",
+         "description" : "A free text description of the biosample.",
+         "example" : "Burkitt lymphoma, cell line Namalwa"
       },
       {
          "name" : "age_at_collection",
-         "example" : "P56Y",
-         "description" : "the age of the individual at time of biosample collection, as ISO8601 string"
+         "description" : "the age of the individual at time of biosample collection, as ISO8601 string",
+         "example" : "P56Y"
       },
       {
          "name" : "age_at_collection_class",
          "type" : "common.ontology_class",
+         "description" : "the age of the individual at time of biosample collection, as ontology object",
          "example" : {
-            "id" : "HP:0003621",
-            "label" : "Juvenile onset"
-         },
-         "description" : "the age of the individual at time of biosample collection, as ontology object"
+            "label" : "Juvenile onset",
+            "id" : "HP:0003621"
+         }
       },
       {
-         "description" : "\"biocharacteristics\" represents a wrapper list of \"biocharacteristic_class\" objects with properly prefixed term ids, describing features of the biosample.\nExamples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.\n",
+         "queries" : [
+            {
+               "description" : "The query will return all biosamples with an (exact) class.id of \"pgx:icdom:81403\" in their \"biocharacteristics\" object list.\n",
+               "query" : "db.biosamples.find( { \"biocharacteristics.class.id\" : \"pgx:icdom:81403\" } )"
+            },
+            {
+               "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /ncit/ } } )",
+               "description" : "This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).\n"
+            }
+         ],
          "example" : [
             {
                "description" : "Pancreatic Adenocarcinoma",
@@ -48,38 +58,29 @@
                }
             },
             {
+               "description" : "Pancreatic Adenocarcinoma",
                "class" : {
                   "id" : "pgx:icdom:81403",
                   "label" : "Adenocarcinoma, NOS"
-               },
-               "description" : "Pancreatic Adenocarcinoma"
+               }
             },
             {
                "class" : {
-                  "id" : "ncit:c8294",
-                  "label" : "Pancreatic Adenocarcinoma"
+                  "label" : "Pancreatic Adenocarcinoma",
+                  "id" : "ncit:c8294"
                },
                "description" : "Pancreatic Adenocarcinoma"
             }
          ],
-         "queries" : [
-            {
-               "description" : "The query will return all biosamples with an (exact) class.id of \"pgx:icdom:81403\" in their \"biocharacteristics\" object list.\n",
-               "query" : "db.biosamples.find( { \"biocharacteristics.class.id\" : \"pgx:icdom:81403\" } )"
-            },
-            {
-               "description" : "This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).\n",
-               "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /ncit/ } } )"
-            }
-         ],
-         "name" : "biocharacteristics",
-         "type" : "list"
+         "description" : "\"biocharacteristics\" represents a wrapper list of \"biocharacteristic_class\" objects with properly prefixed term ids, describing features of the biosample.\nExamples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.\n",
+         "type" : "list",
+         "name" : "biocharacteristics"
       },
       {
          "example" : [
             {
-               "id" : "cellosaurus:CVCL_0312",
-               "relation" : "provenance"
+               "relation" : "provenance",
+               "id" : "cellosaurus:CVCL_0312"
             },
             {
                "relation" : "report",
@@ -90,63 +91,62 @@
                "relation" : "technology"
             },
             {
-               "relation" : "denotes",
-               "id" : "geo:GSM185088"
+               "id" : "geo:GSM185088",
+               "relation" : "denotes"
             }
          ],
-         "description" : "list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship",
-         "type" : "list of reference_class objects",
-         "name" : "external_ids",
          "queries" : [
             {
                "description" : "the query will return all biosamples reported in this publication",
                "query" : "db.biosamples.find( { \"external_ids.id\" : \"pubmed:17440070\" } )"
             }
-         ]
+         ],
+         "name" : "external_ids",
+         "type" : "list of reference_class objects",
+         "description" : "list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship"
       },
       {
-         "type" : "geo_class object",
-         "name" : "geo_provenance",
          "description" : "This geo_class attribute ideally describes the geographic location of where the sample was extracted.\nFrequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.\n",
+         "name" : "geo_provenance",
+         "type" : "geo_class object",
          "example" : [
             {
-               "city" : "Timisoara",
                "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "longitude" : "21.23",
-               "country" : "Romania",
+               "city" : "Timisoara",
                "latitude" : "45.75",
-               "altitude" : "94"
+               "country" : "Romania",
+               "altitude" : "94",
+               "longitude" : "21.23"
             }
          ]
       },
       {
-         "type" : "list of common.info_class objects",
          "queries" : {
             "query" : "db.biosamples.find( {\"info\" : { $elemMatch: { $elemMatch: { \"name\" : \"followup_time\", \"value\" : { $regex : /\\P/ } }, $elemMatch: { \"name\" : \"death\", \"value\" : true } } } } )"
          },
-         "name" : "info",
          "example" : [
             {
+               "name" : "followup_time",
                "value" : "P14M",
-               "type" : "ISO8601 string",
-               "name" : "followup_time"
+               "type" : "ISO8601 string"
             },
             {
+               "value" : "1",
                "name" : "death",
-               "type" : "boolean",
-               "value" : "1"
+               "type" : "boolean"
             }
          ],
-         "description" : "This is a list for objects without further specification in the schema.\n"
+         "description" : "This is a list for objects without further specification in the schema.\n",
+         "type" : "list of common.info_class objects",
+         "name" : "info"
       },
       {
-         "example" : "2017-10-25T07:06:03Z",
-         "description" : "time of the last edit of this record, in ISO8601",
+         "name" : "updated",
          "type" : "ISO8601 string",
-         "name" : "updated"
+         "description" : "time of the last edit of this record, in ISO8601",
+         "example" : "2017-10-25T07:06:03Z"
       }
    ],
-   "updated" : "2018-09-01",
    "name" : "biosample"
 }
 

@@ -9,6 +9,7 @@ TODO: Fix the Boolean etc. value type 2 string bug.
 use File::Basename;
 use JSON;
 use YAML::XS qw(LoadFile DumpFile);
+use Data::Dumper;
 
 my $here_path   =   File::Basename::dirname( eval { ( caller() )[1] } );
 my $config      =   LoadFile($here_path.'/config.yaml') or die "¡No config.yaml file in this path!";
@@ -44,19 +45,30 @@ foreach (@yaml_files) {
   $example_file =~   s/\.json$/_example.json/i;
   my $markdown;
   
-  foreach (sort @{ $data->{attributes} }) {
-    if ($_->{example} =~ /^\d+?(?:\.\d+?)?$/i) {
-      $example->{$_->{name}} =   1 * $_->{example} }
+  my %attr      =   map{ $_->{name} => $_ } @{ $data->{attributes} };
+  
+  foreach my $name (sort keys %attr) {
+    if ($attr{$name}->{example} =~ /^\d+?(?:\.\d+?)?$/i) {
+      $example->{$name} =   1 * $attr{$name}->{example} }
     else {
-      $example->{$_->{name}} =   $_->{example} } 
+      $example->{$name} =   $attr{$name}->{example} } 
+
+  my $md_example;
+  if (ref( $attr{$name}->{example}) eq "ARRAY") {
+		$md_example	=		"\n".'```'."\n".Dumper($attr{$name}->{example})."\n".'```';
+		$md_example	=~  s/\$VAR1 \= //;
+		$md_example	=~  s/\n {8}/\n/g;
+		$md_example	=~  s/\;//g;
+	} else {
+		$md_example	=		'`'.$attr{$name}->{example}.'`' }
 
   $markdown     .=  <<END;  
 
-### $_->{name}
+### $name
 
-$_->{description}
+$attr{$name}->{description}
 
-* example: `$example->{$_->{name}}`
+* example: $md_example
 END
 
   }
