@@ -2,3 +2,7 @@
 yaml_path_rel: '../yaml'
 json_path_rel: '../json'
 md_path_rel: '../doc'
+file_types:
+  - yaml
+  - json
+  - md

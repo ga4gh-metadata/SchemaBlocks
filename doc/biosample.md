@@ -31,8 +31,8 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 "age_at_collection_class" : {
-  'id' => 'HP:0003621',
-  'label' => 'Juvenile onset'
+  'label' : 'Juvenile onset',
+  'id' : 'HP:0003621'
 }
 ```
 
@@ -47,25 +47,25 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 "biocharacteristics" : [
   {
-    'class' => {
-                 'label' => 'Pancreas, NOS',
-                 'id' => 'pgx:icdot:c25.9'
-               },
-    'description' => 'Pancreatic Adenocarcinoma'
-  },
-  {
-    'description' => 'Pancreatic Adenocarcinoma',
-    'class' => {
-                 'id' => 'pgx:icdom:81403',
-                 'label' => 'Adenocarcinoma, NOS'
+    'description' : 'Pancreatic Adenocarcinoma',
+    'class' : {
+                 'id' : 'pgx:icdot:c25.9',
+                 'label' : 'Pancreas, NOS'
                }
   },
   {
-    'class' => {
-                 'label' => 'Pancreatic Adenocarcinoma',
-                 'id' => 'ncit:c8294'
+    'class' : {
+                 'id' : 'pgx:icdom:81403',
+                 'label' : 'Adenocarcinoma, NOS'
                },
-    'description' => 'Pancreatic Adenocarcinoma'
+    'description' : 'Pancreatic Adenocarcinoma'
+  },
+  {
+    'class' : {
+                 'id' : 'ncit:c8294',
+                 'label' : 'Pancreatic Adenocarcinoma'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
   }
 ]
 ```
@@ -102,20 +102,20 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 "external_ids" : [
   {
-    'id' => 'cellosaurus:CVCL_0312',
-    'relation' => 'provenance'
+    'id' : 'cellosaurus:CVCL_0312',
+    'relation' : 'provenance'
   },
   {
-    'id' => 'pubmed:17440070',
-    'relation' => 'report'
+    'relation' : 'report',
+    'id' : 'pubmed:17440070'
   },
   {
-    'relation' => 'technology',
-    'id' => 'geo:GPL4894'
+    'relation' : 'technology',
+    'id' : 'geo:GPL4894'
   },
   {
-    'id' => 'geo:GSM185088',
-    'relation' => 'denotes'
+    'relation' : 'denotes',
+    'id' : 'geo:GSM185088'
   }
 ]
 ```
@@ -136,12 +136,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 "geo_provenance" : {
-  'city' => 'Timisoara',
-  'country' => 'Romania',
-  'latitude' => '45.75',
-  'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'altitude' => 94,
-  'longitude' => '21.23'
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'longitude' : 21.23,
+  'city' : 'Timisoara',
+  'latitude' : 45.75,
+  'country' : 'Romania',
+  'altitude' : 94
 }
 ```
 
@@ -176,14 +176,14 @@ This is a list for objects without further specification in the schema.
 ```
 "info" : [
   {
-    'value' => 'P14M',
-    'type' => 'ISO8601 string',
-    'name' => 'followup_time'
+    'value' : 'P14M',
+    'name' : 'followup_time',
+    'type' : 'ISO8601 string'
   },
   {
-    'name' => 'death',
-    'value' => 1,
-    'type' => 'boolean'
+    'value' : 1,
+    'name' : 'death',
+    'type' : 'boolean'
   }
 ]
 ```
@@ -204,4 +204,3 @@ time of the last edit of this record, in ISO8601
 ```
 "updated" : "2017-10-25T07:06:03Z"
 ```
-

@@ -69,7 +69,7 @@ concatenated unique specific elements of the variant
 #### Queries:
 the query will return all variants with any overlap of the CDKN2A CDR
 ```
-db.variants.find( { "reference_name" : "9",  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )
+db.variants.find( { "reference_name" : 9,  "variant_type" : "DEL", "start" : { $lteq : 21975098 }, "end" : { $gteq : 21967753 } } )
 ```
 
 ## genotype
@@ -94,14 +94,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 "info" : [
   {
-    'name' => 'cnv_value',
-    'value' => '-0.294',
-    'type' => 'float'
+    'type' : 'float',
+    'name' : 'cnv_value',
+    'value' : '-0.294'
   },
   {
-    'type' => 'int64',
-    'value' => 1205290,
-    'name' => 'cnv_length'
+    'type' : 'int64',
+    'name' : 'cnv_length',
+    'value' : 1205290
   }
 ]
 ```
@@ -113,7 +113,7 @@ Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting 
 #### Example
 
 ```
-"mate_name" : "14"
+"mate_name" : 14
 ```
 
 ## reference_bases
@@ -133,7 +133,7 @@ Reference name (chromosome). Accepting values 1-22, X, Y.
 #### Example
 
 ```
-"reference_name" : "8"
+"reference_name" : 8
 ```
 
 ## start
@@ -167,4 +167,3 @@ the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
 ```
 "variant_type" : "DEL"
 ```
-

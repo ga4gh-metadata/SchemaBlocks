@@ -33,8 +33,8 @@ ontology_class
 
 ```
 "class" : {
-  'label' => 'Pancreatic Adenocarcinoma',
-  'id' => 'ncit:c8294'
+  'id' : 'ncit:c8294',
+  'label' : 'Pancreatic Adenocarcinoma'
 }
 ```
 
@@ -113,7 +113,7 @@ double
 #### Example
 
 ```
-"latitude" : "47.37"
+"latitude" : 47.37
 ```
 
 ### longitude
@@ -127,7 +127,7 @@ double
 #### Example
 
 ```
-"longitude" : "8.54"
+"longitude" : 8.54
 ```
 
 ### altitude
@@ -141,7 +141,7 @@ double
 #### Example
 
 ```
-"altitude" : "8848"
+"altitude" : 8848
 ```
 
 
@@ -188,7 +188,7 @@ the value in a format correstponding to type
 #### Example
 
 ```
-"value" : "1503320"
+"value" : 1503320
 ```
 
 
@@ -256,5 +256,3 @@ string
 ```
 "relation" : "denotes"
 ```
-
-

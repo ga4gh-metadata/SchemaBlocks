@@ -14,9 +14,9 @@ use Data::Dumper;
 binmode STDOUT, ":utf8";
 
 my $here_path   =   File::Basename::dirname( eval { ( caller() )[1] } );
-my $config      =   LoadFile($here_path.'/config.yaml') or die "¡No config.yaml file in this path!";
+our $config     =   LoadFile($here_path.'/config.yaml') or die "¡No config.yaml file in this path!";
 
-foreach (qw(yaml json md)) {
+foreach ( @{ $config->{file_types} } ) {
   $config->{$_.'_path'} =   join('/', $here_path, $config->{$_.'_path_rel'});
   mkdir $config->{$_.'_path'};
 }
@@ -25,39 +25,47 @@ opendir DIR, $config->{'yaml_path'};
 my @yaml_files  =		grep{ /ya?ml$/ } readdir(DIR);
 close DIR;
 
-foreach (@yaml_files) {
+_process_yaml(\@yaml_files);
 
-  my $file_name =   $_;
-  $file_name    =~   s/\.ya?ml$//i;
+exit;
 
-  foreach (qw(yaml json md)) {
-    $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);
-  }
+sub _process_yaml {
 
-  my $data      =   LoadFile($config->{yaml_file});
+  my $yaml_files  =   shift;
+  
+  foreach (@$yaml_files) {
 
-  print "Reading YAML file \"$config->{yaml_file}\"\n";
+    my $file_name =   $_;
+    $file_name    =~   s/\.ya?ml$//i;
 
-  open  (FILE, ">", $config->{json_file}) || warn 'output file '.$config->{json_file}.' could not be created.';
-  print FILE  JSON::XS->new->pretty( 1 )->encode( $data )."\n";
-  close FILE;
+    foreach ( @{ $config->{file_types} } ) {
+      $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);
+    }
 
-  my $example   =   {};
-  my $example_file  =   $config->{json_file};
-  $example_file =~   s/\.json$/_example.json/i;
-  my $markdown  =   <<END;
+    my $data      =   LoadFile($config->{yaml_file});
+
+    print "Reading YAML file \"$config->{yaml_file}\"\n";
+
+    open  (FILE, ">", $config->{json_file}) || warn 'output file '.$config->{json_file}.' could not be created.';
+    print FILE  JSON::XS->new->pretty( 1 )->encode( $data )."\n";
+    close FILE;
+
+    my $example   =   {};
+    my $example_file  =   $config->{json_file};
+    $example_file =~   s/\.json$/_example.json/i;
+    my $markdown  =   <<END;
 # $file_name  
 
 $data->{description}
 END
 
-  my %attr      =   map{ $_->{name} => $_ } @{ $data->{attributes} };
+    my %attr    =   map{ $_->{name} => $_ } @{ $data->{attributes} };
 
-  foreach my $name (sort keys %attr) {
+    foreach my $name (sort keys %attr) {
 
-    my $md_example  =   _reformat_example($attr{$name}->{example});
-
-    $markdown   .=  <<END;
+      my $md_example  =   _reformat_example($attr{$name}->{example});
+      $example->{$name}   =   $attr{$name}->{example};
+      $markdown .=  <<END;
 
 ## $name
 
@@ -70,11 +78,11 @@ $attr{$name}->{description}
 ```
 END
 
-    if ($attr{$name}->{queries}) {
+      if ($attr{$name}->{queries}) {
         $markdown   .=  '
 #### Queries:';
-      foreach my $query (@{$attr{$name}->{queries}}) {
-        $markdown .=  <<END;
+        foreach my $query (@{$attr{$name}->{queries}}) {
+          $markdown .=  <<END;
 
 $query->{description}
 ```
@@ -82,13 +90,13 @@ $query->{query}
 ```
 END
 
-    }}
+      }}
 
-  }
+    }
 
-  foreach my $class_name (sort keys %{ $data->{classes} }) {
+    foreach my $class_name (sort keys %{ $data->{classes} }) {
 
-    $markdown   .=  <<END;
+      $markdown .=  <<END;
 
 ## $class_name
 
@@ -96,11 +104,11 @@ $data->{classes}->{$class_name}->{description}
 
 END
 
-    foreach (@{ $data->{classes}->{$class_name}->{attributes} }) {
+      foreach (@{ $data->{classes}->{$class_name}->{attributes} }) {
 
-    my $md_example  =   _reformat_example($_->{example});
-
-    $markdown   .= <<END;
+        $example->{$name}   =   $attr{$name}->{example};
+        my $md_example  =   _reformat_example($_->{example});
+        $markdown .=  <<END;
 ### $_->{name}
 
 $_->{description}
@@ -117,17 +125,24 @@ $_->{type}
 
 END
 
-  }}
+    }}
+  
+    $printout     =   JSON::XS->new->pretty( 1 )->encode( $example )."\n";
 
-  open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
-  print FILE  JSON::XS->new->pretty( 1 )->encode( $example )."\n";
-  close FILE;
+    open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
+    print FILE  _clean_numbers_booleans_from_text($printout);
+    close FILE;
 
-  open  (FILE, ">", $config->{md_file}) || warn 'output file '. $config->{md_file}.' could not be created.';
-  print FILE  $markdown."\n";
-  close FILE;
+    open  (FILE, ">", $config->{md_file}) || warn 'output file '. $config->{md_file}.' could not be created.';
+    print FILE  _clean_numbers_booleans_from_text($markdown)."\n";
+    close FILE;
 
+  }
 }
+
+################################################################################
+################################################################################
+################################################################################
 
 sub _reformat_example {
   
@@ -140,9 +155,27 @@ sub _reformat_example {
   if (ref( $example) eq "ARRAY" || ref( $example) eq "HASH") {
     $md_example	=		$md_example;
   } else {
-    $md_example	  =~  s/\'//g;
-    $md_example	  =		'"'.$md_example.'"' }
+    $md_example	=~  s/\'//g;
+    $md_example	=		'"'.$md_example.'"' }
 
   return $md_example;
   
+}
+
+sub _clean_numbers_booleans_from_text {
+
+  my $printout  =   shift;
+
+  my @cleaned;
+  
+  foreach my $line (split("\n", $printout)) {
+    $line       =~  s/\=\>/:/;
+    $line       =~  s/\: [\'\"](\d+?(?:\.\d+?)?)[\'\"]/: $1/;
+  
+  
+    push(@cleaned, $line);
+  }
+  
+  return join("\n", @cleaned);
+
 }

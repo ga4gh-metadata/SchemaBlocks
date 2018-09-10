@@ -21,25 +21,25 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 "biocharacteristics" : [
   {
-    'description' => 'girl',
-    'class' => {
-                 'label' => 'female genetic sex',
-                 'id' => 'PATO:0020000'
+    'description' : 'girl',
+    'class' : {
+                 'label' : 'female genetic sex',
+                 'id' : 'PATO:0020000'
                }
   },
   {
-    'class' => {
-                 'id' => 'NCBITaxon:9606',
-                 'label' => 'Homo sapiens'
+    'class' : {
+                 'id' : 'NCBITaxon:9606',
+                 'label' : 'Homo sapiens'
                },
-    'description' => 'Jean-Luc Picard'
+    'description' : 'Jean-Luc Picard'
   },
   {
-    'class' => {
-                 'label' => 'Genetic anticipation',
-                 'id' => 'HP:0003745'
-               },
-    'description' => 'Patient with Down syndrome'
+    'description' : 'Patient with Down syndrome',
+    'class' : {
+                 'id' : 'HP:0003745',
+                 'label' : 'Genetic anticipation'
+               }
   }
 ]
 ```
@@ -76,11 +76,11 @@ This value may reflect either the place of burth or residence, but frequently ma
 ```
 "geo_provenance" : [
   {
-    'longitude' => '21.23',
-    'city' => 'Timisoara',
-    'country' => 'Romania',
-    'latitude' => '45.75',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania'
+    'longitude' : 21.23,
+    'city' : 'Timisoara',
+    'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'country' : 'Romania',
+    'latitude' : 45.75
   }
 ]
 ```
@@ -104,4 +104,3 @@ time of the last edit of this record, in ISO8601
 ```
 "updated" : "2017-10-25T07:06:03Z"
 ```
-

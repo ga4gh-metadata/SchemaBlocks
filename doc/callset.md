@@ -43,11 +43,11 @@ This geo_class attribute ideally describes the geographic location of where this
 ```
 "geo_provenance" : [
   {
-    'longitude' => '21.23',
-    'country' => 'Romania',
-    'city' => 'Timisoara',
-    'label' => 'Str Marasesti 5, 300077 Timisoara, Romania',
-    'latitude' => '45.75'
+    'longitude' : 21.23,
+    'city' : 'Timisoara',
+    'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'latitude' : 45.75,
+    'country' : 'Romania'
   }
 ]
 ```
@@ -71,4 +71,3 @@ time of the last edit of this record, in ISO8601
 ```
 "updated" : "2017-10-25T07:06:03Z"
 ```
-
