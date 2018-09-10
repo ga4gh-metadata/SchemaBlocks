@@ -1,7 +1,6 @@
-# biosample  
+# biosample
 
 In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
-
 
 ## _id
 
@@ -40,7 +39,6 @@ the age of the individual at time of biosample collection, as ontology object
 
 "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
-
 
 #### Example
 
