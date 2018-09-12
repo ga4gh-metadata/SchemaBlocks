@@ -104,7 +104,22 @@ $data->{classes}->{$class_name}->{description}
 
 END
 
-      foreach (@{ $data->{classes}->{$class_name}->{attributes} }) {
+      my $attributes  =   [];
+      
+      if ($data->{classes}->{$class_name}->{property}) {
+      
+        $attributes =   $data->{classes}->{$class_name}->{property};
+
+        $markdown   .=  <<END;
+## property
+
+The "property" label stands for the attribute name.
+
+END
+      } else {
+        $attributes =   $data->{classes}->{$class_name}->{attributes} }
+
+      foreach (@{ $attributes }) {
 
         $example->{$name}   =   $attr{$name}->{example};
         my $md_example  =   _reformat_example($_->{example});

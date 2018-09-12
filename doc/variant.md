@@ -92,18 +92,16 @@ additional variant information, as defined in the example and accompanying docum
 #### Example
 
 ```
-"info" : [
-  {
-    'type' : 'float',
-    'name' : 'cnv_value',
-    'value' : '-0.294'
-  },
-  {
-    'type' : 'int64',
-    'name' : 'cnv_length',
-    'value' : 1205290
-  }
-]
+"info" : {
+  'cnv_length' : {
+                    'type' : 'int64',
+                    'value' : 1205290
+                  },
+  'cnv_value' : {
+                   'type' : 'float',
+                   'value' : '-0.294'
+                 }
+}
 ```
 
 ## mate_name

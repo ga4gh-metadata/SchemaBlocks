@@ -21,24 +21,24 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 "biocharacteristics" : [
   {
-    'description' : 'girl',
     'class' : {
                  'label' : 'female genetic sex',
                  'id' : 'PATO:0020000'
-               }
+               },
+    'description' : 'girl'
   },
   {
+    'description' : 'Jean-Luc Picard',
     'class' : {
-                 'id' : 'NCBITaxon:9606',
-                 'label' : 'Homo sapiens'
-               },
-    'description' : 'Jean-Luc Picard'
+                 'label' : 'Homo sapiens',
+                 'id' : 'NCBITaxon:9606'
+               }
   },
   {
     'description' : 'Patient with Down syndrome',
     'class' : {
-                 'id' : 'HP:0003745',
-                 'label' : 'Genetic anticipation'
+                 'label' : 'Genetic anticipation',
+                 'id' : 'HP:0003745'
                }
   }
 ]
@@ -76,11 +76,11 @@ This value may reflect either the place of burth or residence, but frequently ma
 ```
 "geo_provenance" : [
   {
-    'longitude' : 21.23,
-    'city' : 'Timisoara',
-    'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
     'country' : 'Romania',
-    'latitude' : 45.75
+    'latitude' : 45.75,
+    'city' : 'Timisoara',
+    'longitude' : 21.23,
+    'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
   }
 ]
 ```
@@ -93,6 +93,25 @@ The local-unique identifier of this individual (referenced as "individual_id").
 
 ```
 "id" : "AM_BS__NCBISKYCGH-1993"
+```
+
+## info
+
+additional variant information, as defined in the example and accompanying documentation
+
+#### Example
+
+```
+"info" : {
+  'first_name' : {
+                    'value' : 'Ion',
+                    'type' : 'string'
+                  },
+  'last_name' : {
+                   'value' : 'Tichy',
+                   'type' : 'string'
+                 }
+}
 ```
 
 ## updated

@@ -91,19 +91,19 @@ attributes:
 
   - name: info
     description: |
-      This is a list for objects without further specification in the schema.
-    type: list of common.info_class objects
+      This is a wrapper for objects without further specification in the schema.
+    type: common.info_class objects
     queries:
       - description: |
           This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.
         query: 'db.biosamples.find( {"info" : { $elemMatch: { $elemMatch: { "name" : "followup_time", "value" : { $regex : /\P/ } }, $elemMatch: { "name" : "death", "value" : true } } } } )'
     example:
-      - name: followup_time
-        type: ISO8601 string
-        value: 'P14M'
-      - name: death
-        type: boolean
-        value: true
+        followup_time:
+          type: ISO8601 string
+          value: 'P14M'
+        death:
+          type: boolean
+          value: true
 
   - name: updated
     description: time of the last edit of this record, in ISO8601

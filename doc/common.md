@@ -33,8 +33,8 @@ ontology_class
 
 ```
 "class" : {
-  'id' : 'ncit:c8294',
-  'label' : 'Pancreatic Adenocarcinoma'
+  'label' : 'Pancreatic Adenocarcinoma',
+  'id' : 'ncit:c8294'
 }
 ```
 
@@ -148,10 +148,13 @@ double
 ## info_class
 
 
+## property
 
-### name
+The "property" label stands for the attribute name.
 
-the attribute / key
+### description
+
+an optional free-text annotation about the object
 
 #### Type
 
@@ -160,7 +163,7 @@ string
 #### Example
 
 ```
-"name" : "cnv_length"
+"description" : "The base length of the called segment."
 ```
 
 ### type

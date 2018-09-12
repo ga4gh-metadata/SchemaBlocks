@@ -71,14 +71,14 @@ attributes:
 
   - name: info
     description: additional variant information, as defined in the example and accompanying documentation
-    type: list of common.info_class objects
+    type: common.info_class
     example:
-    - name: cnv_value
-      type: float
-      value: -0.294
-    - name: cnv_length
-      type: int64
-      value: 1205290
+      cnv_value:
+        type: float
+        value: -0.294
+      cnv_length:
+        type: int64
+        value: 1205290
 
   - name: updated
     description: time of the last edit of this record, in ISO8601

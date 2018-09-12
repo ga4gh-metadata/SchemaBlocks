@@ -32,6 +32,26 @@ attributes:
         latitude: 45.75
         longitude: 21.23
 
+  - name: info
+    description: additional variant information, as defined in the example and accompanying documentation
+    type: common.info_class
+    example:
+      cnv_maps:
+        type: common.info_class
+        description: |
+          The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
+          With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
+        value:
+          dup_map:
+          type: array
+          value: 
+            ["", "", "DUP", "DUP", "DUP", "", "", "", "", "", ""]          
+      binning:
+        type: int64
+        description:
+          interval size in bases for the binning, when creating the cnv_maps
+        value: 1000000
+
   - name: updated
     description: time of the last edit of this record, in ISO8601
     type: ISO8601 string

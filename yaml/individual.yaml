@@ -49,6 +49,17 @@ attributes:
         latitude: 45.75
         longitude: 21.23
 
+  - name: info
+    description: additional variant information, as defined in the example and accompanying documentation
+    type: common.info_class
+    example:
+      first_name:
+        type: string
+        value: 'Ion'
+      last_name:
+        type: string
+        value: 'Tichy'
+
   - name: updated
     description: time of the last edit of this record, in ISO8601
     type: ISO8601 string

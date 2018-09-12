@@ -44,11 +44,11 @@ classes:
         example: 'denotes'
 
   info_class:
-    attributes:
-      - name: name
-        description: the attribute / key
+    property:
+      - name: description
+        description: an optional free-text annotation about the object
         type: string
-        example: 'cnv_length'
+        example: "The base length of the called segment."
       - name: type
         description: type of the value; optional
         type: string

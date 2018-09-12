@@ -44,8 +44,8 @@ This geo_class attribute ideally describes the geographic location of where this
 "geo_provenance" : [
   {
     'longitude' : 21.23,
-    'city' : 'Timisoara',
     'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+    'city' : 'Timisoara',
     'latitude' : 45.75,
     'country' : 'Romania'
   }
@@ -60,6 +60,45 @@ The local-unique identifier of this callset (referenced as "callset_id").
 
 ```
 "id" : "GSM264198"
+```
+
+## info
+
+additional variant information, as defined in the example and accompanying documentation
+
+#### Example
+
+```
+"info" : {
+  'binning' : {
+                 'type' : 'int64',
+                 'value' : 1000000,
+                 'description' : 'interval size in bases for the binning, when creating the cnv_maps'
+               },
+  'cnv_maps' : {
+                  'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
+With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
+',
+                  'type' : 'common.info_class',
+                  'value' : {
+                               'value' : [
+                                            '',
+                                            '',
+                                            'DUP',
+                                            'DUP',
+                                            'DUP',
+                                            '',
+                                            '',
+                                            '',
+                                            '',
+                                            '',
+                                            ''
+                                          ],
+                               'type' : 'array',
+                               'dup_map' : undef
+                             }
+                }
+}
 ```
 
 ## updated

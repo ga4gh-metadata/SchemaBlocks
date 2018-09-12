@@ -1,6 +1,7 @@
-# biosample
+# biosample  
 
 In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
+
 
 ## _id
 
@@ -30,8 +31,8 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 "age_at_collection_class" : {
-  'label' : 'Juvenile onset',
-  'id' : 'HP:0003621'
+  'id' : 'HP:0003621',
+  'label' : 'Juvenile onset'
 }
 ```
 
@@ -40,28 +41,29 @@ the age of the individual at time of biosample collection, as ontology object
 "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
 
+
 #### Example
 
 ```
 "biocharacteristics" : [
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'pgx:icdot:c25.9',
-                 'label' : 'Pancreas, NOS'
-               }
-  },
-  {
-    'class' : {
-                 'id' : 'pgx:icdom:81403',
-                 'label' : 'Adenocarcinoma, NOS'
+                 'label' : 'Pancreas, NOS',
+                 'id' : 'pgx:icdot:c25.9'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   },
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'ncit:c8294',
-                 'label' : 'Pancreatic Adenocarcinoma'
+                 'id' : 'pgx:icdom:81403',
+                 'label' : 'Adenocarcinoma, NOS'
+               }
+  },
+  {
+    'class' : {
+                 'label' : 'Pancreatic Adenocarcinoma',
+                 'id' : 'ncit:c8294'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   }
@@ -100,20 +102,20 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 "external_ids" : [
   {
-    'id' : 'cellosaurus:CVCL_0312',
-    'relation' : 'provenance'
+    'relation' : 'provenance',
+    'id' : 'cellosaurus:CVCL_0312'
   },
   {
-    'relation' : 'report',
-    'id' : 'pubmed:17440070'
+    'id' : 'pubmed:17440070',
+    'relation' : 'report'
   },
   {
-    'relation' : 'technology',
-    'id' : 'geo:GPL4894'
+    'id' : 'geo:GPL4894',
+    'relation' : 'technology'
   },
   {
-    'relation' : 'denotes',
-    'id' : 'geo:GSM185088'
+    'id' : 'geo:GSM185088',
+    'relation' : 'denotes'
   }
 ]
 ```
@@ -134,12 +136,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 "geo_provenance" : {
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'longitude' : 21.23,
-  'city' : 'Timisoara',
-  'latitude' : 45.75,
   'country' : 'Romania',
-  'altitude' : 94
+  'latitude' : 45.75,
+  'city' : 'Timisoara',
+  'longitude' : 21.23,
+  'altitude' : 94,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -166,24 +168,22 @@ In a complete data model "individual_id" represents the identifier of this biosa
 
 ## info
 
-This is a list for objects without further specification in the schema.
+This is a wrapper for objects without further specification in the schema.
 
 
 #### Example
 
 ```
-"info" : [
-  {
-    'value' : 'P14M',
-    'name' : 'followup_time',
-    'type' : 'ISO8601 string'
-  },
-  {
-    'value' : 1,
-    'name' : 'death',
-    'type' : 'boolean'
-  }
-]
+"info" : {
+  'followup_time' : {
+                       'type' : 'ISO8601 string',
+                       'value' : 'P14M'
+                     },
+  'death' : {
+               'type' : 'boolean',
+               'value' : 1
+             }
+}
 ```
 
 #### Queries:
