@@ -1,5 +1,5 @@
 info:
-  name: callset
+  title: GA4GH __callset__
   description: |
     The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. 
   updated: '2018-09-04'
