@@ -23,8 +23,8 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 "age_at_collection_class" : {
-  'id' : 'HP:0003621',
-  'label' : 'Juvenile onset'
+  'label' : 'Juvenile onset',
+  'id' : 'HP:0003621'
 }
 ```
 
@@ -39,18 +39,18 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 "biocharacteristics" : [
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'label' : 'Pancreas, NOS',
                  'id' : 'pgx:icdot:c25.9'
-               }
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
   },
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'label' : 'Adenocarcinoma, NOS',
                  'id' : 'pgx:icdom:81403'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
+               }
   },
   {
     'class' : {
@@ -94,12 +94,12 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 "external_ids" : [
   {
-    'id' : 'cellosaurus:CVCL_0312',
-    'relation' : 'provenance'
+    'relation' : 'provenance',
+    'id' : 'cellosaurus:CVCL_0312'
   },
   {
-    'relation' : 'report',
-    'id' : 'pubmed:17440070'
+    'id' : 'pubmed:17440070',
+    'relation' : 'report'
   },
   {
     'id' : 'geo:GPL4894',
@@ -128,12 +128,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 "geo_provenance" : {
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'country' : 'Romania',
+  'altitude' : 94,
   'longitude' : 21.23,
   'city' : 'Timisoara',
-  'altitude' : 94,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'latitude' : 45.75,
-  'country' : 'Romania'
+  'latitude' : 45.75
 }
 ```
 
@@ -167,14 +167,14 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 "info" : {
-  'followup_time' : {
-                       'value' : 'P14M',
-                       'type' : 'ISO8601 string'
-                     },
   'death' : {
                'type' : 'boolean',
                'value' : 1
-             }
+             },
+  'followup_time' : {
+                       'type' : 'ISO8601 string',
+                       'value' : 'P14M'
+                     }
 }
 ```
 

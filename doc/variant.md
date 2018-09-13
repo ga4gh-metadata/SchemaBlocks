@@ -87,14 +87,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 "info" : {
   'cnv_value' : {
+                   'type' : 'number',
                    'value' : '-0.294',
-                   'format' : 'float',
-                   'type' : 'number'
+                   'format' : 'float'
                  },
   'cnv_length' : {
-                    'format' : 'int64',
+                    'type' : 'number',
                     'value' : 1205290,
-                    'type' : 'number'
+                    'format' : 'int64'
                   }
 }
 ```

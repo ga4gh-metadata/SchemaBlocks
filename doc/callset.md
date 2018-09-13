@@ -34,11 +34,11 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 "geo_provenance" : {
-  'country' : 'Romania',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'latitude' : 45.75,
   'city' : 'Timisoara',
-  'longitude' : 21.23
+  'longitude' : 21.23,
+  'country' : 'Romania',
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -63,15 +63,12 @@ additional variant information, as defined in the example and accompanying docum
   'cnv_maps' : {
                   'value' : {
                                'binning' : {
-                                              'type' : 'number',
-                                              'format' : 'int64',
                                               'value' : 1000000,
-                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps'
+                                              'type' : 'number',
+                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps',
+                                              'format' : 'int64'
                                             },
                                'dup_map' : {
-                                              'description' : 'gain cnv status for the corresponding genome intervals
-',
-                                              'type' : 'array',
                                               'value' : [
                                                            '',
                                                            '',
@@ -84,7 +81,10 @@ additional variant information, as defined in the example and accompanying docum
                                                            '',
                                                            '',
                                                            ''
-                                                         ]
+                                                         ],
+                                              'type' : 'array',
+                                              'description' : 'gain cnv status for the corresponding genome intervals
+'
                                             }
                              },
                   'schema' : {
