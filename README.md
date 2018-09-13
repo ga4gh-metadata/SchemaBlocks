@@ -1,4 +1,4 @@
-## GA4GH Schemas
+## [GA4GH Schemas](https://ga4gh-metadata.github.io/schemas/)
 
 <div style="display: block; float: right; width: 260px;">
   <img src="https://ga4gh-metadata.github.io/schemas/rsrc/img/ga4gh-object-model.png" />
