@@ -1,35 +1,43 @@
 {
+   "info" : {
+      "title" : "GA4GH __callset__",
+      "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. \n",
+      "updated" : "2018-09-04"
+   },
    "definitions" : {
       "Callset" : {
          "properties" : {
+            "biosample_id" : {
+               "example" : "pgx-bs-987647",
+               "type" : "string",
+               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining."
+            },
             "description" : {
-               "description" : "A free text description of the callset.",
                "example" : "SNP6 array of cancer sample BRCA-0893",
-               "type" : "string"
+               "type" : "string",
+               "description" : "A free text description of the callset."
             },
             "updated" : {
                "description" : "time of the last edit of this record, in ISO8601",
                "example" : "2017-10-25T07:06:03Z",
                "type" : "string"
             },
-            "biosample_id" : {
+            "id" : {
+               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
                "type" : "string",
-               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",
-               "example" : "pgx-bs-987647"
+               "example" : "GSM264198"
             },
             "info" : {
                "example" : {
                   "cnv_maps" : {
                      "value" : {
                         "binning" : {
-                           "type" : "number",
-                           "format" : "int64",
                            "value" : "1000000",
-                           "description" : "interval size in bases for the binning, when creating the cnv_maps"
+                           "type" : "number",
+                           "description" : "interval size in bases for the binning, when creating the cnv_maps",
+                           "format" : "int64"
                         },
                         "dup_map" : {
-                           "description" : "gain cnv status for the corresponding genome intervals\n",
-                           "type" : "array",
                            "value" : [
                               "",
                               "",
@@ -42,7 +50,9 @@
                               "",
                               "",
                               ""
-                           ]
+                           ],
+                           "type" : "array",
+                           "description" : "gain cnv status for the corresponding genome intervals\n"
                         }
                      },
                      "schema" : {
@@ -57,30 +67,20 @@
                }
             },
             "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
-               "example" : {
-                  "country" : "Romania",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "latitude" : "45.75",
-                  "city" : "Timisoara",
-                  "longitude" : "21.23"
-               },
                "schema" : {
                   "$ref" : "./common/Geo_class"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
+               "example" : {
+                  "latitude" : "45.75",
+                  "city" : "Timisoara",
+                  "longitude" : "21.23",
+                  "country" : "Romania",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
                }
-            },
-            "id" : {
-               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
-               "example" : "GSM264198",
-               "type" : "string"
             }
          }
       }
-   },
-   "info" : {
-      "updated" : "2018-09-04",
-      "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. \n",
-      "title" : "GA4GH __callset__"
    }
 }
 
