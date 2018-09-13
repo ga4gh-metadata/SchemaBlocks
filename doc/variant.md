@@ -1,4 +1,5 @@
-#   
+# GA4GH __variant__
+  
 
 The document describes attributes of the "variant" object, which e.g. can be instantiated as database documents in a MongoDB collection.
 
@@ -86,14 +87,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 "info" : {
   'cnv_value' : {
+                   'value' : '-0.294',
                    'format' : 'float',
-                   'type' : 'number',
-                   'value' : '-0.294'
+                   'type' : 'number'
                  },
   'cnv_length' : {
+                    'format' : 'int64',
                     'value' : 1205290,
-                    'type' : 'number',
-                    'format' : 'int64'
+                    'type' : 'number'
                   }
 }
 ```

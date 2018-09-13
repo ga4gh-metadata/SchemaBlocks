@@ -1,4 +1,4 @@
-# biosample  
+# GA4GH __biosample__  
 
 In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
 
@@ -39,23 +39,23 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 "biocharacteristics" : [
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'label' : 'Pancreas, NOS',
                  'id' : 'pgx:icdot:c25.9'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
-  },
-  {
-    'description' : 'Pancreatic Adenocarcinoma',
-    'class' : {
-                 'id' : 'pgx:icdom:81403',
-                 'label' : 'Adenocarcinoma, NOS'
                }
   },
   {
     'class' : {
-                 'id' : 'ncit:c8294',
-                 'label' : 'Pancreatic Adenocarcinoma'
+                 'label' : 'Adenocarcinoma, NOS',
+                 'id' : 'pgx:icdom:81403'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
+  },
+  {
+    'class' : {
+                 'label' : 'Pancreatic Adenocarcinoma',
+                 'id' : 'ncit:c8294'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   }
@@ -94,20 +94,20 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 "external_ids" : [
   {
-    'relation' : 'provenance',
-    'id' : 'cellosaurus:CVCL_0312'
+    'id' : 'cellosaurus:CVCL_0312',
+    'relation' : 'provenance'
   },
   {
-    'id' : 'pubmed:17440070',
-    'relation' : 'report'
+    'relation' : 'report',
+    'id' : 'pubmed:17440070'
   },
   {
-    'relation' : 'technology',
-    'id' : 'geo:GPL4894'
+    'id' : 'geo:GPL4894',
+    'relation' : 'technology'
   },
   {
-    'id' : 'geo:GSM185088',
-    'relation' : 'denotes'
+    'relation' : 'denotes',
+    'id' : 'geo:GSM185088'
   }
 ]
 ```
@@ -128,12 +128,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 "geo_provenance" : {
-  'latitude' : 45.75,
-  'country' : 'Romania',
   'longitude' : 21.23,
+  'city' : 'Timisoara',
   'altitude' : 94,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'city' : 'Timisoara'
+  'latitude' : 45.75,
+  'country' : 'Romania'
 }
 ```
 
@@ -167,14 +167,14 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 "info" : {
-  'death' : {
-               'value' : 1,
-               'type' : 'boolean'
-             },
   'followup_time' : {
                        'value' : 'P14M',
                        'type' : 'ISO8601 string'
-                     }
+                     },
+  'death' : {
+               'type' : 'boolean',
+               'value' : 1
+             }
 }
 ```
 

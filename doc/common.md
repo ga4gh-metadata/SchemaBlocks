@@ -1,4 +1,5 @@
-# common  
+# GA4GH - common and shared object definitions
+  
 
 Definition of some prototype objects which are re-used in other schema documents.
 

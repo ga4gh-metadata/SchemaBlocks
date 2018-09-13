@@ -1,5 +1,6 @@
 info:
-  name: variant
+  title: |
+    GA4GH __variant__
   description: |
     The document describes attributes of the "variant" object, which e.g. can be instantiated as database documents in a MongoDB collection.
   updated: '2018-09-13'

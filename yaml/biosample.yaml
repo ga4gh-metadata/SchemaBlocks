@@ -1,5 +1,5 @@
 info:
-  title: biosample
+  title: GA4GH __biosample__
   description: |
     In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
   version: '2018-09-12'

@@ -1,5 +1,6 @@
 info:
-  title: common
+  title: |
+    GA4GH - common and shared object definitions
   description: |
     Definition of some prototype objects which are re-used in other schema documents.
   version: '2018-09-13'
