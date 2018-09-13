@@ -42,7 +42,7 @@ sub _process_yaml {
       $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);
     }
 
-    my $data      =   LoadFile($config->{yaml_file});
+    my $data    =   LoadFile($config->{yaml_file});
 
     print "Reading YAML file \"$config->{yaml_file}\"\n";
 
@@ -54,34 +54,41 @@ sub _process_yaml {
     my $example_file  =   $config->{json_file};
     $example_file =~   s/\.json$/_example.json/i;
     my $markdown  =   <<END;
-# $file_name  
+# $data->{info}->{title}  
 
-$data->{description}
+$data->{info}->{description}
 END
 
-    my %attr    =   map{ $_->{name} => $_ } @{ $data->{attributes} };
+    my %attr    =   %{ $data->{definitions} };
 
-    foreach my $name (sort keys %attr) {
+    foreach my $class (sort keys %attr) {
+      
+      $markdown .=  "\n## $class\n";
+      
+      if ($attr{$class}->{description}) {
+        $markdown .=  $attr{$class}->{description}."\n"}
 
-      my $md_example  =   _reformat_example($attr{$name}->{example});
-      $example->{$name}   =   $attr{$name}->{example};
-      $markdown .=  <<END;
+      foreach my $property (sort keys %{ $attr{$class}->{properties} }) {
 
-## $name
+        my $md_example  =   _reformat_example($attr{$class}->{properties}->{$property}->{example});
 
-$attr{$name}->{description}
+        $markdown .=  <<END;
+
+### $property
+
+$attr{$class}->{properties}->{$property}->{description}
 
 #### Example
 
 ```
-"$name" : $md_example
+"$markdown" : $md_example
 ```
 END
 
-      if ($attr{$name}->{queries}) {
+      if ($attr{$class}->{properties}->{$property}->{queries}) {
         $markdown   .=  '
 #### Queries:';
-        foreach my $query (@{$attr{$name}->{queries}}) {
+        foreach my $query (@{$attr{$class}->{properties}->{$property}->{queries}}) {
           $markdown .=  <<END;
 
 $query->{description}
@@ -90,63 +97,13 @@ $query->{query}
 ```
 END
 
-      }}
-
-    }
-
-    foreach my $class_name (sort keys %{ $data->{classes} }) {
-
-      $markdown .=  <<END;
-
-## $class_name
-
-$data->{classes}->{$class_name}->{description}
-
-END
-
-      my $attributes  =   [];
-      
-      if ($data->{classes}->{$class_name}->{property}) {
-      
-        $attributes =   $data->{classes}->{$class_name}->{property};
-
-        $markdown   .=  <<END;
-## property
-
-The "property" label stands for the attribute name.
-
-END
-      } else {
-        $attributes =   $data->{classes}->{$class_name}->{attributes} }
-
-      foreach (@{ $attributes }) {
-
-        $example->{$name}   =   $attr{$name}->{example};
-        my $md_example  =   _reformat_example($_->{example});
-        $markdown .=  <<END;
-### $_->{name}
-
-$_->{description}
-
-#### Type
-
-$_->{type}
-
-#### Example
-
-```
-"$_->{name}" : $md_example
-```
-
-END
-
-    }}
+    }}}}
   
-    $printout     =   JSON::XS->new->pretty( 1 )->encode( $example )."\n";
-
-    open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
-    print FILE  _clean_numbers_booleans_from_text($printout);
-    close FILE;
+#    $printout     =   JSON::XS->new->pretty( 1 )->encode( $example )."\n";
+#
+#    open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
+#    print FILE  _clean_numbers_booleans_from_text($printout);
+#    close FILE;
 
     open  (FILE, ">", $config->{md_file}) || warn 'output file '. $config->{md_file}.' could not be created.';
     print FILE  _clean_numbers_booleans_from_text($markdown)."\n";

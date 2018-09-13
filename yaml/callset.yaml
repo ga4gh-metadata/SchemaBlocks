@@ -1,58 +1,58 @@
-name: callset
-updated: '2018-09-04'
-description: |
-  The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. 
-attributes:
-  - name: _id
-    description: the database-internal object id
-    example: ObjectId("558e5c56ad9a82d958392bd6")
-
-  - name: id
-    description: The local-unique identifier of this callset (referenced as "callset_id").
-    type: string
-    example: 'GSM264198'
-
-  - name: biosample_id
-    description: The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
-    example: 'pgx-bs-987647'
-
-  - name: description
-    description: A free text description of the callset.
-    type: string
-    example: 'SNP6 array of cancer sample BRCA-0893'
-
-  - name: geo_provenance
-    description: |
-      This geo_class attribute ideally describes the geographic location of where this callset was analysed.
-    type: geo_class object
-    example:
-      - label: 'Str Marasesti 5, 300077 Timisoara, Romania'
-        city: 'Timisoara'
-        country: 'Romania'
-        latitude: 45.75
-        longitude: 21.23
-
-  - name: info
-    description: additional variant information, as defined in the example and accompanying documentation
-    type: common.info_class
-    example:
-      cnv_maps:
-        type: common.info_class
+info:
+  name: callset
+  description: |
+    The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. 
+  updated: '2018-09-04'
+definitions:
+  Callset:
+    properties:
+      id:
+        description: The local-unique identifier of this callset (referenced as "callset_id").
+        type: string
+        example: 'GSM264198'
+      biosample_id:
+        description: The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
+        type: string
+        example: 'pgx-bs-987647'
+      description:
+        description: A free text description of the callset.
+        type: string
+        example: 'SNP6 array of cancer sample BRCA-0893'
+      geo_provenance:
         description: |
-          The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
-          With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
-        value:
-          dup_map:
-          type: array
-          value: 
-            ["", "", "DUP", "DUP", "DUP", "", "", "", "", "", ""]          
-      binning:
-        type: int64
-        description:
-          interval size in bases for the binning, when creating the cnv_maps
-        value: 1000000
-
-  - name: updated
-    description: time of the last edit of this record, in ISO8601
-    type: ISO8601 string
-    example: '2017-10-25T07:06:03Z'
+          This geo_class attribute ideally describes the geographic location of where this callset was analysed.
+        schema:
+          $ref: './common/Geo_class'
+        example:
+          label: 'Str Marasesti 5, 300077 Timisoara, Romania'
+          city: 'Timisoara'
+          country: 'Romania'
+          latitude: 45.75
+          longitude: 21.23
+      info:
+        description: additional variant information, as defined in the example and accompanying documentation
+        schema:
+          $ref: './common/Info_class'
+        example:
+          cnv_maps:
+            schema:
+              $ref: './common/Info_class'
+            description: |
+              The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
+              With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
+            value:
+              dup_map:
+                description: |
+                  gain cnv status for the corresponding genome intervals
+                type: array
+                value: ["", "", "DUP", "DUP", "DUP", "", "", "", "", "", ""]          
+              binning:
+                description:
+                  interval size in bases for the binning, when creating the cnv_maps
+                type: number
+                format: int64
+                value: 1000000
+      updated:
+        description: time of the last edit of this record, in ISO8601
+        type: string
+        example: '2017-10-25T07:06:03Z'
