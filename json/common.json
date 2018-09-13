@@ -2,64 +2,87 @@
    "definitions" : {
       "Ontology_class" : {
          "properties" : {
+            "id" : {
+               "type" : "string",
+               "description" : "properly prefixed CURIE of the ontology term",
+               "example" : "ncit:C8294"
+            },
             "label" : {
                "example" : "Pancreatic Adenocarcinoma",
-               "description" : "the text label associated with the term",
-               "type" : "string"
-            },
-            "id" : {
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term",
-               "type" : "string"
+               "type" : "string",
+               "description" : "the text label associated with the term"
             }
          }
       },
       "Geo_class" : {
          "properties" : {
+            "city" : {
+               "type" : "string",
+               "example" : "Timisoara"
+            },
             "label" : {
                "type" : "string",
                "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
                "example" : "Str Marasesti 5, 300077 Timisoara, Romania"
             },
             "altitude" : {
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
-               "format" : "float",
                "example" : "8848",
-               "type" : "number"
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "type" : "number",
+               "format" : "float"
             },
             "longitude" : {
                "type" : "number",
                "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
-               "example" : "8.54",
-               "format" : "float"
-            },
-            "latitude" : {
-               "example" : "47.37",
-               "D" : "float",
-               "description" : "signed decimal degrees (North, relative to Equator)",
-               "type" : "number"
-            },
-            "city" : {
-               "example" : "Timisoara",
-               "type" : "string"
+               "format" : "float",
+               "example" : "8.54"
             },
             "country" : {
+               "example" : "Romania",
+               "type" : "string"
+            },
+            "latitude" : {
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "type" : "number",
+               "example" : "47.37",
+               "D" : "float"
+            }
+         }
+      },
+      "Info_class" : {
+         "properties" : {
+            "format" : {
+               "description" : "format of the value; optional",
                "type" : "string",
-               "example" : "Romania"
+               "example" : "int64"
+            },
+            "type" : {
+               "example" : "number",
+               "type" : "string",
+               "description" : "type of the value; optional"
+            },
+            "description" : {
+               "type" : "string",
+               "description" : "an optional free-text annotation about the object",
+               "example" : "The base length of the called segment."
+            },
+            "value" : {
+               "example" : "1503320",
+               "description" : "the value in a format correstponding to type"
             }
          }
       },
       "Reference_class" : {
          "properties" : {
-            "relation" : {
-               "type" : "string",
-               "example" : "denotes",
-               "description" : "the relation of the external reference to the object it was pointed from"
-            },
             "id" : {
-               "description" : "properly prefixed CURIE of the external reference",
                "example" : "pubmed:17440070",
-               "type" : "string"
+               "type" : "string",
+               "description" : "properly prefixed CURIE of the external reference"
+            },
+            "relation" : {
+               "example" : "denotes",
+               "type" : "string",
+               "description" : "the relation of the external reference to the object it was pointed from"
             }
          }
       },
@@ -67,54 +90,31 @@
          "properties" : {
             "description" : {
                "example" : "Invasive ductal breast carcinoma, metastasized",
-               "description" : "a free-text description of this biocharacteristic",
-               "type" : "string"
+               "type" : "string",
+               "description" : "a free-text description of this biocharacteristic"
             },
             "negated" : {
+               "type" : "boolean",
                "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
-               "example" : "true",
-               "type" : "boolean"
+               "example" : "true"
             },
             "class" : {
                "schema" : {
                   "$ref" : "#/Ontology_class"
                },
                "example" : {
-                  "id" : "ncit:c8294",
-                  "label" : "Pancreatic Adenocarcinoma"
+                  "label" : "Pancreatic Adenocarcinoma",
+                  "id" : "ncit:c8294"
                },
                "description" : "an ontology_class object"
-            }
-         }
-      },
-      "Info_class" : {
-         "properties" : {
-            "description" : {
-               "type" : "string",
-               "description" : "an optional free-text annotation about the object",
-               "example" : "The base length of the called segment."
-            },
-            "format" : {
-               "type" : "string",
-               "description" : "format of the value; optional",
-               "example" : "int64"
-            },
-            "type" : {
-               "description" : "type of the value; optional",
-               "example" : "number",
-               "type" : "string"
-            },
-            "value" : {
-               "example" : "1503320",
-               "description" : "the value in a format correstponding to type"
             }
          }
       }
    },
    "info" : {
-      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
       "title" : "common",
-      "version" : "2018-09-13"
+      "version" : "2018-09-13",
+      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n"
    }
 }
 

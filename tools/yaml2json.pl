@@ -81,7 +81,7 @@ $attr{$class}->{properties}->{$property}->{description}
 #### Example
 
 ```
-"$markdown" : $md_example
+"$property" : $md_example
 ```
 END
 
