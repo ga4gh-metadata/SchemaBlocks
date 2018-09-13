@@ -1,7 +1,7 @@
 ## schemas
 
 <div style="display: block; float: right; width: 260px;">
-  <img src="/rsrc/img/ga4gh-object-model.png" />
+  <img src="/schemas/rsrc/img/ga4gh-object-model.png" />
   <div style="display: block; width: 260px; text-align: justify; font-size: 0.8em; color: #03c; background-color: #eee; padding: 5px;">
 A graph showing the basic objects and their relationships. The example attributes represent placeholders for elements defined in the general schema description.
   </div>
