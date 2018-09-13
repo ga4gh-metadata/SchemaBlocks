@@ -13,7 +13,7 @@ Examples for current use of the schema are e.g. in the [progenetix.org](http://p
 
 The primary documents are in the [yaml](./yaml/) directory, with JSON versions and examples extracted from them. The "readable" documentation is also created from the YAML files and can be accessed here:
 
-* [common](ga4gh-metadata/schemas/blob/master/main/doc/common.md) ([raw](/schemas/main/doc/common.md))
+* [common](blob/master/main/doc/common.md) ([raw](/schemas/main/doc/common.md))
     object classes, which are used in the schemas themselves
 * [variant](./doc/variant.md)
     The `variant` object includes attributes and examples for both structural (DUP, DEL, BRK) and precise genome variants.
