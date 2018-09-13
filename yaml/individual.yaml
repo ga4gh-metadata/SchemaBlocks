@@ -2,7 +2,7 @@ info:
   title: |
     GA4GH __individual__
   description: |
-    'An individual is a single organism (here typically a human).'
+    An individual is a single organism (here typically a human).
   updated: '2018-09-13'
 definitions:
   Individual:

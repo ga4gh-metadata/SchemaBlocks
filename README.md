@@ -1,5 +1,12 @@
 ## schemas
 
+<div style="display: block; float: right; width: 260px;">
+  <img src="/rsrc/img/ga4gh-object-model.png" />
+  <div style="display: block; width: 260px; text-align: justify; font-size: 0.8em; color: #03c; background-color: #eee; padding: 5px;">
+A graph showing the basic objects and their relationships. The example attributes represent placeholders for elements defined in the general schema description.
+  </div>
+</div>
+
 This repository contains the data schemas for the Progenetix databases (i.e. the backends behind [progenetix.org](http://progenetix.org). [arraymap.org](http://arraymap.org)) and the [Beacon+](http://beacon.progenetix.org) project.
 
 The primary documents are in the [yaml](./yaml/) directory, with JSON versions and examples extracted from them. The "readable" documentation is also created from the YAML files and can be accessed here:
