@@ -114,8 +114,8 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 'age_at_collection_class' : {
-  'label' : 'Juvenile onset',
-  'id' : 'HP:0003621'
+  'id' : 'HP:0003621',
+  'label' : 'Juvenile onset'
 }
 ```
 
@@ -131,25 +131,25 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Pancreas, NOS',
-                 'id' : 'pgx:icdot:c25.9'
-               }
-  },
-  {
-    'class' : {
-                 'id' : 'pgx:icdom:81403',
-                 'label' : 'Adenocarcinoma, NOS'
+                 'id' : 'pgx:icdot:c25.9',
+                 'label' : 'Pancreas, NOS'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   },
   {
-    'description' : 'Pancreatic Adenocarcinoma',
+    'class' : {
+                 'label' : 'Adenocarcinoma, NOS',
+                 'id' : 'pgx:icdom:81403'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
+  },
+  {
     'class' : {
                  'label' : 'Pancreatic Adenocarcinoma',
                  'id' : 'ncit:c8294'
-               }
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
   }
 ]
 ```
@@ -202,8 +202,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'relation' : 'technology'
   },
   {
-    'relation' : 'denotes',
-    'id' : 'geo:GSM185088'
+    'id' : 'geo:GSM185088',
+    'relation' : 'denotes'
   }
 ]
 ```
@@ -226,12 +226,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'longitude' : 21.23,
-  'altitude' : 94,
   'city' : 'Timisoara',
   'latitude' : 45.75,
-  'country' : 'Romania',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'longitude' : 21.23,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'altitude' : 94,
+  'country' : 'Romania'
 }
 ```
 
@@ -268,14 +268,14 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'followup_time' : {
-                       'type' : 'ISO8601 string',
-                       'value' : 'P14M'
-                     },
   'death' : {
                'value' : 1,
                'type' : 'boolean'
-             }
+             },
+  'followup_time' : {
+                       'type' : 'ISO8601 string',
+                       'value' : 'P14M'
+                     }
 }
 ```
 

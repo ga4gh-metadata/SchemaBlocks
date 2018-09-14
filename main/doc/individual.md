@@ -77,8 +77,8 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
   {
     'description' : 'girl',
     'class' : {
-                 'label' : 'female genetic sex',
-                 'id' : 'PATO:0020000'
+                 'id' : 'PATO:0020000',
+                 'label' : 'female genetic sex'
                }
   },
   {
@@ -91,8 +91,8 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
   {
     'description' : 'Patient with Down syndrome',
     'class' : {
-                 'id' : 'HP:0003745',
-                 'label' : 'Genetic anticipation'
+                 'label' : 'Genetic anticipation',
+                 'id' : 'HP:0003745'
                }
   }
 ]
@@ -133,12 +133,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'longitude' : 21.23,
-  'altitude' : 94,
-  'city' : 'Timisoara',
-  'latitude' : 45.75,
   'country' : 'Romania',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'altitude' : 94,
+  'longitude' : 21.23,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'city' : 'Timisoara',
+  'latitude' : 45.75
 }
 ```
 
@@ -162,14 +162,14 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
+  'last_name' : {
+                   'type' : 'string',
+                   'value' : 'Tichy'
+                 },
   'first_name' : {
                     'type' : 'string',
                     'value' : 'Ion'
-                  },
-  'last_name' : {
-                   'value' : 'Tichy',
-                   'type' : 'string'
-                 }
+                  }
 }
 ```
 
