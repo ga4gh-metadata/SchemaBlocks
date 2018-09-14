@@ -2,25 +2,70 @@
    "definitions" : {
       "Individual" : {
          "properties" : {
+            "updated" : {
+               "description" : "time of the last edit of this record, in ISO8601",
+               "type" : "string",
+               "example" : "2017-10-25T07:06:03Z"
+            },
+            "info" : {
+               "example" : {
+                  "first_name" : {
+                     "type" : "string",
+                     "value" : "Ion"
+                  },
+                  "last_name" : {
+                     "value" : "Tichy",
+                     "type" : "string"
+                  }
+               },
+               "description" : "additional variant information, as defined in the example and accompanying documentation",
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               }
+            },
             "id" : {
                "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
                "type" : "string",
                "example" : "AM_BS__NCBISKYCGH-1993"
             },
-            "updated" : {
-               "description" : "time of the last edit of this record, in ISO8601",
-               "example" : "2017-10-25T07:06:03Z",
-               "type" : "string"
+            "description" : {
+               "type" : "string",
+               "example" : "patient with lung cancer, male smoker",
+               "description" : "A free text description of the individual."
+            },
+            "geo_provenance" : {
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
+               "example" : {
+                  "longitude" : "21.23",
+                  "altitude" : "94",
+                  "city" : "Timisoara",
+                  "latitude" : "45.75",
+                  "country" : "Romania",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+               }
             },
             "biocharacteristics" : {
-               "type" : "array",
+               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
+               "queries" : [
+                  {
+                     "description" : "the query will return all individuals who have been properly labeled as human",
+                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )"
+                  },
+                  {
+                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
+                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
+                  }
+               ],
                "example" : [
                   {
+                     "description" : "girl",
                      "class" : {
                         "label" : "female genetic sex",
                         "id" : "PATO:0020000"
-                     },
-                     "description" : "girl"
+                     }
                   },
                   {
                      "class" : {
@@ -37,63 +82,18 @@
                      }
                   }
                ],
-               "queries" : [
-                  {
-                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )",
-                     "description" : "the query will return all individuals who have been properly labeled as human"
-                  },
-                  {
-                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
-                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
-                  }
-               ],
+               "type" : "array",
                "schema" : {
                   "$ref" : "#/Biocharacteristic_class"
-               },
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n"
-            },
-            "description" : {
-               "type" : "string",
-               "example" : "patient with lung cancer, male smoker",
-               "description" : "A free text description of the individual."
-            },
-            "geo_provenance" : {
-               "example" : {
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "country" : "Romania",
-                  "altitude" : "94",
-                  "longitude" : "21.23",
-                  "city" : "Timisoara",
-                  "latitude" : "45.75"
-               },
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               }
-            },
-            "info" : {
-               "example" : {
-                  "first_name" : {
-                     "type" : "string",
-                     "value" : "Ion"
-                  },
-                  "last_name" : {
-                     "type" : "string",
-                     "value" : "Tichy"
-                  }
-               },
-               "description" : "additional variant information, as defined in the example and accompanying documentation",
-               "schema" : {
-                  "$ref" : "./common/Info_class"
                }
             }
          }
       }
    },
    "info" : {
-      "title" : "GA4GH __individual__\n",
       "description" : "An individual is a single organism (here typically a human).\n",
-      "updated" : "2018-09-13"
+      "updated" : "2018-09-13",
+      "title" : "GA4GH __individual__\n"
    }
 }
 

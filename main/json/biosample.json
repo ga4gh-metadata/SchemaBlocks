@@ -1,58 +1,12 @@
 {
+   "info" : {
+      "description" : "In this schema, a \"biosample\" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.\n",
+      "version" : "2018-09-12",
+      "title" : "GA4GH __biosample__"
+   },
    "definitions" : {
       "Biosample" : {
          "properties" : {
-            "info" : {
-               "example" : {
-                  "death" : {
-                     "type" : "boolean",
-                     "value" : "1"
-                  },
-                  "followup_time" : {
-                     "type" : "ISO8601 string",
-                     "value" : "P14M"
-                  }
-               },
-               "schema" : {
-                  "$ref" : "./common/Info_class"
-               },
-               "queries" : [
-                  {
-                     "description" : "This query retrieves biosamples with an ISO8601 period value for \"followup_time\" and a boolean \"true\" for death.\n",
-                     "query" : "db.biosamples.find( {\"info\" : { $elemMatch: { \"followup_time.value\" : { $regex : /\\P/ }, \"death.value\" : true } } } )"
-                  }
-               ],
-               "description" : "This is a wrapper for objects without further specification in the schema.\n"
-            },
-            "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where the sample was extracted.\nFrequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.\n",
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               },
-               "example" : {
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "country" : "Romania",
-                  "altitude" : "94",
-                  "longitude" : "21.23",
-                  "city" : "Timisoara",
-                  "latitude" : "45.75"
-               }
-            },
-            "age_at_collection" : {
-               "description" : "the age of the individual at time of biosample collection, as ISO8601 string",
-               "type" : "string",
-               "example" : "P56Y"
-            },
-            "description" : {
-               "description" : "A free text description of the biosample.",
-               "type" : "string",
-               "example" : "Burkitt lymphoma, cell line Namalwa"
-            },
-            "individual_id" : {
-               "description" : "In a complete data model \"individual_id\" represents the identifier of this biosample in the \"individuals\" collection.\n",
-               "example" : "ind-cnhl-1293347-004",
-               "type" : "string"
-            },
             "age_at_collection_class" : {
                "example" : {
                   "label" : "Juvenile onset",
@@ -63,66 +17,81 @@
                   "$ref" : "./common/Ontology_class"
                }
             },
-            "external_ids" : {
-               "example" : [
-                  {
-                     "relation" : "provenance",
-                     "id" : "cellosaurus:CVCL_0312"
-                  },
-                  {
-                     "id" : "pubmed:17440070",
-                     "relation" : "report"
-                  },
-                  {
-                     "id" : "geo:GPL4894",
-                     "relation" : "technology"
-                  },
-                  {
-                     "relation" : "denotes",
-                     "id" : "geo:GSM185088"
-                  }
-               ],
-               "type" : "array",
-               "items" : {
-                  "$ref" : "./common/Reference_class"
-               },
+            "info" : {
                "queries" : [
                   {
-                     "query" : "db.biosamples.find( { \"external_ids.id\" : \"pubmed:17440070\" } )",
-                     "description" : "the query will return all biosamples reported in this publication"
+                     "query" : "db.biosamples.find( {\"info\" : { $elemMatch: { \"followup_time.value\" : { $regex : /\\P/ }, \"death.value\" : true } } } )",
+                     "description" : "This query retrieves biosamples with an ISO8601 period value for \"followup_time\" and a boolean \"true\" for death.\n"
                   }
                ],
-               "description" : "list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship"
+               "description" : "This is a wrapper for objects without further specification in the schema.\n",
+               "example" : {
+                  "followup_time" : {
+                     "type" : "ISO8601 string",
+                     "value" : "P14M"
+                  },
+                  "death" : {
+                     "value" : "1",
+                     "type" : "boolean"
+                  }
+               },
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               }
+            },
+            "updated" : {
+               "description" : "time of the last edit of this record, in ISO8601",
+               "example" : "2017-10-25T07:06:03Z",
+               "type" : "string"
+            },
+            "geo_provenance" : {
+               "description" : "This geo_class attribute ideally describes the geographic location of where the sample was extracted.\nFrequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.\n",
+               "example" : {
+                  "longitude" : "21.23",
+                  "altitude" : "94",
+                  "city" : "Timisoara",
+                  "latitude" : "45.75",
+                  "country" : "Romania",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+               },
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               }
+            },
+            "description" : {
+               "description" : "A free text description of the biosample.",
+               "type" : "string",
+               "example" : "Burkitt lymphoma, cell line Namalwa"
             },
             "biocharacteristics" : {
-               "items" : {
-                  "$ref" : "./common/Biocharacteristic_class"
-               },
                "example" : [
                   {
+                     "description" : "Pancreatic Adenocarcinoma",
                      "class" : {
                         "label" : "Pancreas, NOS",
                         "id" : "pgx:icdot:c25.9"
+                     }
+                  },
+                  {
+                     "class" : {
+                        "id" : "pgx:icdom:81403",
+                        "label" : "Adenocarcinoma, NOS"
                      },
                      "description" : "Pancreatic Adenocarcinoma"
                   },
                   {
                      "description" : "Pancreatic Adenocarcinoma",
                      "class" : {
-                        "label" : "Adenocarcinoma, NOS",
-                        "id" : "pgx:icdom:81403"
-                     }
-                  },
-                  {
-                     "class" : {
                         "label" : "Pancreatic Adenocarcinoma",
                         "id" : "ncit:c8294"
-                     },
-                     "description" : "Pancreatic Adenocarcinoma"
+                     }
                   }
                ],
                "type" : "array",
                "description" : "\"biocharacteristics\" represents a wrapper list of \"biocharacteristic_class\" objects with properly prefixed term ids, describing features of the biosample.\nExamples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.\n",
+               "items" : {
+                  "$ref" : "./common/Biocharacteristic_class"
+               },
                "queries" : [
                   {
                      "query" : "db.biosamples.find( { \"biocharacteristics.class.id\" : \"pgx:icdom:81403\" } )",
@@ -134,23 +103,54 @@
                   }
                ]
             },
-            "updated" : {
+            "individual_id" : {
+               "example" : "ind-cnhl-1293347-004",
                "type" : "string",
-               "example" : "2017-10-25T07:06:03Z",
-               "description" : "time of the last edit of this record, in ISO8601"
+               "description" : "In a complete data model \"individual_id\" represents the identifier of this biosample in the \"individuals\" collection.\n"
             },
             "id" : {
-               "description" : "The local-unique identifier of this biosample (referenced as \"biosample_id\").",
                "example" : "AM_BS__NCBISKYCGH-1993",
+               "type" : "string",
+               "description" : "The local-unique identifier of this biosample (referenced as \"biosample_id\")."
+            },
+            "age_at_collection" : {
+               "description" : "the age of the individual at time of biosample collection, as ISO8601 string",
+               "example" : "P56Y",
                "type" : "string"
+            },
+            "external_ids" : {
+               "type" : "array",
+               "example" : [
+                  {
+                     "relation" : "provenance",
+                     "id" : "cellosaurus:CVCL_0312"
+                  },
+                  {
+                     "relation" : "report",
+                     "id" : "pubmed:17440070"
+                  },
+                  {
+                     "id" : "geo:GPL4894",
+                     "relation" : "technology"
+                  },
+                  {
+                     "relation" : "denotes",
+                     "id" : "geo:GSM185088"
+                  }
+               ],
+               "items" : {
+                  "$ref" : "./common/Reference_class"
+               },
+               "queries" : [
+                  {
+                     "query" : "db.biosamples.find( { \"external_ids.id\" : \"pubmed:17440070\" } )",
+                     "description" : "the query will return all biosamples reported in this publication"
+                  }
+               ],
+               "description" : "list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship"
             }
          }
       }
-   },
-   "info" : {
-      "description" : "In this schema, a \"biosample\" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.\n",
-      "version" : "2018-09-12",
-      "title" : "GA4GH __biosample__"
    }
 }
 

@@ -62,18 +62,40 @@ END
     my %attr    =   %{ $data->{definitions} };
 
     foreach my $class (sort keys %attr) {
-      
-      $markdown .=  "\n## $class\n";
+    
+      my $class_md  =  <<END;
+## $class
+
+<h3>Properties of the <i>$class</i> class</h3>
+
+<table>
+<tr>
+  <th>Property</th>
+  <th>Type</th>
+  <th>Format</th>
+  <th>Description</th>
+</tr>
+END
+      my $prop_md;
       
       if ($attr{$class}->{description}) {
-        $markdown .=  $attr{$class}->{description}."\n"}
+        $class_md .=  $attr{$class}->{description}."\n"}
 
       foreach my $property (sort keys %{ $attr{$class}->{properties} }) {
-
+      
         my $md_example  =   _reformat_example($attr{$class}->{properties}->{$property}->{example});
+        $class_md   .=  <<END;
 
-        $markdown .=  <<END;
+<tr>
+  <td>$property</td>
+  <td>$attr{$class}->{properties}->{$property}->{type}</td>
+  <td>$attr{$class}->{properties}->{$property}->{format}</td>
+  <td>$attr{$class}->{properties}->{$property}->{description}</td>
+</tr>
+END
+        $prop_md    .=  <<END;
 
+--------------------------------------------------------------------------------
 ### $property
 
 $attr{$class}->{properties}->{$property}->{description}
@@ -81,23 +103,35 @@ $attr{$class}->{properties}->{$property}->{description}
 #### Example
 
 ```
-"$property" : $md_example
+'$property' : $md_example
 ```
 END
 
       if ($attr{$class}->{properties}->{$property}->{queries}) {
-        $markdown   .=  '
+        $prop_md   .=  '
 #### Queries:';
         foreach my $query (@{$attr{$class}->{properties}->{$property}->{queries}}) {
-          $markdown .=  <<END;
+          $prop_md .=  <<END;
 
 $query->{description}
 ```
 $query->{query}
 ```
+
 END
 
-    }}}}
+      }}}
+      
+      $class_md .=  <<END;
+</table>
+
+<h3>Extended notes and examples on the <i>$class</i> properties</h3>
+
+END
+      $markdown .=  $class_md;    
+      $markdown .=  $prop_md;
+
+    }
   
 #    $printout     =   JSON::XS->new->pretty( 1 )->encode( $example )."\n";
 #
