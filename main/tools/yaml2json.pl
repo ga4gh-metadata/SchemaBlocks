@@ -32,10 +32,11 @@ exit;
 sub _process_yaml {
 
   my $yaml_files  =   shift;
-  
+
   foreach (@$yaml_files) {
 
     my $file_name =   $_;
+    my $yaml_link =   $config->{'yaml_path_rel'}.'/'.$file_name;
     $file_name    =~   s/\.ya?ml$//i;
 
     foreach ( @{ $config->{file_types} } ) {
@@ -54,15 +55,18 @@ sub _process_yaml {
     my $example_file  =   $config->{json_file};
     $example_file =~   s/\.json$/_example.json/i;
     my $markdown  =   <<END;
-# $data->{info}->{title}  
+# $data->{info}->{title}
 
 $data->{info}->{description}
+
+The schema definitions are done in the [YAML file]($yaml_link).
+
 END
 
     my %attr    =   %{ $data->{definitions} };
 
     foreach my $class (sort keys %attr) {
-    
+
       my $class_md  =  <<END;
 ## $class
 
@@ -77,12 +81,12 @@ END
 </tr>
 END
       my $prop_md;
-      
+
       if ($attr{$class}->{description}) {
         $class_md .=  $attr{$class}->{description}."\n"}
 
       foreach my $property (sort keys %{ $attr{$class}->{properties} }) {
-      
+
         my $md_example  =   _reformat_example($attr{$class}->{properties}->{$property}->{example});
         $class_md   .=  <<END;
 
@@ -121,18 +125,18 @@ $query->{query}
 END
 
       }}}
-      
+
       $class_md .=  <<END;
 </table>
 
 <h3>Extended notes and examples on the <i>$class</i> properties</h3>
 
 END
-      $markdown .=  $class_md;    
+      $markdown .=  $class_md;
       $markdown .=  $prop_md;
 
     }
-  
+
 #    $printout     =   JSON::XS->new->pretty( 1 )->encode( $example )."\n";
 #
 #    open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
@@ -151,7 +155,7 @@ END
 ################################################################################
 
 sub _reformat_example {
-  
+
   my $example   =   shift;
   my $md_example    =   Dumper($example);
   $md_example	=~  s/\$VAR1 \= //;
@@ -165,7 +169,7 @@ sub _reformat_example {
     $md_example	=		'"'.$md_example.'"' }
 
   return $md_example;
-  
+
 }
 
 sub _clean_numbers_booleans_from_text {
@@ -173,15 +177,15 @@ sub _clean_numbers_booleans_from_text {
   my $printout  =   shift;
 
   my @cleaned;
-  
+
   foreach my $line (split("\n", $printout)) {
     $line       =~  s/\=\>/:/;
     $line       =~  s/\: [\'\"](\d+?(?:\.\d+?)?)[\'\"]/: $1/;
-  
-  
+
+
     push(@cleaned, $line);
   }
-  
+
   return join("\n", @cleaned);
 
 }
