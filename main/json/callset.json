@@ -1,37 +1,30 @@
 {
    "info" : {
+      "updated" : "2018-09-04",
       "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. \n",
-      "title" : "GA4GH __callset__",
-      "updated" : "2018-09-04"
+      "title" : "GA4GH __callset__"
    },
    "definitions" : {
       "Callset" : {
          "properties" : {
-            "id" : {
-               "example" : "GSM264198",
-               "type" : "string",
-               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\")."
-            },
-            "updated" : {
-               "type" : "string",
-               "description" : "time of the last edit of this record, in ISO8601",
-               "example" : "2017-10-25T07:06:03Z"
-            },
             "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
-               "example" : {
-                  "city" : "Timisoara",
-                  "latitude" : "45.75",
-                  "country" : "Romania",
-                  "longitude" : "21.23",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
-               },
                "schema" : {
                   "$ref" : "./common/Geo_class"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
+               "example" : {
+                  "longitude" : "21.23",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "country" : "Romania",
+                  "city" : "Timisoara",
+                  "latitude" : "45.75"
                }
             },
             "info" : {
                "description" : "additional variant information, as defined in the example and accompanying documentation",
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               },
                "example" : {
                   "cnv_maps" : {
                      "schema" : {
@@ -41,6 +34,7 @@
                      "value" : {
                         "dup_map" : {
                            "type" : "array",
+                           "description" : "gain cnv status for the corresponding genome intervals\n",
                            "value" : [
                               "",
                               "",
@@ -53,21 +47,27 @@
                               "",
                               "",
                               ""
-                           ],
-                           "description" : "gain cnv status for the corresponding genome intervals\n"
+                           ]
                         },
                         "binning" : {
                            "type" : "number",
                            "value" : "1000000",
-                           "description" : "interval size in bases for the binning, when creating the cnv_maps",
-                           "format" : "int64"
+                           "format" : "int64",
+                           "description" : "interval size in bases for the binning, when creating the cnv_maps"
                         }
                      }
                   }
-               },
-               "schema" : {
-                  "$ref" : "./common/Info_class"
                }
+            },
+            "id" : {
+               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
+               "type" : "string",
+               "example" : "GSM264198"
+            },
+            "updated" : {
+               "description" : "time of the last edit of this record, in ISO8601",
+               "example" : "2017-10-25T07:06:03Z",
+               "type" : "string"
             },
             "biosample_id" : {
                "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",

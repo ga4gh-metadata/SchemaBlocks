@@ -1,6 +1,9 @@
-# GA4GH __biosample__  
+# GA4GH __biosample__
 
 In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
+
+
+The schema definitions are done in the [YAML file](../yaml/biosample.yaml).
 
 ## Biosample
 
@@ -139,8 +142,8 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   },
   {
     'class' : {
-                 'label' : 'Adenocarcinoma, NOS',
-                 'id' : 'pgx:icdom:81403'
+                 'id' : 'pgx:icdom:81403',
+                 'label' : 'Adenocarcinoma, NOS'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   },
@@ -198,8 +201,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'id' : 'pubmed:17440070'
   },
   {
-    'id' : 'geo:GPL4894',
-    'relation' : 'technology'
+    'relation' : 'technology',
+    'id' : 'geo:GPL4894'
   },
   {
     'id' : 'geo:GSM185088',
@@ -226,12 +229,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
-  'latitude' : 45.75,
-  'longitude' : 21.23,
+  'country' : 'Romania',
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'longitude' : 21.23,
+  'latitude' : 45.75,
   'altitude' : 94,
-  'country' : 'Romania'
+  'city' : 'Timisoara'
 }
 ```
 
@@ -269,8 +272,8 @@ This is a wrapper for objects without further specification in the schema.
 ```
 'info' : {
   'death' : {
-               'value' : 1,
-               'type' : 'boolean'
+               'type' : 'boolean',
+               'value' : 1
              },
   'followup_time' : {
                        'type' : 'ISO8601 string',

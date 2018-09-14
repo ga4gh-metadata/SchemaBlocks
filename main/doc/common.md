@@ -1,7 +1,10 @@
 # GA4GH - common and shared object definitions
-  
+
 
 Definition of some prototype objects which are re-used in other schema documents.
+
+
+The schema definitions are done in the [YAML file](../yaml/common.yaml).
 
 ## Biocharacteristic_class
 
@@ -49,8 +52,8 @@ an ontology_class object
 
 ```
 'class' : {
-  'id' : 'ncit:c8294',
-  'label' : 'Pancreatic Adenocarcinoma'
+  'label' : 'Pancreatic Adenocarcinoma',
+  'id' : 'ncit:c8294'
 }
 ```
 

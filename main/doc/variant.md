@@ -1,7 +1,10 @@
 # GA4GH __variant__
-  
+
 
 The document describes attributes of the _variant_ object. In its current implementation, _valiant_ (and related genomic objects such as _callset_) represent extended versions of the original, VCF-derived GA4GH schema. This format may be superseeded or augmented based on current developments in the GA4GH::GKS work stream.
+
+
+The schema definitions are done in the [YAML file](../yaml/variant.yaml).
 
 ## Variant
 
@@ -198,16 +201,16 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'cnv_value' : {
-                   'value' : '-0.294',
-                   'type' : 'number',
-                   'format' : 'float'
-                 },
   'cnv_length' : {
                     'format' : 'int64',
-                    'type' : 'number',
-                    'value' : 1205290
-                  }
+                    'value' : 1205290,
+                    'type' : 'number'
+                  },
+  'cnv_value' : {
+                   'type' : 'number',
+                   'format' : 'float',
+                   'value' : '-0.294'
+                 }
 }
 ```
 

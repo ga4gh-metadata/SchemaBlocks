@@ -1,7 +1,10 @@
 # GA4GH __individual__
-  
+
 
 An individual is a single organism (here typically a human).
+
+
+The schema definitions are done in the [YAML file](../yaml/individual.yaml).
 
 ## Individual
 
@@ -75,25 +78,25 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 'biocharacteristics' : [
   {
-    'description' : 'girl',
     'class' : {
-                 'id' : 'PATO:0020000',
-                 'label' : 'female genetic sex'
-               }
-  },
-  {
-    'class' : {
-                 'label' : 'Homo sapiens',
-                 'id' : 'NCBITaxon:9606'
+                 'label' : 'female genetic sex',
+                 'id' : 'PATO:0020000'
                },
-    'description' : 'Jean-Luc Picard'
+    'description' : 'girl'
   },
   {
-    'description' : 'Patient with Down syndrome',
+    'description' : 'Jean-Luc Picard',
     'class' : {
-                 'label' : 'Genetic anticipation',
-                 'id' : 'HP:0003745'
+                 'id' : 'NCBITaxon:9606',
+                 'label' : 'Homo sapiens'
                }
+  },
+  {
+    'class' : {
+                 'id' : 'HP:0003745',
+                 'label' : 'Genetic anticipation'
+               },
+    'description' : 'Patient with Down syndrome'
   }
 ]
 ```
@@ -133,11 +136,11 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'country' : 'Romania',
-  'altitude' : 94,
-  'longitude' : 21.23,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'longitude' : 21.23,
+  'country' : 'Romania',
   'city' : 'Timisoara',
+  'altitude' : 94,
   'latitude' : 45.75
 }
 ```
@@ -163,12 +166,12 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'last_name' : {
-                   'type' : 'string',
-                   'value' : 'Tichy'
+                   'value' : 'Tichy',
+                   'type' : 'string'
                  },
   'first_name' : {
-                    'type' : 'string',
-                    'value' : 'Ion'
+                    'value' : 'Ion',
+                    'type' : 'string'
                   }
 }
 ```

@@ -1,106 +1,106 @@
 {
    "info" : {
-      "title" : "GA4GH __variant__\n",
+      "updated" : "2018-09-14",
       "description" : "The document describes attributes of the _variant_ object. In its current implementation, _valiant_ (and related genomic objects such as _callset_) represent extended versions of the original, VCF-derived GA4GH schema. This format may be superseeded or augmented based on current developments in the GA4GH::GKS work stream.\n",
-      "updated" : "2018-09-14"
+      "title" : "GA4GH __variant__\n"
    },
    "definitions" : {
       "Variant" : {
          "properties" : {
+            "reference_name" : {
+               "example" : "8",
+               "type" : "string",
+               "description" : "Reference name (chromosome). Accepting values 1-22, X, Y."
+            },
             "genotype" : {
+               "type" : "array",
                "example" : [
                   "1",
                   "."
                ],
-               "type" : "array",
                "description" : "list of strings, which represent the (phased) alleles in which the variant was being observed"
             },
-            "info" : {
-               "description" : "additional variant information, as defined in the example and accompanying documentation",
-               "example" : {
-                  "cnv_value" : {
-                     "value" : "-0.294",
-                     "type" : "number",
-                     "format" : "float"
-                  },
-                  "cnv_length" : {
-                     "format" : "int64",
-                     "type" : "number",
-                     "value" : "1205290"
-                  }
-               },
-               "schema" : {
-                  "$ref" : "./common/Info_class"
-               }
-            },
-            "end" : {
-               "description" : "array of 0 (for presise sequence variants), 1 or 2 (for imprecise end position of structural variant) integers",
-               "type" : "array",
-               "queries" : [
-                  {
-                     "query" : "db.variants.find( { \"reference_name\" : \"9\",  \"variant_type\" : \"DEL\", \"start\" : { $lteq : 21975098 }, \"end\" : { $gteq : 21967753 } } )",
-                     "description" : "the query will return all variants with any overlap of the CDKN2A CDR"
-                  }
-               ],
-               "example" : [
-                  "21977798",
-                  "21978106"
-               ],
-               "format" : "int64"
-            },
-            "alternate_bases" : {
-               "pattern" : "^([ACGT]+|N)$",
-               "type" : "string",
-               "description" : "one or more bases relative to start position of the reference genome,replacing the reference_bases value; for precise variants",
-               "example" : "AC"
-            },
-            "updated" : {
-               "example" : "2017-10-25T07:06:03Z",
-               "type" : "string",
-               "description" : "time of the last edit of this record, in ISO8601"
-            },
-            "digest" : {
-               "example" : "4:12282-46465:DEL",
-               "type" : "string",
-               "description" : "concatenated unique specific elements of the variant"
-            },
-            "mate_name" : {
-               "description" : "Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y.",
-               "type" : "string",
-               "example" : "14"
-            },
-            "callset_id" : {
-               "example" : "PGX_AM_CS_GSM1690424",
-               "type" : "string",
-               "description" : "The identifier (\"callset.id\") of the callset this variant is part of."
-            },
             "start" : {
-               "description" : "array of 1 or 2 (for imprecise end position of structural variant) integers",
-               "type" : "array",
                "example" : [
                   "20867740"
                ],
+               "type" : "array",
+               "description" : "array of 1 or 2 (for imprecise end position of structural variant) integers",
                "format" : "int64"
             },
-            "reference_bases" : {
-               "example" : "G",
-               "description" : "one or more bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants",
-               "type" : "string",
-               "pattern" : "^([ACGT]+|N)$"
+            "biosample_id" : {
+               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",
+               "example" : "pgx-bs-987647"
             },
-            "reference_name" : {
-               "example" : "8",
-               "description" : "Reference name (chromosome). Accepting values 1-22, X, Y.",
+            "callset_id" : {
+               "description" : "The identifier (\"callset.id\") of the callset this variant is part of.",
+               "example" : "PGX_AM_CS_GSM1690424",
                "type" : "string"
             },
-            "biosample_id" : {
-               "example" : "pgx-bs-987647",
-               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining."
+            "digest" : {
+               "type" : "string",
+               "example" : "4:12282-46465:DEL",
+               "description" : "concatenated unique specific elements of the variant"
+            },
+            "updated" : {
+               "description" : "time of the last edit of this record, in ISO8601",
+               "example" : "2017-10-25T07:06:03Z",
+               "type" : "string"
+            },
+            "alternate_bases" : {
+               "pattern" : "^([ACGT]+|N)$",
+               "description" : "one or more bases relative to start position of the reference genome,replacing the reference_bases value; for precise variants",
+               "example" : "AC",
+               "type" : "string"
+            },
+            "info" : {
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               },
+               "description" : "additional variant information, as defined in the example and accompanying documentation",
+               "example" : {
+                  "cnv_length" : {
+                     "format" : "int64",
+                     "value" : "1205290",
+                     "type" : "number"
+                  },
+                  "cnv_value" : {
+                     "type" : "number",
+                     "format" : "float",
+                     "value" : "-0.294"
+                  }
+               }
             },
             "variant_type" : {
-               "type" : "string",
                "description" : "the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)",
+               "type" : "string",
                "example" : "DEL"
+            },
+            "reference_bases" : {
+               "pattern" : "^([ACGT]+|N)$",
+               "description" : "one or more bases at start position in the reference genome, which have been replaced by the alternate_bases value; for precise variants",
+               "type" : "string",
+               "example" : "G"
+            },
+            "end" : {
+               "format" : "int64",
+               "description" : "array of 0 (for presise sequence variants), 1 or 2 (for imprecise end position of structural variant) integers",
+               "queries" : [
+                  {
+                     "description" : "the query will return all variants with any overlap of the CDKN2A CDR",
+                     "query" : "db.variants.find( { \"reference_name\" : \"9\",  \"variant_type\" : \"DEL\", \"start\" : { $lteq : 21975098 }, \"end\" : { $gteq : 21967753 } } )"
+                  }
+               ],
+               "type" : "array",
+               "example" : [
+                  "21977798",
+                  "21978106"
+               ]
+            },
+            "mate_name" : {
+               "example" : "14",
+               "type" : "string",
+               "description" : "Mate name (chromosome) for fusion (BRK) events; otherwise left empty. Accepting values 1-22, X, Y."
             }
          }
       }

@@ -1,6 +1,9 @@
-# GA4GH __callset__  
+# GA4GH __callset__
 
 The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample. 
+
+
+The schema definitions are done in the [YAML file](../yaml/callset.yaml).
 
 ## Callset
 
@@ -93,11 +96,11 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
-  'latitude' : 45.75,
-  'country' : 'Romania',
   'longitude' : 21.23,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'country' : 'Romania',
+  'city' : 'Timisoara',
+  'latitude' : 45.75
 }
 ```
 
@@ -131,6 +134,8 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                   'value' : {
                                'dup_map' : {
                                               'type' : 'array',
+                                              'description' : 'gain cnv status for the corresponding genome intervals
+',
                                               'value' : [
                                                            '',
                                                            '',
@@ -143,15 +148,13 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                                                            '',
                                                            '',
                                                            ''
-                                                         ],
-                                              'description' : 'gain cnv status for the corresponding genome intervals
-'
+                                                         ]
                                             },
                                'binning' : {
                                               'type' : 'number',
                                               'value' : 1000000,
-                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps',
-                                              'format' : 'int64'
+                                              'format' : 'int64',
+                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps'
                                             }
                              }
                 }
