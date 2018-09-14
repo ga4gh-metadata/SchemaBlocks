@@ -1,0 +1,70 @@
+{
+   "age_at_collection_class" : {
+      "id" : "HP:0003621",
+      "label" : "Juvenile onset"
+   },
+   "external_ids" : [
+      {
+         "relation" : "provenance",
+         "id" : "cellosaurus:CVCL_0312"
+      },
+      {
+         "relation" : "report",
+         "id" : "pubmed:17440070"
+      },
+      {
+         "id" : "geo:GPL4894",
+         "relation" : "technology"
+      },
+      {
+         "id" : "geo:GSM185088",
+         "relation" : "denotes"
+      }
+   ],
+   "individual_id" : "ind-cnhl-1293347-004",
+   "age_at_collection" : "P56Y",
+   "updated" : "2017-10-25T07:06:03Z",
+   "geo_provenance" : {
+      "country" : "Romania",
+      "city" : "Timisoara",
+      "altitude" : 94,
+      "longitude" : 21.23,
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+   },
+   "description" : "Burkitt lymphoma, cell line Namalwa",
+   "info" : {
+      "followup_time" : {
+         "type" : "ISO8601 string",
+         "value" : "P14M"
+      },
+      "death" : {
+         "value" : 1,
+         "type" : "boolean"
+      }
+   },
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "biocharacteristics" : [
+      {
+         "description" : "Pancreatic Adenocarcinoma",
+         "class" : {
+            "id" : "pgx:icdot:c25.9",
+            "label" : "Pancreas, NOS"
+         }
+      },
+      {
+         "class" : {
+            "id" : "pgx:icdom:81403",
+            "label" : "Adenocarcinoma, NOS"
+         },
+         "description" : "Pancreatic Adenocarcinoma"
+      },
+      {
+         "class" : {
+            "label" : "Pancreatic Adenocarcinoma",
+            "id" : "ncit:c8294"
+         },
+         "description" : "Pancreatic Adenocarcinoma"
+      }
+   ]
+}

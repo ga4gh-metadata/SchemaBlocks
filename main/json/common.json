@@ -5,113 +5,113 @@
       "description" : "Definition of some prototype objects which are re-used in other schema documents.\n"
    },
    "definitions" : {
-      "Geo_class" : {
-         "properties" : {
-            "country" : {
-               "type" : "string",
-               "example" : "Romania"
-            },
-            "longitude" : {
-               "format" : "float",
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
-               "type" : "number",
-               "example" : "8.54"
-            },
-            "label" : {
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "type" : "string"
-            },
-            "latitude" : {
-               "D" : "float",
-               "example" : "47.37",
-               "type" : "number",
-               "description" : "signed decimal degrees (North, relative to Equator)"
-            },
-            "altitude" : {
-               "example" : "8848",
-               "type" : "number",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
-               "format" : "float"
-            },
-            "city" : {
-               "example" : "Timisoara",
-               "type" : "string"
-            }
-         }
-      },
       "Info_class" : {
          "properties" : {
-            "type" : {
-               "description" : "type of the value; optional",
-               "example" : "number",
-               "type" : "string"
-            },
-            "description" : {
-               "example" : "The base length of the called segment.",
-               "type" : "string",
-               "description" : "an optional free-text annotation about the object"
-            },
-            "format" : {
-               "example" : "int64",
-               "type" : "string",
-               "description" : "format of the value; optional"
-            },
             "value" : {
                "example" : "1503320",
                "description" : "the value in a format correstponding to type"
+            },
+            "type" : {
+               "example" : "number",
+               "description" : "type of the value; optional",
+               "type" : "string"
+            },
+            "format" : {
+               "type" : "string",
+               "description" : "format of the value; optional",
+               "example" : "int64"
+            },
+            "description" : {
+               "type" : "string",
+               "example" : "The base length of the called segment.",
+               "description" : "an optional free-text annotation about the object"
             }
          }
       },
       "Biocharacteristic_class" : {
          "properties" : {
-            "negated" : {
-               "example" : "true",
-               "type" : "boolean",
-               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated"
-            },
             "class" : {
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
-               },
                "description" : "an ontology_class object",
                "example" : {
-                  "label" : "Pancreatic Adenocarcinoma",
-                  "id" : "ncit:c8294"
+                  "id" : "ncit:c8294",
+                  "label" : "Pancreatic Adenocarcinoma"
+               },
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
                }
             },
             "description" : {
                "example" : "Invasive ductal breast carcinoma, metastasized",
-               "type" : "string",
-               "description" : "a free-text description of this biocharacteristic"
-            }
-         }
-      },
-      "Reference_class" : {
-         "properties" : {
-            "id" : {
-               "description" : "properly prefixed CURIE of the external reference",
-               "type" : "string",
-               "example" : "pubmed:17440070"
-            },
-            "relation" : {
-               "description" : "the relation of the external reference to the object it was pointed from",
-               "example" : "denotes",
+               "description" : "a free-text description of this biocharacteristic",
                "type" : "string"
+            },
+            "negated" : {
+               "type" : "boolean",
+               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
+               "example" : "true"
             }
          }
       },
       "Ontology_class" : {
          "properties" : {
             "label" : {
-               "example" : "Pancreatic Adenocarcinoma",
                "type" : "string",
+               "example" : "Pancreatic Adenocarcinoma",
                "description" : "the text label associated with the term"
             },
             "id" : {
+               "example" : "ncit:C8294",
                "description" : "properly prefixed CURIE of the ontology term",
+               "type" : "string"
+            }
+         }
+      },
+      "Reference_class" : {
+         "properties" : {
+            "relation" : {
                "type" : "string",
-               "example" : "ncit:C8294"
+               "description" : "the relation of the external reference to the object it was pointed from",
+               "example" : "denotes"
+            },
+            "id" : {
+               "example" : "pubmed:17440070",
+               "description" : "properly prefixed CURIE of the external reference",
+               "type" : "string"
+            }
+         }
+      },
+      "Geo_class" : {
+         "properties" : {
+            "label" : {
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "type" : "string"
+            },
+            "longitude" : {
+               "format" : "float",
+               "example" : "8.54",
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "type" : "number"
+            },
+            "latitude" : {
+               "type" : "number",
+               "example" : "47.37",
+               "D" : "float",
+               "description" : "signed decimal degrees (North, relative to Equator)"
+            },
+            "country" : {
+               "type" : "string",
+               "example" : "Romania"
+            },
+            "city" : {
+               "type" : "string",
+               "example" : "Timisoara"
+            },
+            "altitude" : {
+               "format" : "float",
+               "example" : "8848",
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "type" : "number"
             }
          }
       }

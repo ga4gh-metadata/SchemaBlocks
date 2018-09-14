@@ -1,0 +1,34 @@
+{
+   "reference_bases" : "G",
+   "updated" : "2017-10-25T07:06:03Z",
+   "genotype" : [
+      "1",
+      "."
+   ],
+   "reference_name" : 8,
+   "mate_name" : 14,
+   "digest" : "4:12282-46465:DEL",
+   "variant_type" : "DEL",
+   "biosample_id" : "pgx-bs-987647",
+   "callset_id" : "PGX_AM_CS_GSM1690424",
+   "start" : [
+      "20867740"
+   ],
+   "info" : {
+      "cnv_length" : {
+         "type" : "number",
+         "value" : 1205290,
+         "format" : "int64"
+      },
+      "cnv_value" : {
+         "format" : "float",
+         "type" : "number",
+         "value" : "-0.294"
+      }
+   },
+   "alternate_bases" : "AC",
+   "end" : [
+      "21977798",
+      "21978106"
+   ]
+}

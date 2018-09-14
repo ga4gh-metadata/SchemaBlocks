@@ -56,7 +56,7 @@ definitions:
           - '1'
           - '.'
       variant_type:
-        description: the variant type in case of a named (structural) variant (DUP | DEL | BRK ...)
+        description: the variant type in case of a named (structural) variant (e.g. DUP, DEL, BRK ...)
         type: string
         example: 'DEL'
       info:

@@ -10,55 +10,55 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
 <h3>Properties of the <i>Callset</i> class</h3>
 
 <table>
-<tr>
-  <th>Property</th>
-  <th>Type</th>
-  <th>Format</th>
-  <th>Description</th>
-</tr>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Format</th>
+    <th>Description</th>
+  </tr>
 
-<tr>
-  <td>biosample_id</td>
-  <td>string</td>
-  <td></td>
-  <td>The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.</td>
-</tr>
+  <tr>
+    <td>biosample_id</td>
+    <td>string</td>
+    <td></td>
+    <td>The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.</td>
+  </tr>
 
-<tr>
-  <td>description</td>
-  <td>string</td>
-  <td></td>
-  <td>A free text description of the callset.</td>
-</tr>
+  <tr>
+    <td>description</td>
+    <td>string</td>
+    <td></td>
+    <td>A free text description of the callset.</td>
+  </tr>
 
-<tr>
-  <td>geo_provenance</td>
-  <td></td>
-  <td></td>
-  <td>This geo_class attribute ideally describes the geographic location of where this callset was analysed.
+  <tr>
+    <td>geo_provenance</td>
+    <td></td>
+    <td></td>
+    <td>This geo_class attribute ideally describes the geographic location of where this callset was analysed.
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>id</td>
-  <td>string</td>
-  <td></td>
-  <td>The local-unique identifier of this callset (referenced as "callset_id").</td>
-</tr>
+  <tr>
+    <td>id</td>
+    <td>string</td>
+    <td></td>
+    <td>The local-unique identifier of this callset (referenced as "callset_id").</td>
+  </tr>
 
-<tr>
-  <td>info</td>
-  <td></td>
-  <td></td>
-  <td>additional variant information, as defined in the example and accompanying documentation</td>
-</tr>
+  <tr>
+    <td>info</td>
+    <td></td>
+    <td></td>
+    <td>additional variant information, as defined in the example and accompanying documentation</td>
+  </tr>
 
-<tr>
-  <td>updated</td>
-  <td>string</td>
-  <td></td>
-  <td>time of the last edit of this record, in ISO8601</td>
-</tr>
+  <tr>
+    <td>updated</td>
+    <td>string</td>
+    <td></td>
+    <td>time of the last edit of this record, in ISO8601</td>
+  </tr>
 </table>
 
 <h3>Extended notes and examples on the <i>Callset</i> properties</h3>
@@ -96,10 +96,10 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
+  'city' : 'Timisoara',
+  'country' : 'Romania',
   'longitude' : 21.23,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'country' : 'Romania',
-  'city' : 'Timisoara',
   'latitude' : 45.75
 }
 ```
@@ -125,15 +125,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'cnv_maps' : {
-                  'schema' : {
-                                '$ref' : './common/Info_class'
-                              },
                   'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
 With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
 ',
+                  'schema' : {
+                                '$ref' : './common/Info_class'
+                              },
                   'value' : {
                                'dup_map' : {
-                                              'type' : 'array',
                                               'description' : 'gain cnv status for the corresponding genome intervals
 ',
                                               'value' : [
@@ -148,13 +147,14 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                                                            '',
                                                            '',
                                                            ''
-                                                         ]
+                                                         ],
+                                              'type' : 'array'
                                             },
                                'binning' : {
                                               'type' : 'number',
                                               'value' : 1000000,
-                                              'format' : 'int64',
-                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps'
+                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps',
+                                              'format' : 'int64'
                                             }
                              }
                 }

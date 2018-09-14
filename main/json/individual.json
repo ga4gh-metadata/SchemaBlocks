@@ -1,39 +1,84 @@
 {
    "info" : {
+      "title" : "GA4GH __individual__\n",
       "updated" : "2018-09-13",
-      "description" : "An individual is a single organism (here typically a human).\n",
-      "title" : "GA4GH __individual__\n"
+      "description" : "An individual is a single organism (here typically a human).\n"
    },
    "definitions" : {
       "Individual" : {
          "properties" : {
-            "updated" : {
-               "type" : "string",
-               "example" : "2017-10-25T07:06:03Z",
-               "description" : "time of the last edit of this record, in ISO8601"
+            "biocharacteristics" : {
+               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
+               "example" : [
+                  {
+                     "description" : "girl",
+                     "class" : {
+                        "label" : "female genetic sex",
+                        "id" : "PATO:0020000"
+                     }
+                  },
+                  {
+                     "class" : {
+                        "label" : "Homo sapiens",
+                        "id" : "NCBITaxon:9606"
+                     },
+                     "description" : "Jean-Luc Picard"
+                  },
+                  {
+                     "description" : "Patient with Down syndrome",
+                     "class" : {
+                        "id" : "HP:0003745",
+                        "label" : "Genetic anticipation"
+                     }
+                  }
+               ],
+               "schema" : {
+                  "$ref" : "#/Biocharacteristic_class"
+               },
+               "type" : "array",
+               "queries" : [
+                  {
+                     "description" : "the query will return all individuals who have been properly labeled as human",
+                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )"
+                  },
+                  {
+                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
+                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
+                  }
+               ]
             },
             "geo_provenance" : {
-               "example" : {
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "longitude" : "21.23",
-                  "country" : "Romania",
-                  "city" : "Timisoara",
-                  "altitude" : "94",
-                  "latitude" : "45.75"
-               },
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
                "schema" : {
                   "$ref" : "./common/Geo_class"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
+               "example" : {
+                  "altitude" : "94",
+                  "country" : "Romania",
+                  "city" : "Timisoara",
+                  "longitude" : "21.23",
+                  "latitude" : "45.75",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
                }
+            },
+            "id" : {
+               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
+               "example" : "AM_BS__NCBISKYCGH-1993",
+               "type" : "string"
+            },
+            "updated" : {
+               "type" : "string",
+               "description" : "time of the last edit of this record, in ISO8601",
+               "example" : "2017-10-25T07:06:03Z"
             },
             "info" : {
                "example" : {
-                  "last_name" : {
-                     "value" : "Tichy",
-                     "type" : "string"
-                  },
                   "first_name" : {
                      "value" : "Ion",
+                     "type" : "string"
+                  },
+                  "last_name" : {
+                     "value" : "Tichy",
                      "type" : "string"
                   }
                },
@@ -42,55 +87,10 @@
                   "$ref" : "./common/Info_class"
                }
             },
-            "id" : {
-               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
-               "type" : "string",
-               "example" : "AM_BS__NCBISKYCGH-1993"
-            },
             "description" : {
-               "description" : "A free text description of the individual.",
                "type" : "string",
-               "example" : "patient with lung cancer, male smoker"
-            },
-            "biocharacteristics" : {
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
-               "schema" : {
-                  "$ref" : "#/Biocharacteristic_class"
-               },
-               "example" : [
-                  {
-                     "class" : {
-                        "label" : "female genetic sex",
-                        "id" : "PATO:0020000"
-                     },
-                     "description" : "girl"
-                  },
-                  {
-                     "description" : "Jean-Luc Picard",
-                     "class" : {
-                        "id" : "NCBITaxon:9606",
-                        "label" : "Homo sapiens"
-                     }
-                  },
-                  {
-                     "class" : {
-                        "id" : "HP:0003745",
-                        "label" : "Genetic anticipation"
-                     },
-                     "description" : "Patient with Down syndrome"
-                  }
-               ],
-               "queries" : [
-                  {
-                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )",
-                     "description" : "the query will return all individuals who have been properly labeled as human"
-                  },
-                  {
-                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
-                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
-                  }
-               ],
-               "type" : "array"
+               "example" : "patient with lung cancer, male smoker",
+               "description" : "A free text description of the individual."
             }
          }
       }

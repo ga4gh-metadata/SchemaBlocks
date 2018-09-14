@@ -11,57 +11,57 @@ The schema definitions are done in the [YAML file](../yaml/individual.yaml).
 <h3>Properties of the <i>Individual</i> class</h3>
 
 <table>
-<tr>
-  <th>Property</th>
-  <th>Type</th>
-  <th>Format</th>
-  <th>Description</th>
-</tr>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Format</th>
+    <th>Description</th>
+  </tr>
 
-<tr>
-  <td>biocharacteristics</td>
-  <td>array</td>
-  <td></td>
-  <td>list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
+  <tr>
+    <td>biocharacteristics</td>
+    <td>array</td>
+    <td></td>
+    <td>list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>description</td>
-  <td>string</td>
-  <td></td>
-  <td>A free text description of the individual.</td>
-</tr>
+  <tr>
+    <td>description</td>
+    <td>string</td>
+    <td></td>
+    <td>A free text description of the individual.</td>
+  </tr>
 
-<tr>
-  <td>geo_provenance</td>
-  <td></td>
-  <td></td>
-  <td>This geo_class attribute ideally describes the geographic location of where this individual originates from.
+  <tr>
+    <td>geo_provenance</td>
+    <td></td>
+    <td></td>
+    <td>This geo_class attribute ideally describes the geographic location of where this individual originates from.
 This value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>id</td>
-  <td>string</td>
-  <td></td>
-  <td>The local-unique identifier of this individual (referenced as "individual_id").</td>
-</tr>
+  <tr>
+    <td>id</td>
+    <td>string</td>
+    <td></td>
+    <td>The local-unique identifier of this individual (referenced as "individual_id").</td>
+  </tr>
 
-<tr>
-  <td>info</td>
-  <td></td>
-  <td></td>
-  <td>additional variant information, as defined in the example and accompanying documentation</td>
-</tr>
+  <tr>
+    <td>info</td>
+    <td></td>
+    <td></td>
+    <td>additional variant information, as defined in the example and accompanying documentation</td>
+  </tr>
 
-<tr>
-  <td>updated</td>
-  <td>string</td>
-  <td></td>
-  <td>time of the last edit of this record, in ISO8601</td>
-</tr>
+  <tr>
+    <td>updated</td>
+    <td>string</td>
+    <td></td>
+    <td>time of the last edit of this record, in ISO8601</td>
+  </tr>
 </table>
 
 <h3>Extended notes and examples on the <i>Individual</i> properties</h3>
@@ -78,25 +78,25 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 'biocharacteristics' : [
   {
+    'description' : 'girl',
     'class' : {
                  'label' : 'female genetic sex',
                  'id' : 'PATO:0020000'
-               },
-    'description' : 'girl'
-  },
-  {
-    'description' : 'Jean-Luc Picard',
-    'class' : {
-                 'id' : 'NCBITaxon:9606',
-                 'label' : 'Homo sapiens'
                }
   },
   {
     'class' : {
+                 'label' : 'Homo sapiens',
+                 'id' : 'NCBITaxon:9606'
+               },
+    'description' : 'Jean-Luc Picard'
+  },
+  {
+    'description' : 'Patient with Down syndrome',
+    'class' : {
                  'id' : 'HP:0003745',
                  'label' : 'Genetic anticipation'
-               },
-    'description' : 'Patient with Down syndrome'
+               }
   }
 ]
 ```
@@ -136,12 +136,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'longitude' : 21.23,
+  'altitude' : 94,
   'country' : 'Romania',
   'city' : 'Timisoara',
-  'altitude' : 94,
-  'latitude' : 45.75
+  'longitude' : 21.23,
+  'latitude' : 45.75,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -165,14 +165,14 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'last_name' : {
-                   'value' : 'Tichy',
-                   'type' : 'string'
-                 },
   'first_name' : {
                     'value' : 'Ion',
                     'type' : 'string'
-                  }
+                  },
+  'last_name' : {
+                   'value' : 'Tichy',
+                   'type' : 'string'
+                 }
 }
 ```
 

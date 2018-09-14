@@ -10,88 +10,88 @@ The schema definitions are done in the [YAML file](../yaml/biosample.yaml).
 <h3>Properties of the <i>Biosample</i> class</h3>
 
 <table>
-<tr>
-  <th>Property</th>
-  <th>Type</th>
-  <th>Format</th>
-  <th>Description</th>
-</tr>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Format</th>
+    <th>Description</th>
+  </tr>
 
-<tr>
-  <td>age_at_collection</td>
-  <td>string</td>
-  <td></td>
-  <td>the age of the individual at time of biosample collection, as ISO8601 string</td>
-</tr>
+  <tr>
+    <td>age_at_collection</td>
+    <td>string</td>
+    <td></td>
+    <td>the age of the individual at time of biosample collection, as ISO8601 string</td>
+  </tr>
 
-<tr>
-  <td>age_at_collection_class</td>
-  <td></td>
-  <td></td>
-  <td>the age of the individual at time of biosample collection, as ontology object</td>
-</tr>
+  <tr>
+    <td>age_at_collection_class</td>
+    <td></td>
+    <td></td>
+    <td>the age of the individual at time of biosample collection, as ontology object</td>
+  </tr>
 
-<tr>
-  <td>biocharacteristics</td>
-  <td>array</td>
-  <td></td>
-  <td>"biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
+  <tr>
+    <td>biocharacteristics</td>
+    <td>array</td>
+    <td></td>
+    <td>"biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>description</td>
-  <td>string</td>
-  <td></td>
-  <td>A free text description of the biosample.</td>
-</tr>
+  <tr>
+    <td>description</td>
+    <td>string</td>
+    <td></td>
+    <td>A free text description of the biosample.</td>
+  </tr>
 
-<tr>
-  <td>external_ids</td>
-  <td>array</td>
-  <td></td>
-  <td>list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship</td>
-</tr>
+  <tr>
+    <td>external_ids</td>
+    <td>array</td>
+    <td></td>
+    <td>list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship</td>
+  </tr>
 
-<tr>
-  <td>geo_provenance</td>
-  <td></td>
-  <td></td>
-  <td>This geo_class attribute ideally describes the geographic location of where the sample was extracted.
+  <tr>
+    <td>geo_provenance</td>
+    <td></td>
+    <td></td>
+    <td>This geo_class attribute ideally describes the geographic location of where the sample was extracted.
 Frequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>id</td>
-  <td>string</td>
-  <td></td>
-  <td>The local-unique identifier of this biosample (referenced as "biosample_id").</td>
-</tr>
+  <tr>
+    <td>id</td>
+    <td>string</td>
+    <td></td>
+    <td>The local-unique identifier of this biosample (referenced as "biosample_id").</td>
+  </tr>
 
-<tr>
-  <td>individual_id</td>
-  <td>string</td>
-  <td></td>
-  <td>In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
+  <tr>
+    <td>individual_id</td>
+    <td>string</td>
+    <td></td>
+    <td>In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>info</td>
-  <td></td>
-  <td></td>
-  <td>This is a wrapper for objects without further specification in the schema.
+  <tr>
+    <td>info</td>
+    <td></td>
+    <td></td>
+    <td>This is a wrapper for objects without further specification in the schema.
 </td>
-</tr>
+  </tr>
 
-<tr>
-  <td>updated</td>
-  <td>string</td>
-  <td></td>
-  <td>time of the last edit of this record, in ISO8601</td>
-</tr>
+  <tr>
+    <td>updated</td>
+    <td>string</td>
+    <td></td>
+    <td>time of the last edit of this record, in ISO8601</td>
+  </tr>
 </table>
 
 <h3>Extended notes and examples on the <i>Biosample</i> properties</h3>
@@ -134,11 +134,11 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'id' : 'pgx:icdot:c25.9',
                  'label' : 'Pancreas, NOS'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
+               }
   },
   {
     'class' : {
@@ -201,8 +201,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'id' : 'pubmed:17440070'
   },
   {
-    'relation' : 'technology',
-    'id' : 'geo:GPL4894'
+    'id' : 'geo:GPL4894',
+    'relation' : 'technology'
   },
   {
     'id' : 'geo:GSM185088',
@@ -230,11 +230,11 @@ Frequently this value may reflect either the place of the laboratory where the a
 ```
 'geo_provenance' : {
   'country' : 'Romania',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'city' : 'Timisoara',
+  'altitude' : 94,
   'longitude' : 21.23,
   'latitude' : 45.75,
-  'altitude' : 94,
-  'city' : 'Timisoara'
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -271,14 +271,14 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'death' : {
-               'type' : 'boolean',
-               'value' : 1
-             },
   'followup_time' : {
                        'type' : 'ISO8601 string',
                        'value' : 'P14M'
-                     }
+                     },
+  'death' : {
+               'value' : 1,
+               'type' : 'boolean'
+             }
 }
 ```
 

@@ -1,0 +1,46 @@
+{
+   "info" : {
+      "first_name" : {
+         "value" : "Ion",
+         "type" : "string"
+      },
+      "last_name" : {
+         "value" : "Tichy",
+         "type" : "string"
+      }
+   },
+   "biocharacteristics" : [
+      {
+         "description" : "girl",
+         "class" : {
+            "label" : "female genetic sex",
+            "id" : "PATO:0020000"
+         }
+      },
+      {
+         "class" : {
+            "label" : "Homo sapiens",
+            "id" : "NCBITaxon:9606"
+         },
+         "description" : "Jean-Luc Picard"
+      },
+      {
+         "description" : "Patient with Down syndrome",
+         "class" : {
+            "id" : "HP:0003745",
+            "label" : "Genetic anticipation"
+         }
+      }
+   ],
+   "geo_provenance" : {
+      "altitude" : 94,
+      "country" : "Romania",
+      "city" : "Timisoara",
+      "longitude" : 21.23,
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+   },
+   "updated" : "2017-10-25T07:06:03Z",
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "description" : "patient with lung cancer, male smoker"
+}
