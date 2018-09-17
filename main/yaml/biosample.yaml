@@ -13,8 +13,8 @@ definitions:
       individual_id:
         type: string
         description: |
-          In a complete data model "individual_id" points to the "id" of the individual ("donor") this _biosample_ was derived from.
-          In a local context this could be the `id` attribute in a corresponding "individuals" collection.
+          In a complete data model "individual_id" points to the "id" of the individual ("donor") this <i>biosample</i> was derived from.
+          In a local context this could be the <code>id</code> attribute in a corresponding "individuals" collection.
         example: 'ind-cnhl-1293347-004'
       description:
         type: string
