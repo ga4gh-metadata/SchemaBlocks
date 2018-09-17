@@ -74,7 +74,8 @@ Frequently this value may reflect either the place of the laboratory where the a
     <td>individual_id</td>
     <td>string</td>
     <td></td>
-    <td>In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
+    <td>In a complete data model "individual_id" points to the "id" of the individual ("donor") this _biosample_ was derived from.
+In a local context this could be the `id` attribute in a corresponding "individuals" collection.
 </td>
   </tr>
 
@@ -117,8 +118,8 @@ the age of the individual at time of biosample collection, as ontology object
 
 ```
 'age_at_collection_class' : {
-  'id' : 'HP:0003621',
-  'label' : 'Juvenile onset'
+  'label' : 'Juvenile onset',
+  'id' : 'HP:0003621'
 }
 ```
 
@@ -134,23 +135,23 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'id' : 'pgx:icdot:c25.9',
                  'label' : 'Pancreas, NOS'
-               }
-  },
-  {
-    'class' : {
-                 'id' : 'pgx:icdom:81403',
-                 'label' : 'Adenocarcinoma, NOS'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   },
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Pancreatic Adenocarcinoma',
-                 'id' : 'ncit:c8294'
+                 'label' : 'Adenocarcinoma, NOS',
+                 'id' : 'pgx:icdom:81403'
+               }
+  },
+  {
+    'class' : {
+                 'id' : 'ncit:c8294',
+                 'label' : 'Pancreatic Adenocarcinoma'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   }
@@ -201,12 +202,12 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'id' : 'pubmed:17440070'
   },
   {
-    'id' : 'geo:GPL4894',
-    'relation' : 'technology'
+    'relation' : 'technology',
+    'id' : 'geo:GPL4894'
   },
   {
-    'id' : 'geo:GSM185088',
-    'relation' : 'denotes'
+    'relation' : 'denotes',
+    'id' : 'geo:GSM185088'
   }
 ]
 ```
@@ -229,12 +230,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'country' : 'Romania',
-  'city' : 'Timisoara',
   'altitude' : 94,
   'longitude' : 21.23,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'latitude' : 45.75,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'city' : 'Timisoara',
+  'country' : 'Romania'
 }
 ```
 
@@ -252,7 +253,8 @@ The local-unique identifier of this biosample (referenced as "biosample_id").
 --------------------------------------------------------------------------------
 ### individual_id
 
-In a complete data model "individual_id" represents the identifier of this biosample in the "individuals" collection.
+In a complete data model "individual_id" points to the "id" of the individual ("donor") this _biosample_ was derived from.
+In a local context this could be the `id` attribute in a corresponding "individuals" collection.
 
 
 #### Example
@@ -271,14 +273,14 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'followup_time' : {
-                       'type' : 'ISO8601 string',
-                       'value' : 'P14M'
-                     },
   'death' : {
-               'value' : 1,
-               'type' : 'boolean'
-             }
+               'type' : 'boolean',
+               'value' : 1
+             },
+  'followup_time' : {
+                       'value' : 'P14M',
+                       'type' : 'ISO8601 string'
+                     }
 }
 ```
 

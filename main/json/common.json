@@ -1,117 +1,117 @@
 {
    "info" : {
-      "title" : "GA4GH - common and shared object definitions\n",
       "version" : "2018-09-13",
+      "title" : "GA4GH - common and shared object definitions\n",
       "description" : "Definition of some prototype objects which are re-used in other schema documents.\n"
    },
    "definitions" : {
-      "Info_class" : {
-         "properties" : {
-            "value" : {
-               "example" : "1503320",
-               "description" : "the value in a format correstponding to type"
-            },
-            "type" : {
-               "example" : "number",
-               "description" : "type of the value; optional",
-               "type" : "string"
-            },
-            "format" : {
-               "type" : "string",
-               "description" : "format of the value; optional",
-               "example" : "int64"
-            },
-            "description" : {
-               "type" : "string",
-               "example" : "The base length of the called segment.",
-               "description" : "an optional free-text annotation about the object"
-            }
-         }
-      },
-      "Biocharacteristic_class" : {
-         "properties" : {
-            "class" : {
-               "description" : "an ontology_class object",
-               "example" : {
-                  "id" : "ncit:c8294",
-                  "label" : "Pancreatic Adenocarcinoma"
-               },
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
-               }
-            },
-            "description" : {
-               "example" : "Invasive ductal breast carcinoma, metastasized",
-               "description" : "a free-text description of this biocharacteristic",
-               "type" : "string"
-            },
-            "negated" : {
-               "type" : "boolean",
-               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
-               "example" : "true"
-            }
-         }
-      },
-      "Ontology_class" : {
-         "properties" : {
-            "label" : {
-               "type" : "string",
-               "example" : "Pancreatic Adenocarcinoma",
-               "description" : "the text label associated with the term"
-            },
-            "id" : {
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term",
-               "type" : "string"
-            }
-         }
-      },
-      "Reference_class" : {
-         "properties" : {
-            "relation" : {
-               "type" : "string",
-               "description" : "the relation of the external reference to the object it was pointed from",
-               "example" : "denotes"
-            },
-            "id" : {
-               "example" : "pubmed:17440070",
-               "description" : "properly prefixed CURIE of the external reference",
-               "type" : "string"
-            }
-         }
-      },
       "Geo_class" : {
          "properties" : {
             "label" : {
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
+               "type" : "string",
                "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "type" : "string"
-            },
-            "longitude" : {
-               "format" : "float",
-               "example" : "8.54",
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
-               "type" : "number"
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
             },
             "latitude" : {
-               "type" : "number",
-               "example" : "47.37",
                "D" : "float",
-               "description" : "signed decimal degrees (North, relative to Equator)"
+               "example" : "47.37",
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "type" : "number"
             },
             "country" : {
                "type" : "string",
                "example" : "Romania"
             },
             "city" : {
-               "type" : "string",
-               "example" : "Timisoara"
+               "example" : "Timisoara",
+               "type" : "string"
             },
             "altitude" : {
-               "format" : "float",
                "example" : "8848",
                "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "type" : "number",
+               "format" : "float"
+            },
+            "longitude" : {
+               "example" : "8.54",
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "format" : "float",
                "type" : "number"
+            }
+         }
+      },
+      "Reference_class" : {
+         "properties" : {
+            "relation" : {
+               "example" : "denotes",
+               "description" : "the relation of the external reference to the object it was pointed from",
+               "type" : "string"
+            },
+            "id" : {
+               "type" : "string",
+               "description" : "properly prefixed CURIE of the external reference",
+               "example" : "pubmed:17440070"
+            }
+         }
+      },
+      "Biocharacteristic_class" : {
+         "properties" : {
+            "negated" : {
+               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
+               "example" : "true",
+               "type" : "boolean"
+            },
+            "description" : {
+               "description" : "a free-text description of this biocharacteristic",
+               "example" : "Invasive ductal breast carcinoma, metastasized",
+               "type" : "string"
+            },
+            "class" : {
+               "example" : {
+                  "label" : "Pancreatic Adenocarcinoma",
+                  "id" : "ncit:c8294"
+               },
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               },
+               "description" : "an ontology_class object"
+            }
+         }
+      },
+      "Info_class" : {
+         "properties" : {
+            "value" : {
+               "description" : "the value in a format correstponding to type",
+               "example" : "1503320"
+            },
+            "description" : {
+               "type" : "string",
+               "example" : "The base length of the called segment.",
+               "description" : "an optional free-text annotation about the object"
+            },
+            "format" : {
+               "type" : "string",
+               "description" : "format of the value; optional",
+               "example" : "int64"
+            },
+            "type" : {
+               "type" : "string",
+               "description" : "type of the value; optional",
+               "example" : "number"
+            }
+         }
+      },
+      "Ontology_class" : {
+         "properties" : {
+            "id" : {
+               "type" : "string",
+               "example" : "ncit:C8294",
+               "description" : "properly prefixed CURIE of the ontology term"
+            },
+            "label" : {
+               "example" : "Pancreatic Adenocarcinoma",
+               "description" : "the text label associated with the term",
+               "type" : "string"
             }
          }
       }

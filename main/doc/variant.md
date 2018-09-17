@@ -203,8 +203,8 @@ additional variant information, as defined in the example and accompanying docum
 'info' : {
   'cnv_length' : {
                     'type' : 'number',
-                    'value' : 1205290,
-                    'format' : 'int64'
+                    'format' : 'int64',
+                    'value' : 1205290
                   },
   'cnv_value' : {
                    'format' : 'float',

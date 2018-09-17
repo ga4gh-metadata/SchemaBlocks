@@ -1,20 +1,20 @@
 {
-   "info" : {
-      "first_name" : {
-         "value" : "Ion",
-         "type" : "string"
-      },
-      "last_name" : {
-         "value" : "Tichy",
-         "type" : "string"
-      }
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "updated" : "2017-10-25T07:06:03Z",
+   "geo_provenance" : {
+      "country" : "Romania",
+      "city" : "Timisoara",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "latitude" : 45.75,
+      "longitude" : 21.23,
+      "altitude" : 94
    },
    "biocharacteristics" : [
       {
          "description" : "girl",
          "class" : {
-            "label" : "female genetic sex",
-            "id" : "PATO:0020000"
+            "id" : "PATO:0020000",
+            "label" : "female genetic sex"
          }
       },
       {
@@ -32,15 +32,15 @@
          }
       }
    ],
-   "geo_provenance" : {
-      "altitude" : 94,
-      "country" : "Romania",
-      "city" : "Timisoara",
-      "longitude" : 21.23,
-      "latitude" : 45.75,
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+   "info" : {
+      "last_name" : {
+         "value" : "Tichy",
+         "type" : "string"
+      },
+      "first_name" : {
+         "value" : "Ion",
+         "type" : "string"
+      }
    },
-   "updated" : "2017-10-25T07:06:03Z",
-   "id" : "AM_BS__NCBISKYCGH-1993",
    "description" : "patient with lung cancer, male smoker"
 }
