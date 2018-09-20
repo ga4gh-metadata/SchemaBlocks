@@ -1,105 +1,73 @@
 {
    "info" : {
+      "title" : "GA4GH __biosample__",
       "version" : "2018-09-12",
-      "description" : "In this schema, a \"biosample\" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.\n",
-      "title" : "GA4GH __biosample__"
+      "description" : "In this schema, a \"biosample\" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.\n"
    },
    "definitions" : {
       "Biosample" : {
          "properties" : {
-            "created" : {
-               "description" : "The creation time of this record, in ISO8601\n",
-               "example" : "2017-10-25T07:06:03Z",
+            "data_use_conditions" : {
+               "description" : "Data use conditions applying to data from this biosample, as ontology object (e.g. DUO).\n",
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               }
+            },
+            "geo_provenance" : {
+               "example" : {
+                  "country" : "Romania",
+                  "altitude" : "94",
+                  "latitude" : "45.75",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "city" : "Timisoara",
+                  "longitude" : "21.23"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where the sample was extracted.\nFrequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.\n",
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               }
+            },
+            "name" : {
+               "description" : "A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.\n",
+               "example" : "Sample BRCA-00429, 2nd replicate",
                "type" : "string"
+            },
+            "id" : {
+               "type" : "string",
+               "example" : "AM_BS__NCBISKYCGH-1993",
+               "description" : "The local-unique identifier of this biosample (referenced as \"biosample_id\")."
+            },
+            "description" : {
+               "example" : "Burkitt lymphoma, cell line Namalwa",
+               "type" : "string",
+               "description" : "A free text description of the biosample."
             },
             "info" : {
                "schema" : {
                   "$ref" : "./common/Info_class"
                },
-               "description" : "This is a wrapper for objects without further specification in the schema.\n",
                "queries" : [
                   {
-                     "description" : "This query retrieves biosamples with an ISO8601 period value for \"followup_time\" and a boolean \"true\" for death.\n",
-                     "query" : "db.biosamples.find( {\"info\" : { $elemMatch: { \"followup_time.value\" : { $regex : /\\P/ }, \"death.value\" : true } } } )"
+                     "query" : "db.biosamples.find( {\"info\" : { $elemMatch: { \"followup_time.value\" : { $regex : /\\P/ }, \"death.value\" : true } } } )",
+                     "description" : "This query retrieves biosamples with an ISO8601 period value for \"followup_time\" and a boolean \"true\" for death.\n"
                   }
                ],
                "example" : {
-                  "death" : {
-                     "value" : "1",
-                     "type" : "boolean"
-                  },
                   "followup_time" : {
-                     "type" : "ISO8601 string",
-                     "value" : "P14M"
+                     "value" : "P14M",
+                     "type" : "ISO8601 string"
+                  },
+                  "death" : {
+                     "type" : "boolean",
+                     "value" : "1"
                   }
-               }
-            },
-            "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where the sample was extracted.\nFrequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.\n",
-               "example" : {
-                  "altitude" : "94",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "latitude" : "45.75",
-                  "longitude" : "21.23",
-                  "city" : "Timisoara",
-                  "country" : "Romania"
                },
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               }
-            },
-            "project_id" : {
-               "type" : "string",
-               "description" : "The id attribute of the project that this biosample was collected in.\n",
-               "example" : "ind-cnhl-1293347-004"
-            },
-            "id" : {
-               "type" : "string",
-               "description" : "The local-unique identifier of this biosample (referenced as \"biosample_id\").",
-               "example" : "AM_BS__NCBISKYCGH-1993"
-            },
-            "external_ids" : {
-               "type" : "array",
-               "items" : {
-                  "$ref" : "./common/Reference_class"
-               },
-               "example" : [
-                  {
-                     "id" : "cellosaurus:CVCL_0312",
-                     "relation" : "provenance"
-                  },
-                  {
-                     "relation" : "report",
-                     "id" : "pubmed:17440070"
-                  },
-                  {
-                     "id" : "geo:GPL4894",
-                     "relation" : "technology"
-                  },
-                  {
-                     "id" : "geo:GSM185088",
-                     "relation" : "denotes"
-                  }
-               ],
-               "queries" : [
-                  {
-                     "description" : "the query will return all biosamples reported in this publication",
-                     "query" : "db.biosamples.find( { \"external_ids.id\" : \"pubmed:17440070\" } )"
-                  }
-               ],
-               "description" : "list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship"
-            },
-            "updated" : {
-               "type" : "string",
-               "example" : "2022-11-11T09:45:13Z",
-               "description" : "The time of the last edit of this record, in ISO8601\n"
-            },
-            "individual_id" : {
-               "example" : "ind-cnhl-1293347-004",
-               "description" : "In a complete data model \"individual_id\" points to the \"id\" of the individual (\"donor\") this <i>biosample</i> was derived from.\nIn a local context this could be the <code>id</code> attribute in a corresponding \"individuals\" collection.\n",
-               "type" : "string"
+               "description" : "This is a wrapper for objects without further specification in the schema.\n"
             },
             "biocharacteristics" : {
+               "items" : {
+                  "$ref" : "./common/Biocharacteristic_class"
+               },
                "example" : [
                   {
                      "description" : "Pancreatic Adenocarcinoma",
@@ -109,47 +77,35 @@
                      }
                   },
                   {
+                     "description" : "Pancreatic Adenocarcinoma",
                      "class" : {
                         "label" : "Adenocarcinoma, NOS",
                         "id" : "pgx:icdom:81403"
-                     },
-                     "description" : "Pancreatic Adenocarcinoma"
+                     }
                   },
                   {
                      "description" : "Pancreatic Adenocarcinoma",
                      "class" : {
-                        "id" : "ncit:c8294",
-                        "label" : "Pancreatic Adenocarcinoma"
+                        "label" : "Pancreatic Adenocarcinoma",
+                        "id" : "ncit:c8294"
                      }
                   }
                ],
-               "items" : {
-                  "$ref" : "./common/Biocharacteristic_class"
-               },
                "queries" : [
                   {
-                     "query" : "db.biosamples.find( { \"biocharacteristics.class.id\" : \"pgx:icdom:81403\" } )",
-                     "description" : "The query will return all biosamples with an (exact) class.id of \"pgx:icdom:81403\" in their \"biocharacteristics\" object list.\n"
+                     "description" : "The query will return all biosamples with an (exact) class.id of \"pgx:icdom:81403\" in their \"biocharacteristics\" object list.\n",
+                     "query" : "db.biosamples.find( { \"biocharacteristics.class.id\" : \"pgx:icdom:81403\" } )"
                   },
                   {
                      "description" : "This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).\n",
                      "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /ncit/ } } )"
                   }
                ],
-               "description" : "\"biocharacteristics\" represents a wrapper list of \"biocharacteristic_class\" objects with properly prefixed term ids, describing features of the biosample.\nExamples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.\n",
-               "type" : "array"
-            },
-            "name" : {
-               "type" : "string",
-               "description" : "A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.\n",
-               "example" : "Sample BRCA-00429, 2nd replicate"
-            },
-            "description" : {
-               "type" : "string",
-               "description" : "A free text description of the biosample.",
-               "example" : "Burkitt lymphoma, cell line Namalwa"
+               "type" : "array",
+               "description" : "\"biocharacteristics\" represents a wrapper list of \"biocharacteristic_class\" objects with properly prefixed term ids, describing features of the biosample.\nExamples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.\n"
             },
             "age_at_collection" : {
+               "description" : "The age of the individual at time of biosample collection, as Age_class object.\n",
                "example" : {
                   "age_class" : {
                      "id" : "HP:0003621",
@@ -157,10 +113,60 @@
                   },
                   "age" : "P56Y"
                },
-               "description" : "The age of the individual at time of biosample collection, as Age_class object.\n",
                "schema" : {
                   "$ref" : "./common/Age_class"
                }
+            },
+            "updated" : {
+               "example" : "2022-11-11T09:45:13Z",
+               "type" : "string",
+               "description" : "The time of the last edit of this record, in ISO8601\n"
+            },
+            "individual_id" : {
+               "description" : "In a complete data model \"individual_id\" points to the \"id\" of the individual (\"donor\") this <i>biosample</i> was derived from.\nIn a local context this could be the <code>id</code> attribute in a corresponding \"individuals\" collection.\n",
+               "example" : "ind-cnhl-1293347-004",
+               "type" : "string"
+            },
+            "external_ids" : {
+               "items" : {
+                  "$ref" : "./common/Reference_class"
+               },
+               "description" : "list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship",
+               "type" : "array",
+               "queries" : [
+                  {
+                     "query" : "db.biosamples.find( { \"external_ids.id\" : \"pubmed:17440070\" } )",
+                     "description" : "the query will return all biosamples reported in this publication"
+                  }
+               ],
+               "example" : [
+                  {
+                     "id" : "cellosaurus:CVCL_0312",
+                     "relation" : "provenance"
+                  },
+                  {
+                     "id" : "pubmed:17440070",
+                     "relation" : "report"
+                  },
+                  {
+                     "id" : "geo:GPL4894",
+                     "relation" : "technology"
+                  },
+                  {
+                     "id" : "geo:GSM185088",
+                     "relation" : "denotes"
+                  }
+               ]
+            },
+            "created" : {
+               "description" : "The creation time of this record, in ISO8601\n",
+               "type" : "string",
+               "example" : "2017-10-25T07:06:03Z"
+            },
+            "project_id" : {
+               "description" : "The id attribute of the project that this biosample was collected in.\n",
+               "type" : "string",
+               "example" : "ind-cnhl-1293347-004"
             }
          }
       }

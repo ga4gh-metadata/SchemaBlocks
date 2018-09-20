@@ -69,6 +69,13 @@ The schema definitions are done in the [YAML file](../yaml/variant.yaml).
   </tr>
 
   <tr>
+    <td>id</td>
+    <td>string</td>
+    <td></td>
+    <td>The local-unique identifier of this variant (referenced as "variant_id").</td>
+  </tr>
+
+  <tr>
     <td>info</td>
     <td></td>
     <td></td>
@@ -214,6 +221,17 @@ list of strings, which represent the (phased) alleles in which the variant was b
 ```
 
 --------------------------------------------------------------------------------
+### id
+
+The local-unique identifier of this variant (referenced as "variant_id").
+
+#### Example
+
+```
+'id' : "amvar-8754-7751-1119-8539"
+```
+
+--------------------------------------------------------------------------------
 ### info
 
 additional variant information, as defined in the example and accompanying documentation
@@ -223,14 +241,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'cnv_value' : {
-                   'format' : 'float',
                    'value' : '-0.294',
+                   'format' : 'float',
                    'type' : 'number'
                  },
   'cnv_length' : {
-                    'type' : 'number',
                     'format' : 'int64',
-                    'value' : 1205290
+                    'value' : 1205290,
+                    'type' : 'number'
                   }
 }
 ```

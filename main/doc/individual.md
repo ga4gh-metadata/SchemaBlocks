@@ -35,6 +35,14 @@ The schema definitions are done in the [YAML file](../yaml/individual.yaml).
   </tr>
 
   <tr>
+    <td>data_use_conditions</td>
+    <td></td>
+    <td></td>
+    <td>Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
+</td>
+  </tr>
+
+  <tr>
     <td>description</td>
     <td>string</td>
     <td></td>
@@ -87,11 +95,11 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 'biocharacteristics' : [
   {
+    'description' : 'girl',
     'class' : {
                  'id' : 'PATO:0020000',
                  'label' : 'female genetic sex'
-               },
-    'description' : 'girl'
+               }
   },
   {
     'description' : 'Jean-Luc Picard',
@@ -136,6 +144,18 @@ The creation time of this record, in ISO8601
 ```
 
 --------------------------------------------------------------------------------
+### data_use_conditions
+
+Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
+
+
+#### Example
+
+```
+'data_use_conditions' : "undef"
+```
+
+--------------------------------------------------------------------------------
 ### description
 
 A free text description of the individual.
@@ -159,10 +179,10 @@ This value may reflect either the place of burth or residence, but frequently ma
 'geo_provenance' : {
   'city' : 'Timisoara',
   'longitude' : 21.23,
-  'country' : 'Romania',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'latitude' : 45.75,
-  'altitude' : 94
+  'altitude' : 94,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'country' : 'Romania'
 }
 ```
 
@@ -187,8 +207,8 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'last_name' : {
-                   'value' : 'Tichy',
-                   'type' : 'string'
+                   'type' : 'string',
+                   'value' : 'Tichy'
                  },
   'first_name' : {
                     'type' : 'string',

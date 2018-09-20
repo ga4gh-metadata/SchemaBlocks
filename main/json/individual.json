@@ -2,79 +2,25 @@
    "definitions" : {
       "Individual" : {
          "properties" : {
-            "updated" : {
-               "example" : "2022-11-11T09:45:13Z",
-               "description" : "The time of the last edit of this record, in ISO8601\n",
-               "type" : "string"
-            },
-            "description" : {
-               "description" : "A free text description of the individual.",
-               "example" : "patient with lung cancer, male smoker",
-               "type" : "string"
-            },
-            "id" : {
-               "type" : "string",
-               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
-               "example" : "AM_BS__NCBISKYCGH-1993"
-            },
-            "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
-               "example" : {
-                  "city" : "Timisoara",
-                  "longitude" : "21.23",
-                  "country" : "Romania",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "latitude" : "45.75",
-                  "altitude" : "94"
-               },
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               }
-            },
-            "info" : {
-               "schema" : {
-                  "$ref" : "./common/Info_class"
-               },
-               "description" : "additional variant information, as defined in the example and accompanying documentation",
-               "example" : {
-                  "last_name" : {
-                     "value" : "Tichy",
-                     "type" : "string"
-                  },
-                  "first_name" : {
-                     "type" : "string",
-                     "value" : "Ion"
-                  }
-               }
-            },
-            "created" : {
-               "description" : "The creation time of this record, in ISO8601\n",
-               "example" : "2017-10-25T07:06:03Z",
-               "type" : "string"
-            },
             "biocharacteristics" : {
-               "schema" : {
-                  "$ref" : "#/Biocharacteristic_class"
-               },
-               "type" : "array",
                "queries" : [
                   {
-                     "description" : "the query will return all individuals who have been properly labeled as human",
-                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )"
+                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )",
+                     "description" : "the query will return all individuals who have been properly labeled as human"
                   },
                   {
                      "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )",
                      "description" : "this call to the distinct funcion will return *all* HPO annotated classes"
                   }
                ],
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
+               "type" : "array",
                "example" : [
                   {
+                     "description" : "girl",
                      "class" : {
                         "id" : "PATO:0020000",
                         "label" : "female genetic sex"
-                     },
-                     "description" : "girl"
+                     }
                   },
                   {
                      "description" : "Jean-Luc Picard",
@@ -90,7 +36,67 @@
                      },
                      "description" : "Patient with Down syndrome"
                   }
-               ]
+               ],
+               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
+               "schema" : {
+                  "$ref" : "#/Biocharacteristic_class"
+               }
+            },
+            "updated" : {
+               "description" : "The time of the last edit of this record, in ISO8601\n",
+               "example" : "2022-11-11T09:45:13Z",
+               "type" : "string"
+            },
+            "id" : {
+               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
+               "type" : "string",
+               "example" : "AM_BS__NCBISKYCGH-1993"
+            },
+            "data_use_conditions" : {
+               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n",
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               }
+            },
+            "geo_provenance" : {
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
+               "example" : {
+                  "city" : "Timisoara",
+                  "longitude" : "21.23",
+                  "latitude" : "45.75",
+                  "altitude" : "94",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "country" : "Romania"
+               },
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               }
+            },
+            "info" : {
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               },
+               "example" : {
+                  "last_name" : {
+                     "type" : "string",
+                     "value" : "Tichy"
+                  },
+                  "first_name" : {
+                     "type" : "string",
+                     "value" : "Ion"
+                  }
+               },
+               "description" : "additional variant information, as defined in the example and accompanying documentation"
+            },
+            "description" : {
+               "example" : "patient with lung cancer, male smoker",
+               "type" : "string",
+               "description" : "A free text description of the individual."
+            },
+            "created" : {
+               "type" : "string",
+               "example" : "2017-10-25T07:06:03Z",
+               "description" : "The creation time of this record, in ISO8601\n"
             }
          }
       }

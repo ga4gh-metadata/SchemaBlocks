@@ -1,135 +1,135 @@
 {
    "info" : {
-      "version" : "2018-09-13",
+      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
       "title" : "GA4GH - common and shared object definitions\n",
-      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n"
+      "version" : "2018-09-13"
    },
    "definitions" : {
-      "Ontology_class" : {
-         "properties" : {
-            "label" : {
-               "type" : "string",
-               "example" : "Pancreatic Adenocarcinoma",
-               "description" : "the text label associated with the term"
-            },
-            "id" : {
-               "type" : "string",
-               "description" : "properly prefixed CURIE of the ontology term",
-               "example" : "ncit:C8294"
-            }
-         }
-      },
       "Reference_class" : {
          "properties" : {
             "relation" : {
-               "example" : "denotes",
                "description" : "the relation of the external reference to the object it was pointed from",
-               "type" : "string"
+               "type" : "string",
+               "example" : "denotes"
             },
             "id" : {
-               "type" : "string",
                "description" : "properly prefixed CURIE of the external reference",
-               "example" : "pubmed:17440070"
+               "example" : "pubmed:17440070",
+               "type" : "string"
+            }
+         }
+      },
+      "Ontology_class" : {
+         "properties" : {
+            "label" : {
+               "description" : "the text label associated with the term",
+               "type" : "string",
+               "example" : "Pancreatic Adenocarcinoma"
+            },
+            "id" : {
+               "description" : "properly prefixed CURIE of the ontology term",
+               "example" : "ncit:C8294",
+               "type" : "string"
             }
          }
       },
       "Age_class" : {
          "properties" : {
+            "age" : {
+               "type" : "string",
+               "example" : "P56Y",
+               "description" : "The age as ISO8601 string."
+            },
             "age_at_collection_class" : {
                "schema" : {
                   "$ref" : "#/Ontology_class"
                },
                "example" : {
-                  "label" : "Juvenile onset",
-                  "id" : "HP:0003621"
+                  "id" : "HP:0003621",
+                  "label" : "Juvenile onset"
                },
                "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n"
-            },
-            "age" : {
-               "description" : "The age as ISO8601 string.",
-               "example" : "P56Y",
-               "type" : "string"
             }
          }
       },
       "Info_class" : {
          "properties" : {
-            "value" : {
-               "description" : "the value in a format correstponding to type",
-               "example" : "1503320"
-            },
-            "format" : {
-               "description" : "format of the value; optional",
-               "example" : "int64",
-               "type" : "string"
-            },
             "description" : {
                "type" : "string",
                "example" : "The base length of the called segment.",
                "description" : "an optional free-text annotation about the object"
             },
             "type" : {
-               "type" : "string",
+               "description" : "type of the value; optional",
                "example" : "number",
-               "description" : "type of the value; optional"
+               "type" : "string"
+            },
+            "value" : {
+               "example" : "1503320",
+               "description" : "the value in a format correstponding to type"
+            },
+            "format" : {
+               "description" : "format of the value; optional",
+               "example" : "int64",
+               "type" : "string"
             }
          }
       },
       "Biocharacteristic_class" : {
          "properties" : {
-            "description" : {
-               "type" : "string",
-               "example" : "Invasive ductal breast carcinoma, metastasized",
-               "description" : "a free-text description of this biocharacteristic"
-            },
             "class" : {
+               "description" : "an ontology_class object",
+               "example" : {
+                  "id" : "ncit:c8294",
+                  "label" : "Pancreatic Adenocarcinoma"
+               },
                "schema" : {
                   "$ref" : "#/Ontology_class"
-               },
-               "example" : {
-                  "label" : "Pancreatic Adenocarcinoma",
-                  "id" : "ncit:c8294"
-               },
-               "description" : "an ontology_class object"
+               }
             },
             "negated" : {
                "type" : "boolean",
                "example" : "true",
                "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated"
+            },
+            "description" : {
+               "description" : "a free-text description of this biocharacteristic",
+               "example" : "Invasive ductal breast carcinoma, metastasized",
+               "type" : "string"
             }
          }
       },
       "Geo_class" : {
          "properties" : {
-            "latitude" : {
-               "description" : "signed decimal degrees (North, relative to Equator)",
-               "example" : "47.37",
-               "type" : "number",
-               "D" : "float"
-            },
-            "label" : {
-               "type" : "string",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
-            },
-            "altitude" : {
-               "format" : "float",
-               "example" : "8848",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
-               "type" : "number"
-            },
-            "country" : {
-               "type" : "string",
-               "example" : "Romania"
-            },
             "longitude" : {
                "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
-               "format" : "float",
+               "type" : "number",
                "example" : "8.54",
-               "type" : "number"
+               "format" : "float"
             },
             "city" : {
                "example" : "Timisoara",
+               "type" : "string"
+            },
+            "label" : {
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "type" : "string",
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
+            },
+            "latitude" : {
+               "type" : "number",
+               "example" : "47.37",
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "D" : "float"
+            },
+            "altitude" : {
+               "format" : "float",
+               "type" : "number",
+               "example" : "8848",
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional"
+            },
+            "country" : {
+               "example" : "Romania",
                "type" : "string"
             }
          }

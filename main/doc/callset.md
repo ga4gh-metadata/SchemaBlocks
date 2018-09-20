@@ -33,6 +33,14 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
   </tr>
 
   <tr>
+    <td>data_use_conditions</td>
+    <td></td>
+    <td></td>
+    <td>Data use conditions applying to data from this callset, as ontology object (e.g. DUO).
+</td>
+  </tr>
+
+  <tr>
     <td>description</td>
     <td>string</td>
     <td></td>
@@ -97,6 +105,18 @@ The creation time of this record, in ISO8601
 ```
 
 --------------------------------------------------------------------------------
+### data_use_conditions
+
+Data use conditions applying to data from this callset, as ontology object (e.g. DUO).
+
+
+#### Example
+
+```
+'data_use_conditions' : "undef"
+```
+
+--------------------------------------------------------------------------------
 ### description
 
 A free text description of the callset.
@@ -117,11 +137,11 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
-  'longitude' : 21.23,
   'country' : 'Romania',
+  'latitude' : 45.75,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'latitude' : 45.75
+  'city' : 'Timisoara',
+  'longitude' : 21.23
 }
 ```
 
@@ -151,7 +171,6 @@ additional variant information, as defined in the example and accompanying docum
                               },
                   'value' : {
                                'dup_map' : {
-                                              'type' : 'array',
                                               'value' : [
                                                            '',
                                                            '',
@@ -165,12 +184,13 @@ additional variant information, as defined in the example and accompanying docum
                                                            '',
                                                            ''
                                                          ],
+                                              'type' : 'array',
                                               'description' : 'gain cnv status for the corresponding genome intervals
 '
                                             },
                                'binning' : {
-                                              'type' : 'number',
                                               'description' : 'interval size in bases for the binning, when creating the cnv_maps',
+                                              'type' : 'number',
                                               'value' : 1000000,
                                               'format' : 'int64'
                                             }

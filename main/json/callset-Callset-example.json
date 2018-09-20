@@ -1,4 +1,7 @@
 {
+   "biosample_id" : "pgx-bs-987647",
+   "created" : "2017-10-25T07:06:03Z",
+   "updated" : "2022-11-11T09:45:13Z",
    "info" : {
       "cnv_maps" : {
          "schema" : {
@@ -6,7 +9,6 @@
          },
          "value" : {
             "dup_map" : {
-               "type" : "array",
                "value" : [
                   "",
                   "",
@@ -20,11 +22,12 @@
                   "",
                   ""
                ],
+               "type" : "array",
                "description" : "gain cnv status for the corresponding genome intervals\n"
             },
             "binning" : {
-               "type" : "number",
                "description" : "interval size in bases for the binning, when creating the cnv_maps",
+               "type" : "number",
                "value" : 1000000,
                "format" : "int64"
             }
@@ -32,16 +35,14 @@
          "description" : "The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map : \"DUP\" or \"\", del_map => \"DEL\" or \"\"), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.\nWith a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).\n"
       }
    },
-   "geo_provenance" : {
-      "city" : "Timisoara",
-      "longitude" : 21.23,
-      "country" : "Romania",
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "latitude" : 45.75
-   },
-   "created" : "2017-10-25T07:06:03Z",
    "description" : "SNP6 array of cancer sample BRCA-0893",
-   "updated" : "2022-11-11T09:45:13Z",
    "id" : "GSM264198",
-   "biosample_id" : "pgx-bs-987647"
+   "geo_provenance" : {
+      "country" : "Romania",
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "city" : "Timisoara",
+      "longitude" : 21.23
+   },
+   "data_use_conditions" : null
 }

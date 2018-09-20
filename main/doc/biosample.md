@@ -43,6 +43,14 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   </tr>
 
   <tr>
+    <td>data_use_conditions</td>
+    <td></td>
+    <td></td>
+    <td>Data use conditions applying to data from this biosample, as ontology object (e.g. DUO).
+</td>
+  </tr>
+
+  <tr>
     <td>description</td>
     <td>string</td>
     <td></td>
@@ -154,17 +162,17 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
                }
   },
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'label' : 'Adenocarcinoma, NOS',
                  'id' : 'pgx:icdom:81403'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
+               }
   },
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'ncit:c8294',
-                 'label' : 'Pancreatic Adenocarcinoma'
+                 'label' : 'Pancreatic Adenocarcinoma',
+                 'id' : 'ncit:c8294'
                }
   }
 ]
@@ -198,6 +206,18 @@ The creation time of this record, in ISO8601
 ```
 
 --------------------------------------------------------------------------------
+### data_use_conditions
+
+Data use conditions applying to data from this biosample, as ontology object (e.g. DUO).
+
+
+#### Example
+
+```
+'data_use_conditions' : "undef"
+```
+
+--------------------------------------------------------------------------------
 ### description
 
 A free text description of the biosample.
@@ -222,8 +242,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'relation' : 'provenance'
   },
   {
-    'relation' : 'report',
-    'id' : 'pubmed:17440070'
+    'id' : 'pubmed:17440070',
+    'relation' : 'report'
   },
   {
     'id' : 'geo:GPL4894',
@@ -254,12 +274,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
+  'country' : 'Romania',
   'altitude' : 94,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'latitude' : 45.75,
-  'longitude' : 21.23,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'city' : 'Timisoara',
-  'country' : 'Romania'
+  'longitude' : 21.23
 }
 ```
 
@@ -297,14 +317,14 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'death' : {
-               'value' : 1,
-               'type' : 'boolean'
-             },
   'followup_time' : {
-                       'type' : 'ISO8601 string',
-                       'value' : 'P14M'
-                     }
+                       'value' : 'P14M',
+                       'type' : 'ISO8601 string'
+                     },
+  'death' : {
+               'type' : 'boolean',
+               'value' : 1
+             }
 }
 ```
 
