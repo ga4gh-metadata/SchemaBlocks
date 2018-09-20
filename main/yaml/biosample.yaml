@@ -10,27 +10,36 @@ definitions:
         type: string
         description: The local-unique identifier of this biosample (referenced as "biosample_id").
         example: 'AM_BS__NCBISKYCGH-1993'
+      project_id:
+        type: string
+        description: |
+          The id attribute of the project that this biosample was collected in.
+        example: 'ind-cnhl-1293347-004'
       individual_id:
         type: string
         description: |
           In a complete data model "individual_id" points to the "id" of the individual ("donor") this <i>biosample</i> was derived from.
           In a local context this could be the <code>id</code> attribute in a corresponding "individuals" collection.
         example: 'ind-cnhl-1293347-004'
+      name:
+        type: string
+        description: |
+          A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.
+        example: 'Sample BRCA-00429, 2nd replicate'
       description:
         type: string
         description: A free text description of the biosample.
         example: 'Burkitt lymphoma, cell line Namalwa'
       age_at_collection:
-        type: string
-        description: the age of the individual at time of biosample collection, as ISO8601 string
-        example: 'P56Y'
-      age_at_collection_class:
         schema:
-          $ref: './common/Ontology_class'
-        description: the age of the individual at time of biosample collection, as ontology object
-        example:
-          id : "HP:0003621"
-          label : "Juvenile onset"
+          $ref: './common/Age_class'
+        description: |
+          The age of the individual at time of biosample collection, as Age_class object.
+        example: 
+          age: 'P56Y'
+          age_class:
+            id : "HP:0003621"
+            label : "Juvenile onset"
       biocharacteristics:
         description: |
           "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
@@ -104,7 +113,13 @@ definitions:
           - description: |
               This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.
             query: 'db.biosamples.find( {"info" : { $elemMatch: { "followup_time.value" : { $regex : /\P/ }, "death.value" : true } } } )'
-      updated:
-        description: time of the last edit of this record, in ISO8601
+      created:
+        description: |
+          The creation time of this record, in ISO8601
         type: string
         example: '2017-10-25T07:06:03Z'
+      updated:
+        description: |
+          The time of the last edit of this record, in ISO8601
+        type: string
+        example: '2022-11-11T09:45:13Z'

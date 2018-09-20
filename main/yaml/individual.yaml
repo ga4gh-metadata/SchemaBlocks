@@ -63,7 +63,13 @@ definitions:
           last_name:
             type: string
             value: 'Tichy'
-      updated:
-        description: time of the last edit of this record, in ISO8601
+      created:
+        description: |
+          The creation time of this record, in ISO8601
         type: string
         example: '2017-10-25T07:06:03Z'
+      updated:
+        description: |
+          The time of the last edit of this record, in ISO8601
+        type: string
+        example: '2022-11-11T09:45:13Z'
