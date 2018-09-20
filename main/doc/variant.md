@@ -240,16 +240,16 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'cnv_value' : {
-                   'value' : '-0.294',
-                   'format' : 'float',
-                   'type' : 'number'
-                 },
   'cnv_length' : {
                     'format' : 'int64',
                     'value' : 1205290,
                     'type' : 'number'
-                  }
+                  },
+  'cnv_value' : {
+                   'value' : '-0.294',
+                   'type' : 'number',
+                   'format' : 'float'
+                 }
 }
 ```
 

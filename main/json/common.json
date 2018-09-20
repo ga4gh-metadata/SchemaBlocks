@@ -1,77 +1,72 @@
 {
-   "info" : {
-      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
-      "title" : "GA4GH - common and shared object definitions\n",
-      "version" : "2018-09-13"
-   },
    "definitions" : {
-      "Reference_class" : {
+      "Age_class" : {
          "properties" : {
-            "relation" : {
-               "description" : "the relation of the external reference to the object it was pointed from",
+            "age" : {
+               "example" : "P56Y",
                "type" : "string",
-               "example" : "denotes"
+               "description" : "The age as ISO8601 string."
             },
-            "id" : {
-               "description" : "properly prefixed CURIE of the external reference",
-               "example" : "pubmed:17440070",
-               "type" : "string"
+            "age_at_collection_class" : {
+               "example" : {
+                  "label" : "Juvenile onset",
+                  "id" : "HP:0003621"
+               },
+               "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n",
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               }
             }
          }
       },
       "Ontology_class" : {
          "properties" : {
-            "label" : {
-               "description" : "the text label associated with the term",
-               "type" : "string",
-               "example" : "Pancreatic Adenocarcinoma"
-            },
             "id" : {
-               "description" : "properly prefixed CURIE of the ontology term",
                "example" : "ncit:C8294",
+               "type" : "string",
+               "description" : "properly prefixed CURIE of the ontology term"
+            },
+            "label" : {
+               "example" : "Pancreatic Adenocarcinoma",
+               "description" : "the text label associated with the term",
                "type" : "string"
             }
          }
       },
-      "Age_class" : {
+      "Reference_class" : {
          "properties" : {
-            "age" : {
+            "relation" : {
                "type" : "string",
-               "example" : "P56Y",
-               "description" : "The age as ISO8601 string."
+               "description" : "the relation of the external reference to the object it was pointed from",
+               "example" : "denotes"
             },
-            "age_at_collection_class" : {
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
-               },
-               "example" : {
-                  "id" : "HP:0003621",
-                  "label" : "Juvenile onset"
-               },
-               "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n"
+            "id" : {
+               "example" : "pubmed:17440070",
+               "description" : "properly prefixed CURIE of the external reference",
+               "type" : "string"
             }
          }
       },
       "Info_class" : {
          "properties" : {
-            "description" : {
+            "format" : {
                "type" : "string",
-               "example" : "The base length of the called segment.",
-               "description" : "an optional free-text annotation about the object"
+               "description" : "format of the value; optional",
+               "example" : "int64"
             },
             "type" : {
-               "description" : "type of the value; optional",
                "example" : "number",
-               "type" : "string"
+               "type" : "string",
+               "description" : "type of the value; optional"
+            },
+            "description" : {
+               "type" : "string",
+               "description" : "an optional free-text annotation about the object",
+               "example" : "The base length of the called segment."
             },
             "value" : {
-               "example" : "1503320",
-               "description" : "the value in a format correstponding to type"
-            },
-            "format" : {
-               "description" : "format of the value; optional",
-               "example" : "int64",
-               "type" : "string"
+               "description" : "the value in a format correstponding to type",
+               "example" : "1503320"
             }
          }
       },
@@ -79,23 +74,23 @@
          "properties" : {
             "class" : {
                "description" : "an ontology_class object",
-               "example" : {
-                  "id" : "ncit:c8294",
-                  "label" : "Pancreatic Adenocarcinoma"
-               },
                "schema" : {
                   "$ref" : "#/Ontology_class"
+               },
+               "example" : {
+                  "label" : "Pancreatic Adenocarcinoma",
+                  "id" : "ncit:c8294"
                }
-            },
-            "negated" : {
-               "type" : "boolean",
-               "example" : "true",
-               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated"
             },
             "description" : {
                "description" : "a free-text description of this biocharacteristic",
-               "example" : "Invasive ductal breast carcinoma, metastasized",
-               "type" : "string"
+               "type" : "string",
+               "example" : "Invasive ductal breast carcinoma, metastasized"
+            },
+            "negated" : {
+               "type" : "boolean",
+               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
+               "example" : "true"
             }
          }
       },
@@ -104,36 +99,41 @@
             "longitude" : {
                "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
                "type" : "number",
-               "example" : "8.54",
-               "format" : "float"
+               "format" : "float",
+               "example" : "8.54"
             },
             "city" : {
                "example" : "Timisoara",
                "type" : "string"
             },
-            "label" : {
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "type" : "string",
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
-            },
-            "latitude" : {
-               "type" : "number",
-               "example" : "47.37",
-               "description" : "signed decimal degrees (North, relative to Equator)",
-               "D" : "float"
-            },
-            "altitude" : {
-               "format" : "float",
-               "type" : "number",
-               "example" : "8848",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional"
-            },
             "country" : {
                "example" : "Romania",
                "type" : "string"
+            },
+            "altitude" : {
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "type" : "number",
+               "example" : "8848",
+               "format" : "float"
+            },
+            "label" : {
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
+               "type" : "string",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania"
+            },
+            "latitude" : {
+               "example" : "47.37",
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "type" : "number",
+               "D" : "float"
             }
          }
       }
+   },
+   "info" : {
+      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
+      "version" : "2018-09-13",
+      "title" : "GA4GH - common and shared object definitions\n"
    }
 }
 

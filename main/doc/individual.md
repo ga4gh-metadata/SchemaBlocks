@@ -97,15 +97,15 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
   {
     'description' : 'girl',
     'class' : {
-                 'id' : 'PATO:0020000',
-                 'label' : 'female genetic sex'
+                 'label' : 'female genetic sex',
+                 'id' : 'PATO:0020000'
                }
   },
   {
     'description' : 'Jean-Luc Picard',
     'class' : {
-                 'label' : 'Homo sapiens',
-                 'id' : 'NCBITaxon:9606'
+                 'id' : 'NCBITaxon:9606',
+                 'label' : 'Homo sapiens'
                }
   },
   {
@@ -152,7 +152,10 @@ Data use conditions applying to data from this individual, as ontology object (e
 #### Example
 
 ```
-'data_use_conditions' : "undef"
+'data_use_conditions' : {
+  'id' : 'DUO:0000004',
+  'label' : 'no restriction'
+}
 ```
 
 --------------------------------------------------------------------------------
@@ -177,12 +180,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
   'longitude' : 21.23,
-  'latitude' : 45.75,
+  'city' : 'Timisoara',
+  'country' : 'Romania',
   'altitude' : 94,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'country' : 'Romania'
+  'latitude' : 45.75
 }
 ```
 

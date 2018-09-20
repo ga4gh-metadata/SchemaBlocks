@@ -113,7 +113,10 @@ Data use conditions applying to data from this callset, as ontology object (e.g.
 #### Example
 
 ```
-'data_use_conditions' : "undef"
+'data_use_conditions' : {
+  'label' : 'no restriction',
+  'id' : 'DUO:0000004'
+}
 ```
 
 --------------------------------------------------------------------------------
@@ -137,9 +140,9 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
-  'country' : 'Romania',
   'latitude' : 45.75,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'country' : 'Romania',
   'city' : 'Timisoara',
   'longitude' : 21.23
 }
@@ -169,8 +172,14 @@ additional variant information, as defined in the example and accompanying docum
                   'schema' : {
                                 '$ref' : './common/Info_class'
                               },
+                  'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
+With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
+',
                   'value' : {
                                'dup_map' : {
+                                              'type' : 'array',
+                                              'description' : 'gain cnv status for the corresponding genome intervals
+',
                                               'value' : [
                                                            '',
                                                            '',
@@ -183,21 +192,15 @@ additional variant information, as defined in the example and accompanying docum
                                                            '',
                                                            '',
                                                            ''
-                                                         ],
-                                              'type' : 'array',
-                                              'description' : 'gain cnv status for the corresponding genome intervals
-'
+                                                         ]
                                             },
                                'binning' : {
-                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps',
-                                              'type' : 'number',
                                               'value' : 1000000,
+                                              'type' : 'number',
+                                              'description' : 'interval size in bases for the binning, when creating the cnv_maps',
                                               'format' : 'int64'
                                             }
-                             },
-                  'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
-With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
-'
+                             }
                 }
 }
 ```
