@@ -59,6 +59,20 @@ definitions:
       value:
         description: the value in a format correstponding to type
         example: 1503320
+  Age_class:
+    properties:
+      age:
+        type: string
+        description: The age as ISO8601 string.
+        example: 'P56Y'
+      age_at_collection_class:
+        schema:
+          $ref: '#/Ontology_class'
+        description: |
+          The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object
+        example:
+          id : "HP:0003621"
+          label : "Juvenile onset"
   Geo_class:
     properties:
       label:

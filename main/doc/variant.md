@@ -40,6 +40,14 @@ The schema definitions are done in the [YAML file](../yaml/variant.yaml).
   </tr>
 
   <tr>
+    <td>created</td>
+    <td>string</td>
+    <td></td>
+    <td>The creation time of this record, in ISO8601
+</td>
+  </tr>
+
+  <tr>
     <td>digest</td>
     <td>string</td>
     <td></td>
@@ -58,6 +66,13 @@ The schema definitions are done in the [YAML file](../yaml/variant.yaml).
     <td>array</td>
     <td></td>
     <td>list of strings, which represent the (phased) alleles in which the variant was being observed</td>
+  </tr>
+
+  <tr>
+    <td>id</td>
+    <td>string</td>
+    <td></td>
+    <td>The local-unique identifier of this variant (referenced as "variant_id").</td>
   </tr>
 
   <tr>
@@ -99,7 +114,8 @@ The schema definitions are done in the [YAML file](../yaml/variant.yaml).
     <td>updated</td>
     <td>string</td>
     <td></td>
-    <td>time of the last edit of this record, in ISO8601</td>
+    <td>The time of the last edit of this record, in ISO8601
+</td>
   </tr>
 
   <tr>
@@ -144,6 +160,18 @@ The identifier ("callset.id") of the callset this variant is part of.
 
 ```
 'callset_id' : "PGX_AM_CS_GSM1690424"
+```
+
+--------------------------------------------------------------------------------
+### created
+
+The creation time of this record, in ISO8601
+
+
+#### Example
+
+```
+'created' : "2017-10-25T07:06:03Z"
 ```
 
 --------------------------------------------------------------------------------
@@ -193,6 +221,17 @@ list of strings, which represent the (phased) alleles in which the variant was b
 ```
 
 --------------------------------------------------------------------------------
+### id
+
+The local-unique identifier of this variant (referenced as "variant_id").
+
+#### Example
+
+```
+'id' : "amvar-8754-7751-1119-8539"
+```
+
+--------------------------------------------------------------------------------
 ### info
 
 additional variant information, as defined in the example and accompanying documentation
@@ -202,14 +241,14 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'cnv_length' : {
-                    'type' : 'number',
+                    'format' : 'int64',
                     'value' : 1205290,
-                    'format' : 'int64'
+                    'type' : 'number'
                   },
   'cnv_value' : {
-                   'format' : 'float',
+                   'value' : '-0.294',
                    'type' : 'number',
-                   'value' : '-0.294'
+                   'format' : 'float'
                  }
 }
 ```
@@ -263,12 +302,13 @@ array of 1 or 2 (for imprecise end position of structural variant) integers
 --------------------------------------------------------------------------------
 ### updated
 
-time of the last edit of this record, in ISO8601
+The time of the last edit of this record, in ISO8601
+
 
 #### Example
 
 ```
-'updated' : "2017-10-25T07:06:03Z"
+'updated' : "2022-11-11T09:45:13Z"
 ```
 
 --------------------------------------------------------------------------------

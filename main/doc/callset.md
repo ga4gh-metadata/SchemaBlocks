@@ -25,6 +25,22 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
   </tr>
 
   <tr>
+    <td>created</td>
+    <td>string</td>
+    <td></td>
+    <td>The creation time of this record, in ISO8601
+</td>
+  </tr>
+
+  <tr>
+    <td>data_use_conditions</td>
+    <td></td>
+    <td></td>
+    <td>Data use conditions applying to data from this callset, as ontology object (e.g. DUO).
+</td>
+  </tr>
+
+  <tr>
     <td>description</td>
     <td>string</td>
     <td></td>
@@ -57,7 +73,8 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
     <td>updated</td>
     <td>string</td>
     <td></td>
-    <td>time of the last edit of this record, in ISO8601</td>
+    <td>The time of the last edit of this record, in ISO8601
+</td>
   </tr>
 </table>
 
@@ -73,6 +90,33 @@ The identifier ("biosample.id") of the biosample this variant was reported from.
 
 ```
 'biosample_id' : "pgx-bs-987647"
+```
+
+--------------------------------------------------------------------------------
+### created
+
+The creation time of this record, in ISO8601
+
+
+#### Example
+
+```
+'created' : "2017-10-25T07:06:03Z"
+```
+
+--------------------------------------------------------------------------------
+### data_use_conditions
+
+Data use conditions applying to data from this callset, as ontology object (e.g. DUO).
+
+
+#### Example
+
+```
+'data_use_conditions' : {
+  'label' : 'no restriction',
+  'id' : 'DUO:0000004'
+}
 ```
 
 --------------------------------------------------------------------------------
@@ -96,11 +140,11 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
-  'country' : 'Romania',
-  'longitude' : 21.23,
+  'latitude' : 45.75,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'latitude' : 45.75
+  'country' : 'Romania',
+  'city' : 'Timisoara',
+  'longitude' : 21.23
 }
 ```
 
@@ -125,14 +169,15 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'cnv_maps' : {
-                  'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
-With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
-',
                   'schema' : {
                                 '$ref' : './common/Info_class'
                               },
+                  'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
+With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
+',
                   'value' : {
                                'dup_map' : {
+                                              'type' : 'array',
                                               'description' : 'gain cnv status for the corresponding genome intervals
 ',
                                               'value' : [
@@ -147,12 +192,11 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                                                            '',
                                                            '',
                                                            ''
-                                                         ],
-                                              'type' : 'array'
+                                                         ]
                                             },
                                'binning' : {
-                                              'type' : 'number',
                                               'value' : 1000000,
+                                              'type' : 'number',
                                               'description' : 'interval size in bases for the binning, when creating the cnv_maps',
                                               'format' : 'int64'
                                             }
@@ -164,10 +208,11 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
 --------------------------------------------------------------------------------
 ### updated
 
-time of the last edit of this record, in ISO8601
+The time of the last edit of this record, in ISO8601
+
 
 #### Example
 
 ```
-'updated' : "2017-10-25T07:06:03Z"
+'updated' : "2022-11-11T09:45:13Z"
 ```

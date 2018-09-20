@@ -18,6 +18,14 @@ definitions:
         description: A free text description of the callset.
         type: string
         example: 'SNP6 array of cancer sample BRCA-0893'
+      data_use_conditions:
+        schema:
+          $ref: './common/Ontology_class'
+        description: |
+          Data use conditions applying to data from this callset, as ontology object (e.g. DUO).
+        example:
+          id : "DUO:0000004"
+          label : "no restriction"
       geo_provenance:
         description: |
           This geo_class attribute ideally describes the geographic location of where this callset was analysed.
@@ -52,7 +60,13 @@ definitions:
                 type: number
                 format: int64
                 value: 1000000
-      updated:
-        description: time of the last edit of this record, in ISO8601
+      created:
+        description: |
+          The creation time of this record, in ISO8601
         type: string
         example: '2017-10-25T07:06:03Z'
+      updated:
+        description: |
+          The time of the last edit of this record, in ISO8601
+        type: string
+        example: '2022-11-11T09:45:13Z'

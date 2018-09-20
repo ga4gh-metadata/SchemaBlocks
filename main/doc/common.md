@@ -6,6 +6,62 @@ Definition of some prototype objects which are re-used in other schema documents
 
 The schema definitions are done in the [YAML file](../yaml/common.yaml).
 
+## Age_class
+
+<h3>Properties of the <i>Age_class</i> class</h3>
+
+<table>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Format</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>age</td>
+    <td>string</td>
+    <td></td>
+    <td>The age as ISO8601 string.</td>
+  </tr>
+
+  <tr>
+    <td>age_at_collection_class</td>
+    <td></td>
+    <td></td>
+    <td>The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object
+</td>
+  </tr>
+</table>
+
+<h3>Extended notes and examples on the <i>Age_class</i> properties</h3>
+
+
+--------------------------------------------------------------------------------
+### age
+
+The age as ISO8601 string.
+
+#### Example
+
+```
+'age' : "P56Y"
+```
+
+--------------------------------------------------------------------------------
+### age_at_collection_class
+
+The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object
+
+
+#### Example
+
+```
+'age_at_collection_class' : {
+  'label' : 'Juvenile onset',
+  'id' : 'HP:0003621'
+}
+```
 ## Biocharacteristic_class
 
 <h3>Properties of the <i>Biocharacteristic_class</i> class</h3>
@@ -52,8 +108,8 @@ an ontology_class object
 
 ```
 'class' : {
-  'id' : 'ncit:c8294',
-  'label' : 'Pancreatic Adenocarcinoma'
+  'label' : 'Pancreatic Adenocarcinoma',
+  'id' : 'ncit:c8294'
 }
 ```
 

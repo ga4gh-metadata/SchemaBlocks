@@ -47,9 +47,9 @@ sub _process_yaml {
     $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);
   }
 
-  my $data    =   LoadFile($config->{yaml_file});
-
   print "Reading YAML file \"$config->{yaml_file}\"\n";
+
+  my $data    =   LoadFile($config->{yaml_file});
 
   open  (FILE, ">", $config->{json_file}) || warn 'output file '.$config->{json_file}.' could not be created.';
   print FILE  JSON::XS->new->pretty( 1 )->encode( $data )."\n";

@@ -15,6 +15,14 @@ definitions:
         description: A free text description of the individual.
         type: string
         example: 'patient with lung cancer, male smoker'
+      data_use_conditions:
+        schema:
+          $ref: './common/Ontology_class'
+        description: |
+          Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
+        example:
+          id : "DUO:0000004"
+          label : "no restriction"
       biocharacteristics:
         description: |
           list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
@@ -63,7 +71,13 @@ definitions:
           last_name:
             type: string
             value: 'Tichy'
-      updated:
-        description: time of the last edit of this record, in ISO8601
+      created:
+        description: |
+          The creation time of this record, in ISO8601
         type: string
         example: '2017-10-25T07:06:03Z'
+      updated:
+        description: |
+          The time of the last edit of this record, in ISO8601
+        type: string
+        example: '2022-11-11T09:45:13Z'

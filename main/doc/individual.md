@@ -27,6 +27,22 @@ The schema definitions are done in the [YAML file](../yaml/individual.yaml).
   </tr>
 
   <tr>
+    <td>created</td>
+    <td>string</td>
+    <td></td>
+    <td>The creation time of this record, in ISO8601
+</td>
+  </tr>
+
+  <tr>
+    <td>data_use_conditions</td>
+    <td></td>
+    <td></td>
+    <td>Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
+</td>
+  </tr>
+
+  <tr>
     <td>description</td>
     <td>string</td>
     <td></td>
@@ -60,7 +76,8 @@ This value may reflect either the place of burth or residence, but frequently ma
     <td>updated</td>
     <td>string</td>
     <td></td>
-    <td>time of the last edit of this record, in ISO8601</td>
+    <td>The time of the last edit of this record, in ISO8601
+</td>
   </tr>
 </table>
 
@@ -85,18 +102,18 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
                }
   },
   {
+    'description' : 'Jean-Luc Picard',
     'class' : {
-                 'label' : 'Homo sapiens',
-                 'id' : 'NCBITaxon:9606'
-               },
-    'description' : 'Jean-Luc Picard'
+                 'id' : 'NCBITaxon:9606',
+                 'label' : 'Homo sapiens'
+               }
   },
   {
-    'description' : 'Patient with Down syndrome',
     'class' : {
-                 'id' : 'HP:0003745',
-                 'label' : 'Genetic anticipation'
-               }
+                 'label' : 'Genetic anticipation',
+                 'id' : 'HP:0003745'
+               },
+    'description' : 'Patient with Down syndrome'
   }
 ]
 ```
@@ -113,6 +130,33 @@ this call to the distinct funcion will return *all* HPO annotated classes
 db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /HP\:/i } } )
 ```
 
+
+--------------------------------------------------------------------------------
+### created
+
+The creation time of this record, in ISO8601
+
+
+#### Example
+
+```
+'created' : "2017-10-25T07:06:03Z"
+```
+
+--------------------------------------------------------------------------------
+### data_use_conditions
+
+Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
+
+
+#### Example
+
+```
+'data_use_conditions' : {
+  'id' : 'DUO:0000004',
+  'label' : 'no restriction'
+}
+```
 
 --------------------------------------------------------------------------------
 ### description
@@ -136,12 +180,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'altitude' : 94,
-  'country' : 'Romania',
-  'city' : 'Timisoara',
   'longitude' : 21.23,
-  'latitude' : 45.75,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'city' : 'Timisoara',
+  'country' : 'Romania',
+  'altitude' : 94,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'latitude' : 45.75
 }
 ```
 
@@ -165,24 +209,25 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'first_name' : {
-                    'value' : 'Ion',
-                    'type' : 'string'
-                  },
   'last_name' : {
-                   'value' : 'Tichy',
-                   'type' : 'string'
-                 }
+                   'type' : 'string',
+                   'value' : 'Tichy'
+                 },
+  'first_name' : {
+                    'type' : 'string',
+                    'value' : 'Ion'
+                  }
 }
 ```
 
 --------------------------------------------------------------------------------
 ### updated
 
-time of the last edit of this record, in ISO8601
+The time of the last edit of this record, in ISO8601
+
 
 #### Example
 
 ```
-'updated' : "2017-10-25T07:06:03Z"
+'updated' : "2022-11-11T09:45:13Z"
 ```
