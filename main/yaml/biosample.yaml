@@ -35,6 +35,9 @@ definitions:
           $ref: './common/Ontology_class'
         description: |
           Data use conditions applying to data from this biosample, as ontology object (e.g. DUO).
+        example:
+          id : "DUO:0000004"
+          label : "no restriction"
       age_at_collection:
         schema:
           $ref: './common/Age_class'

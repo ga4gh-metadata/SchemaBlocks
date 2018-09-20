@@ -23,6 +23,9 @@ definitions:
           $ref: './common/Ontology_class'
         description: |
           Data use conditions applying to data from this callset, as ontology object (e.g. DUO).
+        example:
+          id : "DUO:0000004"
+          label : "no restriction"
       geo_provenance:
         description: |
           This geo_class attribute ideally describes the geographic location of where this callset was analysed.
