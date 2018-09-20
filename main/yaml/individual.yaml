@@ -15,6 +15,11 @@ definitions:
         description: A free text description of the individual.
         type: string
         example: 'patient with lung cancer, male smoker'
+      data_use_conditions:
+        schema:
+          $ref: './common/Ontology_class'
+        description: |
+          Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
       biocharacteristics:
         description: |
           list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases

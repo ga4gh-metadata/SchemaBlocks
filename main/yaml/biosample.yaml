@@ -30,6 +30,11 @@ definitions:
         type: string
         description: A free text description of the biosample.
         example: 'Burkitt lymphoma, cell line Namalwa'
+      data_use_conditions:
+        schema:
+          $ref: './common/Ontology_class'
+        description: |
+          Data use conditions applying to data from this biosample, as ontology object (e.g. DUO).
       age_at_collection:
         schema:
           $ref: './common/Age_class'

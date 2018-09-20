@@ -7,6 +7,10 @@ info:
 definitions:
   Variant:
     properties:
+      id:
+        description: The local-unique identifier of this variant (referenced as "variant_id").
+        type: string
+        example: 'amvar-8754-7751-1119-8539'
       digest:
         description: concatenated unique specific elements of the variant
         type: string
