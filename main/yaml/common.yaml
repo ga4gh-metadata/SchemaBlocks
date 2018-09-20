@@ -59,7 +59,7 @@ definitions:
       value:
         description: the value in a format correstponding to type
         example: 1503320
-   Age_class:
+  Age_class:
     properties:
       age:
         type: string

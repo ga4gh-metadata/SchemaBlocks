@@ -19,16 +19,10 @@ The schema definitions are done in the [YAML file](../yaml/biosample.yaml).
 
   <tr>
     <td>age_at_collection</td>
-    <td>string</td>
-    <td></td>
-    <td>the age of the individual at time of biosample collection, as ISO8601 string</td>
-  </tr>
-
-  <tr>
-    <td>age_at_collection_class</td>
     <td></td>
     <td></td>
-    <td>the age of the individual at time of biosample collection, as ontology object</td>
+    <td>The age of the individual at time of biosample collection, as Age_class object.
+</td>
   </tr>
 
   <tr>
@@ -37,6 +31,14 @@ The schema definitions are done in the [YAML file](../yaml/biosample.yaml).
     <td></td>
     <td>"biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
+</td>
+  </tr>
+
+  <tr>
+    <td>created</td>
+    <td>string</td>
+    <td></td>
+    <td>The creation time of this record, in ISO8601
 </td>
   </tr>
 
@@ -74,8 +76,8 @@ Frequently this value may reflect either the place of the laboratory where the a
     <td>individual_id</td>
     <td>string</td>
     <td></td>
-    <td>In a complete data model "individual_id" points to the "id" of the individual ("donor") this _biosample_ was derived from.
-In a local context this could be the `id` attribute in a corresponding "individuals" collection.
+    <td>In a complete data model "individual_id" points to the "id" of the individual ("donor") this <i>biosample</i> was derived from.
+In a local context this could be the <code>id</code> attribute in a corresponding "individuals" collection.
 </td>
   </tr>
 
@@ -88,10 +90,27 @@ In a local context this could be the `id` attribute in a corresponding "individu
   </tr>
 
   <tr>
+    <td>name</td>
+    <td>string</td>
+    <td></td>
+    <td>A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.
+</td>
+  </tr>
+
+  <tr>
+    <td>project_id</td>
+    <td>string</td>
+    <td></td>
+    <td>The id attribute of the project that this biosample was collected in.
+</td>
+  </tr>
+
+  <tr>
     <td>updated</td>
     <td>string</td>
     <td></td>
-    <td>time of the last edit of this record, in ISO8601</td>
+    <td>The time of the last edit of this record, in ISO8601
+</td>
   </tr>
 </table>
 
@@ -101,25 +120,18 @@ In a local context this could be the `id` attribute in a corresponding "individu
 --------------------------------------------------------------------------------
 ### age_at_collection
 
-the age of the individual at time of biosample collection, as ISO8601 string
+The age of the individual at time of biosample collection, as Age_class object.
+
 
 #### Example
 
 ```
-'age_at_collection' : "P56Y"
-```
-
---------------------------------------------------------------------------------
-### age_at_collection_class
-
-the age of the individual at time of biosample collection, as ontology object
-
-#### Example
-
-```
-'age_at_collection_class' : {
-  'label' : 'Juvenile onset',
-  'id' : 'HP:0003621'
+'age_at_collection' : {
+  'age_class' : {
+                   'id' : 'HP:0003621',
+                   'label' : 'Juvenile onset'
+                 },
+  'age' : 'P56Y'
 }
 ```
 
@@ -135,25 +147,25 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
                  'id' : 'pgx:icdot:c25.9',
                  'label' : 'Pancreas, NOS'
+               }
+  },
+  {
+    'class' : {
+                 'label' : 'Adenocarcinoma, NOS',
+                 'id' : 'pgx:icdom:81403'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   },
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Adenocarcinoma, NOS',
-                 'id' : 'pgx:icdom:81403'
-               }
-  },
-  {
-    'class' : {
                  'id' : 'ncit:c8294',
                  'label' : 'Pancreatic Adenocarcinoma'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
+               }
   }
 ]
 ```
@@ -172,6 +184,18 @@ This call to the distinct funcion will return *all* bioterms ids for samples hav
 db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )
 ```
 
+
+--------------------------------------------------------------------------------
+### created
+
+The creation time of this record, in ISO8601
+
+
+#### Example
+
+```
+'created' : "2017-10-25T07:06:03Z"
+```
 
 --------------------------------------------------------------------------------
 ### description
@@ -194,20 +218,20 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 'external_ids' : [
   {
-    'relation' : 'provenance',
-    'id' : 'cellosaurus:CVCL_0312'
+    'id' : 'cellosaurus:CVCL_0312',
+    'relation' : 'provenance'
   },
   {
     'relation' : 'report',
     'id' : 'pubmed:17440070'
   },
   {
-    'relation' : 'technology',
-    'id' : 'geo:GPL4894'
+    'id' : 'geo:GPL4894',
+    'relation' : 'technology'
   },
   {
-    'relation' : 'denotes',
-    'id' : 'geo:GSM185088'
+    'id' : 'geo:GSM185088',
+    'relation' : 'denotes'
   }
 ]
 ```
@@ -231,9 +255,9 @@ Frequently this value may reflect either the place of the laboratory where the a
 ```
 'geo_provenance' : {
   'altitude' : 94,
-  'longitude' : 21.23,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'latitude' : 45.75,
+  'longitude' : 21.23,
   'city' : 'Timisoara',
   'country' : 'Romania'
 }
@@ -253,8 +277,8 @@ The local-unique identifier of this biosample (referenced as "biosample_id").
 --------------------------------------------------------------------------------
 ### individual_id
 
-In a complete data model "individual_id" points to the "id" of the individual ("donor") this _biosample_ was derived from.
-In a local context this could be the `id` attribute in a corresponding "individuals" collection.
+In a complete data model "individual_id" points to the "id" of the individual ("donor") this <i>biosample</i> was derived from.
+In a local context this could be the <code>id</code> attribute in a corresponding "individuals" collection.
 
 
 #### Example
@@ -274,12 +298,12 @@ This is a wrapper for objects without further specification in the schema.
 ```
 'info' : {
   'death' : {
-               'type' : 'boolean',
-               'value' : 1
+               'value' : 1,
+               'type' : 'boolean'
              },
   'followup_time' : {
-                       'value' : 'P14M',
-                       'type' : 'ISO8601 string'
+                       'type' : 'ISO8601 string',
+                       'value' : 'P14M'
                      }
 }
 ```
@@ -293,12 +317,37 @@ db.biosamples.find( {"info" : { $elemMatch: { "followup_time.value" : { $regex :
 
 
 --------------------------------------------------------------------------------
-### updated
+### name
 
-time of the last edit of this record, in ISO8601
+A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.
+
 
 #### Example
 
 ```
-'updated' : "2017-10-25T07:06:03Z"
+'name' : "Sample BRCA-00429, 2nd replicate"
+```
+
+--------------------------------------------------------------------------------
+### project_id
+
+The id attribute of the project that this biosample was collected in.
+
+
+#### Example
+
+```
+'project_id' : "ind-cnhl-1293347-004"
+```
+
+--------------------------------------------------------------------------------
+### updated
+
+The time of the last edit of this record, in ISO8601
+
+
+#### Example
+
+```
+'updated' : "2022-11-11T09:45:13Z"
 ```

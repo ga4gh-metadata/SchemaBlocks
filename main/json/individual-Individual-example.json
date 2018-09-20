@@ -1,46 +1,47 @@
 {
+   "description" : "patient with lung cancer, male smoker",
+   "updated" : "2022-11-11T09:45:13Z",
    "id" : "AM_BS__NCBISKYCGH-1993",
-   "updated" : "2017-10-25T07:06:03Z",
-   "geo_provenance" : {
-      "country" : "Romania",
-      "city" : "Timisoara",
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "latitude" : 45.75,
-      "longitude" : 21.23,
-      "altitude" : 94
-   },
-   "biocharacteristics" : [
-      {
-         "description" : "girl",
-         "class" : {
-            "id" : "PATO:0020000",
-            "label" : "female genetic sex"
-         }
-      },
-      {
-         "class" : {
-            "label" : "Homo sapiens",
-            "id" : "NCBITaxon:9606"
-         },
-         "description" : "Jean-Luc Picard"
-      },
-      {
-         "description" : "Patient with Down syndrome",
-         "class" : {
-            "id" : "HP:0003745",
-            "label" : "Genetic anticipation"
-         }
-      }
-   ],
    "info" : {
       "last_name" : {
          "value" : "Tichy",
          "type" : "string"
       },
       "first_name" : {
-         "value" : "Ion",
-         "type" : "string"
+         "type" : "string",
+         "value" : "Ion"
       }
    },
-   "description" : "patient with lung cancer, male smoker"
+   "geo_provenance" : {
+      "city" : "Timisoara",
+      "longitude" : 21.23,
+      "country" : "Romania",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "latitude" : 45.75,
+      "altitude" : 94
+   },
+   "biocharacteristics" : [
+      {
+         "class" : {
+            "id" : "PATO:0020000",
+            "label" : "female genetic sex"
+         },
+         "description" : "girl"
+      },
+      {
+         "description" : "Jean-Luc Picard",
+         "class" : {
+            "label" : "Homo sapiens",
+            "id" : "NCBITaxon:9606"
+         }
+      },
+      {
+         "class" : {
+            "label" : "Genetic anticipation",
+            "id" : "HP:0003745"
+         },
+         "description" : "Patient with Down syndrome"
+      }
+   ],
+   "created" : "2017-10-25T07:06:03Z"
 }
