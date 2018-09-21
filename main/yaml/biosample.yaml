@@ -43,7 +43,7 @@ definitions:
           $ref: './common/Age_class'
         description: |
           The age of the individual at time of biosample collection, as Age_class object.
-        example: 
+        example:
           age: 'P56Y'
           age_class:
             id : "HP:0003621"
@@ -111,12 +111,8 @@ definitions:
         schema:
           $ref: './common/Info_class'
         example:
-          followup_time:
-            type: ISO8601 string
-            value: 'P14M'
-          death:
-            type: boolean
-            value: true
+          followup_time: 'P14M'
+          death: true
         queries:
           - description: |
               This query retrieves biosamples with an ISO8601 period value for "followup_time" and a boolean "true" for death.

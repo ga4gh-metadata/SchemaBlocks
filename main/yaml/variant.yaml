@@ -68,14 +68,8 @@ definitions:
         schema:
           $ref: './common/Info_class'
         example:
-          cnv_value:
-            type: number
-            format: float
-            value: -0.294
-          cnv_length:
-            type: number
-            format: int64
-            value: 1205290
+          cnv_value: -0.294
+          cnv_length: 1205290
       created:
         description: |
           The creation time of this record, in ISO8601
