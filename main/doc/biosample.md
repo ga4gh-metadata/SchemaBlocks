@@ -135,11 +135,11 @@ The age of the individual at time of biosample collection, as Age_class object.
 
 ```
 'age_at_collection' : {
+  'age' : 'P56Y',
   'age_class' : {
                    'label' : 'Juvenile onset',
                    'id' : 'HP:0003621'
-                 },
-  'age' : 'P56Y'
+                 }
 }
 ```
 
@@ -157,21 +157,21 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Pancreas, NOS',
-                 'id' : 'pgx:icdot:c25.9'
-               }
-  },
-  {
-    'description' : 'Pancreatic Adenocarcinoma',
-    'class' : {
-                 'label' : 'Adenocarcinoma, NOS',
-                 'id' : 'pgx:icdom:81403'
+                 'id' : 'pgx:icdot:c25.9',
+                 'label' : 'Pancreas, NOS'
                }
   },
   {
     'class' : {
-                 'label' : 'Pancreatic Adenocarcinoma',
-                 'id' : 'ncit:c8294'
+                 'id' : 'pgx:icdom:81403',
+                 'label' : 'Adenocarcinoma, NOS'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
+  },
+  {
+    'class' : {
+                 'id' : 'ncit:c8294',
+                 'label' : 'Pancreatic Adenocarcinoma'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   }
@@ -241,20 +241,20 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 'external_ids' : [
   {
-    'relation' : 'provenance',
-    'id' : 'cellosaurus:CVCL_0312'
+    'id' : 'cellosaurus:CVCL_0312',
+    'relation' : 'provenance'
   },
   {
-    'relation' : 'report',
-    'id' : 'pubmed:17440070'
+    'id' : 'pubmed:17440070',
+    'relation' : 'report'
   },
   {
     'relation' : 'technology',
     'id' : 'geo:GPL4894'
   },
   {
-    'relation' : 'denotes',
-    'id' : 'geo:GSM185088'
+    'id' : 'geo:GSM185088',
+    'relation' : 'denotes'
   }
 ]
 ```
@@ -277,12 +277,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'longitude' : 21.23,
   'country' : 'Romania',
   'altitude' : 94,
+  'city' : 'Timisoara',
   'latitude' : 45.75,
-  'longitude' : 21.23,
-  'city' : 'Timisoara'
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -320,14 +320,8 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'followup_time' : {
-                       'type' : 'ISO8601 string',
-                       'value' : 'P14M'
-                     },
-  'death' : {
-               'value' : 1,
-               'type' : 'boolean'
-             }
+  'death' : 1,
+  'followup_time' : 'P14M'
 }
 ```
 

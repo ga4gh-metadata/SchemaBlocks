@@ -1,30 +1,20 @@
 {
-   "created" : "2017-10-25T07:06:03Z",
+   "updated" : "2022-11-11T09:45:13Z",
+   "biosample_id" : "pgx-bs-987647",
    "geo_provenance" : {
-      "latitude" : 45.75,
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "longitude" : 21.23,
       "country" : "Romania",
       "city" : "Timisoara",
-      "longitude" : 21.23
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
    },
-   "updated" : "2022-11-11T09:45:13Z",
-   "data_use_conditions" : {
-      "label" : "no restriction",
-      "id" : "DUO:0000004"
-   },
-   "biosample_id" : "pgx-bs-987647",
-   "description" : "SNP6 array of cancer sample BRCA-0893",
    "id" : "GSM264198",
    "info" : {
       "cnv_maps" : {
-         "schema" : {
-            "$ref" : "./common/Info_class"
-         },
          "description" : "The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map : \"DUP\" or \"\", del_map => \"DEL\" or \"\"), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.\nWith a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).\n",
          "value" : {
             "dup_map" : {
                "type" : "array",
-               "description" : "gain cnv status for the corresponding genome intervals\n",
                "value" : [
                   "",
                   "",
@@ -37,15 +27,25 @@
                   "",
                   "",
                   ""
-               ]
+               ],
+               "description" : "gain cnv status for the corresponding genome intervals\n"
             },
             "binning" : {
-               "value" : 1000000,
                "type" : "number",
                "description" : "interval size in bases for the binning, when creating the cnv_maps",
+               "value" : 1000000,
                "format" : "int64"
             }
+         },
+         "schema" : {
+            "$ref" : "./common/Info_class"
          }
       }
-   }
+   },
+   "created" : "2017-10-25T07:06:03Z",
+   "data_use_conditions" : {
+      "id" : "DUO:0000004",
+      "label" : "no restriction"
+   },
+   "description" : "SNP6 array of cancer sample BRCA-0893"
 }

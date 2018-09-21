@@ -95,17 +95,17 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 'biocharacteristics' : [
   {
-    'description' : 'girl',
     'class' : {
-                 'label' : 'female genetic sex',
-                 'id' : 'PATO:0020000'
-               }
+                 'id' : 'PATO:0020000',
+                 'label' : 'female genetic sex'
+               },
+    'description' : 'girl'
   },
   {
     'description' : 'Jean-Luc Picard',
     'class' : {
-                 'id' : 'NCBITaxon:9606',
-                 'label' : 'Homo sapiens'
+                 'label' : 'Homo sapiens',
+                 'id' : 'NCBITaxon:9606'
                }
   },
   {
@@ -180,12 +180,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'longitude' : 21.23,
-  'city' : 'Timisoara',
-  'country' : 'Romania',
-  'altitude' : 94,
+  'latitude' : 45.75,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'latitude' : 45.75
+  'longitude' : 21.23,
+  'altitude' : 94,
+  'country' : 'Romania',
+  'city' : 'Timisoara'
 }
 ```
 
@@ -209,14 +209,14 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
+  'first_name' : {
+                    'value' : 'Ion',
+                    'type' : 'string'
+                  },
   'last_name' : {
                    'type' : 'string',
                    'value' : 'Tichy'
-                 },
-  'first_name' : {
-                    'type' : 'string',
-                    'value' : 'Ion'
-                  }
+                 }
 }
 ```
 

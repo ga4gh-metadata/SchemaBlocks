@@ -1,30 +1,43 @@
 {
-   "updated" : "2022-11-11T09:45:13Z",
-   "geo_provenance" : {
-      "longitude" : 21.23,
-      "city" : "Timisoara",
-      "country" : "Romania",
-      "altitude" : 94,
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "latitude" : 45.75
+   "info" : {
+      "first_name" : {
+         "value" : "Ion",
+         "type" : "string"
+      },
+      "last_name" : {
+         "type" : "string",
+         "value" : "Tichy"
+      }
    },
+   "created" : "2017-10-25T07:06:03Z",
+   "geo_provenance" : {
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "longitude" : 21.23,
+      "altitude" : 94,
+      "country" : "Romania",
+      "city" : "Timisoara"
+   },
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "description" : "patient with lung cancer, male smoker",
    "data_use_conditions" : {
       "id" : "DUO:0000004",
       "label" : "no restriction"
    },
+   "updated" : "2022-11-11T09:45:13Z",
    "biocharacteristics" : [
       {
-         "description" : "girl",
          "class" : {
-            "label" : "female genetic sex",
-            "id" : "PATO:0020000"
-         }
+            "id" : "PATO:0020000",
+            "label" : "female genetic sex"
+         },
+         "description" : "girl"
       },
       {
          "description" : "Jean-Luc Picard",
          "class" : {
-            "id" : "NCBITaxon:9606",
-            "label" : "Homo sapiens"
+            "label" : "Homo sapiens",
+            "id" : "NCBITaxon:9606"
          }
       },
       {
@@ -34,18 +47,5 @@
          },
          "description" : "Patient with Down syndrome"
       }
-   ],
-   "created" : "2017-10-25T07:06:03Z",
-   "info" : {
-      "last_name" : {
-         "type" : "string",
-         "value" : "Tichy"
-      },
-      "first_name" : {
-         "type" : "string",
-         "value" : "Ion"
-      }
-   },
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "description" : "patient with lung cancer, male smoker"
+   ]
 }
