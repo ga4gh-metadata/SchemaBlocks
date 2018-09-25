@@ -102,18 +102,18 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
     'description' : 'girl'
   },
   {
-    'description' : 'Jean-Luc Picard',
     'class' : {
-                 'label' : 'Homo sapiens',
-                 'id' : 'NCBITaxon:9606'
-               }
+                 'id' : 'NCBITaxon:9606',
+                 'label' : 'Homo sapiens'
+               },
+    'description' : 'Jean-Luc Picard'
   },
   {
+    'description' : 'Patient with Down syndrome',
     'class' : {
-                 'label' : 'Genetic anticipation',
-                 'id' : 'HP:0003745'
-               },
-    'description' : 'Patient with Down syndrome'
+                 'id' : 'HP:0003745',
+                 'label' : 'Genetic anticipation'
+               }
   }
 ]
 ```
@@ -180,12 +180,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'latitude' : 45.75,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'longitude' : 21.23,
   'altitude' : 94,
+  'city' : 'Timisoara',
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'country' : 'Romania',
-  'city' : 'Timisoara'
+  'longitude' : 21.23,
+  'latitude' : 45.75
 }
 ```
 
@@ -214,8 +214,8 @@ additional variant information, as defined in the example and accompanying docum
                     'type' : 'string'
                   },
   'last_name' : {
-                   'type' : 'string',
-                   'value' : 'Tichy'
+                   'value' : 'Tichy',
+                   'type' : 'string'
                  }
 }
 ```

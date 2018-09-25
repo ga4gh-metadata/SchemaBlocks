@@ -1,30 +1,10 @@
 {
-   "info" : {
-      "first_name" : {
-         "value" : "Ion",
-         "type" : "string"
-      },
-      "last_name" : {
-         "type" : "string",
-         "value" : "Tichy"
-      }
-   },
-   "created" : "2017-10-25T07:06:03Z",
-   "geo_provenance" : {
-      "latitude" : 45.75,
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "longitude" : 21.23,
-      "altitude" : 94,
-      "country" : "Romania",
-      "city" : "Timisoara"
-   },
-   "id" : "AM_BS__NCBISKYCGH-1993",
    "description" : "patient with lung cancer, male smoker",
    "data_use_conditions" : {
       "id" : "DUO:0000004",
       "label" : "no restriction"
    },
-   "updated" : "2022-11-11T09:45:13Z",
+   "id" : "AM_BS__NCBISKYCGH-1993",
    "biocharacteristics" : [
       {
          "class" : {
@@ -34,18 +14,38 @@
          "description" : "girl"
       },
       {
-         "description" : "Jean-Luc Picard",
          "class" : {
-            "label" : "Homo sapiens",
-            "id" : "NCBITaxon:9606"
-         }
+            "id" : "NCBITaxon:9606",
+            "label" : "Homo sapiens"
+         },
+         "description" : "Jean-Luc Picard"
       },
       {
+         "description" : "Patient with Down syndrome",
          "class" : {
-            "label" : "Genetic anticipation",
-            "id" : "HP:0003745"
-         },
-         "description" : "Patient with Down syndrome"
+            "id" : "HP:0003745",
+            "label" : "Genetic anticipation"
+         }
       }
-   ]
+   ],
+   "info" : {
+      "first_name" : {
+         "value" : "Ion",
+         "type" : "string"
+      },
+      "last_name" : {
+         "value" : "Tichy",
+         "type" : "string"
+      }
+   },
+   "created" : "2017-10-25T07:06:03Z",
+   "geo_provenance" : {
+      "altitude" : 94,
+      "city" : "Timisoara",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "country" : "Romania",
+      "longitude" : 21.23,
+      "latitude" : 45.75
+   },
+   "updated" : "2022-11-11T09:45:13Z"
 }

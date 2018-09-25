@@ -137,8 +137,8 @@ The age of the individual at time of biosample collection, as Age_class object.
 'age_at_collection' : {
   'age' : 'P56Y',
   'age_class' : {
-                   'label' : 'Juvenile onset',
-                   'id' : 'HP:0003621'
+                   'id' : 'HP:0003621',
+                   'label' : 'Juvenile onset'
                  }
 }
 ```
@@ -155,23 +155,23 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'pgx:icdot:c25.9',
-                 'label' : 'Pancreas, NOS'
-               }
-  },
-  {
-    'class' : {
-                 'id' : 'pgx:icdom:81403',
-                 'label' : 'Adenocarcinoma, NOS'
+                 'label' : 'Pancreas, NOS',
+                 'id' : 'pgx:icdot:c25.9'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   },
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'ncit:c8294',
-                 'label' : 'Pancreatic Adenocarcinoma'
+                 'label' : 'Adenocarcinoma, NOS',
+                 'id' : 'pgx:icdom:81403'
+               }
+  },
+  {
+    'class' : {
+                 'label' : 'Pancreatic Adenocarcinoma',
+                 'id' : 'ncit:c8294'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   }
@@ -189,7 +189,7 @@ db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )
 This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
 
 ```
-db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )
+db.biosamples.distinct( "biocharacteristics.class.id", { "biocharacteristics.class.id" : { $regex : /ncit/ } } )
 ```
 
 
@@ -241,16 +241,16 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 'external_ids' : [
   {
-    'id' : 'cellosaurus:CVCL_0312',
-    'relation' : 'provenance'
+    'relation' : 'provenance',
+    'id' : 'cellosaurus:CVCL_0312'
   },
   {
-    'id' : 'pubmed:17440070',
-    'relation' : 'report'
+    'relation' : 'report',
+    'id' : 'pubmed:17440070'
   },
   {
-    'relation' : 'technology',
-    'id' : 'geo:GPL4894'
+    'id' : 'geo:GPL4894',
+    'relation' : 'technology'
   },
   {
     'id' : 'geo:GSM185088',
@@ -277,12 +277,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'longitude' : 21.23,
-  'country' : 'Romania',
   'altitude' : 94,
   'city' : 'Timisoara',
-  'latitude' : 45.75,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'country' : 'Romania',
+  'longitude' : 21.23,
+  'latitude' : 45.75
 }
 ```
 
@@ -320,8 +320,8 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'death' : 1,
-  'followup_time' : 'P14M'
+  'followup_time' : 'P14M',
+  'death' : 1
 }
 ```
 

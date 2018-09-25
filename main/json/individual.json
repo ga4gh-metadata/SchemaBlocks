@@ -1,16 +1,31 @@
 {
    "info" : {
-      "updated" : "2018-09-13",
       "description" : "An individual is a single organism (here typically a human).\n",
+      "updated" : "2018-09-13",
       "title" : "GA4GH __individual__\n"
    },
    "definitions" : {
       "Individual" : {
          "properties" : {
-            "biocharacteristics" : {
-               "schema" : {
-                  "$ref" : "#/Biocharacteristic_class"
+            "info" : {
+               "example" : {
+                  "first_name" : {
+                     "value" : "Ion",
+                     "type" : "string"
+                  },
+                  "last_name" : {
+                     "value" : "Tichy",
+                     "type" : "string"
+                  }
                },
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               },
+               "description" : "additional variant information, as defined in the example and accompanying documentation"
+            },
+            "biocharacteristics" : {
+               "type" : "array",
+               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
                "example" : [
                   {
                      "class" : {
@@ -20,20 +35,23 @@
                      "description" : "girl"
                   },
                   {
-                     "description" : "Jean-Luc Picard",
                      "class" : {
-                        "label" : "Homo sapiens",
-                        "id" : "NCBITaxon:9606"
-                     }
+                        "id" : "NCBITaxon:9606",
+                        "label" : "Homo sapiens"
+                     },
+                     "description" : "Jean-Luc Picard"
                   },
                   {
+                     "description" : "Patient with Down syndrome",
                      "class" : {
-                        "label" : "Genetic anticipation",
-                        "id" : "HP:0003745"
-                     },
-                     "description" : "Patient with Down syndrome"
+                        "id" : "HP:0003745",
+                        "label" : "Genetic anticipation"
+                     }
                   }
                ],
+               "schema" : {
+                  "$ref" : "#/Biocharacteristic_class"
+               },
                "queries" : [
                   {
                      "description" : "the query will return all individuals who have been properly labeled as human",
@@ -43,14 +61,41 @@
                      "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
                      "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
                   }
-               ],
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
-               "type" : "array"
+               ]
+            },
+            "id" : {
+               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
+               "type" : "string",
+               "example" : "AM_BS__NCBISKYCGH-1993"
             },
             "updated" : {
+               "example" : "2022-11-11T09:45:13Z",
                "type" : "string",
-               "description" : "The time of the last edit of this record, in ISO8601\n",
-               "example" : "2022-11-11T09:45:13Z"
+               "description" : "The time of the last edit of this record, in ISO8601\n"
+            },
+            "geo_provenance" : {
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               },
+               "example" : {
+                  "altitude" : "94",
+                  "city" : "Timisoara",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "country" : "Romania",
+                  "longitude" : "21.23",
+                  "latitude" : "45.75"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n"
+            },
+            "created" : {
+               "example" : "2017-10-25T07:06:03Z",
+               "description" : "The creation time of this record, in ISO8601\n",
+               "type" : "string"
+            },
+            "description" : {
+               "example" : "patient with lung cancer, male smoker",
+               "description" : "A free text description of the individual.",
+               "type" : "string"
             },
             "data_use_conditions" : {
                "example" : {
@@ -61,51 +106,6 @@
                   "$ref" : "./common/Ontology_class"
                },
                "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n"
-            },
-            "description" : {
-               "example" : "patient with lung cancer, male smoker",
-               "type" : "string",
-               "description" : "A free text description of the individual."
-            },
-            "id" : {
-               "example" : "AM_BS__NCBISKYCGH-1993",
-               "type" : "string",
-               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\")."
-            },
-            "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
-               "example" : {
-                  "latitude" : "45.75",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "longitude" : "21.23",
-                  "altitude" : "94",
-                  "country" : "Romania",
-                  "city" : "Timisoara"
-               },
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               }
-            },
-            "info" : {
-               "description" : "additional variant information, as defined in the example and accompanying documentation",
-               "example" : {
-                  "first_name" : {
-                     "value" : "Ion",
-                     "type" : "string"
-                  },
-                  "last_name" : {
-                     "type" : "string",
-                     "value" : "Tichy"
-                  }
-               },
-               "schema" : {
-                  "$ref" : "./common/Info_class"
-               }
-            },
-            "created" : {
-               "example" : "2017-10-25T07:06:03Z",
-               "type" : "string",
-               "description" : "The creation time of this record, in ISO8601\n"
             }
          }
       }
