@@ -72,7 +72,7 @@ definitions:
           - query: 'db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )'
             description: |
               The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
-          - query: 'db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /ncit/ } } )'
+          - query: 'db.biosamples.distinct( "biocharacteristics.class.id", { "biocharacteristics.class.id" : { $regex : /ncit/ } } )'
             description: |
               This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
       external_ids:

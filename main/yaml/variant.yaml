@@ -3,7 +3,7 @@ info:
     GA4GH __variant__
   description: |
     The document describes attributes of the _variant_ object. In its current implementation, _valiant_ (and related genomic objects such as _callset_) represent extended versions of the original, VCF-derived GA4GH schema. This format may be superseeded or augmented based on current developments in the GA4GH::GKS work stream.
-  updated: '2018-09-14'
+  updated: '2018-09-21'
 definitions:
   Variant:
     properties:
