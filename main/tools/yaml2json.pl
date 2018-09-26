@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 
+use diagnostics;
 =pod
 
 TODO: Fix the Boolean etc. value type 2 string bug.

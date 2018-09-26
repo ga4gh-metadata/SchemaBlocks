@@ -95,11 +95,11 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 'biocharacteristics' : [
   {
+    'description' : 'girl',
     'class' : {
                  'id' : 'PATO:0020000',
                  'label' : 'female genetic sex'
-               },
-    'description' : 'girl'
+               }
   },
   {
     'class' : {
@@ -109,11 +109,11 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
     'description' : 'Jean-Luc Picard'
   },
   {
-    'description' : 'Patient with Down syndrome',
     'class' : {
-                 'id' : 'HP:0003745',
-                 'label' : 'Genetic anticipation'
-               }
+                 'label' : 'Genetic anticipation',
+                 'id' : 'HP:0003745'
+               },
+    'description' : 'Patient with Down syndrome'
   }
 ]
 ```
@@ -180,12 +180,12 @@ This value may reflect either the place of burth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'altitude' : 94,
-  'city' : 'Timisoara',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'country' : 'Romania',
   'longitude' : 21.23,
-  'latitude' : 45.75
+  'altitude' : 94,
+  'latitude' : 45.75,
+  'country' : 'Romania',
+  'city' : 'Timisoara',
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -209,14 +209,14 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'first_name' : {
-                    'value' : 'Ion',
-                    'type' : 'string'
-                  },
   'last_name' : {
-                   'value' : 'Tichy',
-                   'type' : 'string'
-                 }
+                   'type' : 'string',
+                   'value' : 'Tichy'
+                 },
+  'first_name' : {
+                    'type' : 'string',
+                    'value' : 'Ion'
+                  }
 }
 ```
 

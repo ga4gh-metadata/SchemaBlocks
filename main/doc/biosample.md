@@ -1,6 +1,7 @@
 # GA4GH __biosample__
 
 In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
+PXF:  See https://github.com/ga4gh-metadata/metadata-schemas/blob/d4ca1b4b36a5e7b3a17db79da9ae03a2114cfcaf/schemas/biometadata.proto#L84-L138 A Biosample refers to a unit of biological material from which the substrate molecules (e.g. genomic DNA, RNA, proteins) for molecular analyses (e.g. sequencing, array hybridisation, mass-spectrometry) are extracted. Examples would be a tissue biopsy, a single cell from a culture for single cell genome sequencing or a protein fraction from a gradient centrifugation. Several instances (e.g. technical replicates) or types of experiments (e.g. genomic array as well as RNA-seq experiments) may refer to the same Biosample. FHIR mapping: Specimen (http://www.hl7.org/fhir/specimen.html).
 
 
 The schema definitions are done in the [YAML file](../yaml/biosample.yaml).
@@ -36,7 +37,7 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 
   <tr>
     <td>created</td>
-    <td>string</td>
+    <td>timestamp</td>
     <td></td>
     <td>The creation time of this record, in ISO8601
 </td>
@@ -54,11 +55,11 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
     <td>description</td>
     <td>string</td>
     <td></td>
-    <td>A free text description of the biosample.</td>
+    <td>A free text description of the biosample. This should not contain any structured data.</td>
   </tr>
 
   <tr>
-    <td>external_ids</td>
+    <td>external_references</td>
     <td>array</td>
     <td></td>
     <td>list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship</td>
@@ -77,7 +78,7 @@ Frequently this value may reflect either the place of the laboratory where the a
     <td>id</td>
     <td>string</td>
     <td></td>
-    <td>The local-unique identifier of this biosample (referenced as "biosample_id").</td>
+    <td>The local-unique identifier of this biosample (referenced as "biosample_id"). This is unique in the context of the server instance.</td>
   </tr>
 
   <tr>
@@ -101,7 +102,15 @@ In a local context this could be the <code>id</code> attribute in a correspondin
     <td>name</td>
     <td>string</td>
     <td></td>
-    <td>A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.
+    <td>A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection. This is a label or symbolic identifier for the biosample.
+</td>
+  </tr>
+
+  <tr>
+    <td>phenotypes</td>
+    <td></td>
+    <td></td>
+    <td>The phenotype ssociated with this biosamples, as Phenotype object.
 </td>
   </tr>
 
@@ -115,7 +124,7 @@ In a local context this could be the <code>id</code> attribute in a correspondin
 
   <tr>
     <td>updated</td>
-    <td>string</td>
+    <td>timestamp</td>
     <td></td>
     <td>The time of the last edit of this record, in ISO8601
 </td>
@@ -135,11 +144,11 @@ The age of the individual at time of biosample collection, as Age_class object.
 
 ```
 'age_at_collection' : {
-  'age' : 'P56Y',
   'age_class' : {
-                   'id' : 'HP:0003621',
-                   'label' : 'Juvenile onset'
-                 }
+                   'label' : 'Juvenile onset',
+                   'id' : 'HP:0003621'
+                 },
+  'age' : 'P56Y'
 }
 ```
 
@@ -155,11 +164,11 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
+    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Pancreas, NOS',
-                 'id' : 'pgx:icdot:c25.9'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
+                 'id' : 'pgx:icdot:c25.9',
+                 'label' : 'Pancreas, NOS'
+               }
   },
   {
     'description' : 'Pancreatic Adenocarcinoma',
@@ -170,8 +179,8 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   },
   {
     'class' : {
-                 'label' : 'Pancreatic Adenocarcinoma',
-                 'id' : 'ncit:c8294'
+                 'id' : 'ncit:c8294',
+                 'label' : 'Pancreatic Adenocarcinoma'
                },
     'description' : 'Pancreatic Adenocarcinoma'
   }
@@ -215,15 +224,15 @@ Data use conditions applying to data from this biosample, as ontology object (e.
 
 ```
 'data_use_conditions' : {
-  'label' : 'no restriction',
-  'id' : 'DUO:0000004'
+  'id' : 'DUO:0000004',
+  'label' : 'no restriction'
 }
 ```
 
 --------------------------------------------------------------------------------
 ### description
 
-A free text description of the biosample.
+A free text description of the biosample. This should not contain any structured data.
 
 #### Example
 
@@ -232,17 +241,17 @@ A free text description of the biosample.
 ```
 
 --------------------------------------------------------------------------------
-### external_ids
+### external_references
 
 list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
 
 #### Example
 
 ```
-'external_ids' : [
+'external_references' : [
   {
-    'relation' : 'provenance',
-    'id' : 'cellosaurus:CVCL_0312'
+    'id' : 'cellosaurus:CVCL_0312',
+    'relation' : 'provenance'
   },
   {
     'relation' : 'report',
@@ -262,7 +271,7 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 #### Queries:
 the query will return all biosamples reported in this publication
 ```
-db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )
+db.biosamples.find( { "external_references.id" : "pubmed:17440070" } )
 ```
 
 
@@ -277,19 +286,19 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'altitude' : 94,
   'city' : 'Timisoara',
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'latitude' : 45.75,
+  'altitude' : 94,
   'country' : 'Romania',
-  'longitude' : 21.23,
-  'latitude' : 45.75
+  'longitude' : 21.23
 }
 ```
 
 --------------------------------------------------------------------------------
 ### id
 
-The local-unique identifier of this biosample (referenced as "biosample_id").
+The local-unique identifier of this biosample (referenced as "biosample_id"). This is unique in the context of the server instance.
 
 #### Example
 
@@ -320,8 +329,8 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'followup_time' : 'P14M',
-  'death' : 1
+  'death' : 1,
+  'followup_time' : 'P14M'
 }
 ```
 
@@ -336,13 +345,27 @@ db.biosamples.find( {"info" : { $elemMatch: { "followup_time.value" : { $regex :
 --------------------------------------------------------------------------------
 ### name
 
-A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.
+A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection. This is a label or symbolic identifier for the biosample.
 
 
 #### Example
 
 ```
 'name' : "Sample BRCA-00429, 2nd replicate"
+```
+
+--------------------------------------------------------------------------------
+### phenotypes
+
+The phenotype ssociated with this biosamples, as Phenotype object.
+
+
+#### Example
+
+```
+'phenotypes' : [
+  'to be added'
+]
 ```
 
 --------------------------------------------------------------------------------

@@ -8,31 +8,39 @@
       "Individual" : {
          "properties" : {
             "info" : {
-               "example" : {
-                  "first_name" : {
-                     "value" : "Ion",
-                     "type" : "string"
-                  },
-                  "last_name" : {
-                     "value" : "Tichy",
-                     "type" : "string"
-                  }
-               },
                "schema" : {
                   "$ref" : "./common/Info_class"
                },
-               "description" : "additional variant information, as defined in the example and accompanying documentation"
+               "description" : "additional variant information, as defined in the example and accompanying documentation",
+               "example" : {
+                  "last_name" : {
+                     "type" : "string",
+                     "value" : "Tichy"
+                  },
+                  "first_name" : {
+                     "type" : "string",
+                     "value" : "Ion"
+                  }
+               }
+            },
+            "data_use_conditions" : {
+               "example" : {
+                  "id" : "DUO:0000004",
+                  "label" : "no restriction"
+               },
+               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n",
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               }
             },
             "biocharacteristics" : {
-               "type" : "array",
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
                "example" : [
                   {
+                     "description" : "girl",
                      "class" : {
                         "id" : "PATO:0020000",
                         "label" : "female genetic sex"
-                     },
-                     "description" : "girl"
+                     }
                   },
                   {
                      "class" : {
@@ -42,54 +50,32 @@
                      "description" : "Jean-Luc Picard"
                   },
                   {
-                     "description" : "Patient with Down syndrome",
                      "class" : {
-                        "id" : "HP:0003745",
-                        "label" : "Genetic anticipation"
-                     }
+                        "label" : "Genetic anticipation",
+                        "id" : "HP:0003745"
+                     },
+                     "description" : "Patient with Down syndrome"
                   }
                ],
-               "schema" : {
-                  "$ref" : "#/Biocharacteristic_class"
-               },
                "queries" : [
                   {
-                     "description" : "the query will return all individuals who have been properly labeled as human",
-                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )"
+                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )",
+                     "description" : "the query will return all individuals who have been properly labeled as human"
                   },
                   {
-                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
-                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
+                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )",
+                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes"
                   }
-               ]
-            },
-            "id" : {
-               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
-               "type" : "string",
-               "example" : "AM_BS__NCBISKYCGH-1993"
+               ],
+               "type" : "array",
+               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
+               "schema" : {
+                  "$ref" : "#/Biocharacteristic_class"
+               }
             },
             "updated" : {
                "example" : "2022-11-11T09:45:13Z",
-               "type" : "string",
-               "description" : "The time of the last edit of this record, in ISO8601\n"
-            },
-            "geo_provenance" : {
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               },
-               "example" : {
-                  "altitude" : "94",
-                  "city" : "Timisoara",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "country" : "Romania",
-                  "longitude" : "21.23",
-                  "latitude" : "45.75"
-               },
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n"
-            },
-            "created" : {
-               "example" : "2017-10-25T07:06:03Z",
-               "description" : "The creation time of this record, in ISO8601\n",
+               "description" : "The time of the last edit of this record, in ISO8601\n",
                "type" : "string"
             },
             "description" : {
@@ -97,15 +83,29 @@
                "description" : "A free text description of the individual.",
                "type" : "string"
             },
-            "data_use_conditions" : {
+            "id" : {
+               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
+               "type" : "string",
+               "example" : "AM_BS__NCBISKYCGH-1993"
+            },
+            "geo_provenance" : {
                "example" : {
-                  "id" : "DUO:0000004",
-                  "label" : "no restriction"
+                  "longitude" : "21.23",
+                  "altitude" : "94",
+                  "latitude" : "45.75",
+                  "country" : "Romania",
+                  "city" : "Timisoara",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
                },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.\n",
                "schema" : {
-                  "$ref" : "./common/Ontology_class"
-               },
-               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n"
+                  "$ref" : "./common/Geo_class"
+               }
+            },
+            "created" : {
+               "type" : "string",
+               "description" : "The creation time of this record, in ISO8601\n",
+               "example" : "2017-10-25T07:06:03Z"
             }
          }
       }

@@ -1,8 +1,8 @@
 {
-   "altitude" : 8848,
-   "city" : "Timisoara",
-   "latitude" : 47.37,
-   "longitude" : 8.54,
    "country" : "Romania",
+   "latitude" : 47.37,
+   "altitude" : 8848,
+   "longitude" : 8.54,
+   "city" : "Timisoara",
    "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
 }
