@@ -1,77 +1,65 @@
 {
    "info" : {
       "updated" : "2018-09-04",
-      "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample.\n",
-      "title" : "GA4GH __callset__"
+      "title" : "GA4GH __callset__",
+      "description" : "The callset object contains information about an experiment performed on material from a single biosample and is a shared identifier for all variants detected in this experiment, attributed to the referenced biosample.\n"
    },
    "definitions" : {
       "Callset" : {
          "properties" : {
-            "data_use_conditions" : {
-               "schema" : {
-                  "$ref" : "./common/Ontology_class"
-               },
-               "description" : "Data use conditions applying to data from this callset, as ontology object (e.g. DUO).\n",
-               "example" : {
-                  "label" : "no restriction",
-                  "id" : "DUO:0000004"
-               }
-            },
-            "id" : {
-               "example" : "GSM264198",
-               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
+            "biosample_id" : {
+               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.",
+               "example" : "pgx-bs-987647",
                "type" : "string"
+            },
+            "geo_provenance" : {
+               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
+               "example" : {
+                  "longitude" : "21.23",
+                  "latitude" : "45.75",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "country" : "Romania",
+                  "city" : "Timisoara"
+               },
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               }
             },
             "updated" : {
                "type" : "string",
                "description" : "The time of the last edit of this record, in ISO8601\n",
                "example" : "2022-11-11T09:45:13Z"
             },
+            "created" : {
+               "example" : "2017-10-25T07:06:03Z",
+               "description" : "The creation time of this record, in ISO8601\n",
+               "type" : "string"
+            },
             "description" : {
-               "example" : "SNP6 array of cancer sample BRCA-0893",
                "type" : "string",
+               "example" : "SNP6 array of cancer sample BRCA-0893",
                "description" : "A free text description of the callset."
             },
-            "biosample_id" : {
-               "example" : "pgx-bs-987647",
-               "type" : "string",
-               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining."
-            },
-            "created" : {
-               "type" : "string",
-               "description" : "The creation time of this record, in ISO8601\n",
-               "example" : "2017-10-25T07:06:03Z"
-            },
-            "geo_provenance" : {
+            "data_use_conditions" : {
+               "description" : "Data use conditions applying to data from this callset, as ontology object (e.g. DUO).\n",
                "example" : {
-                  "country" : "Romania",
-                  "latitude" : "45.75",
-                  "longitude" : "21.23",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "city" : "Timisoara"
+                  "label" : "no restriction",
+                  "id" : "DUO:0000004"
                },
                "schema" : {
-                  "$ref" : "./common/Geo_class"
-               },
-               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n"
+                  "$ref" : "./common/Ontology_class"
+               }
             },
             "info" : {
-               "description" : "additional variant information, as defined in the example and accompanying documentation",
                "schema" : {
                   "$ref" : "./common/Info_class"
                },
                "example" : {
                   "statusmaps" : {
+                     "description" : "The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => \"DUP\" or \"\", del_map => \"DEL\" or \"\"), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.\nWith a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).\n",
                      "value" : {
-                        "binning" : {
-                           "value" : "1000000",
-                           "format" : "int64",
-                           "description" : "interval size in bases for the binning, when creating the cnv_maps",
-                           "type" : "number"
-                        },
                         "dupmap" : {
                            "description" : "gain cnv status for the corresponding genome intervals\n",
-                           "type" : "array",
                            "value" : [
                               "",
                               "",
@@ -84,15 +72,27 @@
                               "",
                               "",
                               ""
-                           ]
+                           ],
+                           "type" : "array"
+                        },
+                        "binning" : {
+                           "description" : "interval size in bases for the binning, when creating the cnv_maps",
+                           "value" : "1000000",
+                           "format" : "int64",
+                           "type" : "number"
                         }
                      },
                      "schema" : {
                         "$ref" : "./common/Info_class"
-                     },
-                     "description" : "The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => \"DUP\" or \"\", del_map => \"DEL\" or \"\"), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.\nWith a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).\n"
+                     }
                   }
-               }
+               },
+               "description" : "additional variant information, as defined in the example and accompanying documentation"
+            },
+            "id" : {
+               "type" : "string",
+               "example" : "GSM264198",
+               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\")."
             }
          }
       }

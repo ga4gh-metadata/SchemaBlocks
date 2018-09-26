@@ -108,8 +108,8 @@ an ontology_class object
 
 ```
 'class' : {
-  'label' : 'Pancreatic Adenocarcinoma',
-  'id' : 'ncit:c8294'
+  'id' : 'ncit:c8294',
+  'label' : 'Pancreatic Adenocarcinoma'
 }
 ```
 

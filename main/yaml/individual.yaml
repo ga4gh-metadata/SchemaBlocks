@@ -20,24 +20,38 @@ definitions:
           $ref: './common/Ontology_class'
         description: |
           Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
-        example:
-          id : "DUO:0000004"
-          label : "no restriction"
-      biocharacteristics:
-        description: |
-          list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
-        type: array
+      phenotypes:
         schema:
-          $ref: '#/Biocharacteristic_class'
+          $ref: './phenotype'
+        description: |
+          Phenotype of the individual
+      sex:       
+        description: | 
+          A PATO term describing the biological sex of the individual
+        schema:
+          $ref: './common/Ontology_class'
         example:
           - description: "girl"
             class :
               id: "PATO:0020000"
               label : "female genetic sex"
+      organism:       
+        description: | 
+          An NCBI taxonomy term describing the species of the individual.
+        schema:
+          $ref: './common/Ontology_class'
+        example:
           - description: "Jean-Luc Picard"
             class :
               id : "NCBITaxon:9606"
               label : "Homo sapiens"
+      biocharacteristics:
+        description: |
+          list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
+        type: array
+        items:
+          $ref: './common/Biocharacteristic_class'
+        example:
           - description: "Patient with Down syndrome"
             class :
               id : "HP:0003745"
@@ -50,7 +64,7 @@ definitions:
       geo_provenance:
         description: |
           This geo_class attribute ideally describes the geographic location of where this individual originates from.
-          This value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.
+          This value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.
         schema:
           $ref: './common/Geo_class'
         example:
@@ -60,8 +74,18 @@ definitions:
           latitude: 45.75
           longitude: 21.23
           altitude: 94
+      external_references:
+        description: Different representations of the same record, not  different records in relation with this individual
+        type: array
+        items:
+          $ref: './common/Reference_class'
+        example:
+          - description:
+            class:
+              id : "cellosaurus:CVCL_0312"
+              relation : "provenance" #TODO check and update when relations are worked out
       info:
-        description: additional variant information, as defined in the example and accompanying documentation
+        description: additional variant information, as defined in the example and accompanying documentation TODO this should be its own class
         schema:
           $ref: './common/Info_class'
         example:
@@ -74,10 +98,10 @@ definitions:
       created:
         description: |
           The creation time of this record, in ISO8601
-        type: string
+        type: timestamp
         example: '2017-10-25T07:06:03Z'
       updated:
         description: |
           The time of the last edit of this record, in ISO8601
-        type: string
+        type: timestamp
         example: '2022-11-11T09:45:13Z'

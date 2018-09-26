@@ -5,7 +5,7 @@ info:
     Definition of some prototype objects which are re-used in other schema documents.
   version: '2018-09-13'
 definitions:
-  Ontology_class:
+  Ontology_class: # TODO this should include some link/instruction relating to how to dereference the CURIE
     properties:
       id:
         description: properly prefixed CURIE of the ontology term

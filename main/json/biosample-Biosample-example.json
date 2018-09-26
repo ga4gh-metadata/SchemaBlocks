@@ -1,31 +1,42 @@
 {
-   "project_id" : "ind-cnhl-1293347-004",
-   "info" : {
-      "death" : 1,
-      "followup_time" : "P14M"
+   "description" : "Burkitt lymphoma, cell line Namalwa",
+   "age_at_collection" : {
+      "age_class" : {
+         "id" : "HP:0003621",
+         "label" : "Juvenile onset"
+      },
+      "age" : "P56Y"
    },
+   "individual_id" : "ind-cnhl-1293347-004",
+   "project_id" : "ind-cnhl-1293347-004",
+   "created" : "2017-10-25T07:06:03Z",
+   "name" : "Sample BRCA-00429, 2nd replicate",
    "phenotypes" : [
       "to be added"
    ],
-   "individual_id" : "ind-cnhl-1293347-004",
-   "data_use_conditions" : {
-      "id" : "DUO:0000004",
-      "label" : "no restriction"
+   "updated" : "2022-11-11T09:45:13Z",
+   "geo_provenance" : {
+      "longitude" : 21.23,
+      "altitude" : 94,
+      "latitude" : 45.75,
+      "country" : "Romania",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "city" : "Timisoara"
    },
    "biocharacteristics" : [
       {
-         "description" : "Pancreatic Adenocarcinoma",
          "class" : {
-            "id" : "pgx:icdot:c25.9",
-            "label" : "Pancreas, NOS"
-         }
+            "label" : "Pancreas, NOS",
+            "id" : "pgx:icdot:c25.9"
+         },
+         "description" : "Pancreatic Adenocarcinoma"
       },
       {
-         "description" : "Pancreatic Adenocarcinoma",
          "class" : {
-            "label" : "Adenocarcinoma, NOS",
-            "id" : "pgx:icdom:81403"
-         }
+            "id" : "pgx:icdom:81403",
+            "label" : "Adenocarcinoma, NOS"
+         },
+         "description" : "Pancreatic Adenocarcinoma"
       },
       {
          "class" : {
@@ -35,42 +46,31 @@
          "description" : "Pancreatic Adenocarcinoma"
       }
    ],
-   "updated" : "2022-11-11T09:45:13Z",
-   "description" : "Burkitt lymphoma, cell line Namalwa",
    "id" : "AM_BS__NCBISKYCGH-1993",
-   "age_at_collection" : {
-      "age_class" : {
-         "label" : "Juvenile onset",
-         "id" : "HP:0003621"
-      },
-      "age" : "P56Y"
-   },
    "external_references" : [
       {
          "id" : "cellosaurus:CVCL_0312",
          "relation" : "provenance"
       },
       {
-         "relation" : "report",
-         "id" : "pubmed:17440070"
+         "id" : "pubmed:17440070",
+         "relation" : "report"
       },
       {
-         "id" : "geo:GPL4894",
-         "relation" : "technology"
+         "relation" : "technology",
+         "id" : "geo:GPL4894"
       },
       {
          "id" : "geo:GSM185088",
          "relation" : "denotes"
       }
    ],
-   "geo_provenance" : {
-      "city" : "Timisoara",
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "latitude" : 45.75,
-      "altitude" : 94,
-      "country" : "Romania",
-      "longitude" : 21.23
+   "info" : {
+      "followup_time" : "P14M",
+      "death" : 1
    },
-   "name" : "Sample BRCA-00429, 2nd replicate",
-   "created" : "2017-10-25T07:06:03Z"
+   "data_use_conditions" : {
+      "label" : "no restriction",
+      "id" : "DUO:0000004"
+   }
 }

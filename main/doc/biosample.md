@@ -145,8 +145,8 @@ The age of the individual at time of biosample collection, as Age_class object.
 ```
 'age_at_collection' : {
   'age_class' : {
-                   'label' : 'Juvenile onset',
-                   'id' : 'HP:0003621'
+                   'id' : 'HP:0003621',
+                   'label' : 'Juvenile onset'
                  },
   'age' : 'P56Y'
 }
@@ -164,18 +164,18 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'pgx:icdot:c25.9',
-                 'label' : 'Pancreas, NOS'
-               }
+                 'label' : 'Pancreas, NOS',
+                 'id' : 'pgx:icdot:c25.9'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
   },
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Adenocarcinoma, NOS',
-                 'id' : 'pgx:icdom:81403'
-               }
+                 'id' : 'pgx:icdom:81403',
+                 'label' : 'Adenocarcinoma, NOS'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
   },
   {
     'class' : {
@@ -224,8 +224,8 @@ Data use conditions applying to data from this biosample, as ontology object (e.
 
 ```
 'data_use_conditions' : {
-  'id' : 'DUO:0000004',
-  'label' : 'no restriction'
+  'label' : 'no restriction',
+  'id' : 'DUO:0000004'
 }
 ```
 
@@ -254,12 +254,12 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'relation' : 'provenance'
   },
   {
-    'relation' : 'report',
-    'id' : 'pubmed:17440070'
+    'id' : 'pubmed:17440070',
+    'relation' : 'report'
   },
   {
-    'id' : 'geo:GPL4894',
-    'relation' : 'technology'
+    'relation' : 'technology',
+    'id' : 'geo:GPL4894'
   },
   {
     'id' : 'geo:GSM185088',
@@ -286,12 +286,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'latitude' : 45.75,
+  'longitude' : 21.23,
   'altitude' : 94,
+  'latitude' : 45.75,
   'country' : 'Romania',
-  'longitude' : 21.23
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'city' : 'Timisoara'
 }
 ```
 
@@ -329,8 +329,8 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'death' : 1,
-  'followup_time' : 'P14M'
+  'followup_time' : 'P14M',
+  'death' : 1
 }
 ```
 

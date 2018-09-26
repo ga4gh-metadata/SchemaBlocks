@@ -28,7 +28,7 @@ The schema definitions are done in the [YAML file](../yaml/individual.yaml).
 
   <tr>
     <td>created</td>
-    <td>string</td>
+    <td>timestamp</td>
     <td></td>
     <td>The creation time of this record, in ISO8601
 </td>
@@ -50,11 +50,18 @@ The schema definitions are done in the [YAML file](../yaml/individual.yaml).
   </tr>
 
   <tr>
+    <td>external_references</td>
+    <td>array</td>
+    <td></td>
+    <td>Different representations of the same record, not  different records in relation with this individual</td>
+  </tr>
+
+  <tr>
     <td>geo_provenance</td>
     <td></td>
     <td></td>
     <td>This geo_class attribute ideally describes the geographic location of where this individual originates from.
-This value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.
+This value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.
 </td>
   </tr>
 
@@ -69,12 +76,36 @@ This value may reflect either the place of burth or residence, but frequently ma
     <td>info</td>
     <td></td>
     <td></td>
-    <td>additional variant information, as defined in the example and accompanying documentation</td>
+    <td>additional variant information, as defined in the example and accompanying documentation TODO this should be its own class</td>
+  </tr>
+
+  <tr>
+    <td>organism</td>
+    <td></td>
+    <td></td>
+    <td>An NCBI taxonomy term describing the species of the individual.
+</td>
+  </tr>
+
+  <tr>
+    <td>phenotypes</td>
+    <td></td>
+    <td></td>
+    <td>Phenotype of the individual
+</td>
+  </tr>
+
+  <tr>
+    <td>sex</td>
+    <td></td>
+    <td></td>
+    <td>A PATO term describing the biological sex of the individual
+</td>
   </tr>
 
   <tr>
     <td>updated</td>
-    <td>string</td>
+    <td>timestamp</td>
     <td></td>
     <td>The time of the last edit of this record, in ISO8601
 </td>
@@ -94,20 +125,6 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 
 ```
 'biocharacteristics' : [
-  {
-    'description' : 'girl',
-    'class' : {
-                 'id' : 'PATO:0020000',
-                 'label' : 'female genetic sex'
-               }
-  },
-  {
-    'class' : {
-                 'id' : 'NCBITaxon:9606',
-                 'label' : 'Homo sapiens'
-               },
-    'description' : 'Jean-Luc Picard'
-  },
   {
     'class' : {
                  'label' : 'Genetic anticipation',
@@ -152,10 +169,7 @@ Data use conditions applying to data from this individual, as ontology object (e
 #### Example
 
 ```
-'data_use_conditions' : {
-  'id' : 'DUO:0000004',
-  'label' : 'no restriction'
-}
+'data_use_conditions' : "undef"
 ```
 
 --------------------------------------------------------------------------------
@@ -170,10 +184,29 @@ A free text description of the individual.
 ```
 
 --------------------------------------------------------------------------------
+### external_references
+
+Different representations of the same record, not  different records in relation with this individual
+
+#### Example
+
+```
+'external_references' : [
+  {
+    'class' : {
+                 'relation' : 'provenance',
+                 'id' : 'cellosaurus:CVCL_0312'
+               },
+    'description' : undef
+  }
+]
+```
+
+--------------------------------------------------------------------------------
 ### geo_provenance
 
 This geo_class attribute ideally describes the geographic location of where this individual originates from.
-This value may reflect either the place of burth or residence, but frequently may correspond to the place the study was performed.
+This value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.
 
 
 #### Example
@@ -184,8 +217,8 @@ This value may reflect either the place of burth or residence, but frequently ma
   'altitude' : 94,
   'latitude' : 45.75,
   'country' : 'Romania',
-  'city' : 'Timisoara',
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'city' : 'Timisoara'
 }
 ```
 
@@ -203,7 +236,7 @@ The local-unique identifier of this individual (referenced as "individual_id").
 --------------------------------------------------------------------------------
 ### info
 
-additional variant information, as defined in the example and accompanying documentation
+additional variant information, as defined in the example and accompanying documentation TODO this should be its own class
 
 #### Example
 
@@ -218,6 +251,58 @@ additional variant information, as defined in the example and accompanying docum
                     'value' : 'Ion'
                   }
 }
+```
+
+--------------------------------------------------------------------------------
+### organism
+
+An NCBI taxonomy term describing the species of the individual.
+
+
+#### Example
+
+```
+'organism' : [
+  {
+    'description' : 'Jean-Luc Picard',
+    'class' : {
+                 'label' : 'Homo sapiens',
+                 'id' : 'NCBITaxon:9606'
+               }
+  }
+]
+```
+
+--------------------------------------------------------------------------------
+### phenotypes
+
+Phenotype of the individual
+
+
+#### Example
+
+```
+'phenotypes' : "undef"
+```
+
+--------------------------------------------------------------------------------
+### sex
+
+A PATO term describing the biological sex of the individual
+
+
+#### Example
+
+```
+'sex' : [
+  {
+    'description' : 'girl',
+    'class' : {
+                 'id' : 'PATO:0020000',
+                 'label' : 'female genetic sex'
+               }
+  }
+]
 ```
 
 --------------------------------------------------------------------------------

@@ -1,4 +1,13 @@
 {
+   "external_references" : [
+      {
+         "class" : {
+            "relation" : "provenance",
+            "id" : "cellosaurus:CVCL_0312"
+         },
+         "description" : null
+      }
+   ],
    "info" : {
       "last_name" : {
          "type" : "string",
@@ -9,34 +18,17 @@
          "value" : "Ion"
       }
    },
-   "geo_provenance" : {
-      "longitude" : 21.23,
-      "altitude" : 94,
-      "latitude" : 45.75,
-      "country" : "Romania",
-      "city" : "Timisoara",
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
-   },
-   "created" : "2017-10-25T07:06:03Z",
-   "data_use_conditions" : {
-      "id" : "DUO:0000004",
-      "label" : "no restriction"
-   },
-   "biocharacteristics" : [
+   "data_use_conditions" : null,
+   "organism" : [
       {
-         "description" : "girl",
+         "description" : "Jean-Luc Picard",
          "class" : {
-            "id" : "PATO:0020000",
-            "label" : "female genetic sex"
+            "label" : "Homo sapiens",
+            "id" : "NCBITaxon:9606"
          }
-      },
-      {
-         "class" : {
-            "id" : "NCBITaxon:9606",
-            "label" : "Homo sapiens"
-         },
-         "description" : "Jean-Luc Picard"
-      },
+      }
+   ],
+   "biocharacteristics" : [
       {
          "class" : {
             "label" : "Genetic anticipation",
@@ -45,7 +37,26 @@
          "description" : "Patient with Down syndrome"
       }
    ],
-   "description" : "patient with lung cancer, male smoker",
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "sex" : [
+      {
+         "description" : "girl",
+         "class" : {
+            "id" : "PATO:0020000",
+            "label" : "female genetic sex"
+         }
+      }
+   ],
+   "phenotypes" : null,
    "updated" : "2022-11-11T09:45:13Z",
-   "id" : "AM_BS__NCBISKYCGH-1993"
+   "geo_provenance" : {
+      "longitude" : 21.23,
+      "altitude" : 94,
+      "latitude" : 45.75,
+      "country" : "Romania",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "city" : "Timisoara"
+   },
+   "description" : "patient with lung cancer, male smoker",
+   "created" : "2017-10-25T07:06:03Z"
 }
