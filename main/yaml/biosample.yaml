@@ -2,13 +2,14 @@ info:
   title: GA4GH __biosample__
   description: |
     In this schema, a "biosample" as the source of the material of a molecular analysis (e.g. genomic array, sequencing), represents the main “biological item” against which molecular variants are referenced.
-  version: '2018-09-12'
+    PXF:  See https://github.com/ga4gh-metadata/metadata-schemas/blob/d4ca1b4b36a5e7b3a17db79da9ae03a2114cfcaf/schemas/biometadata.proto#L84-L138 A Biosample refers to a unit of biological material from which the substrate molecules (e.g. genomic DNA, RNA, proteins) for molecular analyses (e.g. sequencing, array hybridisation, mass-spectrometry) are extracted. Examples would be a tissue biopsy, a single cell from a culture for single cell genome sequencing or a protein fraction from a gradient centrifugation. Several instances (e.g. technical replicates) or types of experiments (e.g. genomic array as well as RNA-seq experiments) may refer to the same Biosample. FHIR mapping: Specimen (http://www.hl7.org/fhir/specimen.html).
+  version: '2018-09-26'
 definitions:
   Biosample:
     properties:
       id:
         type: string
-        description: The local-unique identifier of this biosample (referenced as "biosample_id").
+        description: The local-unique identifier of this biosample (referenced as "biosample_id"). This is unique in the context of the server instance.
         example: 'AM_BS__NCBISKYCGH-1993'
       project_id:
         type: string
@@ -24,11 +25,11 @@ definitions:
       name:
         type: string
         description: |
-          A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection.
+          A short descriptive name for sample which should be sufficient to distinguish it from other samples in the project or collection. This is a label or symbolic identifier for the biosample.
         example: 'Sample BRCA-00429, 2nd replicate'
       description:
         type: string
-        description: A free text description of the biosample.
+        description: A free text description of the biosample. This should not contain any structured data.
         example: 'Burkitt lymphoma, cell line Namalwa'
       data_use_conditions:
         schema:
@@ -48,6 +49,13 @@ definitions:
           age_class:
             id : "HP:0003621"
             label : "Juvenile onset"
+      phenotypes:
+        schema:
+          $ref: './common/Pehnotype'
+        description: |
+          The phenotype ssociated with this biosamples, as Phenotype object.
+        example:
+          - to be added
       biocharacteristics:
         description: |
           "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
@@ -75,7 +83,7 @@ definitions:
           - query: 'db.biosamples.distinct( "biocharacteristics.class.id", { "biocharacteristics.class.id" : { $regex : /ncit/ } } )'
             description: |
               This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
-      external_ids:
+      external_references:
         description: list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
         type: array
         items:
@@ -90,7 +98,7 @@ definitions:
           - id : "geo:GSM185088"
             relation : "denotes"
         queries:
-          - query: 'db.biosamples.find( { "external_ids.id" : "pubmed:17440070" } )'
+          - query: 'db.biosamples.find( { "external_references.id" : "pubmed:17440070" } )'
             description: the query will return all biosamples reported in this publication
       geo_provenance:
         description: |
@@ -120,10 +128,10 @@ definitions:
       created:
         description: |
           The creation time of this record, in ISO8601
-        type: string
+        type: timestamp
         example: '2017-10-25T07:06:03Z'
       updated:
         description: |
           The time of the last edit of this record, in ISO8601
-        type: string
+        type: timestamp
         example: '2022-11-11T09:45:13Z'
