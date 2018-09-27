@@ -178,8 +178,8 @@ Data use conditions applying to data from this biosample, as ontology object (e.
 
 ```
 'data_use_conditions' : {
-  'id' : 'DUO:0000004',
-  'label' : 'no restriction'
+  'label' : 'no restriction',
+  'id' : 'DUO:0000004'
 }
 ```
 
@@ -230,8 +230,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'relation' : 'technology'
   },
   {
-    'id' : 'geo:GSM185088',
-    'relation' : 'denotes'
+    'relation' : 'denotes',
+    'id' : 'geo:GSM185088'
   }
 ]
 ```
@@ -254,12 +254,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'latitude' : 45.75,
+  'city' : 'Timisoara',
   'country' : 'Romania',
   'altitude' : 94,
-  'longitude' : 21.23
+  'longitude' : 21.23,
+  'latitude' : 45.75
 }
 ```
 
@@ -275,8 +275,8 @@ The age of the individual at time of biosample collection, as Age_class object.
 'age_at_collection' : {
   'age' : 'P56Y',
   'age_class' : {
-                   'label' : 'Juvenile onset',
-                   'id' : 'HP:0003621'
+                   'id' : 'HP:0003621',
+                   'label' : 'Juvenile onset'
                  }
 }
 ```
@@ -302,16 +302,16 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'label' : 'Adenocarcinoma, NOS',
-                 'id' : 'pgx:icdom:81403'
+                 'id' : 'pgx:icdom:81403',
+                 'label' : 'Adenocarcinoma, NOS'
                }
   },
   {
-    'description' : 'Pancreatic Adenocarcinoma',
     'class' : {
-                 'id' : 'ncit:c8294',
-                 'label' : 'Pancreatic Adenocarcinoma'
-               }
+                 'label' : 'Pancreatic Adenocarcinoma',
+                 'id' : 'ncit:c8294'
+               },
+    'description' : 'Pancreatic Adenocarcinoma'
   }
 ]
 ```
@@ -355,8 +355,8 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'followup_time' : 'P14M',
-  'death' : 1
+  'death' : 1,
+  'followup_time' : 'P14M'
 }
 ```
 

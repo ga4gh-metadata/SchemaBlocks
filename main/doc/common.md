@@ -108,8 +108,8 @@ an ontology_class object
 
 ```
 'class' : {
-  'id' : 'ncit:c8294',
-  'label' : 'Pancreatic Adenocarcinoma'
+  'label' : 'Pancreatic Adenocarcinoma',
+  'id' : 'ncit:c8294'
 }
 ```
 
@@ -507,8 +507,8 @@ FHIR mapping: Condition.severity
 
 ```
 'severity' : {
-  'id' : '',
-  'label' : ''
+  'label' : '',
+  'id' : ''
 }
 ```
 
@@ -522,8 +522,8 @@ FHIR mapping: Condition.severity
 ```
 'evidence' : [
   {
-    'id' : '',
-    'label' : ''
+    'label' : '',
+    'id' : ''
   }
 ]
 ```

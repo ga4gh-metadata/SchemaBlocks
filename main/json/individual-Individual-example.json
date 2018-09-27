@@ -1,62 +1,62 @@
 {
-   "external_references" : [
+   "sex" : [
       {
+         "description" : "girl",
          "class" : {
-            "id" : "cellosaurus:CVCL_0312",
-            "relation" : "provenance"
-         },
-         "description" : null
-      }
-   ],
-   "description" : "patient with lung cancer, male smoker",
-   "organism" : [
-      {
-         "description" : "Jean-Luc Picard",
-         "class" : {
-            "id" : "NCBITaxon:9606",
-            "label" : "Homo sapiens"
+            "id" : "PATO:0020000",
+            "label" : "female genetic sex"
          }
       }
    ],
-   "phenotypes" : null,
-   "updated" : "2022-11-11T09:45:13Z",
-   "sex" : [
-      {
-         "class" : {
-            "label" : "female genetic sex",
-            "id" : "PATO:0020000"
-         },
-         "description" : "girl"
-      }
-   ],
+   "data_use_conditions" : null,
    "info" : {
       "first_name" : {
          "value" : "Ion",
          "type" : "string"
       },
       "last_name" : {
-         "type" : "string",
-         "value" : "Tichy"
+         "value" : "Tichy",
+         "type" : "string"
       }
    },
-   "data_use_conditions" : null,
    "id" : "AM_BS__NCBISKYCGH-1993",
+   "created" : "2017-10-25T07:06:03Z",
    "biocharacteristics" : [
       {
+         "description" : "Patient with Down syndrome",
          "class" : {
             "id" : "HP:0003745",
             "label" : "Genetic anticipation"
-         },
-         "description" : "Patient with Down syndrome"
+         }
       }
    ],
+   "external_references" : [
+      {
+         "description" : null,
+         "class" : {
+            "relation" : "provenance",
+            "id" : "cellosaurus:CVCL_0312"
+         }
+      }
+   ],
+   "organism" : [
+      {
+         "description" : "Jean-Luc Picard",
+         "class" : {
+            "label" : "Homo sapiens",
+            "id" : "NCBITaxon:9606"
+         }
+      }
+   ],
+   "description" : "patient with lung cancer, male smoker",
+   "updated" : "2022-11-11T09:45:13Z",
    "geo_provenance" : {
-      "altitude" : 94,
-      "longitude" : 21.23,
       "country" : "Romania",
+      "city" : "Timisoara",
       "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "altitude" : 94,
       "latitude" : 45.75,
-      "city" : "Timisoara"
+      "longitude" : 21.23
    },
-   "created" : "2017-10-25T07:06:03Z"
+   "phenotypes" : null
 }

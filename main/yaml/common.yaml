@@ -5,6 +5,11 @@ info:
     Definition of some prototype objects which are re-used in other schema documents.
   version: '2018-09-13'
 definitions:
+
+################################################################################
+################################################################################
+################################################################################
+
   Age_class:
     properties:
       age:
@@ -19,6 +24,9 @@ definitions:
         example:
           id : "HP:0003621"
           label : "Juvenile onset"
+
+################################################################################
+
   Biocharacteristic_class:
     properties:
       description:
@@ -36,6 +44,9 @@ definitions:
         description: flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated
         type: boolean
         example: "true"
+
+################################################################################
+
   Geo_class:
     properties:
       label:
@@ -66,6 +77,9 @@ definitions:
         type: number
         format: float
         example: 8848
+
+################################################################################
+
   Info_class: # TODO: Correct representation of Info_class, so that it is clearly a placeholder for a flexible attribute name
     properties:
       description:
@@ -83,6 +97,9 @@ definitions:
       value:
         description: the value in a format correstponding to type
         example: 1503320
+
+################################################################################
+
   Ontology_class: # TODO this should include some link/instruction relating to how to dereference the CURIE
     properties:
       id:
@@ -93,6 +110,9 @@ definitions:
         description: the text label associated with the term
         type: string
         example: 'Pancreatic Adenocarcinoma'
+
+################################################################################
+
   Phenotype_class: # TODO develop this further based on PXF
     info:
       description: |
@@ -138,6 +158,9 @@ definitions:
         example:
           - id: ''
             label: ''
+
+################################################################################
+
   Reference_class:
     properties:
       id:
@@ -149,3 +172,5 @@ definitions:
         description: the relation of the external reference to the object it was pointed from
         type: string
         example: 'denotes'
+
+################################################################################

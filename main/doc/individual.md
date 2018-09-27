@@ -126,11 +126,11 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 ```
 'biocharacteristics' : [
   {
+    'description' : 'Patient with Down syndrome',
     'class' : {
                  'id' : 'HP:0003745',
                  'label' : 'Genetic anticipation'
-               },
-    'description' : 'Patient with Down syndrome'
+               }
   }
 ]
 ```
@@ -193,11 +193,11 @@ Different representations of the same record, not  different records in relation
 ```
 'external_references' : [
   {
+    'description' : undef,
     'class' : {
-                 'id' : 'cellosaurus:CVCL_0312',
-                 'relation' : 'provenance'
-               },
-    'description' : undef
+                 'relation' : 'provenance',
+                 'id' : 'cellosaurus:CVCL_0312'
+               }
   }
 ]
 ```
@@ -213,12 +213,12 @@ This value may reflect either the place of birth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'altitude' : 94,
-  'longitude' : 21.23,
   'country' : 'Romania',
+  'city' : 'Timisoara',
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'altitude' : 94,
   'latitude' : 45.75,
-  'city' : 'Timisoara'
+  'longitude' : 21.23
 }
 ```
 
@@ -247,8 +247,8 @@ additional variant information, as defined in the example and accompanying docum
                     'type' : 'string'
                   },
   'last_name' : {
-                   'type' : 'string',
-                   'value' : 'Tichy'
+                   'value' : 'Tichy',
+                   'type' : 'string'
                  }
 }
 ```
@@ -266,8 +266,8 @@ An NCBI taxonomy term describing the species of the individual.
   {
     'description' : 'Jean-Luc Picard',
     'class' : {
-                 'id' : 'NCBITaxon:9606',
-                 'label' : 'Homo sapiens'
+                 'label' : 'Homo sapiens',
+                 'id' : 'NCBITaxon:9606'
                }
   }
 ]
@@ -296,11 +296,11 @@ A PATO term describing the biological sex of the individual
 ```
 'sex' : [
   {
+    'description' : 'girl',
     'class' : {
-                 'label' : 'female genetic sex',
-                 'id' : 'PATO:0020000'
-               },
-    'description' : 'girl'
+                 'id' : 'PATO:0020000',
+                 'label' : 'female genetic sex'
+               }
   }
 ]
 ```

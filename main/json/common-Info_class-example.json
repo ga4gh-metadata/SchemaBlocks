@@ -1,6 +1,6 @@
 {
-   "type" : "number",
    "value" : 1503320,
-   "format" : "int64",
-   "description" : "The base length of the called segment."
+   "type" : "number",
+   "description" : "The base length of the called segment.",
+   "format" : "int64"
 }

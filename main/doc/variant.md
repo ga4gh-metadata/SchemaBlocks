@@ -240,8 +240,8 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'cnv_value' : '-0.294',
-  'cnv_length' : 1205290
+  'cnv_length' : 1205290,
+  'cnv_value' : '-0.294'
 }
 ```
 
