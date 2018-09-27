@@ -5,17 +5,27 @@ info:
   updated: '2018-09-04'
 definitions:
   Callset:
+    info:
+      sortorder: # order for the documentation; missing attributes will be processed at the end
+        - id
+        - biosample_id
+        - description
+        - data_use_conditions
+        - geo_provenance
+        - info
     properties:
       id:
         description: The local-unique identifier of this callset (referenced as "callset_id").
         type: string
         example: 'GSM264198'
       biosample_id:
-        description: The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
+        description: |
+          The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
         type: string
         example: 'pgx-bs-987647'
       description:
-        description: A free text description of the callset.
+        description: |
+          A free text description of the callset.
         type: string
         example: 'SNP6 array of cancer sample BRCA-0893'
       data_use_conditions:

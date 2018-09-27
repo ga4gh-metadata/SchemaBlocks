@@ -18,17 +18,25 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
   </tr>
 
   <tr>
-    <td>biosample_id</td>
+    <td>id</td>
     <td>string</td>
     <td></td>
-    <td>The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.</td>
+    <td>The local-unique identifier of this callset (referenced as "callset_id").</td>
   </tr>
 
   <tr>
-    <td>created</td>
+    <td>biosample_id</td>
     <td>string</td>
     <td></td>
-    <td>The creation time of this record, in ISO8601
+    <td>The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
+</td>
+  </tr>
+
+  <tr>
+    <td>description</td>
+    <td>string</td>
+    <td></td>
+    <td>A free text description of the callset.
 </td>
   </tr>
 
@@ -41,13 +49,6 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
   </tr>
 
   <tr>
-    <td>description</td>
-    <td>string</td>
-    <td></td>
-    <td>A free text description of the callset.</td>
-  </tr>
-
-  <tr>
     <td>geo_provenance</td>
     <td></td>
     <td></td>
@@ -56,17 +57,18 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
   </tr>
 
   <tr>
-    <td>id</td>
-    <td>string</td>
-    <td></td>
-    <td>The local-unique identifier of this callset (referenced as "callset_id").</td>
-  </tr>
-
-  <tr>
     <td>info</td>
     <td></td>
     <td></td>
     <td>additional variant information, as defined in the example and accompanying documentation</td>
+  </tr>
+
+  <tr>
+    <td>created</td>
+    <td>string</td>
+    <td></td>
+    <td>The creation time of this record, in ISO8601
+</td>
   </tr>
 
   <tr>
@@ -82,9 +84,21 @@ The schema definitions are done in the [YAML file](../yaml/callset.yaml).
 
 
 --------------------------------------------------------------------------------
+### id
+
+The local-unique identifier of this callset (referenced as "callset_id").
+
+#### Example
+
+```
+'id' : "GSM264198"
+```
+
+--------------------------------------------------------------------------------
 ### biosample_id
 
 The identifier ("biosample.id") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.
+
 
 #### Example
 
@@ -93,15 +107,15 @@ The identifier ("biosample.id") of the biosample this variant was reported from.
 ```
 
 --------------------------------------------------------------------------------
-### created
+### description
 
-The creation time of this record, in ISO8601
+A free text description of the callset.
 
 
 #### Example
 
 ```
-'created' : "2017-10-25T07:06:03Z"
+'description' : "SNP6 array of cancer sample BRCA-0893"
 ```
 
 --------------------------------------------------------------------------------
@@ -120,17 +134,6 @@ Data use conditions applying to data from this callset, as ontology object (e.g.
 ```
 
 --------------------------------------------------------------------------------
-### description
-
-A free text description of the callset.
-
-#### Example
-
-```
-'description' : "SNP6 array of cancer sample BRCA-0893"
-```
-
---------------------------------------------------------------------------------
 ### geo_provenance
 
 This geo_class attribute ideally describes the geographic location of where this callset was analysed.
@@ -140,23 +143,12 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'city' : 'Timisoara',
   'longitude' : 21.23,
   'latitude' : 45.75,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'country' : 'Romania',
-  'city' : 'Timisoara'
+  'country' : 'Romania'
 }
-```
-
---------------------------------------------------------------------------------
-### id
-
-The local-unique identifier of this callset (referenced as "callset_id").
-
-#### Example
-
-```
-'id' : "GSM264198"
 ```
 
 --------------------------------------------------------------------------------
@@ -169,6 +161,9 @@ additional variant information, as defined in the example and accompanying docum
 ```
 'info' : {
   'statusmaps' : {
+                    'schema' : {
+                                  '$ref' : './common/Info_class'
+                                },
                     'description' : 'The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => "DUP" or "", del_map => "DEL" or ""), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.
 With a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).
 ',
@@ -176,6 +171,7 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                                  'dupmap' : {
                                                'description' : 'gain cnv status for the corresponding genome intervals
 ',
+                                               'type' : 'array',
                                                'value' : [
                                                             '',
                                                             '',
@@ -188,21 +184,29 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                                                             '',
                                                             '',
                                                             ''
-                                                          ],
-                                               'type' : 'array'
+                                                          ]
                                              },
                                  'binning' : {
                                                 'description' : 'interval size in bases for the binning, when creating the cnv_maps',
+                                                'type' : 'number',
                                                 'value' : 1000000,
-                                                'format' : 'int64',
-                                                'type' : 'number'
+                                                'format' : 'int64'
                                               }
-                               },
-                    'schema' : {
-                                  '$ref' : './common/Info_class'
-                                }
+                               }
                   }
 }
+```
+
+--------------------------------------------------------------------------------
+### created
+
+The creation time of this record, in ISO8601
+
+
+#### Example
+
+```
+'created' : "2017-10-25T07:06:03Z"
 ```
 
 --------------------------------------------------------------------------------

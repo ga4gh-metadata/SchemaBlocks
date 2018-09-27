@@ -6,6 +6,20 @@ info:
   version: '2018-09-26'
 definitions:
   Biosample:
+    info:
+      sortorder: # order for the documentation; missing attributes will be processed at the end
+        - id
+        - name
+        - description
+        - data_use_conditions
+        - project_id
+        - individual_id
+        - external_references
+        - geo_provenance
+        - age_at_collection
+        - biocharacteristics
+        - phenotypes
+        - info
     properties:
       id:
         type: string
@@ -50,10 +64,11 @@ definitions:
             id : "HP:0003621"
             label : "Juvenile onset"
       phenotypes:
-        schema:
-          $ref: './common/Pehnotype'
+        type: array
+        items:
+          $ref: './common/Phennotype_class'
         description: |
-          The phenotype ssociated with this biosamples, as Phenotype object.
+          The phenotype associated with this biosamples, as Phennotype_class objects.
         example:
           - to be added
       biocharacteristics:

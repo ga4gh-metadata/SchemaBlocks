@@ -1,0 +1,10 @@
+{
+   "example" : null,
+   "type" : null,
+   "description" : "",
+   "severity" : {
+      "label" : "",
+      "id" : ""
+   },
+   "negated" : ""
+}

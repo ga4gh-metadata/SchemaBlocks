@@ -58,8 +58,8 @@ The of the object (e.g. individual at tome of a biosample collection), as Ontolo
 
 ```
 'age_at_collection_class' : {
-  'label' : 'Juvenile onset',
-  'id' : 'HP:0003621'
+  'id' : 'HP:0003621',
+  'label' : 'Juvenile onset'
 }
 ```
 ## Biocharacteristic_class
@@ -400,6 +400,114 @@ the text label associated with the term
 
 ```
 'label' : "Pancreatic Adenocarcinoma"
+```
+## Phenotype_class
+
+<h3>Properties of the <i>Phenotype_class</i> class</h3>
+
+<table>
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Format</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td>description</td>
+    <td>string</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>example</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>negated</td>
+    <td>boolean</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>severity</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>type</td>
+    <td></td>
+    <td></td>
+    <td>the ontology term as Ontology_class</td>
+  </tr>
+</table>
+
+<h3>Extended notes and examples on the <i>Phenotype_class</i> properties</h3>
+
+
+--------------------------------------------------------------------------------
+### description
+
+
+
+#### Example
+
+```
+'description' : ""
+```
+
+--------------------------------------------------------------------------------
+### example
+
+
+
+#### Example
+
+```
+'example' : "undef"
+```
+
+--------------------------------------------------------------------------------
+### negated
+
+
+
+#### Example
+
+```
+'negated' : ""
+```
+
+--------------------------------------------------------------------------------
+### severity
+
+
+
+#### Example
+
+```
+'severity' : {
+  'label' : '',
+  'id' : ''
+}
+```
+
+--------------------------------------------------------------------------------
+### type
+
+the ontology term as Ontology_class
+
+#### Example
+
+```
+'type' : "undef"
 ```
 ## Reference_class
 

@@ -1,4 +1,5 @@
 {
+   "phenotypes" : null,
    "external_references" : [
       {
          "class" : {
@@ -8,55 +9,54 @@
          "description" : null
       }
    ],
+   "data_use_conditions" : null,
+   "geo_provenance" : {
+      "latitude" : 45.75,
+      "longitude" : 21.23,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "city" : "Timisoara",
+      "altitude" : 94,
+      "country" : "Romania"
+   },
+   "description" : "patient with lung cancer, male smoker",
+   "sex" : [
+      {
+         "description" : "girl",
+         "class" : {
+            "label" : "female genetic sex",
+            "id" : "PATO:0020000"
+         }
+      }
+   ],
    "info" : {
       "last_name" : {
          "type" : "string",
          "value" : "Tichy"
       },
       "first_name" : {
-         "type" : "string",
-         "value" : "Ion"
+         "value" : "Ion",
+         "type" : "string"
       }
    },
-   "data_use_conditions" : null,
-   "organism" : [
-      {
-         "description" : "Jean-Luc Picard",
-         "class" : {
-            "label" : "Homo sapiens",
-            "id" : "NCBITaxon:9606"
-         }
-      }
-   ],
+   "id" : "AM_BS__NCBISKYCGH-1993",
    "biocharacteristics" : [
       {
          "class" : {
-            "label" : "Genetic anticipation",
-            "id" : "HP:0003745"
+            "id" : "HP:0003745",
+            "label" : "Genetic anticipation"
          },
          "description" : "Patient with Down syndrome"
       }
    ],
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "sex" : [
+   "updated" : "2022-11-11T09:45:13Z",
+   "created" : "2017-10-25T07:06:03Z",
+   "organism" : [
       {
-         "description" : "girl",
+         "description" : "Jean-Luc Picard",
          "class" : {
-            "id" : "PATO:0020000",
-            "label" : "female genetic sex"
+            "id" : "NCBITaxon:9606",
+            "label" : "Homo sapiens"
          }
       }
-   ],
-   "phenotypes" : null,
-   "updated" : "2022-11-11T09:45:13Z",
-   "geo_provenance" : {
-      "longitude" : 21.23,
-      "altitude" : 94,
-      "latitude" : 45.75,
-      "country" : "Romania",
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "city" : "Timisoara"
-   },
-   "description" : "patient with lung cancer, male smoker",
-   "created" : "2017-10-25T07:06:03Z"
+   ]
 }

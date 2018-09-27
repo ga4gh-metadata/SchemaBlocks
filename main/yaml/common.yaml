@@ -5,16 +5,20 @@ info:
     Definition of some prototype objects which are re-used in other schema documents.
   version: '2018-09-13'
 definitions:
-  Ontology_class: # TODO this should include some link/instruction relating to how to dereference the CURIE
+  Age_class:
     properties:
-      id:
-        description: properly prefixed CURIE of the ontology term
+      age:
         type: string
-        example: 'ncit:C8294'
-      label:
-        description: the text label associated with the term
-        type: string
-        example: 'Pancreatic Adenocarcinoma'
+        description: The age as ISO8601 string.
+        example: 'P56Y'
+      age_at_collection_class:
+        schema:
+          $ref: '#/Ontology_class'
+        description: |
+          The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object
+        example:
+          id : "HP:0003621"
+          label : "Juvenile onset"
   Biocharacteristic_class:
     properties:
       description:
@@ -32,47 +36,6 @@ definitions:
         description: flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated
         type: boolean
         example: "true"
-  Reference_class:
-    properties:
-      id:
-        description: properly prefixed CURIE of the external reference
-        type: string
-        example: 'pubmed:17440070'
-      relation:
-        description: the relation of the external reference to the object it was pointed from
-        type: string
-        example: 'denotes'
-  Info_class: # TODO: Correct representation of Info_class, so that it is clearly a placeholder for a flexible attribute name
-    properties:
-      description:
-        description: an optional free-text annotation about the object
-        type: string
-        example: "The base length of the called segment."
-      type:
-        description: type of the value; optional
-        type: string
-        example: 'number'
-      format:
-        description: format of the value; optional
-        type: string
-        example: 'int64'
-      value:
-        description: the value in a format correstponding to type
-        example: 1503320
-  Age_class:
-    properties:
-      age:
-        type: string
-        description: The age as ISO8601 string.
-        example: 'P56Y'
-      age_at_collection_class:
-        schema:
-          $ref: '#/Ontology_class'
-        description: |
-          The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object
-        example:
-          id : "HP:0003621"
-          label : "Juvenile onset"
   Geo_class:
     properties:
       label:
@@ -103,3 +66,64 @@ definitions:
         type: number
         format: float
         example: 8848
+  Info_class: # TODO: Correct representation of Info_class, so that it is clearly a placeholder for a flexible attribute name
+    properties:
+      description:
+        description: an optional free-text annotation about the object
+        type: string
+        example: "The base length of the called segment."
+      type:
+        description: type of the value; optional
+        type: string
+        example: 'number'
+      format:
+        description: format of the value; optional
+        type: string
+        example: 'int64'
+      value:
+        description: the value in a format correstponding to type
+        example: 1503320
+  Ontology_class: # TODO this should include some link/instruction relating to how to dereference the CURIE
+    properties:
+      id:
+        description: properly prefixed CURIE of the ontology term
+        type: string
+        example: 'ncit:C8294'
+      label:
+        description: the text label associated with the term
+        type: string
+        example: 'Pancreatic Adenocarcinoma'
+  Phenotype_class: # TODO develop this further based on PXF
+    properties:
+      description:
+        description: ''
+        type: string
+        example: ''
+      type:
+        description: the ontology term as Ontology_class
+        schema:
+          $ref: '#/Ontology_class'
+      example:
+        id: 'ncit:C8294'
+        label: 'Pancreatic Adenocarcinoma'
+      negated:
+        description: ''
+        type: boolean
+        example: false
+      severity:
+        description: ''
+        schema:
+          $ref: '#/Ontology_class'
+        example:
+          id: ''
+          label: ''
+  Reference_class:
+    properties:
+      id:
+        description: properly prefixed CURIE of the external reference
+        type: string
+        example: 'pubmed:17440070'
+      relation:
+        description: the relation of the external reference to the object it was pointed from
+        type: string
+        example: 'denotes'

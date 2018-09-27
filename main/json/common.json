@@ -1,16 +1,59 @@
 {
    "definitions" : {
-      "Ontology_class" : {
+      "Phenotype_class" : {
          "properties" : {
-            "label" : {
-               "example" : "Pancreatic Adenocarcinoma",
-               "description" : "the text label associated with the term",
-               "type" : "string"
-            },
-            "id" : {
+            "description" : {
+               "example" : "",
                "type" : "string",
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term"
+               "description" : ""
+            },
+            "example" : {
+               "label" : "Pancreatic Adenocarcinoma",
+               "id" : "ncit:C8294"
+            },
+            "type" : {
+               "description" : "the ontology term as Ontology_class",
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               }
+            },
+            "negated" : {
+               "example" : "",
+               "type" : "boolean",
+               "description" : ""
+            },
+            "severity" : {
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               },
+               "description" : "",
+               "example" : {
+                  "label" : "",
+                  "id" : ""
+               }
+            }
+         }
+      },
+      "Info_class" : {
+         "properties" : {
+            "type" : {
+               "example" : "number",
+               "type" : "string",
+               "description" : "type of the value; optional"
+            },
+            "value" : {
+               "description" : "the value in a format correstponding to type",
+               "example" : "1503320"
+            },
+            "format" : {
+               "description" : "format of the value; optional",
+               "type" : "string",
+               "example" : "int64"
+            },
+            "description" : {
+               "description" : "an optional free-text annotation about the object",
+               "type" : "string",
+               "example" : "The base length of the called segment."
             }
          }
       },
@@ -19,54 +62,17 @@
             "age_at_collection_class" : {
                "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n",
                "example" : {
-                  "label" : "Juvenile onset",
-                  "id" : "HP:0003621"
+                  "id" : "HP:0003621",
+                  "label" : "Juvenile onset"
                },
                "schema" : {
                   "$ref" : "#/Ontology_class"
                }
             },
             "age" : {
+               "description" : "The age as ISO8601 string.",
                "type" : "string",
-               "example" : "P56Y",
-               "description" : "The age as ISO8601 string."
-            }
-         }
-      },
-      "Reference_class" : {
-         "properties" : {
-            "id" : {
-               "type" : "string",
-               "example" : "pubmed:17440070",
-               "description" : "properly prefixed CURIE of the external reference"
-            },
-            "relation" : {
-               "example" : "denotes",
-               "description" : "the relation of the external reference to the object it was pointed from",
-               "type" : "string"
-            }
-         }
-      },
-      "Info_class" : {
-         "properties" : {
-            "description" : {
-               "example" : "The base length of the called segment.",
-               "description" : "an optional free-text annotation about the object",
-               "type" : "string"
-            },
-            "format" : {
-               "example" : "int64",
-               "description" : "format of the value; optional",
-               "type" : "string"
-            },
-            "value" : {
-               "example" : "1503320",
-               "description" : "the value in a format correstponding to type"
-            },
-            "type" : {
-               "type" : "string",
-               "example" : "number",
-               "description" : "type of the value; optional"
+               "example" : "P56Y"
             }
          }
       },
@@ -74,66 +80,94 @@
          "properties" : {
             "description" : {
                "type" : "string",
-               "description" : "a free-text description of this biocharacteristic",
-               "example" : "Invasive ductal breast carcinoma, metastasized"
+               "example" : "Invasive ductal breast carcinoma, metastasized",
+               "description" : "a free-text description of this biocharacteristic"
             },
             "class" : {
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               },
                "description" : "an ontology_class object",
                "example" : {
                   "id" : "ncit:c8294",
                   "label" : "Pancreatic Adenocarcinoma"
-               },
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
                }
             },
             "negated" : {
+               "type" : "boolean",
                "example" : "true",
-               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
-               "type" : "boolean"
+               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated"
+            }
+         }
+      },
+      "Ontology_class" : {
+         "properties" : {
+            "label" : {
+               "description" : "the text label associated with the term",
+               "type" : "string",
+               "example" : "Pancreatic Adenocarcinoma"
+            },
+            "id" : {
+               "type" : "string",
+               "example" : "ncit:C8294",
+               "description" : "properly prefixed CURIE of the ontology term"
+            }
+         }
+      },
+      "Reference_class" : {
+         "properties" : {
+            "id" : {
+               "description" : "properly prefixed CURIE of the external reference",
+               "type" : "string",
+               "example" : "pubmed:17440070"
+            },
+            "relation" : {
+               "type" : "string",
+               "example" : "denotes",
+               "description" : "the relation of the external reference to the object it was pointed from"
             }
          }
       },
       "Geo_class" : {
          "properties" : {
-            "city" : {
-               "example" : "Timisoara",
+            "country" : {
+               "example" : "Romania",
                "type" : "string"
+            },
+            "altitude" : {
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "type" : "number",
+               "format" : "float",
+               "example" : "8848"
             },
             "label" : {
                "type" : "string",
                "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
                "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
             },
-            "country" : {
-               "example" : "Romania",
+            "city" : {
+               "example" : "Timisoara",
                "type" : "string"
             },
-            "latitude" : {
-               "type" : "number",
-               "example" : "47.37",
-               "description" : "signed decimal degrees (North, relative to Equator)",
-               "D" : "float"
-            },
             "longitude" : {
-               "type" : "number",
-               "format" : "float",
                "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
-               "example" : "8.54"
-            },
-            "altitude" : {
-               "format" : "float",
                "type" : "number",
-               "example" : "8848",
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional"
+               "example" : "8.54",
+               "format" : "float"
+            },
+            "latitude" : {
+               "D" : "float",
+               "example" : "47.37",
+               "type" : "number",
+               "description" : "signed decimal degrees (North, relative to Equator)"
             }
          }
       }
    },
    "info" : {
-      "title" : "GA4GH - common and shared object definitions\n",
       "version" : "2018-09-13",
-      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n"
+      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
+      "title" : "GA4GH - common and shared object definitions\n"
    }
 }
 

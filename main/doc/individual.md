@@ -127,8 +127,8 @@ list of biocharacteristic_class objects with properly prefixed term ids, describ
 'biocharacteristics' : [
   {
     'class' : {
-                 'label' : 'Genetic anticipation',
-                 'id' : 'HP:0003745'
+                 'id' : 'HP:0003745',
+                 'label' : 'Genetic anticipation'
                },
     'description' : 'Patient with Down syndrome'
   }
@@ -213,12 +213,12 @@ This value may reflect either the place of birth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'longitude' : 21.23,
-  'altitude' : 94,
   'latitude' : 45.75,
-  'country' : 'Romania',
+  'longitude' : 21.23,
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'city' : 'Timisoara'
+  'city' : 'Timisoara',
+  'altitude' : 94,
+  'country' : 'Romania'
 }
 ```
 
@@ -247,8 +247,8 @@ additional variant information, as defined in the example and accompanying docum
                    'value' : 'Tichy'
                  },
   'first_name' : {
-                    'type' : 'string',
-                    'value' : 'Ion'
+                    'value' : 'Ion',
+                    'type' : 'string'
                   }
 }
 ```
@@ -266,8 +266,8 @@ An NCBI taxonomy term describing the species of the individual.
   {
     'description' : 'Jean-Luc Picard',
     'class' : {
-                 'label' : 'Homo sapiens',
-                 'id' : 'NCBITaxon:9606'
+                 'id' : 'NCBITaxon:9606',
+                 'label' : 'Homo sapiens'
                }
   }
 ]
@@ -298,8 +298,8 @@ A PATO term describing the biological sex of the individual
   {
     'description' : 'girl',
     'class' : {
-                 'id' : 'PATO:0020000',
-                 'label' : 'female genetic sex'
+                 'label' : 'female genetic sex',
+                 'id' : 'PATO:0020000'
                }
   }
 ]
