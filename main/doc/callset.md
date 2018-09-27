@@ -128,8 +128,8 @@ Data use conditions applying to data from this callset, as ontology object (e.g.
 
 ```
 'data_use_conditions' : {
-  'label' : 'no restriction',
-  'id' : 'DUO:0000004'
+  'id' : 'DUO:0000004',
+  'label' : 'no restriction'
 }
 ```
 
@@ -144,9 +144,9 @@ This geo_class attribute ideally describes the geographic location of where this
 ```
 'geo_provenance' : {
   'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'latitude' : 45.75,
   'city' : 'Timisoara',
   'longitude' : 21.23,
-  'latitude' : 45.75,
   'country' : 'Romania'
 }
 ```
@@ -169,9 +169,6 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
 ',
                     'value' : {
                                  'dupmap' : {
-                                               'description' : 'gain cnv status for the corresponding genome intervals
-',
-                                               'type' : 'array',
                                                'value' : [
                                                             '',
                                                             '',
@@ -184,11 +181,14 @@ With a standard binning of 1MB, the arrays would contain ~3000 values each (depe
                                                             '',
                                                             '',
                                                             ''
-                                                          ]
+                                                          ],
+                                               'description' : 'gain cnv status for the corresponding genome intervals
+',
+                                               'type' : 'array'
                                              },
                                  'binning' : {
-                                                'description' : 'interval size in bases for the binning, when creating the cnv_maps',
                                                 'type' : 'number',
+                                                'description' : 'interval size in bases for the binning, when creating the cnv_maps',
                                                 'value' : 1000000,
                                                 'format' : 'int64'
                                               }

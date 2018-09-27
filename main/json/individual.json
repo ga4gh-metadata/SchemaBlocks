@@ -1,60 +1,21 @@
 {
-   "info" : {
-      "title" : "GA4GH __individual__\n",
-      "description" : "An individual is a single organism (here typically a human).\n",
-      "updated" : "2018-09-13"
-   },
    "definitions" : {
       "Individual" : {
          "properties" : {
-            "geo_provenance" : {
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               },
-               "example" : {
-                  "latitude" : "45.75",
-                  "longitude" : "21.23",
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "city" : "Timisoara",
-                  "altitude" : "94",
-                  "country" : "Romania"
-               },
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.\n"
-            },
-            "description" : {
-               "description" : "A free text description of the individual.",
-               "example" : "patient with lung cancer, male smoker",
-               "type" : "string"
-            },
-            "data_use_conditions" : {
-               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n",
-               "schema" : {
-                  "$ref" : "./common/Ontology_class"
-               }
-            },
-            "external_references" : {
+            "biocharacteristics" : {
+               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
                "example" : [
                   {
                      "class" : {
-                        "relation" : "provenance",
-                        "id" : "cellosaurus:CVCL_0312"
+                        "id" : "HP:0003745",
+                        "label" : "Genetic anticipation"
                      },
-                     "description" : null
+                     "description" : "Patient with Down syndrome"
                   }
                ],
-               "type" : "array",
                "items" : {
-                  "$ref" : "./common/Reference_class"
+                  "$ref" : "./common/Biocharacteristic_class"
                },
-               "description" : "Different representations of the same record, not  different records in relation with this individual"
-            },
-            "phenotypes" : {
-               "description" : "Phenotype of the individual\n",
-               "schema" : {
-                  "$ref" : "./phenotype"
-               }
-            },
-            "biocharacteristics" : {
                "queries" : [
                   {
                      "description" : "the query will return all individuals who have been properly labeled as human",
@@ -65,23 +26,45 @@
                      "description" : "this call to the distinct funcion will return *all* HPO annotated classes"
                   }
                ],
-               "example" : [
-                  {
-                     "class" : {
-                        "id" : "HP:0003745",
-                        "label" : "Genetic anticipation"
-                     },
-                     "description" : "Patient with Down syndrome"
-                  }
-               ],
-               "type" : "array",
-               "items" : {
-                  "$ref" : "./common/Biocharacteristic_class"
+               "type" : "array"
+            },
+            "id" : {
+               "type" : "string",
+               "example" : "AM_BS__NCBISKYCGH-1993",
+               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\")."
+            },
+            "data_use_conditions" : {
+               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n",
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               }
+            },
+            "created" : {
+               "type" : "timestamp",
+               "description" : "The creation time of this record, in ISO8601\n",
+               "example" : "2017-10-25T07:06:03Z"
+            },
+            "geo_provenance" : {
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
                },
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n"
+               "example" : {
+                  "altitude" : "94",
+                  "longitude" : "21.23",
+                  "country" : "Romania",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "latitude" : "45.75",
+                  "city" : "Timisoara"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.\n"
+            },
+            "phenotypes" : {
+               "description" : "Phenotype of the individual\n",
+               "schema" : {
+                  "$ref" : "./phenotype"
+               }
             },
             "organism" : {
-               "description" : "An NCBI taxonomy term describing the species of the individual.\n",
                "example" : [
                   {
                      "description" : "Jean-Luc Picard",
@@ -93,56 +76,73 @@
                ],
                "schema" : {
                   "$ref" : "./common/Ontology_class"
-               }
+               },
+               "description" : "An NCBI taxonomy term describing the species of the individual.\n"
             },
-            "created" : {
-               "example" : "2017-10-25T07:06:03Z",
-               "type" : "timestamp",
-               "description" : "The creation time of this record, in ISO8601\n"
+            "description" : {
+               "type" : "string",
+               "example" : "patient with lung cancer, male smoker",
+               "description" : "A free text description of the individual."
+            },
+            "external_references" : {
+               "example" : [
+                  {
+                     "class" : {
+                        "id" : "cellosaurus:CVCL_0312",
+                        "relation" : "provenance"
+                     },
+                     "description" : null
+                  }
+               ],
+               "description" : "Different representations of the same record, not  different records in relation with this individual",
+               "items" : {
+                  "$ref" : "./common/Reference_class"
+               },
+               "type" : "array"
+            },
+            "info" : {
+               "example" : {
+                  "first_name" : {
+                     "value" : "Ion",
+                     "type" : "string"
+                  },
+                  "last_name" : {
+                     "type" : "string",
+                     "value" : "Tichy"
+                  }
+               },
+               "schema" : {
+                  "$ref" : "./common/Info_class"
+               },
+               "description" : "additional variant information, as defined in the example and accompanying documentation TODO this should be its own class"
+            },
+            "sex" : {
+               "description" : "A PATO term describing the biological sex of the individual\n",
+               "example" : [
+                  {
+                     "class" : {
+                        "label" : "female genetic sex",
+                        "id" : "PATO:0020000"
+                     },
+                     "description" : "girl"
+                  }
+               ],
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               }
             },
             "updated" : {
                "description" : "The time of the last edit of this record, in ISO8601\n",
                "example" : "2022-11-11T09:45:13Z",
                "type" : "timestamp"
-            },
-            "info" : {
-               "example" : {
-                  "last_name" : {
-                     "type" : "string",
-                     "value" : "Tichy"
-                  },
-                  "first_name" : {
-                     "value" : "Ion",
-                     "type" : "string"
-                  }
-               },
-               "description" : "additional variant information, as defined in the example and accompanying documentation TODO this should be its own class",
-               "schema" : {
-                  "$ref" : "./common/Info_class"
-               }
-            },
-            "sex" : {
-               "example" : [
-                  {
-                     "description" : "girl",
-                     "class" : {
-                        "label" : "female genetic sex",
-                        "id" : "PATO:0020000"
-                     }
-                  }
-               ],
-               "description" : "A PATO term describing the biological sex of the individual\n",
-               "schema" : {
-                  "$ref" : "./common/Ontology_class"
-               }
-            },
-            "id" : {
-               "type" : "string",
-               "example" : "AM_BS__NCBISKYCGH-1993",
-               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\")."
             }
          }
       }
+   },
+   "info" : {
+      "title" : "GA4GH __individual__\n",
+      "updated" : "2018-09-13",
+      "description" : "An individual is a single organism (here typically a human).\n"
    }
 }
 

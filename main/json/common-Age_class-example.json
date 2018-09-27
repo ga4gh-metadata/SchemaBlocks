@@ -1,7 +1,7 @@
 {
-   "age" : "P56Y",
    "age_at_collection_class" : {
       "id" : "HP:0003621",
       "label" : "Juvenile onset"
-   }
+   },
+   "age" : "P56Y"
 }

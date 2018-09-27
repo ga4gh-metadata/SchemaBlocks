@@ -86,12 +86,10 @@ END
   </tr>
 END
     my $prop_md;
-    my @prop_s  =   ();
+    my @prop    =   sort keys %{ $attr{$class}->{properties} };
+    my @prop_s  =   @{ $attr{$class}->{info}->{sortorder} };
 
-    if ($attr{$class}->{info}->{sortorder}) {
-      push(@prop_s, @{ $attr{$class}->{info}->{sortorder} }) }
-
-    foreach my $property (sort keys %{ $attr{$class}->{properties} }) {
+    foreach my $property (@prop) {
       if (! grep{ $_ eq $property } @prop_s) {
         push(@prop_s, $property) }
     }
@@ -100,6 +98,9 @@ END
       $class_md .=  $attr{$class}->{description}."\n"}
 
     foreach my $property (@prop_s) {
+
+      # making sure no non-existing attributes are being used
+      if (! grep{ $_ eq $property } @prop) { next }
 
       $example->{$property}  =  $attr{$class}->{properties}->{$property}->{example};
       my $md_example  =   _reformat_example($attr{$class}->{properties}->{$property}->{example});

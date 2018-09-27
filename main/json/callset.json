@@ -1,54 +1,13 @@
 {
    "definitions" : {
       "Callset" : {
-         "info" : {
-            "sortorder" : [
-               "id",
-               "biosample_id",
-               "description",
-               "data_use_conditions",
-               "geo_provenance",
-               "info"
-            ]
-         },
          "properties" : {
-            "data_use_conditions" : {
-               "description" : "Data use conditions applying to data from this callset, as ontology object (e.g. DUO).\n",
-               "example" : {
-                  "label" : "no restriction",
-                  "id" : "DUO:0000004"
-               },
-               "schema" : {
-                  "$ref" : "./common/Ontology_class"
-               }
-            },
-            "biosample_id" : {
-               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.\n",
-               "example" : "pgx-bs-987647",
-               "type" : "string"
-            },
-            "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
-               "example" : {
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "city" : "Timisoara",
-                  "longitude" : "21.23",
-                  "latitude" : "45.75",
-                  "country" : "Romania"
-               },
-               "schema" : {
-                  "$ref" : "./common/Geo_class"
-               }
-            },
             "description" : {
                "description" : "A free text description of the callset.\n",
                "example" : "SNP6 array of cancer sample BRCA-0893",
                "type" : "string"
             },
             "info" : {
-               "schema" : {
-                  "$ref" : "./common/Info_class"
-               },
                "description" : "additional variant information, as defined in the example and accompanying documentation",
                "example" : {
                   "statusmaps" : {
@@ -58,8 +17,6 @@
                      "description" : "The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map => \"DUP\" or \"\", del_map => \"DEL\" or \"\"), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.\nWith a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).\n",
                      "value" : {
                         "dupmap" : {
-                           "description" : "gain cnv status for the corresponding genome intervals\n",
-                           "type" : "array",
                            "value" : [
                               "",
                               "",
@@ -72,33 +29,76 @@
                               "",
                               "",
                               ""
-                           ]
+                           ],
+                           "description" : "gain cnv status for the corresponding genome intervals\n",
+                           "type" : "array"
                         },
                         "binning" : {
-                           "description" : "interval size in bases for the binning, when creating the cnv_maps",
                            "type" : "number",
+                           "description" : "interval size in bases for the binning, when creating the cnv_maps",
                            "value" : "1000000",
                            "format" : "int64"
                         }
                      }
                   }
+               },
+               "schema" : {
+                  "$ref" : "./common/Info_class"
                }
-            },
-            "id" : {
-               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
-               "type" : "string",
-               "example" : "GSM264198"
             },
             "updated" : {
                "type" : "string",
                "example" : "2022-11-11T09:45:13Z",
                "description" : "The time of the last edit of this record, in ISO8601\n"
             },
+            "id" : {
+               "description" : "The local-unique identifier of this callset (referenced as \"callset_id\").",
+               "example" : "GSM264198",
+               "type" : "string"
+            },
+            "data_use_conditions" : {
+               "example" : {
+                  "id" : "DUO:0000004",
+                  "label" : "no restriction"
+               },
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               },
+               "description" : "Data use conditions applying to data from this callset, as ontology object (e.g. DUO).\n"
+            },
+            "biosample_id" : {
+               "example" : "pgx-bs-987647",
+               "description" : "The identifier (\"biosample.id\") of the biosample this variant was reported from. This is a shortcut to using the variant -> callset -> biosample chaining.\n",
+               "type" : "string"
+            },
+            "geo_provenance" : {
+               "description" : "This geo_class attribute ideally describes the geographic location of where this callset was analysed.\n",
+               "example" : {
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+                  "latitude" : "45.75",
+                  "city" : "Timisoara",
+                  "longitude" : "21.23",
+                  "country" : "Romania"
+               },
+               "schema" : {
+                  "$ref" : "./common/Geo_class"
+               }
+            },
             "created" : {
-               "type" : "string",
                "example" : "2017-10-25T07:06:03Z",
-               "description" : "The creation time of this record, in ISO8601\n"
+               "description" : "The creation time of this record, in ISO8601\n",
+               "type" : "string"
             }
+         },
+         "info" : {
+            "sortorder" : [
+               "id",
+               "biosample_id",
+               "description",
+               "data_use_conditions",
+               "geo_provenance",
+               "info"
+            ]
          }
       }
    },

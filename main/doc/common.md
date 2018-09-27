@@ -421,31 +421,41 @@ the text label associated with the term
   </tr>
 
   <tr>
-    <td>example</td>
+    <td>type</td>
     <td></td>
     <td></td>
-    <td></td>
+    <td>the ontology term as Ontology_class</td>
   </tr>
 
   <tr>
     <td>negated</td>
     <td>boolean</td>
     <td></td>
-    <td></td>
+    <td>Flag to indicate whether the phenotype was observed or not. Default is 'false', in other words the phenotype was observed. It is only required in cases to indicate that the phenotype was looked for, but __not__ observed.
+</td>
   </tr>
 
   <tr>
     <td>severity</td>
     <td></td>
     <td></td>
+    <td>Severity of the condition e.g. subclasses of HP:0012824-Severity or SNOMED:272141005-Severities.
+FHIR mapping: Condition.severity
+</td>
+  </tr>
+
+  <tr>
+    <td>evidence</td>
+    <td>array</td>
+    <td></td>
     <td></td>
   </tr>
 
   <tr>
-    <td>type</td>
+    <td>example</td>
     <td></td>
     <td></td>
-    <td>the ontology term as Ontology_class</td>
+    <td></td>
   </tr>
 </table>
 
@@ -464,19 +474,20 @@ the text label associated with the term
 ```
 
 --------------------------------------------------------------------------------
-### example
+### type
 
-
+the ontology term as Ontology_class
 
 #### Example
 
 ```
-'example' : "undef"
+'type' : "undef"
 ```
 
 --------------------------------------------------------------------------------
 ### negated
 
+Flag to indicate whether the phenotype was observed or not. Default is 'false', in other words the phenotype was observed. It is only required in cases to indicate that the phenotype was looked for, but __not__ observed.
 
 
 #### Example
@@ -488,26 +499,44 @@ the text label associated with the term
 --------------------------------------------------------------------------------
 ### severity
 
+Severity of the condition e.g. subclasses of HP:0012824-Severity or SNOMED:272141005-Severities.
+FHIR mapping: Condition.severity
 
 
 #### Example
 
 ```
 'severity' : {
-  'label' : '',
-  'id' : ''
+  'id' : '',
+  'label' : ''
 }
 ```
 
 --------------------------------------------------------------------------------
-### type
+### evidence
 
-the ontology term as Ontology_class
+
 
 #### Example
 
 ```
-'type' : "undef"
+'evidence' : [
+  {
+    'id' : '',
+    'label' : ''
+  }
+]
+```
+
+--------------------------------------------------------------------------------
+### example
+
+
+
+#### Example
+
+```
+'example' : "undef"
 ```
 ## Reference_class
 
@@ -525,7 +554,8 @@ the ontology term as Ontology_class
     <td>id</td>
     <td>string</td>
     <td></td>
-    <td>properly prefixed CURIE of the external reference</td>
+    <td>Properly prefixed CURIE of the external reference
+</td>
   </tr>
 
   <tr>
@@ -542,7 +572,8 @@ the ontology term as Ontology_class
 --------------------------------------------------------------------------------
 ### id
 
-properly prefixed CURIE of the external reference
+Properly prefixed CURIE of the external reference
+
 
 #### Example
 

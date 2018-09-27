@@ -1,43 +1,45 @@
 {
-   "phenotypes" : null,
    "external_references" : [
       {
          "class" : {
-            "relation" : "provenance",
-            "id" : "cellosaurus:CVCL_0312"
+            "id" : "cellosaurus:CVCL_0312",
+            "relation" : "provenance"
          },
          "description" : null
       }
    ],
-   "data_use_conditions" : null,
-   "geo_provenance" : {
-      "latitude" : 45.75,
-      "longitude" : 21.23,
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "city" : "Timisoara",
-      "altitude" : 94,
-      "country" : "Romania"
-   },
    "description" : "patient with lung cancer, male smoker",
-   "sex" : [
+   "organism" : [
       {
-         "description" : "girl",
+         "description" : "Jean-Luc Picard",
          "class" : {
-            "label" : "female genetic sex",
-            "id" : "PATO:0020000"
+            "id" : "NCBITaxon:9606",
+            "label" : "Homo sapiens"
          }
       }
    ],
+   "phenotypes" : null,
+   "updated" : "2022-11-11T09:45:13Z",
+   "sex" : [
+      {
+         "class" : {
+            "label" : "female genetic sex",
+            "id" : "PATO:0020000"
+         },
+         "description" : "girl"
+      }
+   ],
    "info" : {
-      "last_name" : {
-         "type" : "string",
-         "value" : "Tichy"
-      },
       "first_name" : {
          "value" : "Ion",
          "type" : "string"
+      },
+      "last_name" : {
+         "type" : "string",
+         "value" : "Tichy"
       }
    },
+   "data_use_conditions" : null,
    "id" : "AM_BS__NCBISKYCGH-1993",
    "biocharacteristics" : [
       {
@@ -48,15 +50,13 @@
          "description" : "Patient with Down syndrome"
       }
    ],
-   "updated" : "2022-11-11T09:45:13Z",
-   "created" : "2017-10-25T07:06:03Z",
-   "organism" : [
-      {
-         "description" : "Jean-Luc Picard",
-         "class" : {
-            "id" : "NCBITaxon:9606",
-            "label" : "Homo sapiens"
-         }
-      }
-   ]
+   "geo_provenance" : {
+      "altitude" : 94,
+      "longitude" : 21.23,
+      "country" : "Romania",
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "latitude" : 45.75,
+      "city" : "Timisoara"
+   },
+   "created" : "2017-10-25T07:06:03Z"
 }

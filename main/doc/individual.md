@@ -194,8 +194,8 @@ Different representations of the same record, not  different records in relation
 'external_references' : [
   {
     'class' : {
-                 'relation' : 'provenance',
-                 'id' : 'cellosaurus:CVCL_0312'
+                 'id' : 'cellosaurus:CVCL_0312',
+                 'relation' : 'provenance'
                },
     'description' : undef
   }
@@ -213,12 +213,12 @@ This value may reflect either the place of birth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'latitude' : 45.75,
-  'longitude' : 21.23,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'city' : 'Timisoara',
   'altitude' : 94,
-  'country' : 'Romania'
+  'longitude' : 21.23,
+  'country' : 'Romania',
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'latitude' : 45.75,
+  'city' : 'Timisoara'
 }
 ```
 
@@ -242,14 +242,14 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'last_name' : {
-                   'type' : 'string',
-                   'value' : 'Tichy'
-                 },
   'first_name' : {
                     'value' : 'Ion',
                     'type' : 'string'
-                  }
+                  },
+  'last_name' : {
+                   'type' : 'string',
+                   'value' : 'Tichy'
+                 }
 }
 ```
 
@@ -296,11 +296,11 @@ A PATO term describing the biological sex of the individual
 ```
 'sex' : [
   {
-    'description' : 'girl',
     'class' : {
                  'label' : 'female genetic sex',
                  'id' : 'PATO:0020000'
-               }
+               },
+    'description' : 'girl'
   }
 ]
 ```

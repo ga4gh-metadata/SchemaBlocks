@@ -1,124 +1,167 @@
 {
    "definitions" : {
-      "Phenotype_class" : {
-         "properties" : {
-            "description" : {
-               "example" : "",
-               "type" : "string",
-               "description" : ""
-            },
-            "example" : {
-               "label" : "Pancreatic Adenocarcinoma",
-               "id" : "ncit:C8294"
-            },
-            "type" : {
-               "description" : "the ontology term as Ontology_class",
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
-               }
-            },
-            "negated" : {
-               "example" : "",
-               "type" : "boolean",
-               "description" : ""
-            },
-            "severity" : {
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
-               },
-               "description" : "",
-               "example" : {
-                  "label" : "",
-                  "id" : ""
-               }
-            }
-         }
-      },
       "Info_class" : {
          "properties" : {
-            "type" : {
-               "example" : "number",
-               "type" : "string",
-               "description" : "type of the value; optional"
-            },
             "value" : {
                "description" : "the value in a format correstponding to type",
                "example" : "1503320"
             },
             "format" : {
-               "description" : "format of the value; optional",
                "type" : "string",
+               "description" : "format of the value; optional",
                "example" : "int64"
             },
             "description" : {
                "description" : "an optional free-text annotation about the object",
+               "example" : "The base length of the called segment.",
+               "type" : "string"
+            },
+            "type" : {
                "type" : "string",
-               "example" : "The base length of the called segment."
+               "example" : "number",
+               "description" : "type of the value; optional"
             }
          }
       },
       "Age_class" : {
          "properties" : {
+            "age" : {
+               "type" : "string",
+               "example" : "P56Y",
+               "description" : "The age as ISO8601 string."
+            },
             "age_at_collection_class" : {
-               "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n",
                "example" : {
                   "id" : "HP:0003621",
                   "label" : "Juvenile onset"
                },
+               "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n",
                "schema" : {
                   "$ref" : "#/Ontology_class"
                }
-            },
-            "age" : {
-               "description" : "The age as ISO8601 string.",
-               "type" : "string",
-               "example" : "P56Y"
             }
          }
       },
       "Biocharacteristic_class" : {
          "properties" : {
+            "negated" : {
+               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated",
+               "example" : "true",
+               "type" : "boolean"
+            },
+            "class" : {
+               "example" : {
+                  "id" : "ncit:c8294",
+                  "label" : "Pancreatic Adenocarcinoma"
+               },
+               "description" : "an ontology_class object",
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               }
+            },
             "description" : {
                "type" : "string",
                "example" : "Invasive ductal breast carcinoma, metastasized",
                "description" : "a free-text description of this biocharacteristic"
-            },
-            "class" : {
-               "schema" : {
-                  "$ref" : "#/Ontology_class"
-               },
-               "description" : "an ontology_class object",
-               "example" : {
-                  "id" : "ncit:c8294",
-                  "label" : "Pancreatic Adenocarcinoma"
-               }
-            },
-            "negated" : {
-               "type" : "boolean",
-               "example" : "true",
-               "description" : "flag for negating this biocharacteristic_class object; a \"false\" is assumed as default and does not have to be stated"
             }
          }
       },
-      "Ontology_class" : {
+      "Phenotype_class" : {
          "properties" : {
-            "label" : {
-               "description" : "the text label associated with the term",
-               "type" : "string",
-               "example" : "Pancreatic Adenocarcinoma"
+            "evidence" : {
+               "type" : "array",
+               "example" : [
+                  {
+                     "id" : "",
+                     "label" : ""
+                  }
+               ],
+               "description" : "",
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               }
             },
-            "id" : {
+            "negated" : {
+               "example" : "",
+               "description" : "Flag to indicate whether the phenotype was observed or not. Default is 'false', in other words the phenotype was observed. It is only required in cases to indicate that the phenotype was looked for, but __not__ observed.\n",
+               "type" : "boolean"
+            },
+            "severity" : {
+               "example" : {
+                  "id" : "",
+                  "label" : ""
+               },
+               "description" : "Severity of the condition e.g. subclasses of HP:0012824-Severity or SNOMED:272141005-Severities.\nFHIR mapping: Condition.severity\n",
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               }
+            },
+            "type" : {
+               "schema" : {
+                  "$ref" : "#/Ontology_class"
+               },
+               "description" : "the ontology term as Ontology_class"
+            },
+            "example" : {
+               "label" : "Pancreatic Adenocarcinoma",
+               "id" : "ncit:C8294"
+            },
+            "description" : {
                "type" : "string",
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term"
+               "description" : "",
+               "example" : ""
+            }
+         },
+         "info" : {
+            "sortorder" : [
+               "description",
+               "type",
+               "negated",
+               "severity"
+            ],
+            "description" : "An individual phenotypic feature, observed as either present or absent (negated), with possible onset, modifiers and frequency.\nFHIR mapping: Condition (https://www.hl7.org/fhir/condition.html) or Observation (https://www.hl7.org/fhir/observation.html)\n"
+         }
+      },
+      "Geo_class" : {
+         "properties" : {
+            "city" : {
+               "example" : "Timisoara",
+               "type" : "string"
+            },
+            "latitude" : {
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "example" : "47.37",
+               "type" : "number",
+               "D" : "float"
+            },
+            "label" : {
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "type" : "string"
+            },
+            "country" : {
+               "example" : "Romania",
+               "type" : "string"
+            },
+            "longitude" : {
+               "type" : "number",
+               "format" : "float",
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "example" : "8.54"
+            },
+            "altitude" : {
+               "type" : "number",
+               "example" : "8848",
+               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
+               "format" : "float"
             }
          }
       },
       "Reference_class" : {
          "properties" : {
             "id" : {
-               "description" : "properly prefixed CURIE of the external reference",
                "type" : "string",
+               "description" : "Properly prefixed CURIE of the external reference\n",
                "example" : "pubmed:17440070"
             },
             "relation" : {
@@ -128,45 +171,24 @@
             }
          }
       },
-      "Geo_class" : {
+      "Ontology_class" : {
          "properties" : {
-            "country" : {
-               "example" : "Romania",
+            "id" : {
+               "description" : "properly prefixed CURIE of the ontology term",
+               "example" : "ncit:C8294",
                "type" : "string"
-            },
-            "altitude" : {
-               "description" : "height in meters above the WGS 84 reference ellipsoid; otional",
-               "type" : "number",
-               "format" : "float",
-               "example" : "8848"
             },
             "label" : {
                "type" : "string",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
-            },
-            "city" : {
-               "example" : "Timisoara",
-               "type" : "string"
-            },
-            "longitude" : {
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
-               "type" : "number",
-               "example" : "8.54",
-               "format" : "float"
-            },
-            "latitude" : {
-               "D" : "float",
-               "example" : "47.37",
-               "type" : "number",
-               "description" : "signed decimal degrees (North, relative to Equator)"
+               "example" : "Pancreatic Adenocarcinoma",
+               "description" : "the text label associated with the term"
             }
          }
       }
    },
    "info" : {
-      "version" : "2018-09-13",
       "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
+      "version" : "2018-09-13",
       "title" : "GA4GH - common and shared object definitions\n"
    }
 }

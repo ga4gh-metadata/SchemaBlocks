@@ -94,6 +94,15 @@ definitions:
         type: string
         example: 'Pancreatic Adenocarcinoma'
   Phenotype_class: # TODO develop this further based on PXF
+    info:
+      description: |
+        An individual phenotypic feature, observed as either present or absent (negated), with possible onset, modifiers and frequency.
+        FHIR mapping: Condition (https://www.hl7.org/fhir/condition.html) or Observation (https://www.hl7.org/fhir/observation.html)
+      sortorder:
+        - description
+        - type
+        - negated
+        - severity
     properties:
       description:
         description: ''
@@ -107,20 +116,33 @@ definitions:
         id: 'ncit:C8294'
         label: 'Pancreatic Adenocarcinoma'
       negated:
-        description: ''
+        description: |
+          Flag to indicate whether the phenotype was observed or not. Default is 'false', in other words the phenotype was observed. It is only required in cases to indicate that the phenotype was looked for, but __not__ observed.
         type: boolean
         example: false
       severity:
-        description: ''
+        description: |
+          Severity of the condition e.g. subclasses of HP:0012824-Severity or SNOMED:272141005-Severities.
+          FHIR mapping: Condition.severity
         schema:
           $ref: '#/Ontology_class'
         example:
           id: ''
           label: ''
+      evidence:
+        description: |
+
+        type: array
+        schema:
+          $ref: '#/Ontology_class'
+        example:
+          - id: ''
+            label: ''
   Reference_class:
     properties:
       id:
-        description: properly prefixed CURIE of the external reference
+        description: |
+          Properly prefixed CURIE of the external reference
         type: string
         example: 'pubmed:17440070'
       relation:
