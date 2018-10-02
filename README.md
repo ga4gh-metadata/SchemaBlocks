@@ -1,4 +1,4 @@
-## [GA4GH Schema Building Blocks](https://ga4gh-metadata.github.io/schemas/)
+## [GA4GH __SchemaBlocks__](https://ga4gh-metadata.github.io/schemas/)
 
 <div style="display: block; float: right; width: 260px; margin: 0px 0px 15px 15px; ">
   <img src="https://ga4gh-metadata.github.io/schemas/rsrc/img/ga4gh-object-model.png" />
@@ -7,7 +7,7 @@ A graph showing the basic objects and their relationships. The example attribute
   </div>
 </div>
 
-This repository contains the data schemas for the GA4GH project, in a collaborative effort between members of the _Clinical and Phenotypic Data Capture_ ([__GA4GH::CP__](http://ga4gh-cp.github.io)) and the _Genomic Knowledge Standards_ ([__GA4GH::GKS__](http://ga4gh-gks.github.io)) work streams.
+This repository contains the schema "blocks" for the GA4GH project, in a collaborative effort between members of the _Clinical and Phenotypic Data Capture_ ([__GA4GH::CP__](http://ga4gh-cp.github.io)) and the _Genomic Knowledge Standards_ ([__GA4GH::GKS__](http://ga4gh-gks.github.io)) work streams.
 
 The primary documents are in the [yaml](./yaml/) directory, with JSON versions and examples extracted from them. The "readable" documentation is also created from the YAML files and can be accessed through the links below.
 

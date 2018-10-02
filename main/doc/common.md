@@ -1,4 +1,4 @@
-# GA4GH - common and shared object definitions
+# GA4GH SchemaBlocks - common and shared object definitions
 
 
 Definition of some prototype objects which are re-used in other schema documents.
@@ -58,81 +58,9 @@ The of the object (e.g. individual at tome of a biosample collection), as Ontolo
 
 ```
 'age_at_collection_class' : {
-  'id' : 'HP:0003621',
-  'label' : 'Juvenile onset'
+  'label' : 'Juvenile onset',
+  'id' : 'HP:0003621'
 }
-```
-## Biocharacteristic_class
-
-<h3>Properties of the <i>Biocharacteristic_class</i> class</h3>
-
-<table>
-  <tr>
-    <th>Property</th>
-    <th>Type</th>
-    <th>Format</th>
-    <th>Description</th>
-  </tr>
-
-  <tr>
-    <td>class</td>
-    <td></td>
-    <td></td>
-    <td>an ontology_class object</td>
-  </tr>
-
-  <tr>
-    <td>description</td>
-    <td>string</td>
-    <td></td>
-    <td>a free-text description of this biocharacteristic</td>
-  </tr>
-
-  <tr>
-    <td>negated</td>
-    <td>boolean</td>
-    <td></td>
-    <td>flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated</td>
-  </tr>
-</table>
-
-<h3>Extended notes and examples on the <i>Biocharacteristic_class</i> properties</h3>
-
-
---------------------------------------------------------------------------------
-### class
-
-an ontology_class object
-
-#### Example
-
-```
-'class' : {
-  'label' : 'Pancreatic Adenocarcinoma',
-  'id' : 'ncit:c8294'
-}
-```
-
---------------------------------------------------------------------------------
-### description
-
-a free-text description of this biocharacteristic
-
-#### Example
-
-```
-'description' : "Invasive ductal breast carcinoma, metastasized"
-```
-
---------------------------------------------------------------------------------
-### negated
-
-flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated
-
-#### Example
-
-```
-'negated' : "true"
 ```
 ## Geo_class
 
@@ -507,8 +435,8 @@ FHIR mapping: Condition.severity
 
 ```
 'severity' : {
-  'label' : '',
-  'id' : ''
+  'id' : '',
+  'label' : ''
 }
 ```
 

@@ -1,9 +1,9 @@
 info:
   title: |
-    GA4GH - common and shared object definitions
+    GA4GH SchemaBlocks - common and shared object definitions
   description: |
     Definition of some prototype objects which are re-used in other schema documents.
-  version: '2018-09-13'
+  version: '2018-10-02'
 definitions:
 
 ################################################################################
@@ -24,26 +24,6 @@ definitions:
         example:
           id : "HP:0003621"
           label : "Juvenile onset"
-
-################################################################################
-
-  Biocharacteristic_class:
-    properties:
-      description:
-        description: a free-text description of this biocharacteristic
-        type: string
-        example: 'Invasive ductal breast carcinoma, metastasized'
-      class:
-        description: an ontology_class object
-        schema:
-          $ref: '#/Ontology_class'
-        example:
-          id : "ncit:c8294"
-          label : "Pancreatic Adenocarcinoma"
-      negated:
-        description: flag for negating this biocharacteristic_class object; a "false" is assumed as default and does not have to be stated
-        type: boolean
-        example: "true"
 
 ################################################################################
 

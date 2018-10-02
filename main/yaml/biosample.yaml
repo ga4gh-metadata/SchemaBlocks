@@ -76,40 +76,31 @@ definitions:
             id : "HP:0003621"
             label : "Juvenile onset"
 
-      phenotypes:
-        type: array
-        items:
-          $ref: './common/Phennotype_class'
-        description: |
-          The phenotype associated with this biosamples, as Phennotype_class objects.
-        example:
-          - to be added
-
       biocharacteristics:
         description: |
-          "biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
+          "biocharacteristics" represents a wrapper list of "Phenotype_class" objects with properly prefixed term ids, describing features of the biosample.
           Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
         type: array
         items:
-          $ref: './common/Biocharacteristic_class'
+          $ref: './common/Phenotype_class'
         example:
           - description: "Pancreatic Adenocarcinoma"
-            class :
+            type :
               id : "pgx:icdot:c25.9"
               label : "Pancreas, NOS"
           - description : "Pancreatic Adenocarcinoma"
-            class:
+            type:
               id : "pgx:icdom:81403"
               label : "Adenocarcinoma, NOS"
           - description : "Pancreatic Adenocarcinoma"
-            class :
+            type :
               id : "ncit:c8294"
               label : "Pancreatic Adenocarcinoma"
         queries:
-          - query: 'db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )'
+          - query: 'db.biosamples.find( { "biocharacteristics.type.id" : "pgx:icdom:81403" } )'
             description: |
               The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
-          - query: 'db.biosamples.distinct( "biocharacteristics.class.id", { "biocharacteristics.class.id" : { $regex : /ncit/ } } )'
+          - query: 'db.biosamples.distinct( "biocharacteristics.type.id", { "biocharacteristics.type.id" : { $regex : /ncit/ } } )'
             description: |
               This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
 

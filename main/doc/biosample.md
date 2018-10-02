@@ -93,16 +93,8 @@ Frequently this value may reflect either the place of the laboratory where the a
     <td>biocharacteristics</td>
     <td>array</td>
     <td></td>
-    <td>"biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
+    <td>"biocharacteristics" represents a wrapper list of "Phenotype_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
-</td>
-  </tr>
-
-  <tr>
-    <td>phenotypes</td>
-    <td>array</td>
-    <td></td>
-    <td>The phenotype associated with this biosamples, as Phennotype_class objects.
 </td>
   </tr>
 
@@ -178,8 +170,8 @@ Data use conditions applying to data from this biosample, as ontology object (e.
 
 ```
 'data_use_conditions' : {
-  'label' : 'no restriction',
-  'id' : 'DUO:0000004'
+  'id' : 'DUO:0000004',
+  'label' : 'no restriction'
 }
 ```
 
@@ -226,8 +218,8 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
     'id' : 'pubmed:17440070'
   },
   {
-    'id' : 'geo:GPL4894',
-    'relation' : 'technology'
+    'relation' : 'technology',
+    'id' : 'geo:GPL4894'
   },
   {
     'relation' : 'denotes',
@@ -254,12 +246,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'city' : 'Timisoara',
   'country' : 'Romania',
-  'altitude' : 94,
   'longitude' : 21.23,
-  'latitude' : 45.75
+  'latitude' : 45.75,
+  'altitude' : 94,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -273,18 +265,18 @@ The age of the individual at time of biosample collection, as Age_class object.
 
 ```
 'age_at_collection' : {
-  'age' : 'P56Y',
   'age_class' : {
-                   'id' : 'HP:0003621',
-                   'label' : 'Juvenile onset'
-                 }
+                   'label' : 'Juvenile onset',
+                   'id' : 'HP:0003621'
+                 },
+  'age' : 'P56Y'
 }
 ```
 
 --------------------------------------------------------------------------------
 ### biocharacteristics
 
-"biocharacteristics" represents a wrapper list of "biocharacteristic_class" objects with properly prefixed term ids, describing features of the biosample.
+"biocharacteristics" represents a wrapper list of "Phenotype_class" objects with properly prefixed term ids, describing features of the biosample.
 Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
 
 
@@ -293,25 +285,25 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 'biocharacteristics' : [
   {
-    'class' : {
-                 'label' : 'Pancreas, NOS',
-                 'id' : 'pgx:icdot:c25.9'
-               },
+    'description' : 'Pancreatic Adenocarcinoma',
+    'type' : {
+                'label' : 'Pancreas, NOS',
+                'id' : 'pgx:icdot:c25.9'
+              }
+  },
+  {
+    'type' : {
+                'label' : 'Adenocarcinoma, NOS',
+                'id' : 'pgx:icdom:81403'
+              },
     'description' : 'Pancreatic Adenocarcinoma'
   },
   {
     'description' : 'Pancreatic Adenocarcinoma',
-    'class' : {
-                 'id' : 'pgx:icdom:81403',
-                 'label' : 'Adenocarcinoma, NOS'
-               }
-  },
-  {
-    'class' : {
-                 'label' : 'Pancreatic Adenocarcinoma',
-                 'id' : 'ncit:c8294'
-               },
-    'description' : 'Pancreatic Adenocarcinoma'
+    'type' : {
+                'label' : 'Pancreatic Adenocarcinoma',
+                'id' : 'ncit:c8294'
+              }
   }
 ]
 ```
@@ -320,30 +312,16 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
 
 ```
-db.biosamples.find( { "biocharacteristics.class.id" : "pgx:icdom:81403" } )
+db.biosamples.find( { "biocharacteristics.type.id" : "pgx:icdom:81403" } )
 ```
 
 
 This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
 
 ```
-db.biosamples.distinct( "biocharacteristics.class.id", { "biocharacteristics.class.id" : { $regex : /ncit/ } } )
+db.biosamples.distinct( "biocharacteristics.type.id", { "biocharacteristics.type.id" : { $regex : /ncit/ } } )
 ```
 
-
---------------------------------------------------------------------------------
-### phenotypes
-
-The phenotype associated with this biosamples, as Phennotype_class objects.
-
-
-#### Example
-
-```
-'phenotypes' : [
-  'to be added'
-]
-```
 
 --------------------------------------------------------------------------------
 ### info
@@ -355,8 +333,8 @@ This is a wrapper for objects without further specification in the schema.
 
 ```
 'info' : {
-  'death' : 1,
-  'followup_time' : 'P14M'
+  'followup_time' : 'P14M',
+  'death' : 1
 }
 ```
 

@@ -1,62 +1,62 @@
 {
-   "sex" : [
-      {
-         "description" : "girl",
-         "class" : {
-            "id" : "PATO:0020000",
-            "label" : "female genetic sex"
-         }
-      }
-   ],
-   "data_use_conditions" : null,
+   "id" : "AM_BS__NCBISKYCGH-1993",
    "info" : {
-      "first_name" : {
-         "value" : "Ion",
-         "type" : "string"
-      },
       "last_name" : {
          "value" : "Tichy",
          "type" : "string"
+      },
+      "first_name" : {
+         "type" : "string",
+         "value" : "Ion"
       }
    },
-   "id" : "AM_BS__NCBISKYCGH-1993",
-   "created" : "2017-10-25T07:06:03Z",
-   "biocharacteristics" : [
-      {
-         "description" : "Patient with Down syndrome",
-         "class" : {
-            "id" : "HP:0003745",
-            "label" : "Genetic anticipation"
-         }
-      }
-   ],
-   "external_references" : [
-      {
-         "description" : null,
-         "class" : {
-            "relation" : "provenance",
-            "id" : "cellosaurus:CVCL_0312"
-         }
-      }
-   ],
    "organism" : [
       {
          "description" : "Jean-Luc Picard",
          "class" : {
-            "label" : "Homo sapiens",
-            "id" : "NCBITaxon:9606"
+            "id" : "NCBITaxon:9606",
+            "label" : "Homo sapiens"
          }
       }
    ],
-   "description" : "patient with lung cancer, male smoker",
+   "data_use_conditions" : null,
+   "external_references" : [
+      {
+         "description" : null,
+         "class" : {
+            "id" : "cellosaurus:CVCL_0312",
+            "relation" : "provenance"
+         }
+      }
+   ],
    "updated" : "2022-11-11T09:45:13Z",
+   "biocharacteristics" : [
+      {
+         "type" : {
+            "id" : "HP:0003745",
+            "label" : "Genetic anticipation"
+         },
+         "description" : "Patient with Down syndrome"
+      }
+   ],
+   "sex" : [
+      {
+         "class" : {
+            "id" : "PATO:0020000",
+            "label" : "female genetic sex"
+         },
+         "description" : "girl"
+      }
+   ],
+   "description" : "patient with lung cancer, male smoker",
    "geo_provenance" : {
-      "country" : "Romania",
-      "city" : "Timisoara",
       "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
       "altitude" : 94,
-      "latitude" : 45.75,
-      "longitude" : 21.23
+      "city" : "Timisoara",
+      "country" : "Romania",
+      "longitude" : 21.23,
+      "latitude" : 45.75
    },
-   "phenotypes" : null
+   "created" : "2017-10-25T07:06:03Z",
+   "name" : "Ion Tichy, space explorer"
 }

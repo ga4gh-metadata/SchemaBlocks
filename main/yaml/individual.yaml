@@ -4,39 +4,50 @@ info:
   description: |
     An individual is a single organism (here typically a human).
   updated: '2018-09-13'
+
 definitions:
+
   Individual:
+
+    info:
+      sortorder: # order for the documentation; missing attributes will be processed at the end
+        - id
+        - name
+        - description
+        - data_use_conditions
+        - organism
+        - sex
+        - external_references
+        - geo_provenance
+        - biocharacteristics
+        - info
+
     properties:
+
       id:
         description: The local-unique identifier of this individual (referenced as "individual_id").
         type: string
         example: 'AM_BS__NCBISKYCGH-1993'
+
+      name:
+        type: string
+        description: |
+          A short descriptive "name" for the individual, which may or may not correspond to a "real name". Unstructured text.
+        example: 'Ion Tichy, space explorer'
+
       description:
         description: A free text description of the individual.
         type: string
         example: 'patient with lung cancer, male smoker'
+
       data_use_conditions:
         schema:
           $ref: './common/Ontology_class'
         description: |
           Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
-      phenotypes:
-        schema:
-          $ref: './phenotype'
+
+      organism:
         description: |
-          Phenotype of the individual
-      sex:       
-        description: | 
-          A PATO term describing the biological sex of the individual
-        schema:
-          $ref: './common/Ontology_class'
-        example:
-          - description: "girl"
-            class :
-              id: "PATO:0020000"
-              label : "female genetic sex"
-      organism:       
-        description: | 
           An NCBI taxonomy term describing the species of the individual.
         schema:
           $ref: './common/Ontology_class'
@@ -45,22 +56,18 @@ definitions:
             class :
               id : "NCBITaxon:9606"
               label : "Homo sapiens"
-      biocharacteristics:
+
+      sex:
         description: |
-          list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
-        type: array
-        items:
-          $ref: './common/Biocharacteristic_class'
+          A PATO term describing the biological sex of the individual
+        schema:
+          $ref: './common/Ontology_class'
         example:
-          - description: "Patient with Down syndrome"
+          - description: "girl"
             class :
-              id : "HP:0003745"
-              label : "Genetic anticipation"
-        queries:
-          - query: 'db.individual.find( { "biocharacteristics.class.id" : "NCBITaxon:9606" } )'
-            description: the query will return all individuals who have been properly labeled as human
-          - query: 'db.biosamples.distinct( { "biocharacteristics.class.id", "biocharacteristics.class.id" : { $regex : /HP\:/i } } )'
-            description: this call to the distinct funcion will return *all* HPO annotated classes
+              id: "PATO:0020000"
+              label : "female genetic sex"
+
       geo_provenance:
         description: |
           This geo_class attribute ideally describes the geographic location of where this individual originates from.
@@ -74,6 +81,7 @@ definitions:
           latitude: 45.75
           longitude: 21.23
           altitude: 94
+
       external_references:
         description: Different representations of the same record, not  different records in relation with this individual
         type: array
@@ -84,6 +92,24 @@ definitions:
             class:
               id : "cellosaurus:CVCL_0312"
               relation : "provenance" #TODO check and update when relations are worked out
+
+      biocharacteristics:
+        description: |
+          list of Phenotype_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
+        type: array
+        items:
+          $ref: './common/Phenotype_class'
+        example:
+          - description: "Patient with Down syndrome"
+            type :
+              id : "HP:0003745"
+              label : "Genetic anticipation"
+        queries:
+          - query: 'db.individual.find( { "biocharacteristics.type.id" : "NCBITaxon:9606" } )'
+            description: the query will return all individuals who have been properly labeled as human
+          - query: 'db.biosamples.distinct( { "biocharacteristics.type.id", "biocharacteristics.type.id" : { $regex : /HP\:/i } } )'
+            description: this call to the distinct funcion will return *all* HPO annotated classes
+
       info:
         description: additional variant information, as defined in the example and accompanying documentation TODO this should be its own class
         schema:
@@ -95,11 +121,13 @@ definitions:
           last_name:
             type: string
             value: 'Tichy'
+
       created:
         description: |
           The creation time of this record, in ISO8601
         type: timestamp
         example: '2017-10-25T07:06:03Z'
+
       updated:
         description: |
           The time of the last edit of this record, in ISO8601

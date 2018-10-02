@@ -1,145 +1,158 @@
 {
    "info" : {
-      "description" : "An individual is a single organism (here typically a human).\n",
+      "updated" : "2018-09-13",
       "title" : "GA4GH __individual__\n",
-      "updated" : "2018-09-13"
+      "description" : "An individual is a single organism (here typically a human).\n"
    },
    "definitions" : {
       "Individual" : {
+         "info" : {
+            "sortorder" : [
+               "id",
+               "name",
+               "description",
+               "data_use_conditions",
+               "organism",
+               "sex",
+               "external_references",
+               "geo_provenance",
+               "biocharacteristics",
+               "info"
+            ]
+         },
          "properties" : {
-            "biocharacteristics" : {
-               "items" : {
-                  "$ref" : "./common/Biocharacteristic_class"
-               },
-               "queries" : [
-                  {
-                     "description" : "the query will return all individuals who have been properly labeled as human",
-                     "query" : "db.individual.find( { \"biocharacteristics.class.id\" : \"NCBITaxon:9606\" } )"
-                  },
-                  {
-                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
-                     "query" : "db.biosamples.distinct( { \"biocharacteristics.class.id\", \"biocharacteristics.class.id\" : { $regex : /HP\\:/i } } )"
-                  }
-               ],
-               "example" : [
-                  {
-                     "description" : "Patient with Down syndrome",
-                     "class" : {
-                        "id" : "HP:0003745",
-                        "label" : "Genetic anticipation"
-                     }
-                  }
-               ],
-               "description" : "list of biocharacteristic_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
-               "type" : "array"
-            },
-            "created" : {
-               "type" : "timestamp",
-               "description" : "The creation time of this record, in ISO8601\n",
-               "example" : "2017-10-25T07:06:03Z"
-            },
             "id" : {
-               "example" : "AM_BS__NCBISKYCGH-1993",
                "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
+               "example" : "AM_BS__NCBISKYCGH-1993",
                "type" : "string"
             },
             "data_use_conditions" : {
-               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n",
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               },
+               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n"
+            },
+            "organism" : {
+               "example" : [
+                  {
+                     "description" : "Jean-Luc Picard",
+                     "class" : {
+                        "id" : "NCBITaxon:9606",
+                        "label" : "Homo sapiens"
+                     }
+                  }
+               ],
+               "description" : "An NCBI taxonomy term describing the species of the individual.\n",
                "schema" : {
                   "$ref" : "./common/Ontology_class"
                }
             },
             "info" : {
+               "description" : "additional variant information, as defined in the example and accompanying documentation TODO this should be its own class",
                "example" : {
-                  "first_name" : {
-                     "value" : "Ion",
-                     "type" : "string"
-                  },
                   "last_name" : {
                      "value" : "Tichy",
                      "type" : "string"
+                  },
+                  "first_name" : {
+                     "type" : "string",
+                     "value" : "Ion"
                   }
                },
-               "description" : "additional variant information, as defined in the example and accompanying documentation TODO this should be its own class",
                "schema" : {
                   "$ref" : "./common/Info_class"
                }
             },
             "sex" : {
+               "schema" : {
+                  "$ref" : "./common/Ontology_class"
+               },
                "description" : "A PATO term describing the biological sex of the individual\n",
                "example" : [
                   {
-                     "description" : "girl",
                      "class" : {
                         "id" : "PATO:0020000",
                         "label" : "female genetic sex"
-                     }
+                     },
+                     "description" : "girl"
+                  }
+               ]
+            },
+            "updated" : {
+               "example" : "2022-11-11T09:45:13Z",
+               "description" : "The time of the last edit of this record, in ISO8601\n",
+               "type" : "timestamp"
+            },
+            "biocharacteristics" : {
+               "type" : "array",
+               "queries" : [
+                  {
+                     "query" : "db.individual.find( { \"biocharacteristics.type.id\" : \"NCBITaxon:9606\" } )",
+                     "description" : "the query will return all individuals who have been properly labeled as human"
+                  },
+                  {
+                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
+                     "query" : "db.biosamples.distinct( { \"biocharacteristics.type.id\", \"biocharacteristics.type.id\" : { $regex : /HP\\:/i } } )"
                   }
                ],
-               "schema" : {
-                  "$ref" : "./common/Ontology_class"
+               "description" : "list of Phenotype_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
+               "example" : [
+                  {
+                     "type" : {
+                        "id" : "HP:0003745",
+                        "label" : "Genetic anticipation"
+                     },
+                     "description" : "Patient with Down syndrome"
+                  }
+               ],
+               "items" : {
+                  "$ref" : "./common/Phenotype_class"
                }
             },
             "external_references" : {
-               "description" : "Different representations of the same record, not  different records in relation with this individual",
+               "type" : "array",
+               "items" : {
+                  "$ref" : "./common/Reference_class"
+               },
                "example" : [
                   {
                      "description" : null,
                      "class" : {
-                        "relation" : "provenance",
-                        "id" : "cellosaurus:CVCL_0312"
+                        "id" : "cellosaurus:CVCL_0312",
+                        "relation" : "provenance"
                      }
                   }
                ],
-               "items" : {
-                  "$ref" : "./common/Reference_class"
-               },
-               "type" : "array"
+               "description" : "Different representations of the same record, not  different records in relation with this individual"
             },
-            "organism" : {
-               "schema" : {
-                  "$ref" : "./common/Ontology_class"
-               },
-               "example" : [
-                  {
-                     "description" : "Jean-Luc Picard",
-                     "class" : {
-                        "label" : "Homo sapiens",
-                        "id" : "NCBITaxon:9606"
-                     }
-                  }
-               ],
-               "description" : "An NCBI taxonomy term describing the species of the individual.\n"
+            "created" : {
+               "type" : "timestamp",
+               "example" : "2017-10-25T07:06:03Z",
+               "description" : "The creation time of this record, in ISO8601\n"
             },
-            "description" : {
-               "example" : "patient with lung cancer, male smoker",
-               "description" : "A free text description of the individual.",
+            "name" : {
+               "description" : "A short descriptive \"name\" for the individual, which may or may not correspond to a \"real name\". Unstructured text.\n",
+               "example" : "Ion Tichy, space explorer",
                "type" : "string"
-            },
-            "phenotypes" : {
-               "description" : "Phenotype of the individual\n",
-               "schema" : {
-                  "$ref" : "./phenotype"
-               }
             },
             "geo_provenance" : {
                "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.\n",
                "example" : {
-                  "country" : "Romania",
-                  "city" : "Timisoara",
                   "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
                   "altitude" : "94",
-                  "latitude" : "45.75",
-                  "longitude" : "21.23"
+                  "city" : "Timisoara",
+                  "country" : "Romania",
+                  "longitude" : "21.23",
+                  "latitude" : "45.75"
                },
                "schema" : {
                   "$ref" : "./common/Geo_class"
                }
             },
-            "updated" : {
-               "type" : "timestamp",
-               "description" : "The time of the last edit of this record, in ISO8601\n",
-               "example" : "2022-11-11T09:45:13Z"
+            "description" : {
+               "description" : "A free text description of the individual.",
+               "example" : "patient with lung cancer, male smoker",
+               "type" : "string"
             }
          }
       }
