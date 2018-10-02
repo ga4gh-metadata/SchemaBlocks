@@ -28,7 +28,7 @@
             },
             "data_use_conditions" : {
                "schema" : {
-                  "$ref" : "./common/Ontology_class"
+                  "ref" : "./common/Ontology_class"
                },
                "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n"
             },
@@ -44,7 +44,7 @@
                ],
                "description" : "An NCBI taxonomy term describing the species of the individual.\n",
                "schema" : {
-                  "$ref" : "./common/Ontology_class"
+                  "ref" : "./common/Ontology_class"
                }
             },
             "info" : {
@@ -60,12 +60,12 @@
                   }
                },
                "schema" : {
-                  "$ref" : "./common/Info_class"
+                  "ref" : "./common/Info_class"
                }
             },
             "sex" : {
                "schema" : {
-                  "$ref" : "./common/Ontology_class"
+                  "ref" : "./common/Ontology_class"
                },
                "description" : "A PATO term describing the biological sex of the individual\n",
                "example" : [
@@ -106,13 +106,13 @@
                   }
                ],
                "items" : {
-                  "$ref" : "./common/Phenotype_class"
+                  "ref" : "./common/Phenotype_class"
                }
             },
             "external_references" : {
                "type" : "array",
                "items" : {
-                  "$ref" : "./common/Reference_class"
+                  "ref" : "./common/Reference_class"
                },
                "example" : [
                   {
@@ -146,7 +146,7 @@
                   "latitude" : "45.75"
                },
                "schema" : {
-                  "$ref" : "./common/Geo_class"
+                  "ref" : "./common/Geo_class"
                }
             },
             "description" : {

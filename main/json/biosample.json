@@ -39,7 +39,7 @@
                   }
                ],
                "items" : {
-                  "$ref" : "./common/Phenotype_class"
+                  "ref" : "./common/Phenotype_class"
                }
             },
             "updated" : {
@@ -74,7 +74,7 @@
                   }
                ],
                "items" : {
-                  "$ref" : "./common/Reference_class"
+                  "ref" : "./common/Reference_class"
                },
                "type" : "array"
             },
@@ -95,7 +95,7 @@
             },
             "geo_provenance" : {
                "schema" : {
-                  "$ref" : "./common/Geo_class"
+                  "ref" : "./common/Geo_class"
                },
                "example" : {
                   "city" : "Timisoara",
@@ -122,7 +122,7 @@
                   "age" : "P56Y"
                },
                "schema" : {
-                  "$ref" : "./common/Age_class"
+                  "ref" : "./common/Age_class"
                }
             },
             "project_id" : {
@@ -132,7 +132,7 @@
             },
             "info" : {
                "schema" : {
-                  "$ref" : "./common/Info_class"
+                  "ref" : "./common/Info_class"
                },
                "queries" : [
                   {
@@ -148,7 +148,7 @@
             },
             "data_use_conditions" : {
                "schema" : {
-                  "$ref" : "./common/Ontology_class"
+                  "ref" : "./common/Ontology_class"
                },
                "example" : {
                   "id" : "DUO:0000004",

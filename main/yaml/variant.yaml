@@ -66,7 +66,7 @@ definitions:
       info:
         description: additional variant information, as defined in the example and accompanying documentation
         schema:
-          $ref: './common/Info_class'
+          ref: './common/Info_class'
         example:
           cnv_value: -0.294
           cnv_length: 1205290

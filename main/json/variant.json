@@ -20,7 +20,7 @@
             },
             "info" : {
                "schema" : {
-                  "$ref" : "./common/Info_class"
+                  "ref" : "./common/Info_class"
                },
                "description" : "additional variant information, as defined in the example and accompanying documentation",
                "example" : {

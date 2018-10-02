@@ -38,7 +38,7 @@
             }
          },
          "schema" : {
-            "$ref" : "./common/Info_class"
+            "ref" : "./common/Info_class"
          },
          "description" : "The cnv_maps object is a wrapper for genomic interval mapped status information. In Progenetix and arrayMap, this is used to indictate - for fixed 1MB genome intervals - the status (dup_map : \"DUP\" or \"\", del_map => \"DEL\" or \"\"), or the maximum / minimum positive / negative value encountered in the segment, as far as it has been called to contain DUP or DEL.\nWith a standard binning of 1MB, the arrays would contain ~3000 values each (depending on genome edition).\n"
       }

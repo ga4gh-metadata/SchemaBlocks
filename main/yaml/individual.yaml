@@ -42,7 +42,7 @@ definitions:
 
       data_use_conditions:
         schema:
-          $ref: './common/Ontology_class'
+          ref: './common/Ontology_class'
         description: |
           Data use conditions applying to data from this individual, as ontology object (e.g. DUO).
 
@@ -50,7 +50,7 @@ definitions:
         description: |
           An NCBI taxonomy term describing the species of the individual.
         schema:
-          $ref: './common/Ontology_class'
+          ref: './common/Ontology_class'
         example:
           - description: "Jean-Luc Picard"
             class :
@@ -61,7 +61,7 @@ definitions:
         description: |
           A PATO term describing the biological sex of the individual
         schema:
-          $ref: './common/Ontology_class'
+          ref: './common/Ontology_class'
         example:
           - description: "girl"
             class :
@@ -73,7 +73,7 @@ definitions:
           This geo_class attribute ideally describes the geographic location of where this individual originates from.
           This value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.
         schema:
-          $ref: './common/Geo_class'
+          ref: './common/Geo_class'
         example:
           label: 'Str Marasesti 5, 300077 Timisoara, Romania'
           city: 'Timisoara'
@@ -86,7 +86,7 @@ definitions:
         description: Different representations of the same record, not  different records in relation with this individual
         type: array
         items:
-          $ref: './common/Reference_class'
+          ref: './common/Reference_class'
         example:
           - description:
             class:
@@ -98,7 +98,7 @@ definitions:
           list of Phenotype_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and "systemic" phenotypes and diseases
         type: array
         items:
-          $ref: './common/Phenotype_class'
+          ref: './common/Phenotype_class'
         example:
           - description: "Patient with Down syndrome"
             type :
@@ -113,7 +113,7 @@ definitions:
       info:
         description: additional variant information, as defined in the example and accompanying documentation TODO this should be its own class
         schema:
-          $ref: './common/Info_class'
+          ref: './common/Info_class'
         example:
           first_name:
             type: string

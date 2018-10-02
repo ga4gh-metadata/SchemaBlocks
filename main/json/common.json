@@ -9,7 +9,7 @@
             },
             "type" : {
                "schema" : {
-                  "$ref" : "#/Ontology_class"
+                  "ref" : "#/Ontology_class"
                },
                "description" : "the ontology term as Ontology_class"
             },
@@ -20,7 +20,7 @@
                   "label" : ""
                },
                "schema" : {
-                  "$ref" : "#/Ontology_class"
+                  "ref" : "#/Ontology_class"
                }
             },
             "evidence" : {
@@ -32,7 +32,7 @@
                   }
                ],
                "schema" : {
-                  "$ref" : "#/Ontology_class"
+                  "ref" : "#/Ontology_class"
                },
                "type" : "array"
             },
@@ -109,7 +109,7 @@
          "properties" : {
             "age_at_collection_class" : {
                "schema" : {
-                  "$ref" : "#/Ontology_class"
+                  "ref" : "#/Ontology_class"
                },
                "example" : {
                   "label" : "Juvenile onset",

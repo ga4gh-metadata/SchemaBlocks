@@ -18,7 +18,7 @@ definitions:
         example: 'P56Y'
       age_at_collection_class:
         schema:
-          $ref: '#/Ontology_class'
+          ref: '#/Ontology_class'
         description: |
           The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object
         example:
@@ -111,7 +111,7 @@ definitions:
       type:
         description: the ontology term as Ontology_class
         schema:
-          $ref: '#/Ontology_class'
+          ref: '#/Ontology_class'
       example:
         id: 'ncit:C8294'
         label: 'Pancreatic Adenocarcinoma'
@@ -125,7 +125,7 @@ definitions:
           Severity of the condition e.g. subclasses of HP:0012824-Severity or SNOMED:272141005-Severities.
           FHIR mapping: Condition.severity
         schema:
-          $ref: '#/Ontology_class'
+          ref: '#/Ontology_class'
         example:
           id: ''
           label: ''
@@ -134,7 +134,7 @@ definitions:
 
         type: array
         schema:
-          $ref: '#/Ontology_class'
+          ref: '#/Ontology_class'
         example:
           - id: ''
             label: ''
