@@ -22,7 +22,6 @@ definitions:
         - geo_provenance
         - age_at_collection
         - biocharacteristics
-        - phenotypes
         - info
 
     properties:
@@ -58,7 +57,7 @@ definitions:
 
       data_use_conditions:
         schema:
-          $ref: './common/Ontology_class'
+          ref: './common/Ontology_class'
         description: |
           Data use conditions applying to data from this biosample, as ontology object (e.g. DUO).
         example:
@@ -67,7 +66,7 @@ definitions:
 
       age_at_collection:
         schema:
-          $ref: './common/Age_class'
+          ref: './common/Age_class'
         description: |
           The age of the individual at time of biosample collection, as Age_class object.
         example:
@@ -82,7 +81,7 @@ definitions:
           Examples would be phenotypes, disease codes or other ontology classes specific to this biosample. In a complete data model (variants - (callsets) - biosamples - individuals), characteristics applying to the individual (e.g. sex, most phenotypes) should be annotated there.
         type: array
         items:
-          $ref: './common/Phenotype_class'
+          ref: './common/Phenotype_class'
         example:
           - description: "Pancreatic Adenocarcinoma"
             type :
@@ -108,7 +107,7 @@ definitions:
         description: list of reference_class objects with properly (e.g. identifiers.org) prefixed external identifiers and a term describing the relationship
         type: array
         items:
-          $ref: './common/Reference_class'
+          ref: './common/Reference_class'
         example:
           - id : "cellosaurus:CVCL_0312"
             relation : "provenance"
@@ -127,7 +126,7 @@ definitions:
           This geo_class attribute ideally describes the geographic location of where the sample was extracted.
           Frequently this value may reflect either the place of the laboratory where the analysis was performed, or correspond to the corresponding author's institution.
         schema:
-          $ref: './common/Geo_class'
+          ref: './common/Geo_class'
         example:
           label: 'Str Marasesti 5, 300077 Timisoara, Romania'
           city: 'Timisoara'
@@ -140,7 +139,7 @@ definitions:
         description: |
           This is a wrapper for objects without further specification in the schema.
         schema:
-          $ref: './common/Info_class'
+          ref: './common/Info_class'
         example:
           followup_time: 'P14M'
           death: true
