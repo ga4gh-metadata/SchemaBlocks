@@ -1,11 +1,118 @@
 {
+   "info" : {
+      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n",
+      "title" : "GA4GH SchemaBlocks - common and shared object definitions\n",
+      "version" : "2018-10-02"
+   },
    "definitions" : {
-      "Phenotype_class" : {
+      "Reference_class" : {
          "properties" : {
-            "negated" : {
-               "description" : "Flag to indicate whether the phenotype was observed or not. Default is 'false', in other words the phenotype was observed. It is only required in cases to indicate that the phenotype was looked for, but __not__ observed.\n",
+            "type" : {
+               "description" : "A properly prefixed CURIE of the external reference and an associated label, represented as Ontology_class object.\n",
+               "schema" : {
+                  "ref" : "#/Ontology_class"
+               },
+               "example" : {
+                  "label" : "arrayMap 2014 ",
+                  "id" : "pubmed:25428357"
+               }
+            },
+            "relation" : {
+               "description" : "the relation of the external reference to the object it was pointed from",
+               "type" : "string",
+               "example" : "denotes"
+            },
+            "description" : {
+               "type" : "string",
                "example" : "",
-               "type" : "boolean"
+               "description" : ""
+            }
+         }
+      },
+      "Info_class" : {
+         "properties" : {
+            "description" : {
+               "description" : "an optional free-text annotation about the object",
+               "type" : "string",
+               "example" : "The base length of the called segment."
+            },
+            "format" : {
+               "description" : "format of the value; optional",
+               "type" : "string",
+               "example" : "int64"
+            },
+            "value" : {
+               "example" : "1503320",
+               "description" : "the value in a format correstponding to type"
+            },
+            "type" : {
+               "description" : "type of the value; optional",
+               "example" : "number",
+               "type" : "string"
+            }
+         }
+      },
+      "Ontology_class" : {
+         "properties" : {
+            "id" : {
+               "description" : "properly prefixed CURIE of the ontology term",
+               "example" : "ncit:C8294",
+               "type" : "string"
+            },
+            "label" : {
+               "description" : "the text label associated with the term",
+               "type" : "string",
+               "example" : "Pancreatic Adenocarcinoma"
+            }
+         }
+      },
+      "Age_class" : {
+         "properties" : {
+            "age_at_collection_class" : {
+               "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n",
+               "example" : {
+                  "id" : "HP:0003621",
+                  "label" : "Juvenile onset"
+               },
+               "schema" : {
+                  "ref" : "#/Ontology_class"
+               }
+            },
+            "age" : {
+               "type" : "string",
+               "example" : "P56Y",
+               "description" : "The age as ISO8601 string."
+            }
+         }
+      },
+      "Phenotype_class" : {
+         "info" : {
+            "description" : "An individual phenotypic feature, observed as either present or absent (negated), with possible onset, modifiers and frequency.\nFHIR mapping: Condition (https://www.hl7.org/fhir/condition.html) or Observation (https://www.hl7.org/fhir/observation.html)\n",
+            "sortorder" : [
+               "description",
+               "type",
+               "negated",
+               "severity"
+            ]
+         },
+         "properties" : {
+            "evidence" : {
+               "description" : "",
+               "example" : [
+                  {
+                     "id" : "",
+                     "label" : ""
+                  }
+               ],
+               "schema" : {
+                  "ref" : "#/Ontology_class"
+               },
+               "type" : "array"
+            },
+            "description" : {
+               "example" : "",
+               "type" : "string",
+               "description" : ""
             },
             "type" : {
                "schema" : {
@@ -23,149 +130,52 @@
                   "ref" : "#/Ontology_class"
                }
             },
-            "evidence" : {
-               "description" : "",
-               "example" : [
-                  {
-                     "label" : "",
-                     "id" : ""
-                  }
-               ],
-               "schema" : {
-                  "ref" : "#/Ontology_class"
-               },
-               "type" : "array"
+            "negated" : {
+               "description" : "Flag to indicate whether the phenotype was observed or not. Default is 'false', in other words the phenotype was observed. It is only required in cases to indicate that the phenotype was looked for, but __not__ observed.\n",
+               "type" : "boolean",
+               "example" : ""
             },
             "example" : {
                "label" : "Pancreatic Adenocarcinoma",
                "id" : "ncit:C8294"
-            },
-            "description" : {
-               "description" : "",
-               "example" : "",
-               "type" : "string"
             }
-         },
-         "info" : {
-            "sortorder" : [
-               "description",
-               "type",
-               "negated",
-               "severity"
-            ],
-            "description" : "An individual phenotypic feature, observed as either present or absent (negated), with possible onset, modifiers and frequency.\nFHIR mapping: Condition (https://www.hl7.org/fhir/condition.html) or Observation (https://www.hl7.org/fhir/observation.html)\n"
          }
       },
       "Geo_class" : {
          "properties" : {
-            "country" : {
-               "type" : "string",
-               "example" : "Romania"
-            },
             "city" : {
                "type" : "string",
                "example" : "Timisoara"
             },
+            "country" : {
+               "example" : "Romania",
+               "type" : "string"
+            },
             "longitude" : {
-               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "type" : "number",
                "example" : "8.54",
-               "format" : "float",
-               "type" : "number"
-            },
-            "latitude" : {
-               "description" : "signed decimal degrees (North, relative to Equator)",
-               "example" : "47.37",
-               "D" : "float",
-               "type" : "number"
-            },
-            "label" : {
-               "type" : "string",
-               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
-               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n"
+               "description" : "signed decimal degrees (East, relative to IERS Reference Meridian)",
+               "format" : "float"
             },
             "altitude" : {
                "type" : "number",
-               "format" : "float",
                "example" : "8848",
+               "format" : "float",
                "description" : "height in meters above the WGS 84 reference ellipsoid; otional"
-            }
-         }
-      },
-      "Reference_class" : {
-         "properties" : {
-            "id" : {
-               "type" : "string",
-               "description" : "Properly prefixed CURIE of the external reference\n",
-               "example" : "pubmed:17440070"
             },
-            "relation" : {
-               "type" : "string",
-               "example" : "denotes",
-               "description" : "the relation of the external reference to the object it was pointed from"
-            }
-         }
-      },
-      "Age_class" : {
-         "properties" : {
-            "age_at_collection_class" : {
-               "schema" : {
-                  "ref" : "#/Ontology_class"
-               },
-               "example" : {
-                  "label" : "Juvenile onset",
-                  "id" : "HP:0003621"
-               },
-               "description" : "The of the object (e.g. individual at tome of a biosample collection), as Ontology_class. object\n"
+            "latitude" : {
+               "type" : "number",
+               "example" : "47.37",
+               "description" : "signed decimal degrees (North, relative to Equator)",
+               "D" : "float"
             },
-            "age" : {
-               "type" : "string",
-               "description" : "The age as ISO8601 string.",
-               "example" : "P56Y"
-            }
-         }
-      },
-      "Info_class" : {
-         "properties" : {
-            "value" : {
-               "example" : "1503320",
-               "description" : "the value in a format correstponding to type"
-            },
-            "format" : {
-               "type" : "string",
-               "example" : "int64",
-               "description" : "format of the value; optional"
-            },
-            "type" : {
-               "example" : "number",
-               "description" : "type of the value; optional",
-               "type" : "string"
-            },
-            "description" : {
-               "type" : "string",
-               "example" : "The base length of the called segment.",
-               "description" : "an optional free-text annotation about the object"
-            }
-         }
-      },
-      "Ontology_class" : {
-         "properties" : {
             "label" : {
-               "type" : "string",
-               "example" : "Pancreatic Adenocarcinoma",
-               "description" : "the text label associated with the term"
-            },
-            "id" : {
-               "type" : "string",
-               "example" : "ncit:C8294",
-               "description" : "properly prefixed CURIE of the ontology term"
+               "description" : "A text representation, preferably using standard geographic identification elements, of the corresponding latitude,longitude(,altitude). This representation serves the purposes to\n  - capture standard data entry parameters\n  - provide a sanity check for latitude,longitude values\n",
+               "example" : "Str Marasesti 5, 300077 Timisoara, Romania",
+               "type" : "string"
             }
          }
       }
-   },
-   "info" : {
-      "version" : "2018-10-02",
-      "title" : "GA4GH SchemaBlocks - common and shared object definitions\n",
-      "description" : "Definition of some prototype objects which are re-used in other schema documents.\n"
    }
 }
 

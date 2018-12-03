@@ -143,11 +143,11 @@ This geo_class attribute ideally describes the geographic location of where this
 
 ```
 'geo_provenance' : {
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'longitude' : 21.23,
   'country' : 'Romania',
   'city' : 'Timisoara',
-  'latitude' : 45.75
+  'latitude' : 45.75,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
+  'longitude' : 21.23
 }
 ```
 
@@ -162,12 +162,6 @@ additional variant information, as defined in the example and accompanying docum
 'info' : {
   'statusmaps' : {
                     'value' : {
-                                 'binning' : {
-                                                'description' : 'interval size in bases for the binning, when creating the cnv_maps',
-                                                'value' : 1000000,
-                                                'format' : 'int64',
-                                                'type' : 'number'
-                                              },
                                  'dupmap' : {
                                                'value' : [
                                                             '',
@@ -185,7 +179,13 @@ additional variant information, as defined in the example and accompanying docum
                                                'type' : 'array',
                                                'description' : 'gain cnv status for the corresponding genome intervals
 '
-                                             }
+                                             },
+                                 'binning' : {
+                                                'type' : 'number',
+                                                'value' : 1000000,
+                                                'format' : 'int64',
+                                                'description' : 'interval size in bases for the binning, when creating the cnv_maps'
+                                              }
                                },
                     'schema' : {
                                   'ref' : './common/Info_class'

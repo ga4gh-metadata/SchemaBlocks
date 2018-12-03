@@ -1,28 +1,28 @@
 {
    "id" : "amvar-8754-7751-1119-8539",
-   "reference_bases" : "G",
-   "variant_type" : "DEL",
+   "mate_name" : 14,
    "info" : {
       "cnv_value" : "-0.294",
       "cnv_length" : 1205290
    },
-   "mate_name" : 14,
-   "updated" : "2022-11-11T09:45:13Z",
+   "alternate_bases" : "AC",
    "biosample_id" : "pgx-bs-987647",
+   "created" : "2017-10-25T07:06:03Z",
+   "reference_bases" : "G",
+   "updated" : "2022-11-11T09:45:13Z",
+   "digest" : "4:12282-46465:DEL",
    "genotype" : [
       "1",
       "."
    ],
-   "callset_id" : "PGX_AM_CS_GSM1690424",
    "reference_name" : 8,
-   "alternate_bases" : "AC",
+   "variant_type" : "DEL",
+   "callset_id" : "PGX_AM_CS_GSM1690424",
    "start" : [
       "20867740"
    ],
-   "created" : "2017-10-25T07:06:03Z",
    "end" : [
       "21977798",
       "21978106"
-   ],
-   "digest" : "4:12282-46465:DEL"
+   ]
 }

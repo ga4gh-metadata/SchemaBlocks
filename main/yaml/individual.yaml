@@ -83,15 +83,21 @@ definitions:
           altitude: 94
 
       external_references:
-        description: Different representations of the same record, not  different records in relation with this individual
+        description: |
+          Different representations of the same record, not different records in relation with this individual
         type: array
         items:
           ref: './common/Reference_class'
         example:
-          - description:
-            class:
+          - description: 'Cellosaurus cell line identifier'
+            relation : "provenance"
+            type:
               id : "cellosaurus:CVCL_0312"
-              relation : "provenance" #TODO check and update when relations are worked out
+              label : "HOS"
+        queries:
+          - query: 'db.individuals.find( { "external_references.type.id" : "pubmed:17440070" } )'
+            description: |
+              The query will return all individuals which have been reported in experiments in this publication.
 
       biocharacteristics:
         description: |

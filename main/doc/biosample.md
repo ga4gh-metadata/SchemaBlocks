@@ -170,8 +170,8 @@ Data use conditions applying to data from this biosample, as ontology object (e.
 
 ```
 'data_use_conditions' : {
-  'id' : 'DUO:0000004',
-  'label' : 'no restriction'
+  'label' : 'no restriction',
+  'id' : 'DUO:0000004'
 }
 ```
 
@@ -210,28 +210,29 @@ list of reference_class objects with properly (e.g. identifiers.org) prefixed ex
 ```
 'external_references' : [
   {
-    'relation' : 'provenance',
-    'id' : 'cellosaurus:CVCL_0312'
+    'type' : {
+                'id' : 'cellosaurus:CVCL_0312',
+                'label' : 'HOS'
+              },
+    'description' : 'Cellosaurus cell line identifier',
+    'relation' : 'provenance'
   },
   {
     'relation' : 'report',
-    'id' : 'pubmed:17440070'
-  },
-  {
-    'relation' : 'technology',
-    'id' : 'geo:GPL4894'
-  },
-  {
-    'relation' : 'denotes',
-    'id' : 'geo:GSM185088'
+    'description' : 'PubMed reference',
+    'type' : {
+                'label' : 'Rearrangement of the p53 gene in human osteogenic sarcomas.',
+                'id' : 'pubmed:2823272'
+              }
   }
 ]
 ```
 
 #### Queries:
-the query will return all biosamples reported in this publication
+The query will return all biosamples reported in this publication
+
 ```
-db.biosamples.find( { "external_references.id" : "pubmed:17440070" } )
+db.biosamples.find( { "external_references.type.id" : "pubmed:17440070" } )
 ```
 
 
@@ -246,12 +247,12 @@ Frequently this value may reflect either the place of the laboratory where the a
 
 ```
 'geo_provenance' : {
-  'city' : 'Timisoara',
-  'country' : 'Romania',
-  'longitude' : 21.23,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
   'latitude' : 45.75,
   'altitude' : 94,
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
+  'longitude' : 21.23,
+  'country' : 'Romania',
+  'city' : 'Timisoara'
 }
 ```
 
@@ -265,11 +266,11 @@ The age of the individual at time of biosample collection, as Age_class object.
 
 ```
 'age_at_collection' : {
+  'age' : 'P56Y',
   'age_class' : {
                    'label' : 'Juvenile onset',
                    'id' : 'HP:0003621'
-                 },
-  'age' : 'P56Y'
+                 }
 }
 ```
 
@@ -287,23 +288,23 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'type' : {
-                'label' : 'Pancreas, NOS',
-                'id' : 'pgx:icdot:c25.9'
+                'id' : 'pgx:icdot:c25.9',
+                'label' : 'Pancreas, NOS'
               }
-  },
-  {
-    'type' : {
-                'label' : 'Adenocarcinoma, NOS',
-                'id' : 'pgx:icdom:81403'
-              },
-    'description' : 'Pancreatic Adenocarcinoma'
   },
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'type' : {
-                'label' : 'Pancreatic Adenocarcinoma',
-                'id' : 'ncit:c8294'
+                'label' : 'Adenocarcinoma, NOS',
+                'id' : 'pgx:icdom:81403'
               }
+  },
+  {
+    'type' : {
+                'id' : 'ncit:c8294',
+                'label' : 'Pancreatic Adenocarcinoma'
+              },
+    'description' : 'Pancreatic Adenocarcinoma'
   }
 ]
 ```

@@ -58,8 +58,8 @@ The of the object (e.g. individual at tome of a biosample collection), as Ontolo
 
 ```
 'age_at_collection_class' : {
-  'label' : 'Juvenile onset',
-  'id' : 'HP:0003621'
+  'id' : 'HP:0003621',
+  'label' : 'Juvenile onset'
 }
 ```
 ## Geo_class
@@ -450,8 +450,8 @@ FHIR mapping: Condition.severity
 ```
 'evidence' : [
   {
-    'label' : '',
-    'id' : ''
+    'id' : '',
+    'label' : ''
   }
 ]
 ```
@@ -479,11 +479,10 @@ FHIR mapping: Condition.severity
   </tr>
 
   <tr>
-    <td>id</td>
+    <td>description</td>
     <td>string</td>
     <td></td>
-    <td>Properly prefixed CURIE of the external reference
-</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -492,21 +491,28 @@ FHIR mapping: Condition.severity
     <td></td>
     <td>the relation of the external reference to the object it was pointed from</td>
   </tr>
+
+  <tr>
+    <td>type</td>
+    <td></td>
+    <td></td>
+    <td>A properly prefixed CURIE of the external reference and an associated label, represented as Ontology_class object.
+</td>
+  </tr>
 </table>
 
 <h3>Extended notes and examples on the <i>Reference_class</i> properties</h3>
 
 
 --------------------------------------------------------------------------------
-### id
+### description
 
-Properly prefixed CURIE of the external reference
 
 
 #### Example
 
 ```
-'id' : "pubmed:17440070"
+'description' : ""
 ```
 
 --------------------------------------------------------------------------------
@@ -518,4 +524,19 @@ the relation of the external reference to the object it was pointed from
 
 ```
 'relation' : "denotes"
+```
+
+--------------------------------------------------------------------------------
+### type
+
+A properly prefixed CURIE of the external reference and an associated label, represented as Ontology_class object.
+
+
+#### Example
+
+```
+'type' : {
+  'label' : 'arrayMap 2014 ',
+  'id' : 'pubmed:25428357'
+}
 ```

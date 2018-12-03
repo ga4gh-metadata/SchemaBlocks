@@ -1,16 +1,16 @@
 {
+   "description" : "",
    "evidence" : [
       {
-         "label" : "",
-         "id" : ""
+         "id" : "",
+         "label" : ""
       }
    ],
+   "example" : null,
+   "negated" : "",
    "severity" : {
       "id" : "",
       "label" : ""
    },
-   "description" : "",
-   "example" : null,
-   "negated" : "",
    "type" : null
 }

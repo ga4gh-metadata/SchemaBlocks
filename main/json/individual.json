@@ -1,9 +1,4 @@
 {
-   "info" : {
-      "updated" : "2018-09-13",
-      "title" : "GA4GH __individual__\n",
-      "description" : "An individual is a single organism (here typically a human).\n"
-   },
    "definitions" : {
       "Individual" : {
          "info" : {
@@ -21,67 +16,109 @@
             ]
          },
          "properties" : {
-            "id" : {
-               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
-               "example" : "AM_BS__NCBISKYCGH-1993",
-               "type" : "string"
-            },
-            "data_use_conditions" : {
-               "schema" : {
-                  "ref" : "./common/Ontology_class"
+            "external_references" : {
+               "description" : "Different representations of the same record, not different records in relation with this individual\n",
+               "items" : {
+                  "ref" : "./common/Reference_class"
                },
-               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n"
-            },
-            "organism" : {
                "example" : [
                   {
-                     "description" : "Jean-Luc Picard",
+                     "type" : {
+                        "label" : "HOS",
+                        "id" : "cellosaurus:CVCL_0312"
+                     },
+                     "relation" : "provenance",
+                     "description" : "Cellosaurus cell line identifier"
+                  }
+               ],
+               "type" : "array",
+               "queries" : [
+                  {
+                     "description" : "The query will return all individuals which have been reported in experiments in this publication.\n",
+                     "query" : "db.individuals.find( { \"external_references.type.id\" : \"pubmed:17440070\" } )"
+                  }
+               ]
+            },
+            "description" : {
+               "type" : "string",
+               "example" : "patient with lung cancer, male smoker",
+               "description" : "A free text description of the individual."
+            },
+            "sex" : {
+               "description" : "A PATO term describing the biological sex of the individual\n",
+               "example" : [
+                  {
+                     "description" : "girl",
                      "class" : {
-                        "id" : "NCBITaxon:9606",
-                        "label" : "Homo sapiens"
+                        "id" : "PATO:0020000",
+                        "label" : "female genetic sex"
                      }
                   }
                ],
-               "description" : "An NCBI taxonomy term describing the species of the individual.\n",
+               "schema" : {
+                  "ref" : "./common/Ontology_class"
+               }
+            },
+            "organism" : {
+               "schema" : {
+                  "ref" : "./common/Ontology_class"
+               },
+               "example" : [
+                  {
+                     "class" : {
+                        "id" : "NCBITaxon:9606",
+                        "label" : "Homo sapiens"
+                     },
+                     "description" : "Jean-Luc Picard"
+                  }
+               ],
+               "description" : "An NCBI taxonomy term describing the species of the individual.\n"
+            },
+            "created" : {
+               "description" : "The creation time of this record, in ISO8601\n",
+               "example" : "2017-10-25T07:06:03Z",
+               "type" : "timestamp"
+            },
+            "geo_provenance" : {
+               "schema" : {
+                  "ref" : "./common/Geo_class"
+               },
+               "example" : {
+                  "city" : "Timisoara",
+                  "country" : "Romania",
+                  "longitude" : "21.23",
+                  "altitude" : "94",
+                  "latitude" : "45.75",
+                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+               },
+               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.\n"
+            },
+            "data_use_conditions" : {
+               "description" : "Data use conditions applying to data from this individual, as ontology object (e.g. DUO).\n",
                "schema" : {
                   "ref" : "./common/Ontology_class"
                }
             },
             "info" : {
                "description" : "additional variant information, as defined in the example and accompanying documentation TODO this should be its own class",
+               "schema" : {
+                  "ref" : "./common/Info_class"
+               },
                "example" : {
-                  "last_name" : {
-                     "value" : "Tichy",
-                     "type" : "string"
-                  },
                   "first_name" : {
                      "type" : "string",
                      "value" : "Ion"
+                  },
+                  "last_name" : {
+                     "type" : "string",
+                     "value" : "Tichy"
                   }
-               },
-               "schema" : {
-                  "ref" : "./common/Info_class"
                }
             },
-            "sex" : {
-               "schema" : {
-                  "ref" : "./common/Ontology_class"
-               },
-               "description" : "A PATO term describing the biological sex of the individual\n",
-               "example" : [
-                  {
-                     "class" : {
-                        "id" : "PATO:0020000",
-                        "label" : "female genetic sex"
-                     },
-                     "description" : "girl"
-                  }
-               ]
-            },
-            "updated" : {
-               "example" : "2022-11-11T09:45:13Z",
-               "description" : "The time of the last edit of this record, in ISO8601\n",
-               "type" : "timestamp"
+            "id" : {
+               "description" : "The local-unique identifier of this individual (referenced as \"individual_id\").",
+               "example" : "AM_BS__NCBISKYCGH-1993",
+               "type" : "string"
             },
             "biocharacteristics" : {
                "type" : "array",
@@ -91,71 +128,41 @@
                      "description" : "the query will return all individuals who have been properly labeled as human"
                   },
                   {
-                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes",
-                     "query" : "db.biosamples.distinct( { \"biocharacteristics.type.id\", \"biocharacteristics.type.id\" : { $regex : /HP\\:/i } } )"
+                     "query" : "db.biosamples.distinct( { \"biocharacteristics.type.id\", \"biocharacteristics.type.id\" : { $regex : /HP\\:/i } } )",
+                     "description" : "this call to the distinct funcion will return *all* HPO annotated classes"
                   }
                ],
-               "description" : "list of Phenotype_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
                "example" : [
                   {
+                     "description" : "Patient with Down syndrome",
                      "type" : {
                         "id" : "HP:0003745",
                         "label" : "Genetic anticipation"
-                     },
-                     "description" : "Patient with Down syndrome"
+                     }
                   }
                ],
+               "description" : "list of Phenotype_class objects with properly prefixed term ids, describing features of the individual which are not specific to the reported biosample(s); typical examples here are sex, species and \"systemic\" phenotypes and diseases\n",
                "items" : {
                   "ref" : "./common/Phenotype_class"
                }
             },
-            "external_references" : {
-               "type" : "array",
-               "items" : {
-                  "ref" : "./common/Reference_class"
-               },
-               "example" : [
-                  {
-                     "description" : null,
-                     "class" : {
-                        "id" : "cellosaurus:CVCL_0312",
-                        "relation" : "provenance"
-                     }
-                  }
-               ],
-               "description" : "Different representations of the same record, not  different records in relation with this individual"
-            },
-            "created" : {
+            "updated" : {
+               "example" : "2022-11-11T09:45:13Z",
                "type" : "timestamp",
-               "example" : "2017-10-25T07:06:03Z",
-               "description" : "The creation time of this record, in ISO8601\n"
+               "description" : "The time of the last edit of this record, in ISO8601\n"
             },
             "name" : {
                "description" : "A short descriptive \"name\" for the individual, which may or may not correspond to a \"real name\". Unstructured text.\n",
-               "example" : "Ion Tichy, space explorer",
-               "type" : "string"
-            },
-            "geo_provenance" : {
-               "description" : "This geo_class attribute ideally describes the geographic location of where this individual originates from.\nThis value may reflect either the place of birth or residence, but frequently may correspond to the place the study was performed.\n",
-               "example" : {
-                  "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-                  "altitude" : "94",
-                  "city" : "Timisoara",
-                  "country" : "Romania",
-                  "longitude" : "21.23",
-                  "latitude" : "45.75"
-               },
-               "schema" : {
-                  "ref" : "./common/Geo_class"
-               }
-            },
-            "description" : {
-               "description" : "A free text description of the individual.",
-               "example" : "patient with lung cancer, male smoker",
-               "type" : "string"
+               "type" : "string",
+               "example" : "Ion Tichy, space explorer"
             }
          }
       }
+   },
+   "info" : {
+      "title" : "GA4GH __individual__\n",
+      "description" : "An individual is a single organism (here typically a human).\n",
+      "updated" : "2018-09-13"
    }
 }
 

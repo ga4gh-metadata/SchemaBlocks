@@ -109,17 +109,20 @@ definitions:
         items:
           ref: './common/Reference_class'
         example:
-          - id : "cellosaurus:CVCL_0312"
+          - description: 'Cellosaurus cell line identifier'
             relation : "provenance"
-          - id : "pubmed:17440070"
+            type:
+              id : "cellosaurus:CVCL_0312"
+              label : "HOS"
+          - description: 'PubMed reference'
             relation : "report"
-          - id : "geo:GPL4894"
-            relation : "technology"
-          - id : "geo:GSM185088"
-            relation : "denotes"
+            type:
+              id : "pubmed:2823272"
+              label : "Rearrangement of the p53 gene in human osteogenic sarcomas."
         queries:
-          - query: 'db.biosamples.find( { "external_references.id" : "pubmed:17440070" } )'
-            description: the query will return all biosamples reported in this publication
+          - query: 'db.biosamples.find( { "external_references.type.id" : "pubmed:17440070" } )'
+            description: |
+              The query will return all biosamples reported in this publication
 
       geo_provenance:
         description: |

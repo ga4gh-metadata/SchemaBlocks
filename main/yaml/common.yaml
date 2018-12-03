@@ -131,7 +131,6 @@ definitions:
           label: ''
       evidence:
         description: |
-
         type: array
         schema:
           ref: '#/Ontology_class'
@@ -143,14 +142,21 @@ definitions:
 
   Reference_class:
     properties:
-      id:
-        description: |
-          Properly prefixed CURIE of the external reference
+      description:
+        description: ''
         type: string
-        example: 'pubmed:17440070'
+        example: ''
       relation:
-        description: the relation of the external reference to the object it was pointed from
+        description: 'the relation of the external reference to the object it was pointed from'
         type: string
         example: 'denotes'
+      type:
+        description: |
+          A properly prefixed CURIE of the external reference and an associated label, represented as Ontology_class object.
+        schema:
+          ref: '#/Ontology_class'
+        example:
+          id: 'pubmed:25428357'
+          label: 'arrayMap 2014 '
 
 ################################################################################

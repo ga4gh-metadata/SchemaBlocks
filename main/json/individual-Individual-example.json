@@ -1,62 +1,63 @@
 {
-   "id" : "AM_BS__NCBISKYCGH-1993",
+   "geo_provenance" : {
+      "city" : "Timisoara",
+      "country" : "Romania",
+      "longitude" : 21.23,
+      "altitude" : 94,
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania"
+   },
+   "data_use_conditions" : null,
    "info" : {
-      "last_name" : {
-         "value" : "Tichy",
-         "type" : "string"
-      },
       "first_name" : {
          "type" : "string",
          "value" : "Ion"
+      },
+      "last_name" : {
+         "type" : "string",
+         "value" : "Tichy"
       }
    },
-   "organism" : [
-      {
-         "description" : "Jean-Luc Picard",
-         "class" : {
-            "id" : "NCBITaxon:9606",
-            "label" : "Homo sapiens"
-         }
-      }
-   ],
-   "data_use_conditions" : null,
-   "external_references" : [
-      {
-         "description" : null,
-         "class" : {
-            "id" : "cellosaurus:CVCL_0312",
-            "relation" : "provenance"
-         }
-      }
-   ],
+   "id" : "AM_BS__NCBISKYCGH-1993",
+   "created" : "2017-10-25T07:06:03Z",
    "updated" : "2022-11-11T09:45:13Z",
+   "name" : "Ion Tichy, space explorer",
    "biocharacteristics" : [
       {
+         "description" : "Patient with Down syndrome",
          "type" : {
             "id" : "HP:0003745",
             "label" : "Genetic anticipation"
+         }
+      }
+   ],
+   "description" : "patient with lung cancer, male smoker",
+   "external_references" : [
+      {
+         "type" : {
+            "label" : "HOS",
+            "id" : "cellosaurus:CVCL_0312"
          },
-         "description" : "Patient with Down syndrome"
+         "relation" : "provenance",
+         "description" : "Cellosaurus cell line identifier"
       }
    ],
    "sex" : [
       {
+         "description" : "girl",
          "class" : {
             "id" : "PATO:0020000",
             "label" : "female genetic sex"
-         },
-         "description" : "girl"
+         }
       }
    ],
-   "description" : "patient with lung cancer, male smoker",
-   "geo_provenance" : {
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "altitude" : 94,
-      "city" : "Timisoara",
-      "country" : "Romania",
-      "longitude" : 21.23,
-      "latitude" : 45.75
-   },
-   "created" : "2017-10-25T07:06:03Z",
-   "name" : "Ion Tichy, space explorer"
+   "organism" : [
+      {
+         "class" : {
+            "id" : "NCBITaxon:9606",
+            "label" : "Homo sapiens"
+         },
+         "description" : "Jean-Luc Picard"
+      }
+   ]
 }

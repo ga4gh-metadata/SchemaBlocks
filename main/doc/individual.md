@@ -68,7 +68,8 @@ The schema definitions are done in the [YAML file](../yaml/individual.yaml).
     <td>external_references</td>
     <td>array</td>
     <td></td>
-    <td>Different representations of the same record, not  different records in relation with this individual</td>
+    <td>Different representations of the same record, not different records in relation with this individual
+</td>
   </tr>
 
   <tr>
@@ -172,11 +173,11 @@ An NCBI taxonomy term describing the species of the individual.
 ```
 'organism' : [
   {
-    'description' : 'Jean-Luc Picard',
     'class' : {
                  'id' : 'NCBITaxon:9606',
                  'label' : 'Homo sapiens'
-               }
+               },
+    'description' : 'Jean-Luc Picard'
   }
 ]
 ```
@@ -192,11 +193,11 @@ A PATO term describing the biological sex of the individual
 ```
 'sex' : [
   {
+    'description' : 'girl',
     'class' : {
                  'id' : 'PATO:0020000',
                  'label' : 'female genetic sex'
-               },
-    'description' : 'girl'
+               }
   }
 ]
 ```
@@ -204,21 +205,31 @@ A PATO term describing the biological sex of the individual
 --------------------------------------------------------------------------------
 ### external_references
 
-Different representations of the same record, not  different records in relation with this individual
+Different representations of the same record, not different records in relation with this individual
+
 
 #### Example
 
 ```
 'external_references' : [
   {
-    'description' : undef,
-    'class' : {
-                 'id' : 'cellosaurus:CVCL_0312',
-                 'relation' : 'provenance'
-               }
+    'type' : {
+                'label' : 'HOS',
+                'id' : 'cellosaurus:CVCL_0312'
+              },
+    'relation' : 'provenance',
+    'description' : 'Cellosaurus cell line identifier'
   }
 ]
 ```
+
+#### Queries:
+The query will return all individuals which have been reported in experiments in this publication.
+
+```
+db.individuals.find( { "external_references.type.id" : "pubmed:17440070" } )
+```
+
 
 --------------------------------------------------------------------------------
 ### geo_provenance
@@ -231,12 +242,12 @@ This value may reflect either the place of birth or residence, but frequently ma
 
 ```
 'geo_provenance' : {
-  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania',
-  'altitude' : 94,
   'city' : 'Timisoara',
   'country' : 'Romania',
   'longitude' : 21.23,
-  'latitude' : 45.75
+  'altitude' : 94,
+  'latitude' : 45.75,
+  'label' : 'Str Marasesti 5, 300077 Timisoara, Romania'
 }
 ```
 
@@ -251,11 +262,11 @@ list of Phenotype_class objects with properly prefixed term ids, describing feat
 ```
 'biocharacteristics' : [
   {
+    'description' : 'Patient with Down syndrome',
     'type' : {
                 'id' : 'HP:0003745',
                 'label' : 'Genetic anticipation'
-              },
-    'description' : 'Patient with Down syndrome'
+              }
   }
 ]
 ```
@@ -282,14 +293,14 @@ additional variant information, as defined in the example and accompanying docum
 
 ```
 'info' : {
-  'last_name' : {
-                   'value' : 'Tichy',
-                   'type' : 'string'
-                 },
   'first_name' : {
                     'type' : 'string',
                     'value' : 'Ion'
-                  }
+                  },
+  'last_name' : {
+                   'type' : 'string',
+                   'value' : 'Tichy'
+                 }
 }
 ```
 

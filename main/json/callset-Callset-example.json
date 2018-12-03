@@ -1,24 +1,19 @@
 {
    "description" : "SNP6 array of cancer sample BRCA-0893",
+   "updated" : "2022-11-11T09:45:13Z",
    "created" : "2017-10-25T07:06:03Z",
+   "biosample_id" : "pgx-bs-987647",
    "geo_provenance" : {
-      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
-      "longitude" : 21.23,
       "country" : "Romania",
       "city" : "Timisoara",
-      "latitude" : 45.75
+      "latitude" : 45.75,
+      "label" : "Str Marasesti 5, 300077 Timisoara, Romania",
+      "longitude" : 21.23
    },
-   "updated" : "2022-11-11T09:45:13Z",
-   "biosample_id" : "pgx-bs-987647",
+   "id" : "GSM264198",
    "info" : {
       "statusmaps" : {
          "value" : {
-            "binning" : {
-               "description" : "interval size in bases for the binning, when creating the cnv_maps",
-               "value" : 1000000,
-               "format" : "int64",
-               "type" : "number"
-            },
             "dupmap" : {
                "value" : [
                   "",
@@ -35,6 +30,12 @@
                ],
                "type" : "array",
                "description" : "gain cnv status for the corresponding genome intervals\n"
+            },
+            "binning" : {
+               "type" : "number",
+               "value" : 1000000,
+               "format" : "int64",
+               "description" : "interval size in bases for the binning, when creating the cnv_maps"
             }
          },
          "schema" : {
@@ -46,6 +47,5 @@
    "data_use_conditions" : {
       "label" : "no restriction",
       "id" : "DUO:0000004"
-   },
-   "id" : "GSM264198"
+   }
 }

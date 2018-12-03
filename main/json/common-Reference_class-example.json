@@ -1,4 +1,8 @@
 {
-   "id" : "pubmed:17440070",
-   "relation" : "denotes"
+   "type" : {
+      "label" : "arrayMap 2014 ",
+      "id" : "pubmed:25428357"
+   },
+   "relation" : "denotes",
+   "description" : ""
 }
