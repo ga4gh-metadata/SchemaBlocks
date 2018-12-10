@@ -1,7 +1,7 @@
-## [GA4GH __SchemaBlocks__](https://ga4gh-metadata.github.io/schemas/)
+## [GA4GH __SchemaBlocks__](https://schemablocks.org/)
 
 <div style="display: block; float: right; width: 260px; margin: 0px 0px 15px 15px; ">
-  <img src="https://ga4gh-metadata.github.io/schemas/rsrc/img/ga4gh-object-model.png" />
+  <img src="./rsrc/img/ga4gh-object-model.png" />
   <div style="display: block; width: 260px; text-align: justify; font-size: 0.8em; color: #03c; background-color: #eee; padding: 5px;">
 A graph showing the basic objects and their relationships. The example attributes are placeholders for elements defined in the general schema description.
   </div>
