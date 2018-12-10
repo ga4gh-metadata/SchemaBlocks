@@ -1,4 +1,4 @@
-## [GA4GH __SchemaBlocks__](https://schemablocks.org/)
+## [GA4GH __SchemaBlocks__](http://schemablocks.org/)
 
 <div style="display: block; float: right; width: 260px; margin: 0px 0px 15px 15px; ">
   <img src="./rsrc/img/ga4gh-object-model.png" />
