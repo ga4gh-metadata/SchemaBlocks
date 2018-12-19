@@ -16,6 +16,8 @@ Such _blocks_ can be
 * documentation of data formats and standards
 * ... and probably other "things" related to the building of APIs and resources related top GA4GH
 
+The project does __not__ intent to build a monolithic API, but rather help to exchange usable components for creating implementations.
+
 Currently, this site just represents skeleton schema elements, derived from the original, then monolithic GA4GH schema.
 
 The primary documents are in the [yaml](./yaml/) directory, with JSON versions and examples extracted from them. The "readable" documentation is also created from the YAML files and can be accessed through the links below.
