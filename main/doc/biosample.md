@@ -288,7 +288,7 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
   {
     'description' : 'Pancreatic Adenocarcinoma',
     'type' : {
-                'id' : 'pgx:icdot:c25.9',
+                'id' : 'icdot:C25.9',
                 'label' : 'Pancreas, NOS'
               }
   },
@@ -296,12 +296,12 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
     'description' : 'Pancreatic Adenocarcinoma',
     'type' : {
                 'label' : 'Adenocarcinoma, NOS',
-                'id' : 'pgx:icdom:81403'
+                'id' : 'icdom:81403'
               }
   },
   {
     'type' : {
-                'id' : 'ncit:c8294',
+                'id' : 'ncit:C8294',
                 'label' : 'Pancreatic Adenocarcinoma'
               },
     'description' : 'Pancreatic Adenocarcinoma'
@@ -310,10 +310,10 @@ Examples would be phenotypes, disease codes or other ontology classes specific t
 ```
 
 #### Queries:
-The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
+The query will return all biosamples with an (exact) class.id of "icdom:81403" in their "biocharacteristics" object list.
 
 ```
-db.biosamples.find( { "biocharacteristics.type.id" : "pgx:icdom:81403" } )
+db.biosamples.find( { "biocharacteristics.type.id" : "icdom:81403" } )
 ```
 
 

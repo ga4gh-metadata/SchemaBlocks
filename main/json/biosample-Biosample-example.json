@@ -51,7 +51,7 @@
       {
          "description" : "Pancreatic Adenocarcinoma",
          "type" : {
-            "id" : "pgx:icdot:c25.9",
+            "id" : "icdot:C25.9",
             "label" : "Pancreas, NOS"
          }
       },
@@ -59,12 +59,12 @@
          "description" : "Pancreatic Adenocarcinoma",
          "type" : {
             "label" : "Adenocarcinoma, NOS",
-            "id" : "pgx:icdom:81403"
+            "id" : "icdom:81403"
          }
       },
       {
          "type" : {
-            "id" : "ncit:c8294",
+            "id" : "ncit:C8294",
             "label" : "Pancreatic Adenocarcinoma"
          },
          "description" : "Pancreatic Adenocarcinoma"

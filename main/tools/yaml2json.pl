@@ -42,10 +42,11 @@ sub _process_yaml {
 
   my $file_name =   shift;
   my $yaml_link =   $config->{'yaml_path_rel'}.'/'.$file_name;
-  $file_name    =~   s/\.ya?ml$//i;
+  my $base_name =   $file_name;
+  $base_name    =~   s/\.ya?ml$//i;
 
   foreach ( @{ $config->{file_types} } ) {
-    $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $file_name.'.'.$_);
+    $config->{$_.'_file'} =   join('/', $config->{$_.'_path'}, $base_name.'.'.$_);
   }
 
   print "Reading YAML file \"$config->{yaml_file}\"\n";
@@ -61,7 +62,7 @@ sub _process_yaml {
 
 $data->{info}->{description}
 
-The schema definitions are done in the [YAML file]($yaml_link).
+The original schema definitions are provided in the [YAML file]($yaml_link).
 
 END
 
@@ -70,7 +71,7 @@ END
   foreach my $class (sort keys %attr) {
 
     my $example   =   {};
-    my $example_file  =   $config->{json_path}.'/'.$file_name.'-'.$class.'-example.json';
+    my $example_file  =   $config->{json_path}.'/'.$base_name.'-'.$class.'-example.json';
 
     my $class_md  =  <<END;
 ## $class
@@ -104,7 +105,7 @@ END
 
       $example->{$property}  =  $attr{$class}->{properties}->{$property}->{example};
       my $md_example  =   _reformat_example($attr{$class}->{properties}->{$property}->{example});
-      $class_md   .=  <<END;
+      $class_md .=  <<END;
 
   <tr>
     <td>$property</td>
@@ -113,7 +114,7 @@ END
     <td>$attr{$class}->{properties}->{$property}->{description}</td>
   </tr>
 END
-      $prop_md    .=  <<END;
+      $prop_md  .=  <<END;
 
 --------------------------------------------------------------------------------
 ### $property
@@ -128,11 +129,11 @@ $attr{$class}->{properties}->{$property}->{description}
 END
 
     if ($attr{$class}->{properties}->{$property}->{queries}) {
-      $prop_md   .=  '
+      $prop_md    .=  '
 #### Queries:';
       foreach my $query (@{$attr{$class}->{properties}->{$property}->{queries}}) {
 
-        $prop_md .=  <<END;
+        $prop_md  .=  <<END;
 
 $query->{description}
 ```
@@ -143,14 +144,14 @@ END
 
     }}}
 
-    $class_md .=  <<END;
+    $class_md   .=  <<END;
 </table>
 
 <h3>Extended notes and examples on the <i>$class</i> properties</h3>
 
 END
-    $markdown .=  $class_md;
-    $markdown .=  $prop_md;
+    $markdown   .=  $class_md;
+    $markdown   .=  $prop_md;
 
     my $printout    =   JSON::XS->new->pretty( 1 )->encode( $example )."\n";
     open  (FILE, ">", $example_file) || warn 'output file '.$example_file.' could not be created.';
@@ -170,13 +171,13 @@ sub _reformat_example {
 
   my $example   =   shift;
   my $md_example    =   Dumper($example);
-  $md_example	=~  s/\$VAR1 \= //;
-  $md_example	=~  s/\n {8}/\n/g;
-  $md_example	=~  s/\;//g;
-  $md_example	=~  s/\n$//;
+  $md_example	  =~  s/\$VAR1 \= //;
+  $md_example	  =~  s/\n {8}/\n/g;
+  $md_example	  =~  s/\;//g;
+  $md_example	  =~  s/\n$//;
   if (ref( $example) eq "ARRAY" || ref( $example) eq "HASH") {
-    $md_example	=		$md_example;
-  } else {
+    $md_example	=		$md_example }
+  else {
     $md_example	=~  s/\'//g;
     $md_example	=		'"'.$md_example.'"' }
 
@@ -193,8 +194,6 @@ sub _clean_numbers_booleans_from_text {
   foreach my $line (split("\n", $printout)) {
     $line       =~  s/\=\>/:/;
     $line       =~  s/\: [\'\"](\d+?(?:\.\d+?)?)[\'\"]/: $1/;
-
-
     push(@cleaned, $line);
   }
 

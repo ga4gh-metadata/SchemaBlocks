@@ -85,20 +85,20 @@ definitions:
         example:
           - description: "Pancreatic Adenocarcinoma"
             type :
-              id : "pgx:icdot:c25.9"
+              id : "icdot:C25.9"
               label : "Pancreas, NOS"
           - description : "Pancreatic Adenocarcinoma"
             type:
-              id : "pgx:icdom:81403"
+              id : "icdom:81403"
               label : "Adenocarcinoma, NOS"
           - description : "Pancreatic Adenocarcinoma"
             type :
-              id : "ncit:c8294"
+              id : "ncit:C8294"
               label : "Pancreatic Adenocarcinoma"
         queries:
-          - query: 'db.biosamples.find( { "biocharacteristics.type.id" : "pgx:icdom:81403" } )'
+          - query: 'db.biosamples.find( { "biocharacteristics.type.id" : "icdom:81403" } )'
             description: |
-              The query will return all biosamples with an (exact) class.id of "pgx:icdom:81403" in their "biocharacteristics" object list.
+              The query will return all biosamples with an (exact) class.id of "icdom:81403" in their "biocharacteristics" object list.
           - query: 'db.biosamples.distinct( "biocharacteristics.type.id", { "biocharacteristics.type.id" : { $regex : /ncit/ } } )'
             description: |
               This call to the distinct funcion will return *all* bioterms ids for samples having some ncit id; to retrive only the ncit ids, this has to be followed by a regex filter (/^ncit/).
