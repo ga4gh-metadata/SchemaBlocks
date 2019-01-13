@@ -7,6 +7,8 @@ A graph showing recommended basic objects and their relationships. The example a
   </div>
 </div>
 
+__Please not: The content of this repository is being re-"invented" in [schemablocks.org](http://schemablocks.org), as a wider GA4GH cross-workstream initiative. This site here should be considered a prototype for the new project ...__
+
 This repository contains  schema "blocks" for the GA4GH project, in a collaborative effort between members of the _Clinical and Phenotypic Data Capture_ ([__GA4GH::CP__](http://ga4gh-cp.github.io)) and the _Genomic Knowledge Standards_ ([__GA4GH::GKS__](http://ga4gh-gks.github.io)) and the [_Discovery_](http://ga4gh-discovery.githb.io) work streams.
 
 Such _blocks_ can be 
